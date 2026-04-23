@@ -1,9 +1,113 @@
 (function () {
     const app = window.PortfolioApp;
 
+    function clamp(value, min, max) {
+        return Math.max(min, Math.min(max, value));
+    }
+
+    function getSafeArea() {
+        const sidebar = document.querySelector('.sidebar');
+        const topBar = document.querySelector('.top-bar');
+
+        const left = sidebar ? sidebar.offsetWidth : 0;
+        const top = topBar ? topBar.offsetHeight : 0;
+        const right = window.innerWidth;
+        const bottom = window.innerHeight;
+
+        return {
+            left,
+            top,
+            right,
+            bottom,
+            width: Math.max(0, right - left),
+            height: Math.max(0, bottom - top)
+        };
+    }
+
+    function getContentBounds() {
+        const cards = document.querySelectorAll('.card');
+        let minX = Infinity;
+        let minY = Infinity;
+        let maxX = -Infinity;
+        let maxY = -Infinity;
+
+        cards.forEach((card) => {
+            const x = parseFloat(card.style.left) || 0;
+            const y = parseFloat(card.style.top) || 0;
+            const w = parseFloat(card.style.width) || card.offsetWidth || 0;
+            const h = card.offsetHeight || 0;
+
+            minX = Math.min(minX, x);
+            minY = Math.min(minY, y);
+            maxX = Math.max(maxX, x + w);
+            maxY = Math.max(maxY, y + h);
+        });
+
+        if (!isFinite(minX) || !isFinite(minY) || !isFinite(maxX) || !isFinite(maxY)) {
+            return { minX: 0, minY: 0, maxX: 0, maxY: 0, width: 0, height: 0 };
+        }
+
+        // 给内容边界加一点缓冲，避免紧贴边缘显得“卡住”
+        const padding = 160;
+        minX -= padding;
+        minY -= padding;
+        maxX += padding;
+        maxY += padding;
+
+        return { minX, minY, maxX, maxY, width: maxX - minX, height: maxY - minY };
+    }
+
+    app.constrainView = function constrainView() {
+        const state = app.state;
+        const safe = getSafeArea();
+        const bounds = getContentBounds();
+
+        // 至少留一块区域在视野里，避免拖到纯空白
+        const minOverlap = 180;
+
+        const minPanX = (safe.left + minOverlap) - bounds.maxX * state.scale;
+        const maxPanX = (safe.right - minOverlap) - bounds.minX * state.scale;
+        const minPanY = (safe.top + minOverlap) - bounds.maxY * state.scale;
+        const maxPanY = (safe.bottom - minOverlap) - bounds.minY * state.scale;
+
+        if (minPanX > maxPanX) {
+            state.panX = (minPanX + maxPanX) / 2;
+        } else {
+            state.panX = clamp(state.panX, minPanX, maxPanX);
+        }
+
+        if (minPanY > maxPanY) {
+            state.panY = (minPanY + maxPanY) / 2;
+        } else {
+            state.panY = clamp(state.panY, minPanY, maxPanY);
+        }
+    };
+
+    app.zoomToFit = function zoomToFit() {
+        const state = app.state;
+        const safe = getSafeArea();
+        const bounds = getContentBounds();
+
+        const padding = 80;
+        const targetW = Math.max(1, safe.width - padding * 2);
+        const targetH = Math.max(1, safe.height - padding * 2);
+        const scaleX = bounds.width ? targetW / bounds.width : 1;
+        const scaleY = bounds.height ? targetH / bounds.height : 1;
+
+        state.scale = clamp(Math.min(scaleX, scaleY), 0.3, 3);
+
+        // 让内容在可视区域居中
+        state.panX = safe.left + (safe.width - bounds.width * state.scale) / 2 - bounds.minX * state.scale;
+        state.panY = safe.top + (safe.height - bounds.height * state.scale) / 2 - bounds.minY * state.scale;
+
+        app.constrainView();
+        app.updateTransform();
+    };
+
     app.updateTransform = function updateTransform() {
         const state = app.state;
 
+        app.constrainView();
         app.dom.viewport.style.transform = `translate(${state.panX}px,${state.panY}px) scale(${state.scale})`;
         app.dom.zoomLevelEl.textContent = Math.round(state.scale * 100) + '%';
         app.updateMinimap();
@@ -66,10 +170,7 @@
         });
 
         app.dom.zoomFitButton.addEventListener('click', () => {
-            app.state.scale = 0.6;
-            app.state.panX = 100;
-            app.state.panY = 50;
-            app.updateTransform();
+            app.zoomToFit();
         });
     };
 })();

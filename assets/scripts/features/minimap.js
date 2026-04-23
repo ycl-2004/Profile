@@ -59,21 +59,44 @@
         const cards = document.querySelectorAll('.card');
         let minX = Infinity;
         let minY = Infinity;
+        let maxX = -Infinity;
+        let maxY = -Infinity;
 
         cards.forEach((card) => {
-            minX = Math.min(minX, parseFloat(card.style.left));
-            minY = Math.min(minY, parseFloat(card.style.top));
+            const x = parseFloat(card.style.left) || 0;
+            const y = parseFloat(card.style.top) || 0;
+            const w = parseFloat(card.style.width) || card.offsetWidth || 0;
+            const h = card.offsetHeight || 200;
+
+            minX = Math.min(minX, x);
+            minY = Math.min(minY, y);
+            maxX = Math.max(maxX, x + w);
+            maxY = Math.max(maxY, y + h);
         });
 
+        if (!isFinite(minX) || !isFinite(minY) || !isFinite(maxX) || !isFinite(maxY)) return;
+
         const padding = 100;
-        const boundsW = 1800;
-        const boundsH = 1300;
+        const boundsW = (maxX - minX) + padding * 2;
+        const boundsH = (maxY - minY) + padding * 2;
         const minimapScale = Math.min(160 / boundsW, 100 / boundsH);
         const state = app.state;
 
-        indicator.style.left = ((-state.panX / state.scale - minX + padding) * minimapScale) + 'px';
-        indicator.style.top = ((-state.panY / state.scale - minY + padding) * minimapScale) + 'px';
-        indicator.style.width = ((window.innerWidth / state.scale) * minimapScale) + 'px';
-        indicator.style.height = ((window.innerHeight / state.scale) * minimapScale) + 'px';
+        // 可视区域（排除 sidebar / topbar 的遮挡）
+        const sidebar = document.querySelector('.sidebar');
+        const topBar = document.querySelector('.top-bar');
+        const safeLeft = sidebar ? sidebar.offsetWidth : 0;
+        const safeTop = topBar ? topBar.offsetHeight : 0;
+        const safeW = window.innerWidth - safeLeft;
+        const safeH = window.innerHeight - safeTop;
+
+        // safe 区域左上角对应的世界坐标
+        const worldLeft = (safeLeft - state.panX) / state.scale;
+        const worldTop = (safeTop - state.panY) / state.scale;
+
+        indicator.style.left = ((worldLeft - minX + padding) * minimapScale) + 'px';
+        indicator.style.top = ((worldTop - minY + padding) * minimapScale) + 'px';
+        indicator.style.width = ((safeW / state.scale) * minimapScale) + 'px';
+        indicator.style.height = ((safeH / state.scale) * minimapScale) + 'px';
     };
 })();

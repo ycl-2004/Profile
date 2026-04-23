@@ -14,12 +14,9 @@
             <span class="hint-sep">·</span>
             <div class="hint-item"><span class="hint-key">Drag</span><span>移动画布</span></div>
             <span class="hint-sep">·</span>
-            <div class="hint-item"><span class="hint-key">拖拽卡片</span><span>·</span></div>
+            <div class="hint-item"><span class="hint-key">拖拽卡片</span><span>移动卡片</span></div>
             <span class="hint-sep">·</span>
-            <div class="hint-item"><span class="hint-key">双击</span><span>编辑文字</span></div>
-            <span class="hint-sep">·</span>
-            <div class="hint-item"><span class="hint-key">Ctrl+Z</span><span>撤销</span></div>
+            <div class="hint-item"><span class="hint-key">双击</span><span>查看详情</span></div>
         </div>
-        <div class="kimi-badge">Kimi Agent</div>
     `;
 })();

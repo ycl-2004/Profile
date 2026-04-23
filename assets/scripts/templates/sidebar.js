@@ -16,7 +16,6 @@
             <div class="layer-item" data-layer="motto"><div class="layer-icon" style="background:var(--cream-dark);">🎯</div><span>座右铭</span><span class="layer-eye">👁</span></div>
             <div class="layer-item" data-layer="sticky-intj"><div class="layer-icon" style="background:var(--cream);">🏷</div><span>便签 — INTJ</span><span class="layer-eye">👁</span></div>
             <div class="layer-item" data-layer="sticky-agent"><div class="layer-icon" style="background:var(--pink-light);">🤖</div><span>便签 — Agent Native</span><span class="layer-eye">👁</span></div>
-            <div class="new-btn">+ 新建</div>
             <div style="margin-top:auto;padding-top:20px;"><div class="sidebar-title">Minimap</div></div>
         </div>
     `;
