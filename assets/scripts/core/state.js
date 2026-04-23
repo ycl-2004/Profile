@@ -10,6 +10,10 @@
         startY: 0,
         draggedCard: null,
         dragOffsetX: 0,
-        dragOffsetY: 0
+        dragOffsetY: 0,
+        dragStartClientX: 0,
+        dragStartClientY: 0,
+        dragMoved: false,
+        justDraggedCardId: null
     };
 })();

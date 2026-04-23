@@ -16,7 +16,11 @@
 
     app.bindModal = function bindModal() {
         document.querySelectorAll('.card').forEach((card) => {
-            card.addEventListener('dblclick', () => {
+            card.addEventListener('click', () => {
+                if (app.state.justDraggedCardId === card.dataset.card) {
+                    app.state.justDraggedCardId = null;
+                    return;
+                }
                 app.openModal(card.dataset.card);
             });
         });
