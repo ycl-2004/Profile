@@ -1,6 +1,17 @@
 (function () {
     const app = window.PortfolioApp;
 
+    function normalizeEdge(edge) {
+        if (Array.isArray(edge)) {
+            return { from: edge[0], to: edge[1], kind: 'primary' };
+        }
+        return {
+            from: edge.from,
+            to: edge.to,
+            kind: edge.kind || 'primary'
+        };
+    }
+
     function getCardEl(cardId) {
         app.state.cardEls = app.state.cardEls || {};
         if (!app.state.cardEls[cardId]) {
@@ -22,10 +33,11 @@
         app.state.connectionAdj = {};
 
         const ns = 'http://www.w3.org/2000/svg';
-        app.data.connections.forEach(([from, to]) => {
+        app.data.connections.map(normalizeEdge).forEach(({ from, to, kind }) => {
             const path = document.createElementNS(ns, 'path');
             path.dataset.from = from;
             path.dataset.to = to;
+            path.dataset.kind = kind;
             svg.appendChild(path);
 
             const key = `${from}__${to}`;
@@ -41,6 +53,7 @@
     function updatePath(path) {
         const from = path.dataset.from;
         const to = path.dataset.to;
+        const kind = path.dataset.kind;
         const fromCard = getCardEl(from);
         const toCard = getCardEl(to);
 
@@ -49,7 +62,11 @@
         const fromCenter = app.getCardCenter(fromCard);
         const toCenter = app.getCardCenter(toCard);
         path.setAttribute('d', app.createCurvedPath(fromCenter, toCenter));
-        path.setAttribute('marker-end', 'url(#arrow)');
+        if (kind === 'primary') {
+            path.setAttribute('marker-end', 'url(#arrow)');
+        } else {
+            path.removeAttribute('marker-end');
+        }
     }
 
     app.getCardCenter = function getCardCenter(card) {

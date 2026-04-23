@@ -283,6 +283,27 @@
     background: rgba(255,143,171,0.05);
 }
 
+@media (max-width: 1180px) {
+    .top-bar {
+        padding: 0 14px;
+        gap: 10px;
+    }
+
+    .logo {
+        gap: 8px;
+        min-width: 0;
+    }
+
+    .logo span {
+        font-size: 14px;
+        white-space: nowrap;
+    }
+
+    .btn {
+        padding: 8px 14px;
+    }
+}
+
 /* -----------------------------
    Responsive: 手机/平板抽屉式 Layers
 -------------------------------- */
@@ -324,4 +345,37 @@
 
     /* 小屏减少 sidebar 与卡片的“抢视线” */
     .layer-item { padding: 10px 12px; }
+}
+
+@media (max-width: 767px) {
+    .top-bar {
+        padding: 0 12px;
+        gap: 8px;
+    }
+
+    .logo span {
+        max-width: 148px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        font-size: 13px;
+    }
+
+    .logo-icon {
+        width: 30px;
+        height: 30px;
+        border-radius: 9px;
+        font-size: 13px;
+    }
+
+    .top-actions,
+    .user-avatar {
+        display: none;
+    }
+}
+
+@media (max-width: 430px) {
+    .logo span {
+        max-width: 112px;
+    }
 }

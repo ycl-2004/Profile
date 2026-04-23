@@ -46,6 +46,7 @@
                 card.style.opacity = '1';
                 card.style.filter = 'none';
             });
+            resetConnections();
         }
 
         function filterCards(layer) {
@@ -57,6 +58,29 @@
                     card.style.opacity = '0.28';
                     card.style.filter = 'grayscale(0.65)';
                 }
+            });
+            filterConnections(layer);
+        }
+
+        function resetConnections() {
+            const paths = app.state.connectionPaths;
+            if (!paths) return;
+
+            paths.forEach((path) => {
+                path.style.opacity = '';
+            });
+        }
+
+        function filterConnections(layer) {
+            const paths = app.state.connectionPaths;
+            if (!paths) return;
+
+            paths.forEach((path) => {
+                const fromCard = document.querySelector(`[data-card="${path.dataset.from}"]`);
+                const toCard = document.querySelector(`[data-card="${path.dataset.to}"]`);
+                const fromLayer = fromCard?.dataset.layer;
+                const toLayer = toCard?.dataset.layer;
+                path.style.opacity = fromLayer === layer && toLayer === layer ? '' : '0.04';
             });
         }
 

@@ -22,11 +22,13 @@
     padding: 0;
     max-width: 600px;
     width: 90%;
-    max-height: 80vh;
+    max-height: min(86vh, 920px);
     overflow: hidden;
     box-shadow: 0 20px 60px rgba(0,0,0,0.2);
     transform: scale(0.9) translateY(20px);
     transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+    display: flex;
+    flex-direction: column;
 }
 
 .modal-overlay.active .modal { transform: scale(1) translateY(0); }
@@ -53,13 +55,43 @@
 
 .modal-title { font-size: 20px; font-weight: 700; color: var(--text); }
 .modal-subtitle { font-size: 13px; color: var(--text-muted); margin-top: 4px; }
-.modal-body { padding: 24px 28px; overflow-y: auto; max-height: calc(80vh - 140px); }
+.modal-body {
+    padding: 24px 28px 28px;
+    overflow-y: auto;
+    flex: 1 1 auto;
+    min-height: 0;
+}
 .modal-body h3 { font-size: 14px; font-weight: 700; color: var(--text); margin: 20px 0 10px; display: flex; align-items: center; gap: 8px; }
 .modal-body h3:first-child { margin-top: 0; }
 .modal-body p,
 .modal-body li { font-size: 14px; color: var(--text-secondary); line-height: 1.9; margin-bottom: 8px; }
 .modal-body ul { padding-left: 20px; margin-bottom: 16px; }
 .modal-body li { margin-bottom: 6px; }
+.modal-body a {
+    color: var(--pink-dark);
+    text-decoration: none;
+    font-weight: 500;
+    word-break: break-word;
+}
+
+.modal-body a:hover {
+    text-decoration: underline;
+}
+
+.modal-link-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.modal-link-list p {
+    margin-bottom: 0;
+}
+
+.modal-stack-line {
+    font-weight: 500;
+}
 
 .modal-close {
     position: absolute;
@@ -85,7 +117,49 @@
     display: flex;
     gap: 8px;
     flex-wrap: wrap;
-    margin-top: 16px;
     padding: 16px 28px 24px;
     border-top: 1px solid rgba(0,0,0,0.06);
+    flex: 0 0 auto;
+}
+
+@media (max-width: 767px) {
+    .modal {
+        width: 94%;
+        max-height: 90vh;
+        border-radius: 18px;
+    }
+
+    .modal-header {
+        padding: 20px 20px 14px;
+        gap: 12px;
+    }
+
+    .modal-avatar {
+        width: 48px;
+        height: 48px;
+        font-size: 22px;
+    }
+
+    .modal-title {
+        font-size: 18px;
+    }
+
+    .modal-subtitle {
+        font-size: 12px;
+        line-height: 1.5;
+        max-width: calc(100vw - 120px);
+    }
+
+    .modal-body {
+        padding: 20px 20px 24px;
+    }
+
+    .modal-tags {
+        padding: 14px 20px 20px;
+    }
+
+    .modal-close {
+        top: 16px;
+        right: 18px;
+    }
 }

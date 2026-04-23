@@ -125,6 +125,19 @@
     font-weight: 800;
 }
 
+@media (max-width: 1180px) {
+    .minimap {
+        width: 144px;
+        height: 92px;
+        bottom: 16px;
+    }
+
+    .bottom-hint,
+    .kimi-badge {
+        display: none;
+    }
+}
+
 @media (max-width: 900px) {
     .minimap {
         left: 12px;
@@ -152,5 +165,28 @@
 
     .kimi-badge {
         display: none;
+    }
+}
+
+@media (max-width: 767px) {
+    .minimap {
+        display: none;
+    }
+
+    .zoom-controls {
+        right: 10px;
+        bottom: 10px;
+        gap: 8px;
+    }
+
+    .zoom-btn {
+        width: 42px;
+        height: 42px;
+        border-radius: 12px;
+    }
+
+    .zoom-level {
+        font-size: 10px;
+        padding: 2px 0 4px;
     }
 }

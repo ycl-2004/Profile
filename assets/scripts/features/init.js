@@ -1,6 +1,6 @@
 (function () {
     const app = window.PortfolioApp;
-    const MOBILE_BP = 900;
+    const TABLET_BP = 1365;
 
     app.initCanvas = function initCanvas() {
         // 先应用默认布局，避免重叠导致“有些卡片看不到”
@@ -9,9 +9,8 @@
         }
         app.initMinimap();
 
-        // 首次进入：桌面端默认 52%（你截图里想要的视觉）
-        // 小屏（手机/平板）优先“完整可见”，避免一进来只看到局部
-        const preferFit = window.innerWidth <= MOBILE_BP;
+        // 桌面端保留原本的 canvas 感；平板/手机优先完整可见
+        const preferFit = window.innerWidth < TABLET_BP;
         if (preferFit && typeof app.zoomToFit === 'function') {
             app.zoomToFit();
         } else if (typeof app.zoomToScale === 'function') {
@@ -40,7 +39,11 @@
             if (typeof app.applyDefaultLayout === 'function') {
                 app.applyDefaultLayout();
             }
-            app.updateTransform();
+            if (window.innerWidth < TABLET_BP && typeof app.zoomToFit === 'function') {
+                app.zoomToFit();
+            } else {
+                app.updateTransform();
+            }
         });
     };
 })();

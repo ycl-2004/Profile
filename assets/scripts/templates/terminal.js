@@ -1,7 +1,7 @@
 (function () {
-    const app = window.PortfolioApp;
+  const app = window.PortfolioApp;
 
-    app.templates.terminal = `
+  app.templates.terminal = `
         <div id="terminal-entry" role="dialog" aria-modal="true" aria-labelledby="terminal-entry-title">
             <div class="terminal-stage">
                 <div class="terminal-shell">
@@ -23,7 +23,7 @@
                             <div class="terminal-line terminal-line--response" style="animation-delay:1.06s;">&gt; UBC Electrical Engineering · Web3 Builder · AI-assisted Developer</div>
                             <div class="terminal-line terminal-line--prompt" style="animation-delay:1.38s;"><span class="terminal-prompt">yichen@portfolio</span> ~ % <span class="terminal-command">echo "Engineer + AI = Future"</span></div>
                             <div class="terminal-line terminal-line--response terminal-line--accent" style="animation-delay:1.66s;">&gt; Engineer + AI = Future</div>
-                            <div class="terminal-line terminal-line--prompt terminal-line--launch" style="animation-delay:1.98s;"><span class="terminal-prompt">yichen@portfolio</span> ~ % <span class="terminal-command">open yichen-canvas.app</span><span class="terminal-cursor"></span></div>
+                            <div class="terminal-line terminal-line--prompt terminal-line--launch" style="animation-delay:1.98s;"><span class="terminal-prompt">yichen@portfolio</span> ~ % <span class="terminal-command">open YC Profile.app</span><span class="terminal-cursor"></span></div>
                         </div>
 
                         <div class="terminal-launch" aria-live="polite">

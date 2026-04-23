@@ -15,7 +15,28 @@ svg.connections path {
     stroke-width: 1.5;
     stroke-dasharray: 6, 4;
     opacity: 0.35;
-    transition: opacity 0.3s;
+    transition: opacity 0.3s, stroke-width 0.3s, stroke 0.3s;
+}
+
+svg.connections path[data-kind="path"] {
+    stroke: rgba(86, 98, 131, 0.55);
+    stroke-width: 1.2;
+    stroke-dasharray: 2, 10;
+    opacity: 0.18;
+}
+
+svg.connections path[data-kind="primary"] {
+    stroke: rgba(255, 143, 171, 0.9);
+    stroke-width: 1.55;
+    stroke-dasharray: 6, 4;
+    opacity: 0.33;
+}
+
+svg.connections path[data-kind="secondary"] {
+    stroke: rgba(140, 125, 170, 0.8);
+    stroke-width: 1.25;
+    stroke-dasharray: 4, 7;
+    opacity: 0.2;
 }
 
 svg.connections path:hover { opacity: 0.6; stroke-width: 2; }

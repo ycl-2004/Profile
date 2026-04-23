@@ -19,47 +19,29 @@
             tags: ['Software Engineer', 'Full-Stack', 'React', 'TypeScript', 'AI工作流']
         },
         'timeline': {
-            title: '经历时间线',
-            subtitle: '从 Electrical Engineering 到软件工程：用项目证明',
-            avatar: '⏱',
+            title: '思维 / 转向时间线',
+            subtitle: '从 EE 到 builder + AI-native workflow：关注我怎么形成现在的做事方式',
+            avatar: '🧭',
             body: `
-                <h3>🏢 Delta Control — Software Developer</h3>
-                <p><strong>2026.01 – 至今 · Vancouver</strong></p>
-                <p>开发混合 HVAC 空气平衡应用：React + TypeScript + Kotlin + Android WebView。实现跨层通信与状态同步；集成 BLE / IP 设备发现、监控与交互。</p>
+                <h3>⚙️ 2022 — EE foundation</h3>
+                <p>先建立的是系统思维，不是“写页面”的技能：控制、硬件、电路、调试，让我习惯先看结构、反馈回路和稳定性。</p>
 
-                <h3>💗 Family Care Reminder App — Full-Stack / Product</h3>
-                <p><strong>2026.01 – 至今</strong></p>
-                <p>面向家庭照护场景的提醒产品：循环提醒、通知重建、missed-occurrence 处理与低摩擦确认流程；强调清晰与可达性。</p>
+                <h3>💻 2023 → 2024 — Shift to software</h3>
+                <p>慢慢发现自己更在意“把东西做出来并让人用起来”。我开始从原理正确，走向产品可用与交付效率。</p>
 
-                <h3>🧩 YCAPIKit — Swift / AI Infrastructure</h3>
-                <p><strong>2026</strong></p>
-                <p>可复用的 Hosted-LLM Runtime：多 Provider 集成、重试/回退编排、结构化 JSON 解析与修复、请求级可观测性。</p>
+                <h3>🧩 2024 → 2025 — Build for users</h3>
+                <p>思考重点从 feature 扩展到 workflow：不只是在写功能，而是在设计信息层级、交互摩擦、可达性和真实使用路径。</p>
 
-                <h3>📊 CryptoPulse — 全栈开发</h3>
-                <p><strong>2025.09 – 2025.12</strong></p>
-                <p>全栈加密货币分析平台：集成外部 API 实现实时数据更新；构建 dashboard 视图与数据流同步；把原始市场数据变成更清晰可用的用户界面。</p>
+                <h3>🔬 2025 — Infra / Web3 / Analysis</h3>
+                <p>DAO、数据分析、runtime、dashboard 这些方向让我更习惯处理抽象系统：规则、状态、可观测性、边界条件与可复用性。</p>
 
-                <h3>🏛 Future DAO — 智能合约开发</h3>
-                <p><strong>2025.01 – 至今</strong></p>
-                <p>Solidity 治理合约 + React/TypeScript 前端：提案创建、投票、执行、权限与时间约束，端到端的链上工作流。</p>
+                <h3>🤖 2025 → now — AI-native collaboration</h3>
+                <p>现在最明确的工作方式是：<strong>1 person + AI = 1 team</strong>。不是把 AI 当捷径，而是把它纳入一个可复用、可回退、可观察的工程流程里。</p>
 
-                <h3>✅ YC Todo — Desktop App</h3>
-                <p><strong>2025.12 – 2026.02</strong></p>
-                <p>Tauri + React 的 macOS menubar app：任务管理、持久化与平台交互细节（NSPopover / focus / event）处理。</p>
-
-                <h3>📈 Education Excel Analysis — Dashboard</h3>
-                <p><strong>2025</strong></p>
-                <p>Streamlit 成绩分析仪表板：Excel 上传、字段映射、统计分析、图表可视化与报告导出，贴近真实课堂工作流。</p>
-
-                <h3>⚡ Joychime Industrial — 电气助理</h3>
-                <p><strong>2024.05 – 2024.08 · New Taipei</strong></p>
-                <p>设备巡检与异常处理、电气装配支持；优化文档流程与报告工作，减少约 30% 纸面工作量。</p>
-
-                <h3>🎓 UBC — 电气工程本科</h3>
-                <p><strong>2022 – 2027 · Vancouver</strong></p>
-                <p>BASc in Electrical Engineering。Dean's Honour List (2022–2025)。预计毕业：2027。</p>
+                <h3>🎯 Current focus</h3>
+                <p>我现在最在意的不是“再多学一个框架”，而是持续把可靠系统、清晰产品体验、和 AI-native workflow 结合起来，做成真正有用的东西。</p>
             `,
-            tags: ['React', 'TypeScript', 'Solidity', 'Kotlin', 'BLE', 'Web3']
+            tags: ['Systems Thinking', 'Workflow Design', 'AI Native', 'Builder Mindset', 'Product Sense']
         },
         'narrative': {
             title: '核心叙事',
@@ -107,10 +89,12 @@
                     <li>React + TypeScript + Ethers.js：钱包连接与合约交互体验</li>
                     <li>测试与迭代：关注正确性、可用性与端到端流程</li>
                 </ul>
+                <h3>🛠️ 技术栈</h3>
+                <p class="modal-stack-line">Solidity · React · TypeScript · Ethers.js · Smart Contracts</p>
                 <h3>🎯 成果</h3>
                 <p>把抽象治理逻辑落到可运行系统：合约设计、前端交互、边界条件与执行路径。</p>
             `,
-            tags: ['Solidity', 'Ethers.js', '治理工作流', '智能合约']
+            tags: ['Solidity', 'React', 'TypeScript', 'Ethers.js', 'Smart Contracts']
         },
         'project-crypto': {
             title: 'CryptoPulse',
@@ -119,7 +103,6 @@
             body: `
                 <h3>📋 项目概述</h3>
                 <p>全栈加密货币分析平台：实时市场追踪、趋势可视化、组合/收益相关计算，把“原始市场数据”变成更可用的决策界面。</p>
-                <p><strong>Live：</strong><a href="https://cryptopulse-production-a190.up.railway.app" target="_blank" rel="noopener">cryptopulse-production-a190.up.railway.app</a></p>
                 <h3>🔧 技术实现</h3>
                 <ul>
                     <li>集成多个加密货币 API 实现实时价格数据获取</li>
@@ -128,9 +111,13 @@
                     <li>性能与稳定性：减少不必要渲染与更新开销</li>
                 </ul>
                 <h3>🛠️ 技术栈</h3>
-                <p>React · TypeScript · 外部 API · Dashboard 组件</p>
+                <p class="modal-stack-line">React · TypeScript · External APIs · Dashboard UI</p>
+                <h3>🔗 链接</h3>
+                <div class="modal-link-list">
+                    <p><strong>Live：</strong><a href="https://cryptopulse-production-a190.up.railway.app" target="_blank" rel="noopener">cryptopulse-production-a190.up.railway.app</a></p>
+                </div>
             `,
-            tags: ['全栈', 'React', 'API集成', '数据分析', '响应式UI']
+            tags: ['React', 'TypeScript', 'External APIs', 'Dashboard UI']
         },
         'project-todo': {
             title: 'YC Todo',
@@ -139,7 +126,6 @@
             body: `
                 <h3>📋 项目概述</h3>
                 <p>一个原生感的 macOS menubar 任务管理工具：强调“随时打开、快速记录、轻量完成”的交互体验。</p>
-                <p><strong>Demo：</strong><a href="https://drive.google.com/drive/folders/1l72JWhzAjmenkNoi_lEXS9KNUmsrSz11" target="_blank" rel="noopener">Google Drive Folder</a></p>
                 <h3>🔧 技术亮点</h3>
                 <ul>
                     <li>使用 Tauri (Rust) + React 构建跨平台桌面应用</li>
@@ -148,9 +134,13 @@
                     <li>打包 ARM64 / x86_64 双架构版本</li>
                 </ul>
                 <h3>🛠️ 技术栈</h3>
-                <p>Tauri · Rust · React · TypeScript · macOS Native API</p>
+                <p class="modal-stack-line">Tauri · Rust · React · TypeScript · macOS Native API</p>
+                <h3>🔗 链接</h3>
+                <div class="modal-link-list">
+                    <p><strong>Demo：</strong><a href="https://drive.google.com/drive/folders/1l72JWhzAjmenkNoi_lEXS9KNUmsrSz11" target="_blank" rel="noopener">Google Drive Folder</a></p>
+                </div>
             `,
-            tags: ['Tauri', 'Rust', 'React', 'macOS', '桌面应用']
+            tags: ['Tauri', 'Rust', 'React', 'TypeScript', 'macOS']
         },
         'project-family-care': {
             title: 'Family Care Reminder App',
@@ -167,9 +157,9 @@
                     <li>产品取舍：清晰、可达性、情感可用性（不是通知轰炸）</li>
                 </ul>
                 <h3>🛠️ 技术栈</h3>
-                <p>Flutter · Supabase · Local Notifications · Workflow Logic</p>
+                <p class="modal-stack-line">Flutter · Dart · Supabase · Local Notifications</p>
             `,
-            tags: ['Flutter', 'Supabase', '提醒工作流', '可靠性', '产品思维']
+            tags: ['Flutter', 'Dart', 'Supabase', 'Notifications']
         },
         'project-ycapikit': {
             title: 'YCAPIKit',
@@ -186,10 +176,14 @@
                     <li>结构化 JSON：解码、校验、code-fence 剥离、partial extraction、修复路径</li>
                     <li>请求级可观测性：provider、model、retry 次数、fallback path、latency、outcome</li>
                 </ul>
+                <h3>🛠️ 技术栈</h3>
+                <p class="modal-stack-line">Swift · SwiftUI · Multi-Provider LLM APIs · JSON Parsing · Observability</p>
                 <h3>🔗 链接</h3>
-                <p><a href="https://github.com/ycl-2004/YCAPIKit" target="_blank" rel="noopener">github.com/ycl-2004/YCAPIKit</a></p>
+                <div class="modal-link-list">
+                    <p><strong>GitHub：</strong><a href="https://github.com/ycl-2004/YCAPIKit" target="_blank" rel="noopener">github.com/ycl-2004/YCAPIKit</a></p>
+                </div>
             `,
-            tags: ['Swift', 'AI工具链', 'Fallback', '结构化输出', 'Observability']
+            tags: ['Swift', 'SwiftUI', 'JSON Parsing', 'Observability']
         },
         'project-edu-analysis': {
             title: 'Education Excel Analysis',
@@ -206,10 +200,14 @@
                     <li>隐私：匿名化、top/bottom 排名视图</li>
                     <li>导出：过滤后的数据与 Markdown 报告</li>
                 </ul>
+                <h3>🛠️ 技术栈</h3>
+                <p class="modal-stack-line">Python · Streamlit · Pandas · Excel Processing · Markdown Reports</p>
                 <h3>🔗 链接</h3>
-                <p><a href="https://github.com/ycl-2004/Education_Excel_Analysis" target="_blank" rel="noopener">github.com/ycl-2004/Education_Excel_Analysis</a></p>
+                <div class="modal-link-list">
+                    <p><strong>GitHub：</strong><a href="https://github.com/ycl-2004/Education_Excel_Analysis" target="_blank" rel="noopener">github.com/ycl-2004/Education_Excel_Analysis</a></p>
+                </div>
             `,
-            tags: ['Python', 'Streamlit', 'Pandas', '可视化', '报告导出']
+            tags: ['Python', 'Streamlit', 'Pandas', 'Excel']
         },
         'project-balance-bot': {
             title: 'Bluetooth Self-Balancing Robot',
@@ -225,8 +223,10 @@
                     <li>移动端交互：远程控制与参数调试</li>
                     <li>迭代测试：通过验证与调整提升行为稳定性</li>
                 </ul>
+                <h3>🛠️ 技术栈</h3>
+                <p class="modal-stack-line">Arduino · PID Control · Bluetooth · Sensors</p>
             `,
-            tags: ['PID', 'Arduino', '控制系统', '硬件-软件集成']
+            tags: ['Arduino', 'PID Control', 'Bluetooth', 'Sensors']
         },
         'project-unity': {
             title: 'Unity Game Development',
@@ -235,12 +235,16 @@
             body: `
                 <h3>📋 项目概述</h3>
                 <p>Unity + C# 的可试玩项目：实现玩家控制、物理交互、动画与 UI 行为，并发布可访问的 build。</p>
-                <h3>🔗 作品集</h3>
-                <p><a href="https://ycl-2004.itch.io" target="_blank" rel="noopener">ycl-2004.itch.io</a></p>
-                <p><a href="https://play.unity.com/en/games/cae09d3a-0ee6-48dc-b80a-395419be1f65/collect-coins" target="_blank" rel="noopener">2D Game (Unity Play)</a></p>
-                <p><a href="https://ycl-2004.github.io/OverCook/" target="_blank" rel="noopener">3D Game (Web)</a></p>
+                <h3>🛠️ 技术栈</h3>
+                <p class="modal-stack-line">Unity · C# · Physics · Animation · UI</p>
+                <h3>🔗 链接</h3>
+                <div class="modal-link-list">
+                    <p><strong>Portfolio：</strong><a href="https://ycl-2004.itch.io" target="_blank" rel="noopener">ycl-2004.itch.io</a></p>
+                    <p><strong>2D Demo：</strong><a href="https://play.unity.com/en/games/cae09d3a-0ee6-48dc-b80a-395419be1f65/collect-coins" target="_blank" rel="noopener">Unity Play</a></p>
+                    <p><strong>3D Demo：</strong><a href="https://ycl-2004.github.io/OverCook/" target="_blank" rel="noopener">OverCook Web Build</a></p>
+                </div>
             `,
-            tags: ['Unity', 'C#', '交互', 'UI', '发布']
+            tags: ['Unity', 'C#', 'Physics', 'UI', 'Animation']
         },
         'project-metal-detector': {
             title: 'Metal Detector Robot',
@@ -255,8 +259,10 @@
                     <li>微控制器编程：C 与汇编</li>
                     <li>仪器测试：校准、调参、定位噪声与不稳定来源</li>
                 </ul>
+                <h3>🛠️ 技术栈</h3>
+                <p class="modal-stack-line">C · Assembly · Microcontroller · Circuit Design</p>
             `,
-            tags: ['电路', 'C', '汇编', '测试', '调试']
+            tags: ['C', 'Assembly', 'Microcontroller', 'Circuit Design']
         },
         'project-sailbot': {
             title: 'UBC Sailbot',
@@ -271,8 +277,10 @@
                     <li>电路搭建与安全/性能测试</li>
                     <li>集成阶段故障诊断与协作修复</li>
                 </ul>
+                <h3>🛠️ 技术栈</h3>
+                <p class="modal-stack-line">Power Systems · Circuit Integration · Testing · Diagnostics</p>
             `,
-            tags: ['团队协作', '电路', '测试', '集成']
+            tags: ['Power Systems', 'Circuits', 'Testing', 'Integration']
         },
         'work-delta': {
             title: 'Delta Control',
@@ -289,9 +297,28 @@
                     <li>面向真实现场工作流：更稳定的交互与可靠性处理</li>
                 </ul>
                 <h3>🛠️ 技术栈</h3>
-                <p>React · TypeScript · Kotlin · Android WebView · BLE · IP Communication</p>
+                <p class="modal-stack-line">React · TypeScript · Kotlin · Android WebView · BLE · IP Communication</p>
             `,
-            tags: ['React', 'TypeScript', 'Kotlin', 'BLE', 'IoT']
+            tags: ['React', 'TypeScript', 'Kotlin', 'WebView', 'BLE/IP']
+        },
+        'work-joychime': {
+            title: 'Joychime Industrial Corporation',
+            subtitle: 'Junior Electrical Assistant · May 2024 - Aug 2024 · New Taipei, Taiwan · 積餘慶宏業股份有限公司',
+            avatar: '⚙️',
+            body: `
+                <h3>📋 工作描述</h3>
+                <p>在 New Taipei 的制造环境中担任 Junior Electrical Assistant，参与现场巡检、装配配线、生产支持与流程文档优化，帮助一线作业更稳定地运转。</p>
+                <h3>🔧 主要职责</h3>
+                <ul>
+                    <li>执行 plant inspections 并处理 operational exceptions，协助把流程质量维持在内部标准以上约 10%</li>
+                    <li>参与 electrical equipment assembly、wiring 与 production support，支持 hands-on 制造现场作业</li>
+                    <li>优化 documentation 与 reporting workflow，使 paperwork volume 减少约 30%，日常流程更清晰</li>
+                    <li>支持 technicians 与 operational staff 处理 workflow issues，帮助维持 production continuity</li>
+                </ul>
+                <h3>🛠️ 技术栈</h3>
+                <p class="modal-stack-line">Plant Inspection · Electrical Assembly · Wiring · Documentation Workflows · Troubleshooting</p>
+            `,
+            tags: ['Plant Inspection', 'Wiring', 'Assembly', 'Troubleshooting']
         },
         'education': {
             title: '教育背景',
@@ -397,7 +424,7 @@
                 <p><strong>Phone：</strong>+1 236-777-6823</p>
                 <p><strong>LinkedIn：</strong><a href="https://www.linkedin.com/in/yichenlin-lyc/" target="_blank" rel="noopener">yichenlin-lyc</a></p>
                 <p><strong>GitHub：</strong><a href="https://github.com/ycl-2004" target="_blank" rel="noopener">github.com/ycl-2004</a></p>
-                <p><strong>Portfolio：</strong><a href="https://ycl-2004.itch.io" target="_blank" rel="noopener">ycl-2004.itch.io</a></p>
+                <p><strong>Portfolio：</strong><a href="https://ycl-2004.github.io/Profile/" target="_blank" rel="noopener">ycl-2004.github.io/Profile/</a></p>
             `,
             tags: ['开放机会', '欢迎交流']
         }

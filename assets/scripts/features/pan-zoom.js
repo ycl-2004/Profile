@@ -1,9 +1,27 @@
 (function () {
     const app = window.PortfolioApp;
     const MOBILE_BP = 900;
+    const PHONE_BP = 768;
+    const TABLET_BP = 1365;
 
     function clamp(value, min, max) {
         return Math.max(min, Math.min(max, value));
+    }
+
+    function getViewportMode() {
+        const width = window.innerWidth;
+
+        if (width < PHONE_BP) return 'phone';
+        if (width < TABLET_BP) return 'tablet';
+        return 'desktop';
+    }
+
+    function getBoundsPadding() {
+        const mode = getViewportMode();
+
+        if (mode === 'phone') return 48;
+        if (mode === 'tablet') return 96;
+        return 160;
     }
 
     function getSafeArea() {
@@ -54,7 +72,7 @@
         }
 
         // 给内容边界加一点缓冲，避免紧贴边缘显得“卡住”
-        const padding = 160;
+        const padding = getBoundsPadding();
         minX -= padding;
         minY -= padding;
         maxX += padding;
@@ -71,14 +89,24 @@
         const state = app.state;
         const safe = getSafeArea();
         const bounds = getContentBounds();
+        const mode = getViewportMode();
 
-        // 至少留一块区域在视野里，避免拖到纯空白
-        const minOverlap = 180;
+        const minOverlapX = mode === 'phone'
+            ? clamp(safe.width * 0.18, 64, 112)
+            : mode === 'tablet'
+                ? clamp(safe.width * 0.18, 80, 148)
+                : 180;
 
-        const minPanX = (safe.left + minOverlap) - bounds.maxX * state.scale;
-        const maxPanX = (safe.right - minOverlap) - bounds.minX * state.scale;
-        const minPanY = (safe.top + minOverlap) - bounds.maxY * state.scale;
-        const maxPanY = (safe.bottom - minOverlap) - bounds.minY * state.scale;
+        const minOverlapY = mode === 'phone'
+            ? clamp(safe.height * 0.12, 72, 120)
+            : mode === 'tablet'
+                ? clamp(safe.height * 0.14, 84, 150)
+                : 180;
+
+        const minPanX = (safe.left + minOverlapX) - bounds.maxX * state.scale;
+        const maxPanX = (safe.right - minOverlapX) - bounds.minX * state.scale;
+        const minPanY = (safe.top + minOverlapY) - bounds.maxY * state.scale;
+        const maxPanY = (safe.bottom - minOverlapY) - bounds.minY * state.scale;
 
         if (minPanX > maxPanX) {
             state.panX = (minPanX + maxPanX) / 2;
@@ -97,14 +125,14 @@
         const state = app.state;
         const safe = getSafeArea();
         const bounds = getContentBounds();
-
-        const padding = 80;
+        const mode = getViewportMode();
+        const padding = mode === 'phone' ? 20 : mode === 'tablet' ? 40 : 80;
         const targetW = Math.max(1, safe.width - padding * 2);
         const targetH = Math.max(1, safe.height - padding * 2);
         const scaleX = bounds.width ? targetW / bounds.width : 1;
         const scaleY = bounds.height ? targetH / bounds.height : 1;
 
-        state.scale = clamp(Math.min(scaleX, scaleY), 0.3, 3);
+        state.scale = clamp(Math.min(scaleX, scaleY), mode === 'phone' ? 0.45 : 0.3, 3);
 
         // 让内容在可视区域居中
         state.panX = safe.left + (safe.width - bounds.width * state.scale) / 2 - bounds.minX * state.scale;
