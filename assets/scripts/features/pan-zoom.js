@@ -57,6 +57,10 @@
         return { minX, minY, maxX, maxY, width: maxX - minX, height: maxY - minY };
     }
 
+    // 暴露给其它模块（用于默认进入时固定缩放并居中）
+    app.getSafeArea = getSafeArea;
+    app.getContentBounds = getContentBounds;
+
     app.constrainView = function constrainView() {
         const state = app.state;
         const safe = getSafeArea();
@@ -97,6 +101,20 @@
         state.scale = clamp(Math.min(scaleX, scaleY), 0.3, 3);
 
         // 让内容在可视区域居中
+        state.panX = safe.left + (safe.width - bounds.width * state.scale) / 2 - bounds.minX * state.scale;
+        state.panY = safe.top + (safe.height - bounds.height * state.scale) / 2 - bounds.minY * state.scale;
+
+        app.constrainView();
+        app.updateTransform();
+    };
+
+    // 固定缩放比例并居中到内容（用于“首次进入默认 52%”）
+    app.zoomToScale = function zoomToScale(targetScale) {
+        const state = app.state;
+        const safe = getSafeArea();
+        const bounds = getContentBounds();
+
+        state.scale = clamp(targetScale, 0.3, 3);
         state.panX = safe.left + (safe.width - bounds.width * state.scale) / 2 - bounds.minX * state.scale;
         state.panY = safe.top + (safe.height - bounds.height * state.scale) / 2 - bounds.minY * state.scale;
 
@@ -148,13 +166,13 @@
 
                 const delta = event.deltaY > 0 ? 0.9 : 1.1;
                 const newScale = Math.max(0.3, Math.min(3, app.state.scale * delta));
-                const rect = app.dom.viewport.getBoundingClientRect();
-                const mx = event.clientX - rect.left;
-                const my = event.clientY - rect.top;
+                // 以鼠标指向的“世界坐标点”为中心缩放（更准确，不会越放越飘）
+                const worldX = (event.clientX - app.state.panX) / app.state.scale;
+                const worldY = (event.clientY - app.state.panY) / app.state.scale;
 
-                app.state.panX = event.clientX - mx * (newScale / app.state.scale);
-                app.state.panY = event.clientY - my * (newScale / app.state.scale);
                 app.state.scale = newScale;
+                app.state.panX = event.clientX - worldX * newScale;
+                app.state.panY = event.clientY - worldY * newScale;
                 app.updateTransform();
             }
         }, { passive: false });
