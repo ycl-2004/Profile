@@ -1,8 +1,12 @@
 (function () {
     const app = window.PortfolioApp;
+    const MOBILE_BP = 900;
 
     app.initMinimap = function initMinimap() {
         const minimapContent = app.dom.minimapContent;
+        const minimapContainer = minimapContent ? minimapContent.closest('.minimap') : null;
+        const mw = minimapContainer ? minimapContainer.clientWidth : 160;
+        const mh = minimapContainer ? minimapContainer.clientHeight : 100;
         const cards = document.querySelectorAll('.card');
         let minX = Infinity;
         let minY = Infinity;
@@ -24,7 +28,7 @@
         const padding = 100;
         const boundsW = maxX - minX + padding * 2;
         const boundsH = maxY - minY + padding * 2;
-        const minimapScale = Math.min(160 / boundsW, 100 / boundsH);
+        const minimapScale = Math.min(mw / boundsW, mh / boundsH);
 
         minimapContent.innerHTML = '';
 
@@ -55,6 +59,10 @@
         const indicator = document.getElementById('minimap-viewport');
 
         if (!indicator) return;
+        const minimapContent = app.dom.minimapContent;
+        const minimapContainer = minimapContent ? minimapContent.closest('.minimap') : null;
+        const mw = minimapContainer ? minimapContainer.clientWidth : 160;
+        const mh = minimapContainer ? minimapContainer.clientHeight : 100;
 
         const cards = document.querySelectorAll('.card');
         let minX = Infinity;
@@ -79,13 +87,16 @@
         const padding = 100;
         const boundsW = (maxX - minX) + padding * 2;
         const boundsH = (maxY - minY) + padding * 2;
-        const minimapScale = Math.min(160 / boundsW, 100 / boundsH);
+        const minimapScale = Math.min(mw / boundsW, mh / boundsH);
         const state = app.state;
 
         // 可视区域（排除 sidebar / topbar 的遮挡）
         const sidebar = document.querySelector('.sidebar');
         const topBar = document.querySelector('.top-bar');
-        const safeLeft = sidebar ? sidebar.offsetWidth : 0;
+        const sidebarVisible =
+            !!sidebar &&
+            (!window.matchMedia(`(max-width:${MOBILE_BP}px)`).matches || document.body.classList.contains('sidebar-open'));
+        const safeLeft = sidebarVisible ? sidebar.offsetWidth : 0;
         const safeTop = topBar ? topBar.offsetHeight : 0;
         const safeW = window.innerWidth - safeLeft;
         const safeH = window.innerHeight - safeTop;

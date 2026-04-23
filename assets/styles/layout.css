@@ -44,6 +44,27 @@
     gap: 12px;
 }
 
+.sidebar-toggle {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    border: 1px solid rgba(0,0,0,0.08);
+    background: rgba(255,255,255,0.75);
+    color: var(--text-secondary);
+    cursor: pointer;
+    display: none; /* 只在手机/平板显示 */
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    font-size: 16px;
+}
+
+.sidebar-toggle:hover {
+    background: white;
+    border-color: rgba(255,143,171,0.4);
+    color: var(--pink-dark);
+}
+
 .logo {
     display: flex;
     align-items: center;
@@ -121,7 +142,7 @@
     position: fixed;
     top: 56px;
     left: 0;
-    width: 220px;
+    width: var(--sidebar-w);
     height: calc(100vh - 56px);
     background: rgba(255,255,255,0.8);
     backdrop-filter: blur(20px);
@@ -131,6 +152,44 @@
     overflow-y: auto;
     display: flex;
     flex-direction: column;
+}
+
+.sidebar-scrim {
+    display: none; /* 只在手机/平板启用 */
+}
+
+.sidebar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 0 6px 10px;
+}
+
+.sidebar-header .sidebar-title {
+    margin-bottom: 0;
+    padding-left: 4px;
+}
+
+.sidebar-close {
+    width: 32px;
+    height: 32px;
+    border-radius: 10px;
+    border: 1px solid rgba(0,0,0,0.08);
+    background: rgba(255,255,255,0.75);
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all 0.2s;
+    display: none; /* 只在手机/平板显示 */
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+}
+
+.sidebar-close:hover {
+    background: rgba(255,143,171,0.10);
+    border-color: rgba(255,143,171,0.35);
+    color: var(--pink-dark);
 }
 
 .sidebar-title {
@@ -222,4 +281,47 @@
     border-color: var(--pink);
     color: var(--pink-dark);
     background: rgba(255,143,171,0.05);
+}
+
+/* -----------------------------
+   Responsive: 手机/平板抽屉式 Layers
+-------------------------------- */
+@media (max-width: 900px) {
+    :root { --sidebar-w: min(86vw, 320px); }
+
+    .sidebar-toggle { display: inline-flex; }
+    .sidebar-close { display: inline-flex; }
+
+    .sidebar-scrim {
+        display: block;
+        position: fixed;
+        top: 56px;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0,0,0,0.35);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.2s ease;
+        z-index: 999;
+    }
+
+    .sidebar-scrim.is-open {
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    .sidebar {
+        transform: translateX(-105%);
+        transition: transform 0.25s ease;
+        box-shadow: 0 24px 60px rgba(0,0,0,0.22);
+        z-index: 1000;
+    }
+
+    .sidebar.is-open {
+        transform: translateX(0);
+    }
+
+    /* 小屏减少 sidebar 与卡片的“抢视线” */
+    .layer-item { padding: 10px 12px; }
 }

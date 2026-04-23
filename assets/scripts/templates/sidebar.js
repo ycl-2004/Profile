@@ -2,9 +2,14 @@
     const app = window.PortfolioApp;
 
     app.templates.sidebar = `
-        <div class="sidebar">
-            <div class="sidebar-title">Layers</div>
-            <div class="layer-item active" data-layer="profile"><div class="layer-icon" style="background:var(--cream);">👤</div><span>个人信息</span><span class="layer-eye">👁</span></div>
+        <div class="sidebar-scrim" id="sidebar-scrim" aria-hidden="true"></div>
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-title">Layers</div>
+                <button class="sidebar-close" id="sidebar-close" aria-label="关闭 Layers">✕</button>
+            </div>
+            <div class="layer-item active" data-layer="__all__"><div class="layer-icon" style="background:rgba(0,0,0,0.06);">🌐</div><span>全部</span><span class="layer-eye">👁</span></div>
+            <div class="layer-item" data-layer="profile"><div class="layer-icon" style="background:var(--cream);">👤</div><span>个人信息</span><span class="layer-eye">👁</span></div>
             <div class="layer-item" data-layer="timeline"><div class="layer-icon" style="background:var(--sky);">⏱</div><span>时间线</span><span class="layer-eye">👁</span></div>
             <div class="layer-item" data-layer="narrative"><div class="layer-icon" style="background:var(--lavender);">📌</div><span>核心叙事</span><span class="layer-eye">👁</span></div>
             <div class="layer-item" data-layer="skills"><div class="layer-icon" style="background:var(--mint);">🏷</div><span>技能标签</span><span class="layer-eye">👁</span></div>

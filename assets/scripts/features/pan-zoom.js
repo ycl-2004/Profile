@@ -1,5 +1,6 @@
 (function () {
     const app = window.PortfolioApp;
+    const MOBILE_BP = 900;
 
     function clamp(value, min, max) {
         return Math.max(min, Math.min(max, value));
@@ -9,7 +10,12 @@
         const sidebar = document.querySelector('.sidebar');
         const topBar = document.querySelector('.top-bar');
 
-        const left = sidebar ? sidebar.offsetWidth : 0;
+        // 手机/平板：sidebar 可能是抽屉（关闭时不应占用 safe-area）
+        const sidebarVisible =
+            !!sidebar &&
+            (!window.matchMedia(`(max-width:${MOBILE_BP}px)`).matches || document.body.classList.contains('sidebar-open'));
+
+        const left = sidebarVisible ? sidebar.offsetWidth : 0;
         const top = topBar ? topBar.offsetHeight : 0;
         const right = window.innerWidth;
         const bottom = window.innerHeight;
@@ -139,6 +145,7 @@
                     event.target.closest('#canvas-app') &&
                     !event.target.closest('.card') &&
                     !event.target.closest('.sidebar') &&
+                    !event.target.closest('.sidebar-scrim') &&
                     !event.target.closest('.top-bar'))
             ) {
                 app.state.isPanning = true;
@@ -176,6 +183,93 @@
                 app.updateTransform();
             }
         }, { passive: false });
+
+        // --- Touch support (手机/平板)：单指拖拽平移；双指捏合缩放
+        let touchMode = null; // 'pan' | 'pinch'
+        let pinchStartDist = 0;
+        let pinchStartScale = 1;
+        let pinchWorldX = 0;
+        let pinchWorldY = 0;
+
+        function getTouchDist(t1, t2) {
+            const dx = t2.clientX - t1.clientX;
+            const dy = t2.clientY - t1.clientY;
+            return Math.hypot(dx, dy);
+        }
+
+        function getTouchMid(t1, t2) {
+            return {
+                x: (t1.clientX + t2.clientX) / 2,
+                y: (t1.clientY + t2.clientY) / 2
+            };
+        }
+
+        document.addEventListener(
+            'touchstart',
+            (event) => {
+                const t = event.touches;
+                const target = event.target;
+
+                if (!target.closest('#canvas-app')) return;
+                if (target.closest('.sidebar') || target.closest('.sidebar-scrim') || target.closest('.top-bar')) return;
+                if (target.closest('.card')) return;
+
+                if (t.length === 1) {
+                    touchMode = 'pan';
+                    app.state.isPanning = true;
+                    app.state.startX = t[0].clientX - app.state.panX;
+                    app.state.startY = t[0].clientY - app.state.panY;
+                    event.preventDefault();
+                } else if (t.length >= 2) {
+                    touchMode = 'pinch';
+                    app.state.isPanning = false;
+                    pinchStartDist = getTouchDist(t[0], t[1]);
+                    pinchStartScale = app.state.scale;
+
+                    const mid = getTouchMid(t[0], t[1]);
+                    pinchWorldX = (mid.x - app.state.panX) / app.state.scale;
+                    pinchWorldY = (mid.y - app.state.panY) / app.state.scale;
+                    event.preventDefault();
+                }
+            },
+            { passive: false }
+        );
+
+        document.addEventListener(
+            'touchmove',
+            (event) => {
+                const t = event.touches;
+
+                if (touchMode === 'pan' && t.length === 1 && app.state.isPanning) {
+                    app.state.panX = t[0].clientX - app.state.startX;
+                    app.state.panY = t[0].clientY - app.state.startY;
+                    app.updateTransform();
+                    event.preventDefault();
+                } else if (touchMode === 'pinch' && t.length >= 2) {
+                    const dist = getTouchDist(t[0], t[1]);
+                    const ratio = pinchStartDist ? dist / pinchStartDist : 1;
+                    const newScale = clamp(pinchStartScale * ratio, 0.3, 3);
+
+                    const mid = getTouchMid(t[0], t[1]);
+                    app.state.scale = newScale;
+                    app.state.panX = mid.x - pinchWorldX * newScale;
+                    app.state.panY = mid.y - pinchWorldY * newScale;
+                    app.updateTransform();
+                    event.preventDefault();
+                }
+            },
+            { passive: false }
+        );
+
+        document.addEventListener(
+            'touchend',
+            () => {
+                if (touchMode === 'pan') app.state.isPanning = false;
+                if (touchMode === 'pinch') app.state.isPanning = false;
+                touchMode = null;
+            },
+            { passive: true }
+        );
 
         app.dom.zoomInButton.addEventListener('click', () => {
             app.state.scale = Math.min(3, app.state.scale * 1.2);
