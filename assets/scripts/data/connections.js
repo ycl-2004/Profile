@@ -9,6 +9,7 @@
         { from: 'self-hub', to: 'profile', kind: 'primary' },
         { from: 'self-hub', to: 'narrative', kind: 'primary' },
         { from: 'self-hub', to: 'ai-partner', kind: 'primary' },
+        { from: 'self-hub', to: 'ai-tooling', kind: 'primary' },
         { from: 'self-hub', to: 'motto', kind: 'primary' },
         { from: 'self-hub', to: 'sticky-agent-native', kind: 'primary' },
         { from: 'self-hub', to: 'sticky-intj', kind: 'primary' },
@@ -43,7 +44,7 @@
 
         { from: 'contact-hub', to: 'contact', kind: 'primary' },
 
-        { from: 'narrative', to: 'ai-partner', kind: 'secondary' },
+        { from: 'ai-partner', to: 'sticky-agent-native', kind: 'secondary' },
         { from: 'timeline', to: 'skills', kind: 'secondary' },
         { from: 'project-family-care', to: 'project-ycapikit', kind: 'secondary' },
         { from: 'project-balance-bot', to: 'project-metal-detector', kind: 'secondary' }

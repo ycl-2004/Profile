@@ -6,9 +6,9 @@
         <div class="sidebar" id="sidebar">
             <div class="sidebar-header">
                 <div class="sidebar-title">Layers</div>
-                <button class="sidebar-close" id="sidebar-close" aria-label="关闭 Layers">✕</button>
+                <button class="sidebar-close" id="sidebar-close" aria-label="Close Layers">✕</button>
             </div>
-            <div class="layer-item active" data-layer="__all__"><div class="layer-icon" style="background:rgba(0,0,0,0.06);">🌐</div><span>全部</span><span class="layer-eye">👁</span></div>
+            <div class="layer-item active" data-layer="__all__"><div class="layer-icon" style="background:rgba(0,0,0,0.06);">🌐</div><span>All</span><span class="layer-eye">👁</span></div>
             <div class="layer-item" data-layer="self"><div class="layer-icon" style="background:var(--cream);">👤</div><span>Self</span><span class="layer-eye">👁</span></div>
             <div class="layer-item" data-layer="general"><div class="layer-icon" style="background:var(--lavender);">🧭</div><span>General</span><span class="layer-eye">👁</span></div>
             <div class="layer-item" data-layer="experience"><div class="layer-icon" style="background:var(--pink-light);">🛠</div><span>Experience</span><span class="layer-eye">👁</span></div>

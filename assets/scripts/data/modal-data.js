@@ -4,429 +4,512 @@
     app.data.modalData = {
         'profile': {
             title: 'Yi-Chen Lin',
-            subtitle: 'Entry-level Software Engineer · Full-Stack Developer',
+            subtitle: 'AI-Native Product Engineer · Full-Stack Builder',
             avatar: '👨‍💻',
             body: `
-                <h3>🎯 定位</h3>
-                <p><strong>Hands-on builder</strong>：已经在 Web / Desktop / 工业软件 / Web3 等不同场景里做过可运行的系统，实现导向、能把 UI 和系统逻辑串起来。</p>
-                <h3>🧭 核心叙事</h3>
-                <p>从 Electrical Engineering 有意识转向软件工程：通过持续实现、迭代与系统思考，把复杂工作流做成可靠的产品体验。</p>
-                <h3>🤖 AI 工作方式</h3>
-                <p>我不把 AI 当作“替代”，而是当作队友：<strong>1 person + AI = 1 team</strong>。重点是把 AI 纳入可复用、可回退、可观测的工程化工作流。</p>
-                <h3>📍 所在地</h3>
-                <p>Vancouver, Canada（可 Remote；Vancouver / 台湾 / 中国可 On-site）</p>
+                <h3>🎯 Positioning</h3>
+                <p><strong>AI-native product engineer</strong> with hands-on experience across web, desktop, and workflow-heavy systems.</p>
+                <h3>🧠 What I do best</h3>
+                <p>I turn messy ideas into structured, working systems by combining systems thinking, product judgment, and fast iteration.</p>
+                <h3>🤝 How I work</h3>
+                <p>I use AI to accelerate execution, but I keep ownership of structure, direction, and usability. The goal is not “more AI,” but better products and more reliable workflows.</p>
+                <h3>📍 Location</h3>
+                <p>Based in Vancouver, Canada. Open to remote work and on-site opportunities in Vancouver, Taiwan, or China.</p>
             `,
-            tags: ['Software Engineer', 'Full-Stack', 'React', 'TypeScript', 'AI工作流']
+            tags: ['AI-Native', 'Workflow Design', 'Product Sense', 'Execution']
+        },
+        'ai-partner': {
+            title: 'AI Work Philosophy',
+            subtitle: 'AI handles execution; I hold the product line',
+            avatar: '🧠',
+            body: `
+                <h3>🤝 Division of labor</h3>
+                <p>I design workflows where AI handles execution, iteration, and scaling — while I focus on structure, direction, and product decisions.</p>
+                <h3>⚙️ Why it works</h3>
+                <p>This creates leverage without losing judgment: faster exploration, more iterations, and clearer handoffs inside a solo workflow.</p>
+                <h3>🎯 What matters</h3>
+                <p>AI is not just a tool I occasionally use; it is a core collaborator inside a deliberate system.</p>
+            `,
+            tags: ['AI Collaboration', 'Workflow Design', 'Product Judgment']
         },
         'timeline': {
-            title: '思维 / 转向时间线',
-            subtitle: '从 EE 到 builder + AI-native workflow：关注我怎么形成现在的做事方式',
+            title: 'Growth Timeline',
+            subtitle: 'From EE to AI-native builder: each step marked a capability upgrade',
             avatar: '🧭',
             body: `
-                <h3>⚙️ 2022 — EE foundation</h3>
-                <p>先建立的是系统思维，不是“写页面”的技能：控制、硬件、电路、调试，让我习惯先看结构、反馈回路和稳定性。</p>
+                <h3>2022 — Engineering Foundations</h3>
+                <p><strong>Identity:</strong> Started in Electrical Engineering.</p>
+                <p><strong>What changed:</strong> Learned systems thinking, signal processing, and hardware constraints.</p>
+                <p><strong>Outcome:</strong> Built a strong foundation in understanding how systems behave.</p>
 
-                <h3>💻 2023 → 2024 — Shift to software</h3>
-                <p>慢慢发现自己更在意“把东西做出来并让人用起来”。我开始从原理正确，走向产品可用与交付效率。</p>
+                <h3>2023 — Transition to Software</h3>
+                <p><strong>Trigger:</strong> Realized software enables faster iteration and broader impact.</p>
+                <p><strong>What changed:</strong> Began learning React, TypeScript, and building simple tools.</p>
+                <p><strong>Outcome:</strong> Shifted from understanding systems to building systems.</p>
 
-                <h3>🧩 2024 → 2025 — Build for users</h3>
-                <p>思考重点从 feature 扩展到 workflow：不只是在写功能，而是在设计信息层级、交互摩擦、可达性和真实使用路径。</p>
+                <h3>2024 — Building for Users</h3>
+                <p><strong>Trigger:</strong> Started focusing on real-world usability and product thinking.</p>
+                <p><strong>What changed:</strong> Built apps with UI, workflows, and actual user interaction.</p>
+                <p><strong>Outcome:</strong> Learned that engineering alone does not define value; users do.</p>
 
-                <h3>🔬 2025 — Infra / Web3 / Analysis</h3>
-                <p>DAO、数据分析、runtime、dashboard 这些方向让我更习惯处理抽象系统：规则、状态、可观测性、边界条件与可复用性。</p>
+                <h3>2025 — Systems & Infra Thinking</h3>
+                <p><strong>Trigger:</strong> Explored backend systems, APIs, and data pipelines.</p>
+                <p><strong>What changed:</strong> Built tools that connect services and automate workflows.</p>
+                <p><strong>Outcome:</strong> Moved from thinking in features to thinking in systems that scale.</p>
 
-                <h3>🤖 2025 → now — AI-native collaboration</h3>
-                <p>现在最明确的工作方式是：<strong>1 person + AI = 1 team</strong>。不是把 AI 当捷径，而是把它纳入一个可复用、可回退、可观察的工程流程里。</p>
-
-                <h3>🎯 Current focus</h3>
-                <p>我现在最在意的不是“再多学一个框架”，而是持续把可靠系统、清晰产品体验、和 AI-native workflow 结合起来，做成真正有用的东西。</p>
+                <h3>2025 → now — AI-Native Builder</h3>
+                <p><strong>Trigger:</strong> Integrated AI into development workflows and product design.</p>
+                <p><strong>What changed:</strong> Designed agent-based workflows and AI-assisted systems.</p>
+                <p><strong>Outcome:</strong> Operating as <strong>1 person + AI = a scalable builder</strong>.</p>
             `,
-            tags: ['Systems Thinking', 'Workflow Design', 'AI Native', 'Builder Mindset', 'Product Sense']
+            tags: ['Growth Logic', 'Systems Thinking', 'Product Shift', 'AI Native']
         },
         'narrative': {
-            title: '核心叙事',
-            subtitle: '我的故事',
-            avatar: '💡',
+            title: 'My Approach',
+            subtitle: 'Turning ambiguity into usable systems',
+            avatar: '🧠',
             body: `
-                <h3>🛤️ 我的路径</h3>
-                <p>从电气工程到软件工程，再到 Web3 和 AI 辅助开发——每一次看似的"弯路"，其实都在指向同一个方向：用技术创造秩序，用代码点亮他人。</p>
-                <h3>🤖 AI 伙伴哲学</h3>
-                <p>"1 person + AI = 1 team" 这不是口号，是我的日常。我不把 AI 当作工具，而是当作队友。Cursor、Claude、ChatGPT 都是我的 co-pilot。</p>
-                <h3>🎯 建造者心态</h3>
-                <p>INTJ 的安静不是沉默，是在专注地建造。我相信最好的作品来自于深度专注和持续迭代。</p>
+                <h3>🧠 Core idea</h3>
+                <p><strong>Turn ambiguity into useful systems.</strong></p>
+                <h3>🧩 Step 1 — Structure the problem</h3>
+                <p>I start by clarifying the goal, constraints, and workflow so the problem becomes something buildable.</p>
+                <h3>🛠 Step 2 — Ship the useful version</h3>
+                <p>I move quickly from concept to prototype to usable system, prioritizing clarity and real user value over polish theater.</p>
+                <h3>🔁 Step 3 — Iterate from reality</h3>
+                <p>Once something works, I refine it through feedback, edge cases, and stronger workflows.</p>
             `,
-            tags: ['INTJ', 'Builder', 'AI伙伴', '终身学习']
+            tags: ['Structure', 'Execution', 'Iteration']
         },
         'skills': {
-            title: '技能 & 能力',
-            subtitle: '技术栈与软技能',
+            title: 'Skills & Capabilities',
+            subtitle: 'Organized by capability, not by a list of languages',
             avatar: '⚔️',
             body: `
-                <h3>💻 编程语言</h3>
-                <p>TypeScript · JavaScript · Python · Kotlin · Java · SQL · C/C++ · C# · Solidity</p>
-                <h3>🛠️ 框架与工具</h3>
-                <p>React · Vite · Tauri · Android WebView · Streamlit · Supabase · Git/GitHub</p>
-                <h3>🤖 AI & 开发工作流</h3>
-                <p>Cursor · Claude · ChatGPT · Gemini · Perplexity（用于拆解需求、快速迭代、生成与验证、以及工程化重构）</p>
-                <h3>⛓️ Web3 技术</h3>
-                <p>Solidity · Smart Contracts · DAO Governance · Ethers.js · Wallet Interaction</p>
-                <h3>🧠 软技能</h3>
-                <p>实现导向 · 工作流设计 · 可维护性 · 跨文化沟通 · 快速学习</p>
+                <h3>Frontend & UI</h3>
+                <p>React · TypeScript · Dashboard UI · Interaction Design</p>
+                <h3>Full-Stack Systems</h3>
+                <p>Supabase · APIs · Data Flow · Backend Logic · Workflow Automation</p>
+                <h3>AI Integration</h3>
+                <p>LLM workflows · Prompt design · AI-assisted development · Agent-oriented task design</p>
+                <h3>Product & Workflow Thinking</h3>
+                <p>User flows · Feature design · Rapid prototyping · SOP-style systems</p>
+                <h3>Tools</h3>
+                <p>Git · Cursor · Codex · Claude Code · NotebookLM · Gemini</p>
+                <p>NotebookLM and Gemini are especially useful in my workflow for research synthesis, data organization, and structured exploration.</p>
             `,
-            tags: ['Solidity', 'React', 'TypeScript', 'Python', 'Web3', 'AI工具']
+            tags: ['React', 'AI Integration', 'Codex', 'Claude Code', 'NotebookLM', 'Gemini']
         },
         'project-dao': {
             title: 'Future DAO',
-            subtitle: '治理与智能合约系统',
+            subtitle: 'Governance workflow system from proposal to execution',
             avatar: '🏛',
             body: `
-                <h3>📋 项目概述</h3>
-                <p>一个面向治理工作流的 DAO 系统：把“提案 → 投票 → 执行”的链上逻辑，做成可用、可验证、可交互的产品流程。</p>
-                <h3>🔧 技术实现</h3>
+                <h3>Problem</h3>
+                <p>On-chain governance is powerful, but proposal, voting, and execution logic can feel abstract and difficult to use clearly.</p>
+                <h3>Approach</h3>
+                <p>I treated governance as a product workflow, not just a contract problem, and designed the full path from proposal creation to execution.</p>
+                <h3>System</h3>
                 <ul>
-                    <li>Solidity：会员/权限、提案创建、投票、执行与状态机</li>
-                    <li>时间约束、执行条件与权限规则，保证治理流程可预测</li>
-                    <li>React + TypeScript + Ethers.js：钱包连接与合约交互体验</li>
-                    <li>测试与迭代：关注正确性、可用性与端到端流程</li>
+                    <li>Built Solidity contracts for membership, permissions, proposals, voting, execution, and state transitions</li>
+                    <li>Handled time constraints and execution rules to keep governance behavior predictable</li>
+                    <li>Built a React + TypeScript + Ethers.js interface for wallet connection and contract interaction</li>
                 </ul>
-                <h3>🛠️ 技术栈</h3>
+                <h3>Outcome</h3>
+                <p>Turned abstract governance logic into a usable system and strengthened my ability to connect protocol rules with product interaction.</p>
+                <h3>Stack</h3>
                 <p class="modal-stack-line">Solidity · React · TypeScript · Ethers.js · Smart Contracts</p>
-                <h3>🎯 成果</h3>
-                <p>把抽象治理逻辑落到可运行系统：合约设计、前端交互、边界条件与执行路径。</p>
             `,
-            tags: ['Solidity', 'React', 'TypeScript', 'Ethers.js', 'Smart Contracts']
+            tags: ['Governance UX', 'Solidity', 'React', 'Smart Contracts']
         },
         'project-crypto': {
             title: 'CryptoPulse',
-            subtitle: '加密货币投资分析工具',
+            subtitle: 'Real-time crypto analytics dashboard',
             avatar: '📊',
             body: `
-                <h3>📋 项目概述</h3>
-                <p>全栈加密货币分析平台：实时市场追踪、趋势可视化、组合/收益相关计算，把“原始市场数据”变成更可用的决策界面。</p>
-                <h3>🔧 技术实现</h3>
+                <h3>Problem</h3>
+                <p>Crypto market data is fragmented and noisy, which makes it difficult to interpret quickly for monitoring or decision-making.</p>
+                <h3>Approach</h3>
+                <p>I designed a dashboard experience that prioritizes trend clarity, quick scanning, and interpretable market views over raw data volume.</p>
+                <h3>System</h3>
                 <ul>
-                    <li>集成多个加密货币 API 实现实时价格数据获取</li>
-                    <li>数据流同步：更稳定的更新节奏与状态处理</li>
-                    <li>Dashboard UI：趋势视图、可读性与信息层级</li>
-                    <li>性能与稳定性：减少不必要渲染与更新开销</li>
+                    <li>Integrated external APIs for live market data</li>
+                    <li>Built data synchronization and update flows for more stable real-time behavior</li>
+                    <li>Designed dashboard views around trends, portfolio context, and readability</li>
                 </ul>
-                <h3>🛠️ 技术栈</h3>
+                <h3>Outcome</h3>
+                <p>Improved my ability to turn complex data into a clearer product surface and to think more like a data-product builder.</p>
+                <h3>Stack</h3>
                 <p class="modal-stack-line">React · TypeScript · External APIs · Dashboard UI</p>
-                <h3>🔗 链接</h3>
+                <h3>Link</h3>
                 <div class="modal-link-list">
-                    <p><strong>Live：</strong><a href="https://cryptopulse-production-a190.up.railway.app" target="_blank" rel="noopener">cryptopulse-production-a190.up.railway.app</a></p>
+                    <p><strong>Live:</strong> <a href="https://cryptopulse-production-a190.up.railway.app" target="_blank" rel="noopener">cryptopulse-production-a190.up.railway.app</a></p>
                 </div>
             `,
-            tags: ['React', 'TypeScript', 'External APIs', 'Dashboard UI']
+            tags: ['Data Product', 'Dashboard UI', 'React', 'API Sync']
         },
         'project-todo': {
             title: 'YC Todo',
-            subtitle: 'macOS 菜单栏任务管理应用',
+            subtitle: 'Minimal task manager with local-first design',
             avatar: '✅',
             body: `
-                <h3>📋 项目概述</h3>
-                <p>一个原生感的 macOS menubar 任务管理工具：强调“随时打开、快速记录、轻量完成”的交互体验。</p>
-                <h3>🔧 技术亮点</h3>
+                <h3>Problem</h3>
+                <p>Many simple task tools become bloated and slow for the actual use case of quick capture and lightweight completion.</p>
+                <h3>Approach</h3>
+                <p>I designed a menubar-first workflow focused on being fast, local, and always available without unnecessary friction.</p>
+                <h3>System</h3>
                 <ul>
-                    <li>使用 Tauri (Rust) + React 构建跨平台桌面应用</li>
-                    <li>处理 macOS 特有交互：NSPopover、focus、事件与输入体验</li>
-                    <li>本地任务管理逻辑：实时 UI 更新 + 状态持久化</li>
-                    <li>打包 ARM64 / x86_64 双架构版本</li>
+                    <li>Built with Tauri and React for a lightweight desktop architecture</li>
+                    <li>Handled macOS-specific interaction details such as popover behavior, focus, and input flow</li>
+                    <li>Implemented local task persistence and immediate UI updates</li>
                 </ul>
-                <h3>🛠️ 技术栈</h3>
+                <h3>Outcome</h3>
+                <p>Explored desktop app architecture and learned how product simplification can be a feature, not a compromise.</p>
+                <h3>Stack</h3>
                 <p class="modal-stack-line">Tauri · Rust · React · TypeScript · macOS Native API</p>
-                <h3>🔗 链接</h3>
+                <h3>Link</h3>
                 <div class="modal-link-list">
-                    <p><strong>Demo：</strong><a href="https://drive.google.com/drive/folders/1l72JWhzAjmenkNoi_lEXS9KNUmsrSz11" target="_blank" rel="noopener">Google Drive Folder</a></p>
+                    <p><strong>Demo:</strong> <a href="https://drive.google.com/drive/folders/1l72JWhzAjmenkNoi_lEXS9KNUmsrSz11" target="_blank" rel="noopener">Google Drive Folder</a></p>
                 </div>
             `,
-            tags: ['Tauri', 'Rust', 'React', 'TypeScript', 'macOS']
+            tags: ['Desktop UX', 'Local-First', 'Tauri', 'React']
         },
         'project-family-care': {
             title: 'Family Care Reminder App',
-            subtitle: '面向长辈/家庭协作的提醒产品',
+            subtitle: 'Cross-platform reminder system for family care routines',
             avatar: '💗',
             body: `
-                <h3>📋 项目概述</h3>
-                <p>一个以“长辈易用”和“家人远程协作设置”为核心的提醒应用：不是堆功能，而是把<strong>提醒可靠性</strong>和<strong>低摩擦完成</strong>做到位。</p>
-                <h3>🔧 我做了什么</h3>
+                <h3>Problem</h3>
+                <p>Elderly users often miss reminders not because they do not care, but because reminder flows are noisy, fragile, or too complicated.</p>
+                <h3>Approach</h3>
+                <p>I designed a low-friction reminder product around clear daily flows, caregiver coordination, and reliability over feature bloat.</p>
+                <h3>System</h3>
                 <ul>
-                    <li>循环提醒与用户特定的调度逻辑（recurring scheduling）</li>
-                    <li>本地通知重建（notification rebuild）与 missed-occurrence 处理</li>
-                    <li>围绕照护者协作的流程：轻量确认、同步行为与状态更新</li>
-                    <li>产品取舍：清晰、可达性、情感可用性（不是通知轰炸）</li>
+                    <li>Built with Flutter and Supabase for cross-platform delivery and synced state</li>
+                    <li>Implemented recurring scheduling, notification rebuilds, and missed-occurrence handling</li>
+                    <li>Designed lifecycle logic for enable, pause, delete, and reminder state transitions</li>
                 </ul>
-                <h3>🛠️ 技术栈</h3>
+                <h3>Outcome</h3>
+                <p>Turned a real-world family need into a usable product system and deepened my focus on reliability, clarity, and user-first workflow design.</p>
+                <h3>Stack</h3>
                 <p class="modal-stack-line">Flutter · Dart · Supabase · Local Notifications</p>
             `,
-            tags: ['Flutter', 'Dart', 'Supabase', 'Notifications']
+            tags: ['Reliability', 'Workflow UX', 'Flutter', 'Supabase']
         },
         'project-ycapikit': {
             title: 'YCAPIKit',
-            subtitle: 'SwiftUI 的 Hosted-LLM Runtime（可复用基础设施）',
+            subtitle: 'Multi-provider AI runtime abstraction for Swift applications',
             avatar: '🧩',
             body: `
-                <h3>📋 项目概述</h3>
-                <p>把“多 Provider AI 接入、回退与结构化输出”做成一个可复用的 Runtime，减少每个 App 重复造轮子。</p>
-                <h3>🔧 技术实现</h3>
+                <h3>Problem</h3>
+                <p>AI integration is fragmented across providers, which makes routing, structure, fallbacks, and observability difficult to manage app by app.</p>
+                <h3>Approach</h3>
+                <p>I designed a reusable runtime layer that abstracts provider differences while keeping routing and output handling explicit.</p>
+                <h3>System</h3>
                 <ul>
-                    <li>多 Provider 集成（OpenAI / Gemini / Anthropic / NVIDIA / Mistral / 智谱等）</li>
-                    <li>可配置的 retry / backoff / timeout / fallback 编排</li>
-                    <li>Route-based 模型选择：primary / chunk / polish / repair</li>
-                    <li>结构化 JSON：解码、校验、code-fence 剥离、partial extraction、修复路径</li>
-                    <li>请求级可观测性：provider、model、retry 次数、fallback path、latency、outcome</li>
+                    <li>Supports multiple providers including OpenAI, Gemini, Anthropic, NVIDIA, Mistral, and Zhipu AI</li>
+                    <li>Implements retry, backoff, timeout, and fallback orchestration</li>
+                    <li>Handles structured JSON generation, validation, extraction, and repair</li>
+                    <li>Adds request-level observability for provider, model, retries, fallback path, latency, and outcome</li>
                 </ul>
-                <h3>🛠️ 技术栈</h3>
+                <h3>Outcome</h3>
+                <p>Built reusable infrastructure for AI-powered apps and moved from “using AI” to “building AI systems.”</p>
+                <h3>Stack</h3>
                 <p class="modal-stack-line">Swift · SwiftUI · Multi-Provider LLM APIs · JSON Parsing · Observability</p>
-                <h3>🔗 链接</h3>
+                <h3>Link</h3>
                 <div class="modal-link-list">
-                    <p><strong>GitHub：</strong><a href="https://github.com/ycl-2004/YCAPIKit" target="_blank" rel="noopener">github.com/ycl-2004/YCAPIKit</a></p>
+                    <p><strong>GitHub:</strong> <a href="https://github.com/ycl-2004/YCAPIKit" target="_blank" rel="noopener">github.com/ycl-2004/YCAPIKit</a></p>
                 </div>
             `,
-            tags: ['Swift', 'SwiftUI', 'JSON Parsing', 'Observability']
+            tags: ['AI Infra', 'Multi-Provider', 'Swift', 'Observability']
         },
         'project-edu-analysis': {
             title: 'Education Excel Analysis',
-            subtitle: 'Streamlit 成绩分析 Dashboard（上传到洞察）',
+            subtitle: 'Teacher-facing spreadsheet-to-insight workflow tool',
             avatar: '📈',
             body: `
-                <h3>📋 项目概述</h3>
-                <p>面向教师工作流的成绩分析工具：Excel 上传后，完成字段识别/映射、统计分析与可视化，并生成可导出的报告。</p>
-                <h3>🔧 我做了什么</h3>
+                <h3>Problem</h3>
+                <p>Raw grade spreadsheets are time-consuming to interpret, especially when teachers need faster comparison, pattern finding, and reporting.</p>
+                <h3>Approach</h3>
+                <p>I designed an upload-to-report workflow that reduces manual analysis and makes educational data easier to act on.</p>
+                <h3>System</h3>
                 <ul>
-                    <li>Excel 上传 + 自动字段检测 + 手动映射（班级/科目/分数/题目维度）</li>
-                    <li>统计：平均/中位数/标准差/及格率/班级与科目对比</li>
-                    <li>可视化：直方图、箱线图、对比图表</li>
-                    <li>隐私：匿名化、top/bottom 排名视图</li>
-                    <li>导出：过滤后的数据与 Markdown 报告</li>
+                    <li>Supports Excel upload, field detection, and manual mapping</li>
+                    <li>Generates statistics, comparisons, visualizations, and filtered reports</li>
+                    <li>Includes privacy-aware views such as anonymization and ranking perspectives</li>
                 </ul>
-                <h3>🛠️ 技术栈</h3>
+                <h3>Outcome</h3>
+                <p>Improved my ability to build workflow tools around real user jobs-to-be-done rather than isolated analysis features.</p>
+                <h3>Stack</h3>
                 <p class="modal-stack-line">Python · Streamlit · Pandas · Excel Processing · Markdown Reports</p>
-                <h3>🔗 链接</h3>
+                <h3>Link</h3>
                 <div class="modal-link-list">
-                    <p><strong>GitHub：</strong><a href="https://github.com/ycl-2004/Education_Excel_Analysis" target="_blank" rel="noopener">github.com/ycl-2004/Education_Excel_Analysis</a></p>
+                    <p><strong>GitHub:</strong> <a href="https://github.com/ycl-2004/Education_Excel_Analysis" target="_blank" rel="noopener">github.com/ycl-2004/Education_Excel_Analysis</a></p>
                 </div>
             `,
-            tags: ['Python', 'Streamlit', 'Pandas', 'Excel']
+            tags: ['Workflow Tool', 'Data Analysis', 'Streamlit', 'Python']
         },
         'project-balance-bot': {
             title: 'Bluetooth Self-Balancing Robot',
-            subtitle: 'PID 控制 + 软硬件闭环调试',
+            subtitle: 'Closed-loop control system for real-time balance tuning',
             avatar: '🤖',
             body: `
-                <h3>📋 项目概述</h3>
-                <p>把控制理论落到真实系统：用 PID 实现实时平衡，并通过蓝牙进行参数调试与迭代验证。</p>
-                <h3>🔧 我做了什么</h3>
+                <h3>Problem</h3>
+                <p>Balancing behavior becomes unstable quickly without a tight control loop and fast tuning feedback.</p>
+                <h3>Approach</h3>
+                <p>I treated the project as a hardware-software feedback problem and iterated around stability, responsiveness, and live adjustment.</p>
+                <h3>System</h3>
                 <ul>
-                    <li>PID 控制逻辑：稳定性与响应的权衡调参</li>
-                    <li>Arduino + 传感器反馈：闭环控制系统搭建</li>
-                    <li>移动端交互：远程控制与参数调试</li>
-                    <li>迭代测试：通过验证与调整提升行为稳定性</li>
+                    <li>Implemented PID control for real-time balance correction</li>
+                    <li>Built an Arduino-based sensor feedback loop</li>
+                    <li>Used Bluetooth for remote parameter tuning and testing</li>
                 </ul>
-                <h3>🛠️ 技术栈</h3>
+                <h3>Outcome</h3>
+                <p>Strengthened my understanding of closed-loop systems, real-time iteration, and how software decisions affect physical behavior.</p>
+                <h3>Stack</h3>
                 <p class="modal-stack-line">Arduino · PID Control · Bluetooth · Sensors</p>
             `,
-            tags: ['Arduino', 'PID Control', 'Bluetooth', 'Sensors']
+            tags: ['Control Systems', 'PID', 'Bluetooth', 'Arduino']
         },
         'project-unity': {
             title: 'Unity Game Development',
-            subtitle: '2D/3D 交互体验与 UI 行为',
+            subtitle: 'Playable interaction prototypes for feedback and UI behavior',
             avatar: '🎮',
             body: `
-                <h3>📋 项目概述</h3>
-                <p>Unity + C# 的可试玩项目：实现玩家控制、物理交互、动画与 UI 行为，并发布可访问的 build。</p>
-                <h3>🛠️ 技术栈</h3>
+                <h3>Problem</h3>
+                <p>Interactive systems are hard to evaluate abstractly; they become meaningful only when users can actually feel timing, controls, and feedback loops.</p>
+                <h3>Approach</h3>
+                <p>I built playable 2D and 3D prototypes to learn through real interaction rather than static implementation.</p>
+                <h3>System</h3>
+                <ul>
+                    <li>Implemented player controls, physics interactions, animation, and UI behavior in Unity</li>
+                    <li>Published playable builds to test interaction feel and presentation</li>
+                </ul>
+                <h3>Outcome</h3>
+                <p>Improved my intuition for interaction design, moment-to-moment feedback, and translating mechanics into usable UI behavior.</p>
+                <h3>Stack</h3>
                 <p class="modal-stack-line">Unity · C# · Physics · Animation · UI</p>
-                <h3>🔗 链接</h3>
+                <h3>Links</h3>
                 <div class="modal-link-list">
-                    <p><strong>Portfolio：</strong><a href="https://ycl-2004.itch.io" target="_blank" rel="noopener">ycl-2004.itch.io</a></p>
-                    <p><strong>2D Demo：</strong><a href="https://play.unity.com/en/games/cae09d3a-0ee6-48dc-b80a-395419be1f65/collect-coins" target="_blank" rel="noopener">Unity Play</a></p>
-                    <p><strong>3D Demo：</strong><a href="https://ycl-2004.github.io/OverCook/" target="_blank" rel="noopener">OverCook Web Build</a></p>
+                    <p><strong>Portfolio:</strong> <a href="https://ycl-2004.itch.io" target="_blank" rel="noopener">ycl-2004.itch.io</a></p>
+                    <p><strong>2D Demo:</strong> <a href="https://play.unity.com/en/games/cae09d3a-0ee6-48dc-b80a-395419be1f65/collect-coins" target="_blank" rel="noopener">Unity Play</a></p>
+                    <p><strong>3D Demo:</strong> <a href="https://ycl-2004.github.io/OverCook/" target="_blank" rel="noopener">OverCook Web Build</a></p>
                 </div>
             `,
-            tags: ['Unity', 'C#', 'Physics', 'UI', 'Animation']
+            tags: ['Interaction Design', 'Unity', 'C#', 'Gameplay']
         },
         'project-metal-detector': {
             title: 'Metal Detector Robot',
-            subtitle: '电路优化 + MCU 编程 + 校准测试',
+            subtitle: 'Embedded sensing system optimized for reliable detection',
             avatar: '🧲',
             body: `
-                <h3>📋 项目概述</h3>
-                <p>偏硬件/嵌入式取向的实现项目：电路设计与优化、C/汇编编程、校准与实验室测试，用迭代方式提升稳定性。</p>
-                <h3>🔧 我做了什么</h3>
+                <h3>Problem</h3>
+                <p>Detection systems become unreliable when sensing, circuitry, and tuning are not stable enough in real conditions.</p>
+                <h3>Approach</h3>
+                <p>I improved the system through iterative circuit optimization, low-level programming, and repeated calibration.</p>
+                <h3>System</h3>
                 <ul>
-                    <li>电路优化：提升检测准确性与响应</li>
-                    <li>微控制器编程：C 与汇编</li>
-                    <li>仪器测试：校准、调参、定位噪声与不稳定来源</li>
+                    <li>Designed and tuned the circuit for better detection behavior</li>
+                    <li>Programmed the microcontroller in C and assembly</li>
+                    <li>Used instrumentation and calibration to locate unstable or noisy behavior</li>
                 </ul>
-                <h3>🛠️ 技术栈</h3>
+                <h3>Outcome</h3>
+                <p>Built stronger embedded-systems instincts around debugging, measurement, and performance under hardware constraints.</p>
+                <h3>Stack</h3>
                 <p class="modal-stack-line">C · Assembly · Microcontroller · Circuit Design</p>
             `,
-            tags: ['C', 'Assembly', 'Microcontroller', 'Circuit Design']
+            tags: ['Embedded Systems', 'Calibration', 'MCU', 'Circuits']
         },
         'project-sailbot': {
             title: 'UBC Sailbot',
-            subtitle: 'Electrical Power Team Member',
+            subtitle: 'Team-based power integration for an autonomous sailbot',
             avatar: '⛵',
             body: `
-                <h3>📋 项目概述</h3>
-                <p>多学科团队工程项目：参与供电分配与电路实现，负责电路搭建/测试以及集成阶段的问题定位与修复。</p>
-                <h3>🔧 我做了什么</h3>
+                <h3>Problem</h3>
+                <p>Multidisciplinary hardware projects depend on reliable power distribution, integration discipline, and strong debugging during team handoffs.</p>
+                <h3>Approach</h3>
+                <p>I contributed on the power side of the system, supporting implementation, testing, and integration troubleshooting.</p>
+                <h3>System</h3>
                 <ul>
-                    <li>供电分配系统设计/实现支持</li>
-                    <li>电路搭建与安全/性能测试</li>
-                    <li>集成阶段故障诊断与协作修复</li>
+                    <li>Supported power distribution design and circuit implementation</li>
+                    <li>Helped with circuit assembly, safety checks, and testing</li>
+                    <li>Worked through integration-stage failures with teammates</li>
                 </ul>
-                <h3>🛠️ 技术栈</h3>
+                <h3>Outcome</h3>
+                <p>Gained experience in multidisciplinary engineering collaboration and in keeping complex systems reliable under integration pressure.</p>
+                <h3>Stack</h3>
                 <p class="modal-stack-line">Power Systems · Circuit Integration · Testing · Diagnostics</p>
             `,
-            tags: ['Power Systems', 'Circuits', 'Testing', 'Integration']
+            tags: ['Integration', 'Power Systems', 'Testing', 'Team Engineering']
         },
         'work-delta': {
-            title: 'Delta Control',
-            subtitle: 'Software Developer · Vancouver',
+            title: 'Delta Controls',
+            subtitle: 'Industrial monitoring tool for real-time HVAC field workflows',
             avatar: '🏢',
             body: `
-                <h3>📋 工作描述</h3>
-                <p>在 Delta Control 担任软件开发者，负责开发混合 HVAC（暖通空调）空气平衡应用程序。</p>
-                <h3>🔧 主要职责</h3>
+                <h3>Problem</h3>
+                <p>Field engineers need clearer real-time visibility into HVAC device states, communication status, and operational flow in industrial environments.</p>
+                <h3>Approach</h3>
+                <p>I designed and implemented a hybrid monitoring interface that bridges device communication with a more usable operator-facing workflow.</p>
+                <h3>System</h3>
                 <ul>
-                    <li>使用 React、TypeScript、Kotlin 和 Android WebView 构建混合应用</li>
-                    <li>实现前端与原生层之间的通信桥接、共享状态与跨层同步</li>
-                    <li>集成 BLE 与 IP 通信：设备发现、监控、连接管理与交互</li>
-                    <li>面向真实现场工作流：更稳定的交互与可靠性处理</li>
+                    <li>Built with React, TypeScript, Kotlin, and Android WebView</li>
+                    <li>Implemented communication between web and native layers, including state synchronization</li>
+                    <li>Integrated BLE and IP communication for discovery, monitoring, connection management, and device interaction</li>
                 </ul>
-                <h3>🛠️ 技术栈</h3>
+                <h3>Outcome</h3>
+                <p>Bridged hardware systems with software interfaces and gained stronger experience working under real-world industrial constraints.</p>
+                <h3>Stack</h3>
                 <p class="modal-stack-line">React · TypeScript · Kotlin · Android WebView · BLE · IP Communication</p>
             `,
-            tags: ['React', 'TypeScript', 'Kotlin', 'WebView', 'BLE/IP']
+            tags: ['Industrial UI', 'Device Sync', 'React', 'BLE/IP']
         },
         'work-joychime': {
             title: 'Joychime Industrial Corporation',
-            subtitle: 'Junior Electrical Assistant · May 2024 - Aug 2024 · New Taipei, Taiwan · 積餘慶宏業股份有限公司',
+            subtitle: 'Manufacturing operations support in a real production environment',
             avatar: '⚙️',
             body: `
-                <h3>📋 工作描述</h3>
-                <p>在 New Taipei 的制造环境中担任 Junior Electrical Assistant，参与现场巡检、装配配线、生产支持与流程文档优化，帮助一线作业更稳定地运转。</p>
-                <h3>🔧 主要职责</h3>
+                <h3>Problem</h3>
+                <p>Production continuity depends on stable inspections, reliable assembly work, and fast response when operational exceptions happen on the floor.</p>
+                <h3>Approach</h3>
+                <p>I supported the environment through hands-on inspection, wiring, documentation improvements, and troubleshooting under real manufacturing pressure.</p>
+                <h3>System</h3>
                 <ul>
-                    <li>执行 plant inspections 并处理 operational exceptions，协助把流程质量维持在内部标准以上约 10%</li>
-                    <li>参与 electrical equipment assembly、wiring 与 production support，支持 hands-on 制造现场作业</li>
-                    <li>优化 documentation 与 reporting workflow，使 paperwork volume 减少约 30%，日常流程更清晰</li>
-                    <li>支持 technicians 与 operational staff 处理 workflow issues，帮助维持 production continuity</li>
+                    <li>Performed plant inspections and helped handle operational exceptions</li>
+                    <li>Supported electrical equipment assembly, wiring, and production workflows</li>
+                    <li>Improved documentation and reporting clarity for daily operations</li>
                 </ul>
-                <h3>🛠️ 技术栈</h3>
+                <h3>Outcome</h3>
+                <p>Built practical experience with operational reliability, process clarity, and the discipline required to keep production environments running.</p>
+                <h3>Stack</h3>
                 <p class="modal-stack-line">Plant Inspection · Electrical Assembly · Wiring · Documentation Workflows · Troubleshooting</p>
             `,
-            tags: ['Plant Inspection', 'Wiring', 'Assembly', 'Troubleshooting']
+            tags: ['Operations', 'Troubleshooting', 'Documentation', 'Assembly']
         },
         'education': {
-            title: '教育背景',
-            subtitle: 'University of British Columbia',
+            title: 'Education',
+            subtitle: 'Engineering foundation behind my systems and product work',
             avatar: '🎓',
             body: `
-                <h3>🏫 学校信息</h3>
-                <p><strong>University of British Columbia</strong></p>
-                <p>加拿大 · Vancouver, BC</p>
-                <h3>📚 学位</h3>
-                <p>Bachelor of Applied Science — Electrical Engineering</p>
-                <p>预计毕业: 2027年5月</p>
-                <h3>🏆 荣誉</h3>
+                <h3>Foundation</h3>
+                <p><strong>University of British Columbia</strong> · BASc in Electrical Engineering</p>
+                <p>Expected graduation: May 2027</p>
+                <h3>What it gave me</h3>
+                <p>Training in control systems, circuit design, signal processing, and debugging discipline.</p>
+                <h3>Why it matters now</h3>
+                <p>This background is why I naturally think in systems, constraints, reliability, and hardware-software interaction when building products.</p>
+                <h3>Recognition</h3>
                 <p>Dean's Honour List (2022–2025)</p>
-                <p>持续保持优异的学术表现</p>
-                <h3>📖 相关课程</h3>
-                <p>控制系统 · 电路设计 · 信号处理 · 软件工程 · 数据结构</p>
             `,
-            tags: ['电气工程', 'UBC', 'Dean\'s Honour List', '控制系统']
+            tags: ['Engineering Foundation', 'Systems Thinking', 'UBC', 'Dean\'s Honour List']
         },
         'content': {
-            title: '内容创作',
-            subtitle: 'Web3 & AI 技术内容',
+            title: 'Content Systems',
+            subtitle: 'Turning knowledge into reusable, structured outputs',
             avatar: '✍️',
             body: `
-                <h3>📝 创作方向</h3>
-                <p>作为独立 Web3 和 AI 内容研究员，我专注于创作入门友好的技术内容。</p>
-                <h3>🔹 Web3 内容</h3>
+                <h3>Focus</h3>
+                <p>Web3 & AI with beginner-friendly, structured insights.</p>
+                <h3>What I create</h3>
                 <ul>
-                    <li>Web3 概念入门教程</li>
-                    <li>区块链安全意识教育</li>
-                    <li>工具使用指南和最佳实践</li>
+                    <li>Simplify complex concepts into practical, usable explanations</li>
+                    <li>Document workflows and learning systems in SOP-style formats</li>
+                    <li>Combine tech insights with personal thinking on X / Xiaohongshu</li>
                 </ul>
-                <h3>🔹 AI 内容</h3>
-                <ul>
-                    <li>AI 生产力工具评测</li>
-                    <li>开发工具工作流分享</li>
-                    <li>AI 辅助编程技巧和案例</li>
-                </ul>
-                <h3>📱 发布平台</h3>
-                <p>主要在 X (Twitter) 发布技术总结和短篇教育内容</p>
+                <h3>Goal</h3>
+                <p>Turn knowledge into reusable systems and scalable content.</p>
             `,
-            tags: ['Web3教育', 'AI工具', '技术写作', '内容创作']
+            tags: ['Structured Content', 'Workflow Documentation', 'Reusable Knowledge']
         },
         'opinion': {
-            title: '观点输出',
-            subtitle: '更偏“方法论 + 工作流”',
-            avatar: '✍️',
-            body: `
-                <h3>🧠 方向</h3>
-                <ul>
-                    <li>AI 时代的工程师如何学习、协作与交付</li>
-                    <li>把 SOP 写给 Agent：让流程可复用、可验证</li>
-                    <li>从工具到系统：如何把 workflow 变成产品体验</li>
-                </ul>
-            `,
-            tags: ['方法论', '工作流', 'AI协作']
-        },
-        'motto': {
-            title: '座右铭',
-            subtitle: '执行 + 迭代',
-            avatar: '🎯',
-            body: `
-                <h3>一句话</h3>
-                <p><strong>Stay hungry, stay foolish.</strong></p>
-                <p>我更在乎“做出来 + 不断迭代”，而不是“想得很完美”。</p>
-            `,
-            tags: ['迭代', '执行']
-        },
-        'sticky-intj': {
-            title: 'INTJ',
-            subtitle: '安静地建造东西',
+            title: 'Insight Framework',
+            subtitle: 'My perspective on AI, learning, and individual productivity',
             avatar: '🧠',
             body: `
-                <p>偏好系统化拆解问题，把复杂流程做成清晰可维护的结构。</p>
+                <h3>Core ideas</h3>
+                <ul>
+                    <li>AI is shifting execution — humans should focus more on structure and decisions</li>
+                    <li>SOPs are no longer just for humans, but for AI agents to execute</li>
+                    <li>Individual builders can now operate like small teams with AI</li>
+                </ul>
+                <h3>What I am exploring</h3>
+                <p>How AI reshapes learning, building, and individual productivity.</p>
             `,
-            tags: ['系统化', '专注']
+            tags: ['AI Worldview', 'Workflow Thinking', 'Individual Leverage']
+        },
+        'motto': {
+            title: 'Personal Motto',
+            subtitle: 'Execution first, clarity through building',
+            avatar: '💬',
+            body: `
+                <h3>💬 Personal Motto</h3>
+                <p><strong>Build fast, learn faster — clarity comes from shipping.</strong></p>
+                <p>I prefer real feedback from something working over abstract confidence from overthinking.</p>
+            `,
+            tags: ['Shipping', 'Learning']
+        },
+        'sticky-intj': {
+            title: 'Working Style',
+            subtitle: 'Structured, independent, systems-oriented',
+            avatar: '🧠',
+            body: `
+                <p>I prefer clear architectures, focused execution, and end-to-end ownership. Less noise, more structure.</p>
+            `,
+            tags: ['Systems Thinking', 'Architecture', 'Ownership']
         },
         'sticky-agent': {
-            title: 'Agent Native',
-            subtitle: '把 AI 纳入工程化流程',
-            avatar: '🤖',
+            title: 'Builder Mode',
+            subtitle: 'My default mode is to narrow scope first, then ship quickly',
+            avatar: '🛠',
             body: `
-                <p>重点不是“会不会用工具”，而是能不能把 AI 变成<strong>可复用的工作流</strong>：有结构、有回退、有验证。</p>
+                <h3>🛠 Default behavior</h3>
+                <p>I reduce scope aggressively, ship the smallest useful version, and improve from real use.</p>
+                <h3>🚀 Why it matters</h3>
+                <p>This keeps momentum high and turns ambiguity into product feedback faster.</p>
+                <h3>📌 Principle</h3>
+                <p>Shipping is how I learn what matters.</p>
             `,
-            tags: ['AI工作流', '可靠性', '可复用']
+            tags: ['Execution', 'Iteration', 'Shipping']
         },
         'sticky-agent-native': {
-            title: 'Agent Native',
-            subtitle: '把 AI 当队友',
+            title: 'Agent-Native Approach',
+            subtitle: 'Design work as tasks AI can execute reliably',
             avatar: '🤖',
             body: `
-                <p>AI 不是替代，而是队友：在需求拆解、生成、重构、验证、总结上形成闭环。</p>
+                <h3>🧠 What it means</h3>
+                <p>I structure work so AI can execute it reliably: clear briefs, explicit checkpoints, and validation loops.</p>
+                <h3>🔁 Focus areas</h3>
+                <p>Task decomposition, delegation quality, and feedback systems.</p>
+                <h3>📈 Why it matters</h3>
+                <p>The value is not the label “AI-native” — it is reliable leverage.</p>
             `,
-            tags: ['Cursor', 'Claude', '工作流']
+            tags: ['Task Design', 'Prompt Structure', 'Feedback Loops']
+        },
+        'ai-tooling': {
+            title: 'AI Tooling',
+            subtitle: 'Tool names matter less than integration quality',
+            avatar: '⚙️',
+            body: `
+                <h3>⚙️ Core stack</h3>
+                <p>LLMs (Claude / GPT / Gemini) power coding, reasoning, and system design.</p>
+                <h3>🔧 Workflow layer</h3>
+                <p>Cursor and automation pipelines support rapid iteration, validation, and higher engineering throughput.</p>
+                <h3>🎯 Standard</h3>
+                <p>I care less about tool names and more about whether AI is truly integrated into the product development workflow.</p>
+            `,
+            tags: ['Claude', 'GPT', 'Cursor', 'Automation']
         },
         'contact': {
-            title: '联系我',
+            title: 'Contact Me',
             subtitle: 'Links',
             avatar: '📮',
             body: `
-                <p><strong>Email：</strong>yichen.lin.2004@gmail.com</p>
-                <p><strong>Phone：</strong>+1 236-777-6823</p>
-                <p><strong>LinkedIn：</strong><a href="https://www.linkedin.com/in/yichenlin-lyc/" target="_blank" rel="noopener">yichenlin-lyc</a></p>
-                <p><strong>GitHub：</strong><a href="https://github.com/ycl-2004" target="_blank" rel="noopener">github.com/ycl-2004</a></p>
-                <p><strong>Portfolio：</strong><a href="https://ycl-2004.github.io/Profile/" target="_blank" rel="noopener">ycl-2004.github.io/Profile/</a></p>
+                <p><strong>Email:</strong> yichen.lin.2004@gmail.com</p>
+                <p><strong>Phone:</strong> +1 236-777-6823</p>
+                <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/yichenlin-lyc/" target="_blank" rel="noopener">yichenlin-lyc</a></p>
+                <p><strong>GitHub:</strong> <a href="https://github.com/ycl-2004" target="_blank" rel="noopener">github.com/ycl-2004</a></p>
+                <p><strong>Portfolio:</strong> <a href="https://ycl-2004.github.io/Profile/" target="_blank" rel="noopener">ycl-2004.github.io/Profile/</a></p>
             `,
-            tags: ['开放机会', '欢迎交流']
+            tags: ['Open to Opportunities', 'Happy to Connect']
         }
     };
 })();

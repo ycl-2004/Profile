@@ -6,7 +6,7 @@
             <div class="modal" id="modal">
                 <div class="modal-header" id="modal-header">
                     <div class="modal-avatar" id="modal-avatar">📋</div>
-                    <div><div class="modal-title" id="modal-title">标题</div><div class="modal-subtitle" id="modal-subtitle">副标题</div></div>
+                    <div><div class="modal-title" id="modal-title">Title</div><div class="modal-subtitle" id="modal-subtitle">Subtitle</div></div>
                     <button class="modal-close" id="modal-close">×</button>
                 </div>
                 <div class="modal-body" id="modal-body"></div>

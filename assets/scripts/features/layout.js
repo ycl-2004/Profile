@@ -41,12 +41,12 @@
 
   function layoutDesktop() {
     const xSelf = 80;
-    const xGeneral = 470;
+    const xGeneral = 490;
     const xExp1 = 960;
     const xExp2 = 1320;
     const xExp3 = 1680;
 
-    const wSelf = 330;
+    const wSelf = 360;
     const wGeneral = 420;
     const wGrid = 340;
     const wHub = 180;
@@ -60,22 +60,40 @@
     let ySelf = top0 + getH(selfHub) + sectionGap;
 
     ({ y: ySelf } = stackCards(
-      ["profile", "narrative", "ai-partner"],
+      ["profile", "ai-partner"],
       xSelf,
       ySelf,
       wSelf,
       gap,
     ));
 
-    const agentNative = setCard("sticky-agent-native", xSelf, ySelf, 260);
-    ySelf += getH(agentNative) + gap;
+    const stickyW = 170;
+    const stickyGap = 20;
+    const agentNative = setCard("sticky-agent-native", xSelf, ySelf, stickyW);
+    const builderMode = setCard(
+      "sticky-agent",
+      xSelf + stickyW + stickyGap,
+      ySelf,
+      stickyW,
+    );
+    ySelf += Math.max(getH(agentNative), getH(builderMode)) + gap;
 
-    const motto = setCard("motto", xSelf, ySelf, wSelf);
-    ySelf += getH(motto) + gap;
+    ({ y: ySelf } = stackCards(
+      ["narrative", "ai-tooling"],
+      xSelf,
+      ySelf,
+      wSelf,
+      gap,
+    ));
 
-    const stickyIntj = setCard("sticky-intj", xSelf, ySelf, 156);
-    const stickyAgent = setCard("sticky-agent", xSelf + 174, ySelf, 156);
-    ySelf += Math.max(getH(stickyIntj), getH(stickyAgent)) + gap;
+    const stickyIntj = setCard("sticky-intj", xSelf, ySelf, stickyW);
+    const motto = setCard(
+      "motto",
+      xSelf + stickyW + stickyGap,
+      ySelf,
+      stickyW,
+    );
+    ySelf += Math.max(getH(stickyIntj), getH(motto)) + gap;
 
     const generalHub = setCard("general-hub", xGeneral, top0, wHub);
     let yGeneral = top0 + getH(generalHub) + sectionGap;
@@ -189,12 +207,13 @@
     ({ y: ySelf } = stackCards(
       [
         "profile",
-        "narrative",
         "ai-partner",
         "sticky-agent-native",
-        "motto",
-        "sticky-intj",
         "sticky-agent",
+        "narrative",
+        "ai-tooling",
+        "sticky-intj",
+        "motto",
       ],
       x1,
       ySelf,
@@ -306,12 +325,13 @@
     placeHub("self-hub");
     placeStack([
       "profile",
-      "narrative",
       "ai-partner",
       "sticky-agent-native",
-      "motto",
-      "sticky-intj",
       "sticky-agent",
+      "narrative",
+      "ai-tooling",
+      "sticky-intj",
+      "motto",
     ]);
 
     y += 8;
