@@ -1,386 +1,330 @@
 (function () {
-  const app = window.PortfolioApp;
-  const PHONE_BP = 768;
-  const TABLET_BP = 1365;
+    const app = window.PortfolioApp;
+    const PHONE_BP = 768;
+    const TABLET_BP = 1365;
 
-  function px(n) {
-    return Math.round(n) + "px";
-  }
-
-  function setCard(cardId, left, top, width) {
-    const el = document.querySelector(`[data-card="${cardId}"]`);
-    if (!el) return null;
-    el.style.left = px(left);
-    el.style.top = px(top);
-    if (typeof width === "number") el.style.width = px(width);
-    return el;
-  }
-
-  function getH(el) {
-    return el ? el.offsetHeight || 0 : 0;
-  }
-
-  function stackCards(cardIds, left, top, width, gap) {
-    let y = top;
-
-    cardIds.forEach((cardId) => {
-      const el = setCard(cardId, left, y, width);
-      y += getH(el) + gap;
-    });
-
-    return { y };
-  }
-
-  function getViewportMode() {
-    const viewportWidth = window.innerWidth;
-
-    if (viewportWidth < PHONE_BP) return "phone";
-    if (viewportWidth < TABLET_BP) return "tablet";
-    return "desktop";
-  }
-
-  function layoutDesktop() {
-    const xSelf = 80;
-    const xGeneral = 490;
-    const xExp1 = 960;
-    const xExp2 = 1320;
-    const xExp3 = 1680;
-
-    const wSelf = 360;
-    const wGeneral = 420;
-    const wGrid = 340;
-    const wHub = 180;
-    const wSubHub = 180;
-
-    const top0 = 70;
-    const gap = 18;
-    const sectionGap = 24;
-
-    const selfHub = setCard("self-hub", xSelf, top0, 170);
-    let ySelf = top0 + getH(selfHub) + sectionGap;
-
-    ({ y: ySelf } = stackCards(
-      ["profile", "ai-partner"],
-      xSelf,
-      ySelf,
-      wSelf,
-      gap,
-    ));
-
-    const stickyW = 170;
-    const stickyGap = 20;
-    const agentNative = setCard("sticky-agent-native", xSelf, ySelf, stickyW);
-    const builderMode = setCard(
-      "sticky-agent",
-      xSelf + stickyW + stickyGap,
-      ySelf,
-      stickyW,
-    );
-    ySelf += Math.max(getH(agentNative), getH(builderMode)) + gap;
-
-    ({ y: ySelf } = stackCards(
-      ["narrative", "ai-tooling"],
-      xSelf,
-      ySelf,
-      wSelf,
-      gap,
-    ));
-
-    const stickyIntj = setCard("sticky-intj", xSelf, ySelf, stickyW);
-    const motto = setCard(
-      "motto",
-      xSelf + stickyW + stickyGap,
-      ySelf,
-      stickyW,
-    );
-    ySelf += Math.max(getH(stickyIntj), getH(motto)) + gap;
-
-    const generalHub = setCard("general-hub", xGeneral, top0, wHub);
-    let yGeneral = top0 + getH(generalHub) + sectionGap;
-
-    ({ y: yGeneral } = stackCards(
-      ["timeline", "skills", "content", "opinion"],
-      xGeneral,
-      yGeneral,
-      wGeneral,
-      gap,
-    ));
-
-    const experienceHub = setCard("experience-hub", xExp2 + 20, top0, 190);
-    let yExperience = top0 + getH(experienceHub) + 28;
-
-    const workHub = setCard("work-hub", xExp1, yExperience, 170);
-    const independentHub = setCard(
-      "independent-hub",
-      xExp2,
-      yExperience,
-      wSubHub,
-    );
-    const researchHub = setCard("research-hub", xExp3, yExperience, 170);
-    yExperience +=
-      Math.max(getH(workHub), getH(independentHub), getH(researchHub)) + gap;
-
-    let yWork = yExperience;
-    ({ y: yWork } = stackCards(
-      ["work-delta", "work-joychime"],
-      xExp1,
-      yWork,
-      wGrid,
-      gap,
-    ));
-
-    let yIndependent = yExperience;
-    ({ y: yIndependent } = stackCards(
-      ["project-family-care", "project-ycapikit", "project-todo"],
-      xExp2,
-      yIndependent,
-      wGrid,
-      gap,
-    ));
-
-    let yResearch = yExperience;
-    ({ y: yResearch } = stackCards(
-      ["project-dao", "project-crypto", "project-edu-analysis"],
-      xExp3,
-      yResearch,
-      wGrid,
-      gap,
-    ));
-
-    const contactHub = setCard("contact-hub", xExp1, yWork + 8, 170);
-    const contact = setCard(
-      "contact",
-      xExp1,
-      yWork + 8 + getH(contactHub) + gap,
-      wGrid,
-    );
-
-    const yAcademic = Math.max(yIndependent - gap, yResearch - gap) + 34;
-
-    const academicHub = setCard("academic-hub", xExp2, yAcademic, wSubHub);
-    let yAcademicCards = yAcademic + getH(academicHub) + gap;
-
-    const balanceBot = setCard(
-      "project-balance-bot",
-      xExp2,
-      yAcademicCards,
-      wGrid,
-    );
-    const education = setCard("education", xExp3, yAcademicCards, wGrid);
-    const rowOneBottom = yAcademicCards + getH(balanceBot);
-
-    if (education) {
-      const minEducationTop = yAcademic + getH(academicHub) - 50;
-      const alignedEducationTop = Math.max(
-        minEducationTop,
-        rowOneBottom - getH(education),
-      );
-      education.style.top = px(alignedEducationTop);
+    function px(n) {
+        return Math.round(n) + 'px';
     }
 
-    yAcademicCards = rowOneBottom + gap;
-
-    const academicRowTwo = [
-      setCard("project-unity", xExp1, yAcademicCards, wGrid),
-      setCard("project-metal-detector", xExp2, yAcademicCards, wGrid),
-      setCard("project-sailbot", xExp3, yAcademicCards, wGrid),
-    ];
-    yAcademicCards += Math.max(...academicRowTwo.map(getH)) + gap;
-  }
-
-  function layoutTablet() {
-    const margin = 56;
-    const colGap = 32;
-    const totalWidth = Math.max(0, window.innerWidth - margin * 2 - colGap);
-    const colW = Math.max(296, Math.min(360, Math.floor(totalWidth / 2)));
-    const x1 = margin;
-    const x2 = margin + colW + colGap;
-
-    const top0 = 70;
-    const gap = 18;
-    const sectionGap = 22;
-
-    const selfHub = setCard("self-hub", x1, top0, 170);
-    const generalHub = setCard("general-hub", x2, top0, 180);
-
-    let ySelf = top0 + getH(selfHub) + sectionGap;
-    ({ y: ySelf } = stackCards(
-      [
-        "profile",
-        "ai-partner",
-        "sticky-agent-native",
-        "sticky-agent",
-        "narrative",
-        "ai-tooling",
-        "sticky-intj",
-        "motto",
-      ],
-      x1,
-      ySelf,
-      colW,
-      gap,
-    ));
-
-    let yGeneral = top0 + getH(generalHub) + sectionGap;
-    ({ y: yGeneral } = stackCards(
-      ["timeline", "skills", "content", "opinion"],
-      x2,
-      yGeneral,
-      colW,
-      gap,
-    ));
-
-    const expHubW = 190;
-    const expHubX = x1 + Math.round((colW * 2 + colGap - expHubW) / 2);
-    const yExpTop = Math.max(ySelf, yGeneral) + 36;
-    const experienceHub = setCard("experience-hub", expHubX, yExpTop, expHubW);
-    let yExperience = yExpTop + getH(experienceHub) + 24;
-
-    const workHub = setCard("work-hub", x1, yExperience, 170);
-    const independentHub = setCard("independent-hub", x2, yExperience, 180);
-    yExperience += Math.max(getH(workHub), getH(independentHub)) + gap;
-
-    let yWork = yExperience;
-    ({ y: yWork } = stackCards(
-      ["work-delta", "work-joychime"],
-      x1,
-      yWork,
-      colW,
-      gap,
-    ));
-
-    let yIndependent = yExperience;
-    ({ y: yIndependent } = stackCards(
-      ["project-family-care", "project-ycapikit", "project-todo"],
-      x2,
-      yIndependent,
-      colW,
-      gap,
-    ));
-
-    const yLowerTop = Math.max(yWork, yIndependent) + 32;
-    const researchHub = setCard("research-hub", x1, yLowerTop, 170);
-    const academicHub = setCard("academic-hub", x2, yLowerTop, 180);
-    const yLowerCards =
-      yLowerTop + Math.max(getH(researchHub), getH(academicHub)) + gap;
-
-    let yResearch = yLowerCards;
-    ({ y: yResearch } = stackCards(
-      ["project-dao", "project-crypto", "project-edu-analysis"],
-      x1,
-      yResearch,
-      colW,
-      gap,
-    ));
-
-    let yAcademic = yLowerCards;
-    ({ y: yAcademic } = stackCards(
-      [
-        "education",
-        "project-unity",
-        "project-sailbot",
-        "project-balance-bot",
-        "project-metal-detector",
-      ],
-      x2,
-      yAcademic,
-      colW,
-      gap,
-    ));
-
-    const yContactTop = Math.max(yResearch, yAcademic) + 36;
-    const contactHubW = 170;
-    const contactHubX = x1 + Math.round((colW * 2 + colGap - contactHubW) / 2);
-    const contactHub = setCard(
-      "contact-hub",
-      contactHubX,
-      yContactTop,
-      contactHubW,
-    );
-    const yContact = yContactTop + getH(contactHub) + gap;
-    const contactX = x1 + Math.round((colW * 2 + colGap - colW) / 2);
-    setCard("contact", contactX, yContact, colW);
-  }
-
-  function layoutPhone() {
-    const margin = 20;
-    const top0 = 68;
-    const gap = 14;
-    const sectionGap = 20;
-    const fullW = Math.max(268, Math.min(380, window.innerWidth - margin * 2));
-    const hubW = Math.min(190, fullW);
-    const x = margin;
-
-    let y = top0;
-
-    function placeHub(cardId) {
-      const hub = setCard(cardId, x, y, hubW);
-      y += getH(hub) + sectionGap;
+    function setCard(cardId, left, top, width) {
+        const el = document.querySelector(`[data-card="${cardId}"]`);
+        if (!el) return null;
+        el.style.left = px(left);
+        el.style.top = px(top);
+        if (typeof width === 'number') el.style.width = px(width);
+        return el;
     }
 
-    function placeStack(cardIds) {
-      ({ y } = stackCards(cardIds, x, y, fullW, gap));
+    function getH(el) {
+        return el ? el.offsetHeight || 0 : 0;
     }
 
-    placeHub("self-hub");
-    placeStack([
-      "profile",
-      "ai-partner",
-      "sticky-agent-native",
-      "sticky-agent",
-      "narrative",
-      "ai-tooling",
-      "sticky-intj",
-      "motto",
-    ]);
+    function stackCards(cardIds, left, top, width, gap) {
+        let y = top;
 
-    y += 8;
-    placeHub("general-hub");
-    placeStack(["timeline", "skills", "content", "opinion"]);
+        cardIds.forEach((cardId) => {
+            const el = setCard(cardId, left, y, width);
+            y += getH(el) + gap;
+        });
 
-    y += 10;
-    placeHub("experience-hub");
-    placeHub("work-hub");
-    placeStack(["work-delta", "work-joychime"]);
-
-    y += 6;
-    placeHub("independent-hub");
-    placeStack(["project-family-care", "project-ycapikit", "project-todo"]);
-
-    y += 6;
-    placeHub("research-hub");
-    placeStack(["project-dao", "project-crypto", "project-edu-analysis"]);
-
-    y += 6;
-    placeHub("academic-hub");
-    placeStack([
-      "education",
-      "project-unity",
-      "project-sailbot",
-      "project-balance-bot",
-      "project-metal-detector",
-    ]);
-
-    y += 10;
-    placeHub("contact-hub");
-    placeStack(["contact"]);
-  }
-
-  app.getViewportMode = getViewportMode;
-
-  app.applyDefaultLayout = function applyDefaultLayout() {
-    const mode = getViewportMode();
-    app.state.viewportMode = mode;
-
-    if (mode === "phone") {
-      layoutPhone();
-    } else if (mode === "tablet") {
-      layoutTablet();
-    } else {
-      layoutDesktop();
+        return { y };
     }
 
-    if (typeof app.updateConnections === "function") app.updateConnections();
-    if (typeof app.updateMinimap === "function") app.updateMinimap();
-  };
+    function placeGridRows(rows, leftA, leftB, top, width, gap) {
+        let y = top;
+
+        rows.forEach(([cardA, cardB]) => {
+            const elA = cardA ? setCard(cardA, leftA, y, width) : null;
+            const elB = cardB ? setCard(cardB, leftB, y, width) : null;
+            y += Math.max(getH(elA), getH(elB)) + gap;
+        });
+
+        return { y };
+    }
+
+    function getViewportMode() {
+        const viewportWidth = window.innerWidth;
+
+        if (viewportWidth < PHONE_BP) return 'phone';
+        if (viewportWidth < TABLET_BP) return 'tablet';
+        return 'desktop';
+    }
+
+    function layoutDesktop() {
+        const top0 = 112;
+        const vGap = 24;
+        const sectionGap = 24;
+        const rowGap = 24;
+
+        const xSelf = 56;
+        const xGeneral = 378;
+        const xExpA = 752;
+        const xExpB = 1070;
+        const xConnect = 1418;
+        const xExplore = 1698;
+
+        const wSelf = 286;
+        const wGeneral = 334;
+        const wExp = 290;
+        const wExpSection = (xExpB + wExp) - xExpA;
+        const wConnect = 244;
+        const wExplore = 236;
+        const wLabel = 162;
+
+        const selfSection = setCard('section-self', xSelf, top0, wSelf);
+        let ySelf = top0 + getH(selfSection) + sectionGap;
+        ({ y: ySelf } = stackCards(
+            [
+                'self-philosophy',
+                'self-agent-native',
+                'self-builder-mode',
+                'self-motto',
+                'self-what-i-build',
+                'self-ai-tooling'
+            ],
+            xSelf,
+            ySelf,
+            wSelf,
+            vGap
+        ));
+
+        const generalSection = setCard('section-general', xGeneral, top0, wGeneral);
+        let yGeneral = top0 + getH(generalSection) + sectionGap;
+        ({ y: yGeneral } = stackCards(
+            ['timeline', 'skills', 'content', 'opinion'],
+            xGeneral,
+            yGeneral,
+            wGeneral,
+            vGap
+        ));
+
+        const expSection = setCard('section-experience', xExpA, top0, wExpSection);
+        let yExp = top0 + getH(expSection) + sectionGap;
+        const mainLabel = setCard('experience-main-label', xExpA + 16, yExp, wLabel);
+        yExp += getH(mainLabel) + rowGap;
+        ({ y: yExp } = placeGridRows(
+            [
+                ['project-family-care', 'project-ycapikit'],
+                ['work-delta', 'project-crypto'],
+                ['project-todo', 'project-edu-analysis']
+            ],
+            xExpA,
+            xExpB,
+            yExp,
+            wExp,
+            rowGap
+        ));
+
+        const sideLabel = setCard('experience-side-label', xExpA + 16, yExp + 8, 196);
+        yExp = yExp + 8 + getH(sideLabel) + rowGap;
+        ({ y: yExp } = placeGridRows(
+            [
+                ['project-balance-bot', 'education'],
+                ['project-unity', 'project-sailbot']
+            ],
+            xExpA,
+            xExpB,
+            yExp,
+            wExp,
+            rowGap
+        ));
+
+        const connectSection = setCard('section-connect', xConnect, top0, wConnect);
+        let yConnect = top0 + getH(connectSection) + sectionGap;
+        ({ y: yConnect } = stackCards(
+            ['contact', 'connect-collab', 'connect-stats', 'connect-quote'],
+            xConnect,
+            yConnect,
+            wConnect,
+            vGap
+        ));
+
+        const exploreSection = setCard('section-explore', xExplore, top0, wExplore);
+        let yExplore = top0 + getH(exploreSection) + sectionGap;
+        ({ y: yExplore } = stackCards(
+            ['explore-links', 'explore-tech', 'explore-current'],
+            xExplore,
+            yExplore,
+            wExplore,
+            vGap
+        ));
+    }
+
+    function layoutTablet() {
+        const margin = 44;
+        const top0 = 112;
+        const gap = 20;
+        const rowGap = 18;
+        const totalW = Math.max(0, window.innerWidth - margin * 2 - gap);
+        const leftW = Math.max(280, Math.min(336, Math.floor(totalW * 0.38)));
+        const rightW = Math.max(320, totalW - leftW);
+        const xLeft = margin;
+        const xRight = margin + leftW + gap;
+
+        const selfSection = setCard('section-self', xLeft, top0, leftW);
+        let yLeft = top0 + getH(selfSection) + 20;
+        ({ y: yLeft } = stackCards(
+            [
+                'self-philosophy',
+                'self-agent-native',
+                'self-builder-mode',
+                'self-motto',
+                'self-what-i-build',
+                'self-ai-tooling'
+            ],
+            xLeft,
+            yLeft,
+            leftW,
+            gap
+        ));
+
+        const generalSection = setCard('section-general', xRight, top0, rightW);
+        let yRight = top0 + getH(generalSection) + 20;
+        ({ y: yRight } = stackCards(
+            ['timeline', 'skills', 'content', 'opinion'],
+            xRight,
+            yRight,
+            rightW,
+            gap
+        ));
+
+        const gridTop = Math.max(yLeft, yRight) + 34;
+        const gridW = Math.max(260, Math.floor((window.innerWidth - margin * 2 - gap) / 2));
+        const xGridA = margin;
+        const xGridB = margin + gridW + gap;
+
+        const expSection = setCard('section-experience', xGridA, gridTop, gridW * 2 + gap);
+        let yExp = gridTop + getH(expSection) + 18;
+        const mainLabel = setCard('experience-main-label', xGridA + 10, yExp, 150);
+        yExp += getH(mainLabel) + rowGap;
+        ({ y: yExp } = placeGridRows(
+            [
+                ['project-family-care', 'project-ycapikit'],
+                ['work-delta', 'project-crypto'],
+                ['project-todo', 'project-edu-analysis']
+            ],
+            xGridA,
+            xGridB,
+            yExp,
+            gridW,
+            rowGap
+        ));
+
+        const sideLabel = setCard('experience-side-label', xGridA + 10, yExp + 6, 184);
+        yExp = yExp + 6 + getH(sideLabel) + rowGap;
+        ({ y: yExp } = placeGridRows(
+            [
+                ['project-balance-bot', 'education'],
+                ['project-unity', 'project-sailbot']
+            ],
+            xGridA,
+            xGridB,
+            yExp,
+            gridW,
+            rowGap
+        ));
+
+        const yBottom = yExp + 30;
+        const bottomColW = Math.floor((window.innerWidth - margin * 2 - gap) / 2);
+
+        const connectSection = setCard('section-connect', xGridA, yBottom, bottomColW);
+        let yConnect = yBottom + getH(connectSection) + 18;
+        ({ y: yConnect } = stackCards(
+            ['contact', 'connect-collab', 'connect-stats', 'connect-quote'],
+            xGridA,
+            yConnect,
+            bottomColW,
+            gap
+        ));
+
+        const exploreSection = setCard('section-explore', xGridB, yBottom, bottomColW);
+        let yExplore = yBottom + getH(exploreSection) + 18;
+        ({ y: yExplore } = stackCards(
+            ['explore-links', 'explore-tech', 'explore-current'],
+            xGridB,
+            yExplore,
+            bottomColW,
+            gap
+        ));
+    }
+
+    function layoutPhone() {
+        const margin = 20;
+        const top0 = 92;
+        const gap = 14;
+        const fullW = Math.max(268, Math.min(390, window.innerWidth - margin * 2));
+        const sectionW = fullW;
+        const x = margin;
+        let y = top0;
+
+        function placeOne(cardId, width = fullW) {
+            const el = setCard(cardId, x, y, width);
+            y += getH(el) + gap;
+        }
+
+        function placePair(cardA, cardB) {
+            const halfGap = 12;
+            const colW = Math.floor((fullW - halfGap) / 2);
+            const elA = setCard(cardA, x, y, colW);
+            const elB = setCard(cardB, x + colW + halfGap, y, colW);
+            y += Math.max(getH(elA), getH(elB)) + gap;
+        }
+
+        placeOne('section-self', sectionW);
+        placeOne('self-philosophy');
+        placeOne('self-agent-native');
+        placeOne('self-builder-mode');
+        placeOne('self-motto');
+        placeOne('self-what-i-build');
+        placeOne('self-ai-tooling');
+
+        y += 4;
+        placeOne('section-general', sectionW);
+        placeOne('timeline');
+        placeOne('skills');
+        placeOne('content');
+        placeOne('opinion');
+
+        y += 4;
+        placeOne('section-experience', sectionW);
+        placeOne('experience-main-label', 164);
+        placePair('project-family-care', 'project-ycapikit');
+        placePair('work-delta', 'project-crypto');
+        placePair('project-todo', 'project-edu-analysis');
+        placeOne('experience-side-label', 196);
+        placePair('project-balance-bot', 'education');
+        placePair('project-unity', 'project-sailbot');
+
+        y += 4;
+        placeOne('section-connect', sectionW);
+        placeOne('contact');
+        placeOne('connect-collab');
+        placeOne('connect-stats');
+        placeOne('connect-quote');
+
+        y += 4;
+        placeOne('section-explore', sectionW);
+        placeOne('explore-links');
+        placeOne('explore-tech');
+        placeOne('explore-current');
+    }
+
+    app.getViewportMode = getViewportMode;
+
+    app.applyDefaultLayout = function applyDefaultLayout() {
+        const mode = getViewportMode();
+        app.state.viewportMode = mode;
+
+        if (mode === 'phone') {
+            layoutPhone();
+        } else if (mode === 'tablet') {
+            layoutTablet();
+        } else {
+            layoutDesktop();
+        }
+
+        if (typeof app.updateConnections === 'function') app.updateConnections();
+        if (typeof app.updateMinimap === 'function') app.updateMinimap();
+    };
 })();

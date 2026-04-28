@@ -3,6 +3,9 @@
 
     app.render();
     app.cacheDom();
+    if (typeof app.initTheme === 'function') {
+        app.initTheme();
+    }
     if (typeof app.decorateProjectTags === 'function') {
         app.decorateProjectTags();
     }

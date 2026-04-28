@@ -24,8 +24,8 @@
                                 </h1>
                                 <p class="terminal-line terminal-role terminal-nav-target terminal-nav-inline terminal-nav-marker" data-nav-target="role" style="animation-delay:0.54s;">AI-Native Product Engineer · Full-Stack Builder</p>
                                 <p class="terminal-line terminal-summary terminal-nav-target terminal-nav-inline terminal-nav-marker" data-nav-target="summary" style="animation-delay:0.78s;">
-                                    I build practical systems that solve real problems by combining software engineering, product thinking,
-                                    and <span class="terminal-summary-accent">AI-powered workflows</span>.
+                                    I build products and systems people can actually use by combining software engineering, product judgment,
+                                    and <span class="terminal-summary-accent">AI-powered execution</span>.
                                 </p>
 
                                 <div class="terminal-line terminal-quickfacts terminal-nav-target terminal-nav-section terminal-nav-marker" data-nav-target="quickfacts" style="animation-delay:1s;">
@@ -71,17 +71,17 @@
 
                             <aside class="terminal-line terminal-detail-panel" style="animation-delay:1.02s;">
                                 <section class="terminal-panel-section terminal-nav-target terminal-nav-panel terminal-nav-marker" data-nav-target="about">
-                                    <div class="terminal-panel-title"><span class="terminal-panel-icon">◌</span><span>About me</span></div>
-                                    <p>I turn ambiguity into useful systems with a strong bias for clarity, execution, and real-world usefulness.</p>
+                                    <div class="terminal-panel-title"><span class="terminal-panel-icon">◌</span><span>How I build</span></div>
+                                    <p>I turn ambiguous problems into clear, working systems with a bias for execution, usability, and real-world results.</p>
                                 </section>
 
                                 <section class="terminal-panel-section terminal-nav-target terminal-nav-panel terminal-nav-marker" data-nav-target="what">
-                                    <div class="terminal-panel-title"><span class="terminal-panel-icon">✦</span><span>What I do</span></div>
+                                    <div class="terminal-panel-title"><span class="terminal-panel-icon">✦</span><span>What I build</span></div>
                                     <ul class="terminal-panel-list">
-                                        <li>AI-native development workflows</li>
-                                        <li>Full-stack product building</li>
-                                        <li>System design and automation</li>
-                                        <li>Rapid prototyping with product judgment</li>
+                                        <li>User-facing apps across web and desktop</li>
+                                        <li>AI-powered tools and agent workflows</li>
+                                        <li>Workflow systems that reduce complexity</li>
+                                        <li>Rapid prototypes that turn into shipped decisions</li>
                                     </ul>
                                 </section>
 
@@ -100,7 +100,7 @@
                                 </section>
 
                                 <section class="terminal-panel-section terminal-panel-section--closing terminal-nav-target terminal-nav-panel terminal-nav-marker" data-nav-target="note">
-                                    <p class="terminal-panel-note">Based in Vancouver. Open to internships, thoughtful collaborations, and meaningful product work.</p>
+                                    <p class="terminal-panel-note">Based in Vancouver. Open to internships and product work where speed, systems thinking, and execution matter.</p>
                                 </section>
                             </aside>
                         </div>
@@ -138,9 +138,23 @@
 
                         <div class="terminal-line terminal-launch" aria-live="polite" style="animation-delay:1.92s;">
                             <button class="terminal-enter-button" id="terminal-launch-button" type="button">
-                                <span>Press Enter to explore the canvas</span>
+                                <span>Press Enter to boot the canvas</span>
                                 <span class="terminal-enter-button-icon" aria-hidden="true">↵</span>
                             </button>
+                            <div class="terminal-progress-wrap">
+                                <div class="terminal-progress" id="terminal-progress" role="progressbar" aria-valuemin="0" aria-valuemax="120" aria-valuenow="0" aria-label="Canvas charge progress">
+                                    <span class="terminal-progress-label">Boot</span>
+                                    <div class="terminal-battery">
+                                        <div class="terminal-battery-shell">
+                                            <div class="terminal-progress-track">
+                                                <div class="terminal-progress-fill" id="terminal-progress-fill"></div>
+                                            </div>
+                                        </div>
+                                        <div class="terminal-battery-cap" aria-hidden="true"></div>
+                                    </div>
+                                    <span class="terminal-progress-value" id="terminal-progress-value">000 / 120</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -8,6 +8,25 @@
         return Math.max(min, Math.min(max, value));
     }
 
+    function getFitMetrics() {
+        const safe = getSafeArea();
+        const bounds = getContentBounds();
+        const mode = getViewportMode();
+        const padding = mode === 'phone' ? 20 : mode === 'tablet' ? 32 : 64;
+        const targetW = Math.max(1, safe.width - padding * 2);
+        const targetH = Math.max(1, safe.height - padding * 2);
+        const scaleX = bounds.width ? targetW / bounds.width : 1;
+        const scaleY = bounds.height ? targetH / bounds.height : 1;
+        const minScale = mode === 'phone' ? 0.45 : 0.3;
+
+        return {
+            safe,
+            bounds,
+            mode,
+            fitScale: clamp(Math.min(scaleX, scaleY), minScale, 3)
+        };
+    }
+
     function getViewportMode() {
         const width = window.innerWidth;
 
@@ -19,9 +38,32 @@
     function getBoundsPadding() {
         const mode = getViewportMode();
 
-        if (mode === 'phone') return 48;
-        if (mode === 'tablet') return 96;
-        return 160;
+        if (mode === 'phone') return 40;
+        if (mode === 'tablet') return 56;
+        return 72;
+    }
+
+    function isCanvasUiControlTarget(target) {
+        if (!(target instanceof Element)) return false;
+
+        return !!target.closest(
+            [
+                '.sidebar',
+                '.sidebar-scrim',
+                '.top-bar',
+                '.canvas-view-header',
+                '.zoom-controls',
+                '.bottom-hint',
+                '.theme-toggle',
+                '.modal-overlay',
+                'button',
+                'a',
+                'input',
+                'select',
+                'textarea',
+                'label'
+            ].join(', ')
+        );
     }
 
     function getSafeArea() {
@@ -123,20 +165,38 @@
 
     app.zoomToFit = function zoomToFit() {
         const state = app.state;
-        const safe = getSafeArea();
-        const bounds = getContentBounds();
-        const mode = getViewportMode();
-        const padding = mode === 'phone' ? 20 : mode === 'tablet' ? 40 : 80;
-        const targetW = Math.max(1, safe.width - padding * 2);
-        const targetH = Math.max(1, safe.height - padding * 2);
-        const scaleX = bounds.width ? targetW / bounds.width : 1;
-        const scaleY = bounds.height ? targetH / bounds.height : 1;
+        const { safe, bounds, fitScale } = getFitMetrics();
 
-        state.scale = clamp(Math.min(scaleX, scaleY), mode === 'phone' ? 0.45 : 0.3, 3);
+        state.scale = fitScale;
 
         // 让内容在可视区域居中
         state.panX = safe.left + (safe.width - bounds.width * state.scale) / 2 - bounds.minX * state.scale;
         state.panY = safe.top + (safe.height - bounds.height * state.scale) / 2 - bounds.minY * state.scale;
+
+        app.constrainView();
+        app.updateTransform();
+    };
+
+    app.zoomToOverview = function zoomToOverview() {
+        const state = app.state;
+        const { safe, bounds, fitScale, mode } = getFitMetrics();
+        const topInset = mode === 'phone' ? 18 : mode === 'tablet' ? 34 : 64;
+        const sideInset = mode === 'phone' ? 18 : mode === 'tablet' ? 24 : 32;
+
+        if (mode === 'phone') {
+            state.scale = fitScale;
+        } else if (mode === 'tablet') {
+            state.scale = clamp(Math.max(fitScale * 1.12, 0.52), 0.45, 0.72);
+        } else {
+            state.scale = clamp(Math.max(fitScale * 1.28, 0.62), 0.5, 0.82);
+        }
+
+        const contentWidth = bounds.width * state.scale;
+        const centeredPanX = safe.left + (safe.width - contentWidth) / 2 - bounds.minX * state.scale;
+        const leftAlignedPanX = safe.left + sideInset - bounds.minX * state.scale;
+
+        state.panX = contentWidth <= safe.width - sideInset * 2 ? centeredPanX : leftAlignedPanX;
+        state.panY = safe.top + topInset - bounds.minY * state.scale;
 
         app.constrainView();
         app.updateTransform();
@@ -172,9 +232,7 @@
                 (event.button === 0 &&
                     event.target.closest('#canvas-app') &&
                     !event.target.closest('.card') &&
-                    !event.target.closest('.sidebar') &&
-                    !event.target.closest('.sidebar-scrim') &&
-                    !event.target.closest('.top-bar'))
+                    !isCanvasUiControlTarget(event.target))
             ) {
                 app.state.isPanning = true;
                 app.state.startX = event.clientX - app.state.panX;
@@ -196,6 +254,12 @@
         });
 
         document.addEventListener('wheel', (event) => {
+            const isCanvasTarget =
+                event.target.closest('#canvas-app') &&
+                !isCanvasUiControlTarget(event.target);
+
+            if (!isCanvasTarget) return;
+
             if (event.ctrlKey || event.metaKey) {
                 event.preventDefault();
 
@@ -209,7 +273,13 @@
                 app.state.panX = event.clientX - worldX * newScale;
                 app.state.panY = event.clientY - worldY * newScale;
                 app.updateTransform();
+                return;
             }
+
+            event.preventDefault();
+            app.state.panX -= event.deltaX;
+            app.state.panY -= event.deltaY;
+            app.updateTransform();
         }, { passive: false });
 
         // --- Touch support (手机/平板)：单指拖拽平移；双指捏合缩放
@@ -239,7 +309,7 @@
                 const target = event.target;
 
                 if (!target.closest('#canvas-app')) return;
-                if (target.closest('.sidebar') || target.closest('.sidebar-scrim') || target.closest('.top-bar')) return;
+                if (isCanvasUiControlTarget(target)) return;
                 if (target.closest('.card')) return;
 
                 if (t.length === 1) {

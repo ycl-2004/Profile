@@ -11,32 +11,31 @@ svg.connections {
 
 svg.connections path {
     fill: none;
-    stroke: var(--pink);
-    stroke-width: 1.5;
-    stroke-dasharray: 6, 4;
-    opacity: 0.35;
-    transition: opacity 0.3s, stroke-width 0.3s, stroke 0.3s;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    vector-effect: non-scaling-stroke;
+    transition: opacity 0.3s ease, stroke-width 0.3s ease, stroke 0.3s ease;
 }
 
 svg.connections path[data-kind="path"] {
-    stroke: rgba(86, 98, 131, 0.55);
-    stroke-width: 1.2;
-    stroke-dasharray: 2, 10;
-    opacity: 0.18;
+    stroke: var(--connection-path);
+    stroke-width: 1.55;
+    stroke-dasharray: 3, 7;
+    opacity: 0.42;
 }
 
 svg.connections path[data-kind="primary"] {
-    stroke: rgba(255, 143, 171, 0.9);
-    stroke-width: 1.55;
-    stroke-dasharray: 6, 4;
-    opacity: 0.33;
+    stroke: var(--connection-primary);
+    stroke-width: 2.15;
+    stroke-dasharray: 6, 6;
+    opacity: 0.54;
 }
 
 svg.connections path[data-kind="secondary"] {
-    stroke: rgba(140, 125, 170, 0.8);
-    stroke-width: 1.25;
-    stroke-dasharray: 4, 7;
-    opacity: 0.2;
+    stroke: var(--connection-secondary);
+    stroke-width: 1.7;
+    stroke-dasharray: 5, 7;
+    opacity: 0.42;
 }
 
-svg.connections path:hover { opacity: 0.6; stroke-width: 2; }
+svg.connections path:hover { opacity: 0.74; stroke-width: 2.45; }

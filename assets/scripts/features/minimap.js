@@ -4,9 +4,8 @@
 
     app.initMinimap = function initMinimap() {
         const minimapContent = app.dom.minimapContent;
-        const minimapContainer = minimapContent ? minimapContent.closest('.minimap') : null;
-        const mw = minimapContainer ? minimapContainer.clientWidth : 160;
-        const mh = minimapContainer ? minimapContainer.clientHeight : 100;
+        const mw = minimapContent ? minimapContent.clientWidth : 160;
+        const mh = minimapContent ? minimapContent.clientHeight : 100;
         const cards = document.querySelectorAll('.card');
         let minX = Infinity;
         let minY = Infinity;
@@ -60,9 +59,8 @@
 
         if (!indicator) return;
         const minimapContent = app.dom.minimapContent;
-        const minimapContainer = minimapContent ? minimapContent.closest('.minimap') : null;
-        const mw = minimapContainer ? minimapContainer.clientWidth : 160;
-        const mh = minimapContainer ? minimapContainer.clientHeight : 100;
+        const mw = minimapContent ? minimapContent.clientWidth : 160;
+        const mh = minimapContent ? minimapContent.clientHeight : 100;
 
         const cards = document.querySelectorAll('.card');
         let minX = Infinity;

@@ -53,39 +53,85 @@
     function updatePath(path) {
         const from = path.dataset.from;
         const to = path.dataset.to;
-        const kind = path.dataset.kind;
         const fromCard = getCardEl(from);
         const toCard = getCardEl(to);
 
         if (!fromCard || !toCard) return;
 
-        const fromCenter = app.getCardCenter(fromCard);
-        const toCenter = app.getCardCenter(toCard);
-        path.setAttribute('d', app.createCurvedPath(fromCenter, toCenter));
-        if (kind === 'primary') {
-            path.setAttribute('marker-end', 'url(#arrow)');
-        } else {
-            path.removeAttribute('marker-end');
-        }
+        const fromBox = app.getCardBox(fromCard);
+        const toBox = app.getCardBox(toCard);
+        const anchors = app.getConnectionAnchors(fromBox, toBox);
+
+        path.setAttribute('d', app.createFlowPath(anchors.from, anchors.to, anchors.orientation));
+        path.removeAttribute('marker-end');
     }
 
-    app.getCardCenter = function getCardCenter(card) {
+    app.getCardBox = function getCardBox(card) {
         const x = parseFloat(card.style.left);
         const y = parseFloat(card.style.top);
-        const w = parseFloat(card.style.width);
+        const w = parseFloat(card.style.width) || card.offsetWidth || 0;
         const h = card.offsetHeight || 200;
 
-        return { x: x + w / 2, y: y + h / 2 };
+        return {
+            left: x,
+            top: y,
+            width: w,
+            height: h,
+            right: x + w,
+            bottom: y + h,
+            centerX: x + w / 2,
+            centerY: y + h / 2
+        };
     };
 
-    app.createCurvedPath = function createCurvedPath(from, to) {
+    app.getCardCenter = function getCardCenter(card) {
+        const box = app.getCardBox(card);
+        return { x: box.centerX, y: box.centerY };
+    };
+
+    app.getConnectionAnchors = function getConnectionAnchors(fromBox, toBox) {
+        const dx = toBox.centerX - fromBox.centerX;
+        const dy = toBox.centerY - fromBox.centerY;
+        const horizontal = Math.abs(dx) >= Math.abs(dy);
+
+        if (horizontal) {
+            const fromX = dx >= 0 ? fromBox.right : fromBox.left;
+            const toX = dx >= 0 ? toBox.left : toBox.right;
+
+            return {
+                orientation: 'horizontal',
+                from: { x: fromX, y: fromBox.centerY },
+                to: { x: toX, y: toBox.centerY }
+            };
+        }
+
+        const fromY = dy >= 0 ? fromBox.bottom : fromBox.top;
+        const toY = dy >= 0 ? toBox.top : toBox.bottom;
+
+        return {
+            orientation: 'vertical',
+            from: { x: fromBox.centerX, y: fromY },
+            to: { x: toBox.centerX, y: toY }
+        };
+    };
+
+    app.createFlowPath = function createFlowPath(from, to, orientation) {
         const dx = to.x - from.x;
         const dy = to.y - from.y;
-        const midX = (from.x + to.x) / 2;
-        const controlX = midX + (dy * 0.2);
-        const controlY = (from.y + to.y) / 2 - (dx * 0.1);
 
-        return `M ${from.x} ${from.y} Q ${controlX} ${controlY} ${to.x} ${to.y}`;
+        if (orientation === 'vertical') {
+            const curveY = Math.max(22, Math.min(72, Math.abs(dy) * 0.35));
+            const c1y = from.y + (dy >= 0 ? curveY : -curveY);
+            const c2y = to.y - (dy >= 0 ? curveY : -curveY);
+
+            return `M ${from.x} ${from.y} C ${from.x} ${c1y}, ${to.x} ${c2y}, ${to.x} ${to.y}`;
+        }
+
+        const curveX = Math.max(28, Math.min(92, Math.abs(dx) * 0.32));
+        const c1x = from.x + (dx >= 0 ? curveX : -curveX);
+        const c2x = to.x - (dx >= 0 ? curveX : -curveX);
+
+        return `M ${from.x} ${from.y} C ${c1x} ${from.y}, ${c2x} ${to.y}, ${to.x} ${to.y}`;
     };
 
     app.updateConnections = function updateConnections() {

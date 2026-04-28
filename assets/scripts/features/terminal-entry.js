@@ -1,6 +1,7 @@
 (function () {
     const app = window.PortfolioApp;
-    const LAUNCH_DURATION_MS = 1600;
+    const LAUNCH_DURATION_MS = 2100;
+    const LAUNCH_MAX_VALUE = 120;
     const NAV_GRAPH = {
         hero: { down: 'role', right: 'about' },
         role: { up: 'hero', down: 'summary', right: 'what' },
@@ -53,20 +54,23 @@
 
         const progressFill = terminalEntry.querySelector('#terminal-progress-fill');
         const progressValue = terminalEntry.querySelector('#terminal-progress-value');
-        const launchStatus = terminalEntry.querySelector('#terminal-launch-status');
+        const progressBar = terminalEntry.querySelector('#terminal-progress');
         const launchButton = terminalEntry.querySelector('#terminal-launch-button');
 
         isLaunching = true;
         terminalEntry.classList.add('is-launching');
         terminalEntry.setAttribute('aria-busy', 'true');
 
+        function formatChargeValue(value) {
+            return `${String(value).padStart(3, '0')} / ${LAUNCH_MAX_VALUE}`;
+        }
+
         if (launchButton) {
             launchButton.disabled = true;
-            launchButton.textContent = 'Opening canvas...';
         }
-        if (launchStatus) {
-            launchStatus.textContent = 'Initializing interactive canvas...';
-        }
+        if (progressFill) progressFill.style.width = '0%';
+        if (progressValue) progressValue.textContent = formatChargeValue(0);
+        if (progressBar) progressBar.setAttribute('aria-valuenow', '0');
 
         const startTime = performance.now();
 
@@ -74,18 +78,17 @@
             const elapsed = currentTime - startTime;
             const rawProgress = Math.min(elapsed / LAUNCH_DURATION_MS, 1);
             const easedProgress = 1 - Math.pow(1 - rawProgress, 3);
-            const percentage = Math.round(easedProgress * 100);
+            const chargeValue = Math.min(Math.round(easedProgress * LAUNCH_MAX_VALUE), LAUNCH_MAX_VALUE);
+            const chargePercentage = (chargeValue / LAUNCH_MAX_VALUE) * 100;
 
-            if (progressFill) progressFill.style.width = percentage + '%';
-            if (progressValue) progressValue.textContent = percentage + '%';
+            if (progressFill) progressFill.style.width = chargePercentage + '%';
+            if (progressValue) progressValue.textContent = formatChargeValue(chargeValue);
+            if (progressBar) progressBar.setAttribute('aria-valuenow', String(chargeValue));
+            if (progressBar) progressBar.setAttribute('aria-valuetext', `Boot progress ${chargeValue} of ${LAUNCH_MAX_VALUE}`);
 
             if (rawProgress < 1) {
                 window.requestAnimationFrame(step);
                 return;
-            }
-
-            if (launchStatus) {
-                launchStatus.textContent = 'Opening portfolio canvas...';
             }
 
             window.setTimeout(() => {

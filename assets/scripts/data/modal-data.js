@@ -1,5 +1,99 @@
 (function () {
     const app = window.PortfolioApp;
+    const selfPhilosophy = {
+        title: 'AI Philosophy',
+        subtitle: 'AI handles execution, iteration, and scale; I direct the product',
+        avatar: '🧠',
+        body: `
+            <h3>🧠 Division of labor</h3>
+            <p>I design systems where AI handles execution, iteration, and scale — while I focus on structure, decisions, and product direction.</p>
+            <h3>⚙️ Why it works</h3>
+            <p>The leverage comes from pairing speed with judgment: more exploration, faster feedback loops, and clearer workflows without losing product quality.</p>
+            <h3>🎯 What matters</h3>
+            <p>I do not use AI as decoration. I build around it as an operating layer for shipping better products.</p>
+        `,
+        tags: ['AI Collaboration', 'Product Direction', 'Workflow Design']
+    };
+    const selfAgentNative = {
+        title: 'Agent-Native Approach',
+        subtitle: 'Decompose work so AI can execute it reliably',
+        avatar: '🤖',
+        body: `
+            <h3>🤖 What it means</h3>
+            <p>I decompose problems into structured tasks AI agents can execute, review, and improve — creating fast, scalable workflows.</p>
+            <h3>🔁 Focus areas</h3>
+            <p>Task structure, delegation quality, and feedback loops that keep output useful instead of noisy.</p>
+            <h3>📈 Why it matters</h3>
+            <p>The value is not “using agents.” The value is building repeatable systems that increase execution capacity.</p>
+        `,
+        tags: ['Task Design', 'Scalable Workflows', 'Feedback Loops']
+    };
+    const selfBuilderMode = {
+        title: 'Builder Mode',
+        subtitle: 'Turn ideas into working products fast',
+        avatar: '🛠',
+        body: `
+            <h3>🛠 Default behavior</h3>
+            <p>I turn ideas into real, working products fast. Prototype, test, refine — until the value becomes obvious to users.</p>
+            <h3>🚀 Why it matters</h3>
+            <p>Speed is useful when it creates learning. Shipping early helps me find signal, remove waste, and improve the product with real feedback.</p>
+            <h3>📌 Principle</h3>
+            <p>I trust working systems and user response more than abstract certainty.</p>
+        `,
+        tags: ['Execution', 'Iteration', 'Shipping']
+    };
+    const selfMotto = {
+        title: 'Motto',
+        subtitle: 'Clarity comes from building what people can use',
+        avatar: '💬',
+        body: `
+            <h3>💬 Core line</h3>
+            <p><strong>I turn ambiguity into systems people can actually use.</strong></p>
+            <h3>🎯 What it means</h3>
+            <p>The goal is not elegant description. The goal is a system that makes complexity clearer and more useful in the real world.</p>
+        `,
+        tags: ['Clarity', 'Usefulness', 'Execution']
+    };
+    const workingStyle = {
+        title: 'Working Style',
+        subtitle: 'Structured, reliable, and execution-focused',
+        avatar: '🧠',
+        body: `
+            <h3>🤝 How I show up</h3>
+            <p>I prioritize clarity, follow-through, and building systems that work in real use.</p>
+            <h3>📌 What that looks like</h3>
+            <p>I like clean structure, visible progress, and decisions that move the product forward instead of making the process louder.</p>
+        `,
+        tags: ['Clarity', 'Reliability', 'Execution']
+    };
+    const selfWhatIBuild = {
+        title: 'What I Build',
+        subtitle: 'User-facing systems that make complex work usable',
+        avatar: '✦',
+        body: `
+            <h3>🧩 Product focus</h3>
+            <p>I build user-facing systems that solve real problems — from cross-platform apps to AI-powered tools and workflow products.</p>
+            <h3>⚙️ Typical formats</h3>
+            <p>Dashboards, automation workflows, desktop tools, AI runtimes, and operational systems that help people decide and act faster.</p>
+            <h3>🎯 What matters</h3>
+            <p>I am most useful where the challenge is turning complexity into clarity, structure, and reliable action.</p>
+        `,
+        tags: ['User-Facing Systems', 'Workflow Products', 'AI Tools', 'Cross-Platform']
+    };
+    const selfAiTooling = {
+        title: 'AI Tooling',
+        subtitle: 'Capability matters more than tool names',
+        avatar: '⚡',
+        body: `
+            <h3>⚙️ Workflow integration</h3>
+            <p>LLMs such as Claude, GPT, and Gemini are integrated into my coding, reasoning, and system design workflows.</p>
+            <h3>🔧 Daily use</h3>
+            <p>I build workflows where AI supports research, development, review, and iteration instead of sitting outside the process as a one-off assistant.</p>
+            <h3>🎯 Standard</h3>
+            <p>I care less about which model is trending and more about whether the workflow produces better decisions and faster delivery.</p>
+        `,
+        tags: ['Claude', 'GPT', 'Gemini', 'Workflow Integration']
+    };
 
     app.data.modalData = {
         'profile': {
@@ -8,30 +102,17 @@
             avatar: '👨‍💻',
             body: `
                 <h3>🎯 Positioning</h3>
-                <p><strong>AI-native product engineer</strong> with hands-on experience across web, desktop, and workflow-heavy systems.</p>
+                <p><strong>AI-native product engineer</strong> building user-facing systems across web, desktop, and workflow-heavy products.</p>
                 <h3>🧠 What I do best</h3>
-                <p>I turn messy ideas into structured, working systems by combining systems thinking, product judgment, and fast iteration.</p>
+                <p>I turn ambiguous problems into structured, working products by combining systems thinking, product judgment, and fast execution.</p>
                 <h3>🤝 How I work</h3>
-                <p>I use AI to accelerate execution, but I keep ownership of structure, direction, and usability. The goal is not “more AI,” but better products and more reliable workflows.</p>
+                <p>I use AI to increase execution speed, iteration depth, and scale — while keeping ownership of structure, decisions, and usability.</p>
                 <h3>📍 Location</h3>
                 <p>Based in Vancouver, Canada. Open to remote work and on-site opportunities in Vancouver, Taiwan, or China.</p>
             `,
             tags: ['AI-Native', 'Workflow Design', 'Product Sense', 'Execution']
         },
-        'ai-partner': {
-            title: 'AI Work Philosophy',
-            subtitle: 'AI handles execution; I hold the product line',
-            avatar: '🧠',
-            body: `
-                <h3>🤝 Division of labor</h3>
-                <p>I design workflows where AI handles execution, iteration, and scaling — while I focus on structure, direction, and product decisions.</p>
-                <h3>⚙️ Why it works</h3>
-                <p>This creates leverage without losing judgment: faster exploration, more iterations, and clearer handoffs inside a solo workflow.</p>
-                <h3>🎯 What matters</h3>
-                <p>AI is not just a tool I occasionally use; it is a core collaborator inside a deliberate system.</p>
-            `,
-            tags: ['AI Collaboration', 'Workflow Design', 'Product Judgment']
-        },
+        'ai-partner': selfPhilosophy,
         'timeline': {
             title: 'Growth Timeline',
             subtitle: 'From EE to AI-native builder: each step marked a capability upgrade',
@@ -70,34 +151,47 @@
             avatar: '🧠',
             body: `
                 <h3>🧠 Core idea</h3>
-                <p><strong>Turn ambiguity into useful systems.</strong></p>
+                <p><strong>I turn ambiguity into systems people can actually use.</strong></p>
                 <h3>🧩 Step 1 — Structure the problem</h3>
                 <p>I start by clarifying the goal, constraints, and workflow so the problem becomes something buildable.</p>
                 <h3>🛠 Step 2 — Ship the useful version</h3>
-                <p>I move quickly from concept to prototype to usable system, prioritizing clarity and real user value over polish theater.</p>
+                <p>I move quickly from concept to usable product, prioritizing clarity, workflow quality, and real user value over surface polish.</p>
                 <h3>🔁 Step 3 — Iterate from reality</h3>
                 <p>Once something works, I refine it through feedback, edge cases, and stronger workflows.</p>
             `,
             tags: ['Structure', 'Execution', 'Iteration']
         },
         'skills': {
-            title: 'Skills & Capabilities',
-            subtitle: 'Organized by capability, not by a list of languages',
+            title: 'Personal Tags',
+            subtitle: 'Soft signals that describe how I build and collaborate',
             avatar: '⚔️',
             body: `
-                <h3>Frontend & UI</h3>
-                <p>React · TypeScript · Dashboard UI · Interaction Design</p>
-                <h3>Full-Stack Systems</h3>
-                <p>Supabase · APIs · Data Flow · Backend Logic · Workflow Automation</p>
-                <h3>AI Integration</h3>
-                <p>LLM workflows · Prompt design · AI-assisted development · Agent-oriented task design</p>
-                <h3>Product & Workflow Thinking</h3>
-                <p>User flows · Feature design · Rapid prototyping · SOP-style systems</p>
-                <h3>Tools</h3>
-                <p>Git · Cursor · Codex · Claude Code · NotebookLM · Gemini</p>
-                <p>NotebookLM and Gemini are especially useful in my workflow for research synthesis, data organization, and structured exploration.</p>
+                <h3>Core vibe</h3>
+                <p class="modal-stack-line">ESFJ · Systems Thinker · User-First · Builder Energy</p>
+                <h3>How I work with people</h3>
+                <p class="modal-stack-line">Clear Communicator · Follow-Through · Low-Ego Collaboration · Human-Centered</p>
+                <h3>How I move work forward</h3>
+                <p class="modal-stack-line">Fast Iteration · Calm Operator · Product-Minded · Structure from Chaos</p>
+                <h3>Why it matters</h3>
+                <p>These are the softer signals behind how I ship: clear communication, dependable follow-through, and a strong instinct to turn messy problems into workable systems.</p>
             `,
-            tags: ['React', 'AI Integration', 'Codex', 'Claude Code', 'NotebookLM', 'Gemini']
+            tags: ['ESFJ', 'Builder Energy', 'User-First', 'Follow-Through', 'Systems Thinker']
+        },
+        'explore-tech': {
+            title: 'Featured Tech',
+            subtitle: 'Technical labels for the systems and products I build',
+            avatar: '🧩',
+            body: `
+                <h3>Frontend & apps</h3>
+                <p class="modal-stack-line">React · TypeScript · Flutter · SwiftUI · Tauri</p>
+                <h3>Backend & product systems</h3>
+                <p class="modal-stack-line">Supabase · API Design · Python · Data Flow · Workflow Automation</p>
+                <h3>AI & runtime work</h3>
+                <p class="modal-stack-line">LLM Systems · Structured Outputs · Agent Workflows · Multi-Provider AI</p>
+                <h3>Why this stack</h3>
+                <p>I like tools that help me move from product idea to working system quickly, while still being strong enough for real-world reliability and iteration.</p>
+            `,
+            tags: ['React', 'TypeScript', 'Flutter', 'Supabase', 'LLM Systems', 'API Design']
         },
         'project-dao': {
             title: 'Future DAO',
@@ -408,12 +502,12 @@
             avatar: '✍️',
             body: `
                 <h3>Focus</h3>
-                <p>Web3 & AI with beginner-friendly, structured insights.</p>
+                <p>AI, product thinking, and workflow design translated into clear, reusable insights.</p>
                 <h3>What I create</h3>
                 <ul>
-                    <li>Simplify complex concepts into practical, usable explanations</li>
-                    <li>Document workflows and learning systems in SOP-style formats</li>
-                    <li>Combine tech insights with personal thinking on X / Xiaohongshu</li>
+                    <li>AI workflow playbooks and agent-ready SOPs</li>
+                    <li>Builder notes on shipping, systems, and leverage</li>
+                    <li>Beginner-friendly explainers that make technical ideas easier to use</li>
                 </ul>
                 <h3>Goal</h3>
                 <p>Turn knowledge into reusable systems and scalable content.</p>
@@ -427,7 +521,7 @@
             body: `
                 <h3>Core ideas</h3>
                 <ul>
-                    <li>AI is shifting execution — humans should focus more on structure and decisions</li>
+                    <li>AI can multiply execution, but people still shape meaning, taste, and final decisions</li>
                     <li>SOPs are no longer just for humans, but for AI agents to execute</li>
                     <li>Individual builders can now operate like small teams with AI</li>
                 </ul>
@@ -436,68 +530,17 @@
             `,
             tags: ['AI Worldview', 'Workflow Thinking', 'Individual Leverage']
         },
-        'motto': {
-            title: 'Personal Motto',
-            subtitle: 'Execution first, clarity through building',
-            avatar: '💬',
-            body: `
-                <h3>💬 Personal Motto</h3>
-                <p><strong>Build fast, learn faster — clarity comes from shipping.</strong></p>
-                <p>I prefer real feedback from something working over abstract confidence from overthinking.</p>
-            `,
-            tags: ['Shipping', 'Learning']
-        },
-        'sticky-intj': {
-            title: 'Working Style',
-            subtitle: 'Structured, independent, systems-oriented',
-            avatar: '🧠',
-            body: `
-                <p>I prefer clear architectures, focused execution, and end-to-end ownership. Less noise, more structure.</p>
-            `,
-            tags: ['Systems Thinking', 'Architecture', 'Ownership']
-        },
-        'sticky-agent': {
-            title: 'Builder Mode',
-            subtitle: 'My default mode is to narrow scope first, then ship quickly',
-            avatar: '🛠',
-            body: `
-                <h3>🛠 Default behavior</h3>
-                <p>I reduce scope aggressively, ship the smallest useful version, and improve from real use.</p>
-                <h3>🚀 Why it matters</h3>
-                <p>This keeps momentum high and turns ambiguity into product feedback faster.</p>
-                <h3>📌 Principle</h3>
-                <p>Shipping is how I learn what matters.</p>
-            `,
-            tags: ['Execution', 'Iteration', 'Shipping']
-        },
-        'sticky-agent-native': {
-            title: 'Agent-Native Approach',
-            subtitle: 'Design work as tasks AI can execute reliably',
-            avatar: '🤖',
-            body: `
-                <h3>🧠 What it means</h3>
-                <p>I structure work so AI can execute it reliably: clear briefs, explicit checkpoints, and validation loops.</p>
-                <h3>🔁 Focus areas</h3>
-                <p>Task decomposition, delegation quality, and feedback systems.</p>
-                <h3>📈 Why it matters</h3>
-                <p>The value is not the label “AI-native” — it is reliable leverage.</p>
-            `,
-            tags: ['Task Design', 'Prompt Structure', 'Feedback Loops']
-        },
-        'ai-tooling': {
-            title: 'AI Tooling',
-            subtitle: 'Tool names matter less than integration quality',
-            avatar: '⚙️',
-            body: `
-                <h3>⚙️ Core stack</h3>
-                <p>LLMs (Claude / GPT / Gemini) power coding, reasoning, and system design.</p>
-                <h3>🔧 Workflow layer</h3>
-                <p>Cursor and automation pipelines support rapid iteration, validation, and higher engineering throughput.</p>
-                <h3>🎯 Standard</h3>
-                <p>I care less about tool names and more about whether AI is truly integrated into the product development workflow.</p>
-            `,
-            tags: ['Claude', 'GPT', 'Cursor', 'Automation']
-        },
+        'motto': selfMotto,
+        'sticky-intj': workingStyle,
+        'sticky-agent': selfBuilderMode,
+        'sticky-agent-native': selfAgentNative,
+        'ai-tooling': selfAiTooling,
+        'self-philosophy': selfPhilosophy,
+        'self-agent-native': selfAgentNative,
+        'self-builder-mode': selfBuilderMode,
+        'self-motto': selfMotto,
+        'self-what-i-build': selfWhatIBuild,
+        'self-ai-tooling': selfAiTooling,
         'contact': {
             title: 'Contact Me',
             subtitle: 'Links',
