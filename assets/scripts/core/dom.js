@@ -14,6 +14,7 @@
             zoomOutButton: document.getElementById('zoom-out'),
             zoomFitButton: document.getElementById('zoom-fit'),
             minimapContent: document.getElementById('minimap-content'),
+            minimapTitle: document.querySelector('.minimap-title'),
             modalOverlay: document.getElementById('modal-overlay'),
             modalTitle: document.getElementById('modal-title'),
             modalSubtitle: document.getElementById('modal-subtitle'),

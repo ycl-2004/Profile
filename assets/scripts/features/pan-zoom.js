@@ -43,6 +43,26 @@
         return 72;
     }
 
+    function getPanSlack(safe) {
+        const mode = getViewportMode();
+
+        if (mode === 'phone') {
+            return {
+                x: clamp(safe.width * 0.06, 18, 32),
+                y: clamp(safe.height * 0.05, 18, 34)
+            };
+        }
+
+        if (mode === 'tablet') {
+            return {
+                x: clamp(safe.width * 0.045, 28, 44),
+                y: clamp(safe.height * 0.04, 26, 42)
+            };
+        }
+
+        return { x: 52, y: 48 };
+    }
+
     function isCanvasUiControlTarget(target) {
         if (!(target instanceof Element)) return false;
 
@@ -136,21 +156,24 @@
         if (!bounds.width || !bounds.height || !state.scale) return;
 
         // Keep the safe viewport inside the content bounds. The bounds already
-        // include mode-specific padding, so the canvas still has a small amount
-        // of breathing room without letting users drift into empty space.
-        const minPanX = safe.right - bounds.maxX * state.scale;
-        const maxPanX = safe.left - bounds.minX * state.scale;
-        const minPanY = safe.bottom - bounds.maxY * state.scale;
-        const maxPanY = safe.top - bounds.minY * state.scale;
+        // include mode-specific padding; this adds a small screen-space slack
+        // so the canvas can breathe without drifting far away from the content.
+        const slack = getPanSlack(safe);
+        const minPanX = safe.right - bounds.maxX * state.scale - slack.x;
+        const maxPanX = safe.left - bounds.minX * state.scale + slack.x;
+        const minPanY = safe.bottom - bounds.maxY * state.scale - slack.y;
+        const maxPanY = safe.top - bounds.minY * state.scale + slack.y;
 
         if (minPanX > maxPanX) {
-            state.panX = (minPanX + maxPanX) / 2;
+            const centerX = (minPanX + maxPanX) / 2;
+            state.panX = clamp(state.panX, centerX - slack.x, centerX + slack.x);
         } else {
             state.panX = clamp(state.panX, minPanX, maxPanX);
         }
 
         if (minPanY > maxPanY) {
-            state.panY = (minPanY + maxPanY) / 2;
+            const centerY = (minPanY + maxPanY) / 2;
+            state.panY = clamp(state.panY, centerY - slack.y, centerY + slack.y);
         } else {
             state.panY = clamp(state.panY, minPanY, maxPanY);
         }

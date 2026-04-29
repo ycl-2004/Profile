@@ -319,7 +319,12 @@
             return;
         }
 
-        if (app.state.currentView !== 'timeline') return;
+        if (app.state.currentView !== 'timeline') {
+            if (app.state.canvasReady && typeof app.updateMinimap === 'function') {
+                app.updateMinimap({ forceRender: true });
+            }
+            return;
+        }
 
         const shell = app.dom.portfolioViewShell;
         if (!shell) return;
@@ -343,6 +348,10 @@
             const hasVisibleItem = !!column.querySelector('.timeline-item-card:not([hidden]), .timeline-next-focus:not([hidden])');
             column.hidden = !hasVisibleItem;
         });
+
+        if (typeof app.updateMinimap === 'function') {
+            app.updateMinimap({ forceRender: true });
+        }
     };
 
     app.renderActivePortfolioView = function renderActivePortfolioView(focusTarget) {
@@ -353,16 +362,25 @@
         if (app.state.currentView === 'timeline') {
             shell.innerHTML = renderTimeline();
             app.applyPortfolioLayerFilter(app.state.activeLayer);
+            if (typeof app.updateMinimap === 'function') {
+                app.updateMinimap({ forceRender: true });
+            }
             return;
         }
 
         if (app.state.currentView === 'list') {
             shell.innerHTML = renderList();
             bindListControls(focusTarget);
+            if (typeof app.updateMinimap === 'function') {
+                app.updateMinimap({ forceRender: true });
+            }
             return;
         }
 
         shell.innerHTML = '';
+        if (typeof app.updateMinimap === 'function') {
+            app.updateMinimap({ forceRender: true });
+        }
     };
 
     app.setPortfolioView = function setPortfolioView(view) {
@@ -393,12 +411,16 @@
                 if (typeof app.applyDefaultLayout === 'function') app.applyDefaultLayout();
                 if (typeof app.zoomToOverview === 'function') app.zoomToOverview();
                 if (typeof app.updateConnections === 'function') app.updateConnections();
+                if (typeof app.updateMinimap === 'function') app.updateMinimap({ forceRender: true });
             }
             return;
         }
 
         if (typeof app.updateConnections === 'function') {
             app.updateConnections();
+        }
+        if (typeof app.updateMinimap === 'function') {
+            app.updateMinimap({ forceRender: true });
         }
     };
 
