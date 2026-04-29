@@ -251,10 +251,11 @@
 
     function layoutPhone() {
         const margin = 20;
-        const top0 = 92;
+        const top0 = 108;
         const gap = 14;
-        const fullW = Math.max(268, Math.min(390, window.innerWidth - margin * 2));
+        const fullW = Math.max(268, Math.min(430, window.innerWidth - margin * 2));
         const sectionW = fullW;
+        const useTwoColumnProjects = window.innerWidth >= 560;
         const x = margin;
         let y = top0;
 
@@ -264,6 +265,12 @@
         }
 
         function placePair(cardA, cardB) {
+            if (!useTwoColumnProjects) {
+                placeOne(cardA);
+                placeOne(cardB);
+                return;
+            }
+
             const halfGap = 12;
             const colW = Math.floor((fullW - halfGap) / 2);
             const elA = setCard(cardA, x, y, colW);

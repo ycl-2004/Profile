@@ -180,7 +180,7 @@
     app.zoomToOverview = function zoomToOverview() {
         const state = app.state;
         const { safe, bounds, fitScale, mode } = getFitMetrics();
-        const topInset = mode === 'phone' ? 18 : mode === 'tablet' ? 34 : 64;
+        const topInset = mode === 'phone' ? 118 : mode === 'tablet' ? 88 : 72;
         const sideInset = mode === 'phone' ? 18 : mode === 'tablet' ? 24 : 32;
 
         if (mode === 'phone') {

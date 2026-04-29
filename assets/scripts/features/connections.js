@@ -12,6 +12,30 @@
         };
     }
 
+    function isProjectCard(cardId) {
+        return (
+            cardId.startsWith('project-') ||
+            cardId.startsWith('work-') ||
+            cardId === 'education'
+        );
+    }
+
+    function isOutreachCard(cardId) {
+        return (
+            cardId.startsWith('connect-') ||
+            cardId.startsWith('explore-') ||
+            cardId === 'contact'
+        );
+    }
+
+    function getConnectionLane(edge) {
+        if (edge.kind === 'path') return 'spine';
+        if (isOutreachCard(edge.from) || isOutreachCard(edge.to)) return 'outreach';
+        if (isProjectCard(edge.from) || isProjectCard(edge.to)) return 'project';
+        if (edge.kind === 'secondary') return 'support';
+        return 'core';
+    }
+
     function getCardEl(cardId) {
         app.state.cardEls = app.state.cardEls || {};
         if (!app.state.cardEls[cardId]) {
@@ -33,22 +57,69 @@
         app.state.connectionAdj = {};
 
         const ns = 'http://www.w3.org/2000/svg';
-        app.data.connections.map(normalizeEdge).forEach(({ from, to, kind }) => {
+        app.data.connections.map(normalizeEdge).forEach((edge) => {
             const path = document.createElementNS(ns, 'path');
-            path.dataset.from = from;
-            path.dataset.to = to;
-            path.dataset.kind = kind;
+            path.dataset.from = edge.from;
+            path.dataset.to = edge.to;
+            path.dataset.kind = edge.kind;
+            path.dataset.lane = getConnectionLane(edge);
             svg.appendChild(path);
 
-            const key = `${from}__${to}`;
+            const key = `${edge.from}__${edge.to}`;
             app.state.connectionPaths.set(key, path);
-            (app.state.connectionAdj[from] ||= []).push(key);
-            (app.state.connectionAdj[to] ||= []).push(key);
+            (app.state.connectionAdj[edge.from] ||= []).push(key);
+            (app.state.connectionAdj[edge.to] ||= []).push(key);
         });
 
         app.state.connectionsBuilt = true;
+        bindConnectionFocus();
         return svg;
     }
+
+    function bindConnectionFocus() {
+        if (app.state.connectionFocusBound) return;
+
+        document.querySelectorAll('.card').forEach((card) => {
+            card.addEventListener('mouseenter', () => {
+                app.setConnectionFocus(card.dataset.card);
+            });
+            card.addEventListener('mouseleave', () => {
+                app.setConnectionFocus(null);
+            });
+        });
+
+        app.state.connectionFocusBound = true;
+    }
+
+    app.setConnectionFocus = function setConnectionFocus(cardId) {
+        const paths = app.state.connectionPaths;
+        if (!paths) return;
+
+        const activeKeys = cardId ? new Set(app.state.connectionAdj?.[cardId] || []) : null;
+        const connectedCards = new Set(cardId ? [cardId] : []);
+
+        if (activeKeys) {
+            activeKeys.forEach((key) => {
+                const path = paths.get(key);
+                if (!path) return;
+                connectedCards.add(path.dataset.from);
+                connectedCards.add(path.dataset.to);
+            });
+        }
+
+        paths.forEach((path, key) => {
+            const isConnected = !!activeKeys && activeKeys.has(key);
+            path.classList.toggle('is-connected', isConnected);
+            path.classList.toggle('is-muted', !!activeKeys && !isConnected);
+        });
+
+        document.querySelectorAll('.card').forEach((card) => {
+            const isSource = !!cardId && card.dataset.card === cardId;
+            const isNeighbor = !!cardId && connectedCards.has(card.dataset.card);
+            card.classList.toggle('is-connection-source', isSource);
+            card.classList.toggle('is-connection-neighbor', isNeighbor && !isSource);
+        });
+    };
 
     function updatePath(path) {
         const from = path.dataset.from;
@@ -67,8 +138,10 @@
     }
 
     app.getCardBox = function getCardBox(card) {
-        const x = parseFloat(card.style.left);
-        const y = parseFloat(card.style.top);
+        const styleX = parseFloat(card.style.left);
+        const styleY = parseFloat(card.style.top);
+        const x = Number.isFinite(styleX) ? styleX : card.offsetLeft || 0;
+        const y = Number.isFinite(styleY) ? styleY : card.offsetTop || 0;
         const w = parseFloat(card.style.width) || card.offsetWidth || 0;
         const h = card.offsetHeight || 200;
 

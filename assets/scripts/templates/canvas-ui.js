@@ -9,17 +9,17 @@
             </div>
             <div class="canvas-view-actions">
                 <div class="view-switch">
-                    <button class="view-tab is-active" type="button">Canvas View</button>
-                    <button class="view-tab" type="button">Timeline View</button>
-                    <button class="view-tab" type="button">List View</button>
+                    <button class="view-tab is-active" type="button" aria-pressed="true">Canvas View</button>
+                    <button class="view-tab" type="button" aria-disabled="true" title="Timeline view coming soon">Timeline View</button>
+                    <button class="view-tab" type="button" aria-disabled="true" title="List view coming soon">List View</button>
                 </div>
                 <button class="view-expand" id="zoom-fit" type="button" aria-label="Fit canvas">⤢</button>
             </div>
         </div>
         <div class="zoom-controls">
-            <div class="zoom-btn" id="zoom-in">+</div>
+            <button class="zoom-btn" id="zoom-in" type="button" aria-label="Zoom in" title="Zoom in">+</button>
             <div class="zoom-level" id="zoom-level">100%</div>
-            <div class="zoom-btn" id="zoom-out">−</div>
+            <button class="zoom-btn" id="zoom-out" type="button" aria-label="Zoom out" title="Zoom out">−</button>
         </div>
         <div class="bottom-hint">
             <div class="hint-item is-active" title="Select cards">

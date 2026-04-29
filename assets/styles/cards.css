@@ -6,7 +6,7 @@
     padding: 20px;
     box-shadow: var(--shadow-card);
     cursor: grab;
-    transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
     backdrop-filter: blur(12px);
     min-width: 0;
     z-index: 10;
@@ -15,6 +15,18 @@
 
 .card:hover { box-shadow: var(--shadow-hover); z-index: 20; transform: translateY(-1px); }
 .card.dragging { cursor: grabbing; z-index: 100; box-shadow: 0 12px 40px rgba(0,0,0,0.15); transform: scale(1.02); }
+.card.is-connection-source {
+    border-color: rgba(232, 93, 138, 0.38);
+    box-shadow:
+        0 0 0 1px rgba(232, 93, 138, 0.12),
+        0 12px 32px rgba(232, 93, 138, 0.14);
+}
+.card.is-connection-neighbor {
+    border-color: rgba(133, 160, 214, 0.3);
+    box-shadow:
+        0 0 0 1px rgba(133, 160, 214, 0.1),
+        0 10px 28px rgba(82, 102, 145, 0.1);
+}
 
 .card-heading {
     font-size: 14px;
@@ -207,6 +219,7 @@
 
 .card-project { min-width: 0; }
 .project-header { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+.project-header > div:last-child { min-width: 0; }
 
 .project-icon {
     width: 40px;
@@ -221,6 +234,10 @@
 }
 
 .project-name { font-weight: 700; color: var(--text); font-size: 15px; }
+.project-name,
+.project-link {
+    overflow-wrap: anywhere;
+}
 .project-link { font-size: 11px; color: var(--pink-dark); font-weight: 500; }
 .project-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.8; margin-bottom: 12px; }
 .project-summary {
