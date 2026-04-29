@@ -132,24 +132,16 @@
         const state = app.state;
         const safe = getSafeArea();
         const bounds = getContentBounds();
-        const mode = getViewportMode();
 
-        const minOverlapX = mode === 'phone'
-            ? clamp(safe.width * 0.18, 64, 112)
-            : mode === 'tablet'
-                ? clamp(safe.width * 0.18, 80, 148)
-                : 180;
+        if (!bounds.width || !bounds.height || !state.scale) return;
 
-        const minOverlapY = mode === 'phone'
-            ? clamp(safe.height * 0.12, 72, 120)
-            : mode === 'tablet'
-                ? clamp(safe.height * 0.14, 84, 150)
-                : 180;
-
-        const minPanX = (safe.left + minOverlapX) - bounds.maxX * state.scale;
-        const maxPanX = (safe.right - minOverlapX) - bounds.minX * state.scale;
-        const minPanY = (safe.top + minOverlapY) - bounds.maxY * state.scale;
-        const maxPanY = (safe.bottom - minOverlapY) - bounds.minY * state.scale;
+        // Keep the safe viewport inside the content bounds. The bounds already
+        // include mode-specific padding, so the canvas still has a small amount
+        // of breathing room without letting users drift into empty space.
+        const minPanX = safe.right - bounds.maxX * state.scale;
+        const maxPanX = safe.left - bounds.minX * state.scale;
+        const minPanY = safe.bottom - bounds.maxY * state.scale;
+        const maxPanY = safe.top - bounds.minY * state.scale;
 
         if (minPanX > maxPanX) {
             state.panX = (minPanX + maxPanX) / 2;
