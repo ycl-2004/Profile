@@ -106,6 +106,7 @@ body[data-theme='dark'] .zoom-btn,
 body[data-theme='dark'] .bottom-hint,
 body[data-theme='dark'] .theme-toggle,
 body[data-theme='dark'] .minimap,
+body[data-theme='dark'] .top-action-panel,
 body[data-theme='dark'] .btn,
 body[data-theme='dark'] .sidebar-toggle,
 body[data-theme='dark'] .sidebar-close {
@@ -120,6 +121,19 @@ body[data-theme='dark'] .top-bar {
 
 body[data-theme='dark'] .sidebar {
     background: rgba(14, 18, 33, 0.82);
+}
+
+body[data-theme='dark'] .top-action-panel {
+    background: linear-gradient(180deg, rgba(21, 26, 45, 0.98), rgba(15, 19, 34, 0.94));
+}
+
+body[data-theme='dark'] .top-panel-button,
+body[data-theme='dark'] .share-link-row button,
+body[data-theme='dark'] .settings-segment,
+body[data-theme='dark'] .settings-segment button,
+body[data-theme='dark'] .settings-grid button {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.08);
 }
 
 body[data-theme='dark'] .btn-primary {
@@ -210,6 +224,12 @@ body[data-theme='dark'] .modal-header {
     background: linear-gradient(135deg, rgba(18, 22, 40, 0.98), rgba(44, 33, 48, 0.82) 42%, rgba(33, 30, 52, 0.82));
 }
 
+body[data-theme='dark'] .modal[data-modal-variant='logic'] .modal-header {
+    background:
+        linear-gradient(135deg, rgba(255, 143, 171, 0.18), rgba(40, 58, 78, 0.72) 48%, rgba(29, 58, 46, 0.56)),
+        rgba(18, 22, 40, 0.98);
+}
+
 body[data-theme='dark'] .modal-header::after {
     background: linear-gradient(90deg, rgba(255, 143, 171, 0.18), rgba(133, 193, 233, 0.18), rgba(184, 169, 201, 0.14));
 }
@@ -258,6 +278,12 @@ body[data-theme='dark'] .modal-section-title {
     border-color: rgba(255, 255, 255, 0.1);
     background: rgba(255, 255, 255, 0.055);
     box-shadow: none;
+}
+
+body[data-theme='dark'] .logic-snapshot,
+body[data-theme='dark'] .logic-rule-grid div {
+    background: rgba(255, 255, 255, 0.055);
+    border-color: rgba(255, 255, 255, 0.08);
 }
 
 body[data-theme='dark'] .modal-section p strong,

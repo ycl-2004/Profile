@@ -112,6 +112,40 @@
             `,
             tags: ['AI-Native', 'Workflow Design', 'Product Sense', 'Execution']
         },
+        'consumption-logic': {
+            title: 'YC — Personal System',
+            subtitle: 'Systems for reducing noise and increasing leverage',
+            avatar: 'YC',
+            variant: 'logic',
+            body: `
+                <div class="logic-snapshot">
+                    <span>Personal system</span>
+                    <strong>I design systems to reduce noise and increase leverage.</strong>
+                    <p>I started in electrical engineering, where I learned how systems behave. Now I build software, AI tools, and interfaces that improve how people think, decide, and execute.</p>
+                </div>
+                <h3>Currently building</h3>
+                <ul>
+                    <li>Reliable real-world reminder systems</li>
+                    <li>Reusable AI runtime infrastructure</li>
+                    <li>UI interaction and inspiration systems</li>
+                </ul>
+                <h3>Operating rule</h3>
+                <p>I treat tools, content, and habits as system components. If they do not improve clarity, speed, or execution, they do not stay.</p>
+                <h3>Principles</h3>
+                <ul>
+                    <li>Signal before desire</li>
+                    <li>Invest in leverage</li>
+                    <li>Test with small loops</li>
+                    <li>Keep the system quiet</li>
+                </ul>
+                <div class="logic-rule-grid">
+                    <div><span>Clarity</span><strong>Clarity &gt; motivation</strong></div>
+                    <div><span>Structure</span><strong>Systems &gt; goals</strong></div>
+                    <div><span>Output</span><strong>Build &gt; consume</strong></div>
+                </div>
+            `,
+            tags: ['Personal System', 'Leverage', 'Clarity', 'Execution', 'Systems']
+        },
         'ai-partner': selfPhilosophy,
         'timeline': {
             title: 'Growth Timeline',

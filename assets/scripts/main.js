@@ -23,6 +23,9 @@
     if (typeof app.bindPortfolioViews === 'function') {
         app.bindPortfolioViews();
     }
+    if (typeof app.bindTopActions === 'function') {
+        app.bindTopActions();
+    }
     // 恢复“双击查看详情”（只读弹窗）
     app.bindModal();
     app.bindWindowEvents();

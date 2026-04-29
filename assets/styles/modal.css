@@ -252,6 +252,86 @@
     box-shadow: 0 6px 18px rgba(88,93,122,0.06);
 }
 
+.modal[data-modal-variant='logic'] {
+    max-width: 680px;
+}
+
+.modal[data-modal-variant='logic'] .modal-header {
+    background:
+        linear-gradient(135deg, rgba(255, 143, 171, 0.22), rgba(214, 234, 248, 0.5) 48%, rgba(212, 245, 224, 0.46)),
+        rgba(255, 255, 255, 0.96);
+}
+
+.modal[data-modal-variant='logic'] .modal-avatar {
+    border-radius: 50%;
+    background: linear-gradient(135deg, #ff8fab, #c8b5d8);
+    color: white;
+    font-size: 18px;
+    font-weight: 900;
+    letter-spacing: 0.01em;
+}
+
+.modal-body[data-modal-variant='logic'] {
+    gap: 12px;
+}
+
+.modal-body[data-modal-variant='logic'] .modal-section {
+    border-radius: 16px;
+    box-shadow: 0 12px 28px rgba(88, 93, 122, 0.055);
+}
+
+.logic-snapshot {
+    display: grid;
+    gap: 8px;
+    padding: 16px;
+    border: 1px solid rgba(232, 93, 138, 0.16);
+    border-radius: 16px;
+    background:
+        linear-gradient(135deg, rgba(255, 143, 171, 0.12), rgba(133, 193, 233, 0.14)),
+        rgba(255, 255, 255, 0.68);
+}
+
+.logic-snapshot span,
+.logic-rule-grid span {
+    color: var(--pink-dark);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.logic-snapshot strong {
+    color: var(--text);
+    font-size: 18px;
+    line-height: 1.35;
+}
+
+.logic-snapshot p {
+    margin: 0;
+}
+
+.logic-rule-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+    margin-top: 12px;
+}
+
+.logic-rule-grid div {
+    padding: 12px;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.7);
+}
+
+.logic-rule-grid strong {
+    display: block;
+    margin-top: 6px;
+    color: var(--text);
+    font-size: 12.5px;
+    line-height: 1.35;
+}
+
 .modal-close {
     position: absolute;
     top: 20px;
@@ -340,6 +420,18 @@
     .modal-link-list p {
         padding: 9px 11px;
         border-radius: 12px;
+    }
+
+    .logic-rule-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .logic-snapshot {
+        padding: 14px;
+    }
+
+    .logic-snapshot strong {
+        font-size: 16px;
     }
 
     .modal-close {

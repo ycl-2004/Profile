@@ -148,9 +148,14 @@
 
         if (!data) return;
 
+        const variant = data.variant || 'default';
+
         app.dom.modalTitle.textContent = data.title;
         app.dom.modalSubtitle.textContent = data.subtitle;
         app.dom.modalAvatar.textContent = data.avatar;
+        app.dom.modalOverlay.dataset.modalVariant = variant;
+        app.dom.modalBody.dataset.modalVariant = variant;
+        if (app.dom.modal) app.dom.modal.dataset.modalVariant = variant;
         app.dom.modalBody.innerHTML = data.body;
         app.decorateModalContent();
         app.dom.modalTags.innerHTML = (data.tags || [])
