@@ -52,6 +52,7 @@
                 '.sidebar-scrim',
                 '.top-bar',
                 '.canvas-view-header',
+                '.portfolio-view-shell',
                 '.zoom-controls',
                 '.bottom-hint',
                 '.theme-toggle',

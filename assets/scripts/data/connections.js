@@ -28,10 +28,12 @@
         { from: 'content', to: 'project-crypto', kind: 'secondary' },
         { from: 'opinion', to: 'connect-quote', kind: 'secondary' },
 
+        { from: 'section-experience', to: 'experience-work-label', kind: 'primary' },
+        { from: 'experience-work-label', to: 'work-delta', kind: 'primary' },
+        { from: 'experience-work-label', to: 'work-joychime', kind: 'primary' },
         { from: 'section-experience', to: 'experience-main-label', kind: 'primary' },
         { from: 'experience-main-label', to: 'project-family-care', kind: 'primary' },
         { from: 'experience-main-label', to: 'project-ycapikit', kind: 'primary' },
-        { from: 'experience-main-label', to: 'work-delta', kind: 'primary' },
         { from: 'experience-main-label', to: 'project-crypto', kind: 'primary' },
         { from: 'experience-main-label', to: 'project-todo', kind: 'primary' },
         { from: 'experience-main-label', to: 'project-edu-analysis', kind: 'primary' },
@@ -43,6 +45,7 @@
         { from: 'project-family-care', to: 'connect-collab', kind: 'secondary' },
         { from: 'project-ycapikit', to: 'connect-collab', kind: 'secondary' },
         { from: 'work-delta', to: 'connect-stats', kind: 'secondary' },
+        { from: 'work-joychime', to: 'connect-stats', kind: 'secondary' },
         { from: 'project-crypto', to: 'connect-stats', kind: 'secondary' },
 
         { from: 'section-connect', to: 'contact', kind: 'primary' },

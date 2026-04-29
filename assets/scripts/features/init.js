@@ -23,6 +23,7 @@
         app.initMinimap();
         applyEntryView();
 
+        app.state.canvasReady = true;
         app.updateConnections();
         app.updateMinimap();
     };
@@ -33,6 +34,13 @@
         });
 
         window.addEventListener('resize', () => {
+            if (app.state.currentView && app.state.currentView !== 'canvas') {
+                if (typeof app.renderActivePortfolioView === 'function') {
+                    app.renderActivePortfolioView();
+                }
+                return;
+            }
+
             if (typeof app.applyDefaultLayout === 'function') {
                 app.applyDefaultLayout();
             }

@@ -5,6 +5,10 @@
         app.dom = {
             terminalEntry: document.getElementById('terminal-entry'),
             viewport: document.getElementById('canvas-viewport'),
+            portfolioViewShell: document.getElementById('portfolio-view-shell'),
+            viewTitle: document.querySelector('.canvas-view-title'),
+            viewSubtitle: document.querySelector('.canvas-view-subtitle'),
+            viewTabs: document.querySelectorAll('[data-view-target]'),
             zoomLevelEl: document.getElementById('zoom-level'),
             zoomInButton: document.getElementById('zoom-in'),
             zoomOutButton: document.getElementById('zoom-out'),

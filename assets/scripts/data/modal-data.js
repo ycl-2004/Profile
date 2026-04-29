@@ -486,7 +486,7 @@
             body: `
                 <h3>Foundation</h3>
                 <p><strong>University of British Columbia</strong> · BASc in Electrical Engineering</p>
-                <p>Expected graduation: May 2027</p>
+                <p>Expected graduation: Dec 2027</p>
                 <h3>What it gave me</h3>
                 <p>Training in control systems, circuit design, signal processing, and debugging discipline.</p>
                 <h3>Why it matters now</h3>

@@ -36,9 +36,13 @@
         }
 
         function setActiveLayer(layer) {
+            app.state.activeLayer = layer;
             document.querySelectorAll('.layer-item').forEach((layerItem) => {
                 layerItem.classList.toggle('active', layerItem.dataset.layer === layer);
             });
+            if (typeof app.applyPortfolioLayerFilter === 'function') {
+                app.applyPortfolioLayerFilter(layer);
+            }
         }
 
         function resetCards() {

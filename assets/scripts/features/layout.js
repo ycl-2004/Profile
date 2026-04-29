@@ -101,13 +101,27 @@
 
         const expSection = setCard('section-experience', xExpA, top0, wExpSection);
         let yExp = top0 + getH(expSection) + sectionGap;
+        const workLabel = setCard('experience-work-label', xExpA + 16, yExp, wLabel);
+        yExp += getH(workLabel) + rowGap;
+        ({ y: yExp } = placeGridRows(
+            [
+                ['work-delta', 'work-joychime']
+            ],
+            xExpA,
+            xExpB,
+            yExp,
+            wExp,
+            rowGap
+        ));
+
+        yExp += 8;
         const mainLabel = setCard('experience-main-label', xExpA + 16, yExp, wLabel);
         yExp += getH(mainLabel) + rowGap;
         ({ y: yExp } = placeGridRows(
             [
                 ['project-family-care', 'project-ycapikit'],
-                ['work-delta', 'project-crypto'],
-                ['project-todo', 'project-edu-analysis']
+                ['project-crypto', 'project-todo'],
+                ['project-edu-analysis', null]
             ],
             xExpA,
             xExpB,
@@ -196,13 +210,27 @@
 
         const expSection = setCard('section-experience', xGridA, gridTop, gridW * 2 + gap);
         let yExp = gridTop + getH(expSection) + 18;
+        const workLabel = setCard('experience-work-label', xGridA + 10, yExp, 150);
+        yExp += getH(workLabel) + rowGap;
+        ({ y: yExp } = placeGridRows(
+            [
+                ['work-delta', 'work-joychime']
+            ],
+            xGridA,
+            xGridB,
+            yExp,
+            gridW,
+            rowGap
+        ));
+
+        yExp += 6;
         const mainLabel = setCard('experience-main-label', xGridA + 10, yExp, 150);
         yExp += getH(mainLabel) + rowGap;
         ({ y: yExp } = placeGridRows(
             [
                 ['project-family-care', 'project-ycapikit'],
-                ['work-delta', 'project-crypto'],
-                ['project-todo', 'project-edu-analysis']
+                ['project-crypto', 'project-todo'],
+                ['project-edu-analysis', null]
             ],
             xGridA,
             xGridB,
@@ -266,8 +294,8 @@
 
         function placePair(cardA, cardB) {
             if (!useTwoColumnProjects) {
-                placeOne(cardA);
-                placeOne(cardB);
+                if (cardA) placeOne(cardA);
+                if (cardB) placeOne(cardB);
                 return;
             }
 
@@ -295,10 +323,12 @@
 
         y += 4;
         placeOne('section-experience', sectionW);
+        placeOne('experience-work-label', 164);
+        placePair('work-delta', 'work-joychime');
         placeOne('experience-main-label', 164);
         placePair('project-family-care', 'project-ycapikit');
-        placePair('work-delta', 'project-crypto');
-        placePair('project-todo', 'project-edu-analysis');
+        placePair('project-crypto', 'project-todo');
+        placePair('project-edu-analysis', null);
         placeOne('experience-side-label', 196);
         placePair('project-balance-bot', 'education');
         placePair('project-unity', 'project-sailbot');

@@ -14,6 +14,13 @@
         dragStartClientX: 0,
         dragStartClientY: 0,
         dragMoved: false,
-        justDraggedCardId: null
+        justDraggedCardId: null,
+        currentView: 'canvas',
+        activeLayer: '__all__',
+        canvasReady: false,
+        listQuery: '',
+        listCategory: '__all__',
+        listType: '__all__',
+        listSort: 'newest'
     };
 })();

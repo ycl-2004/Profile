@@ -125,6 +125,34 @@
             <div class="section-caption">What I’ve built</div>
         </div>
 
+        <div class="card card-micro-label" data-card="experience-work-label" data-layer="experience" data-section="experience">
+            <div class="micro-label-text">Work Experience</div>
+        </div>
+
+        <div class="card card-project card-project-compact" data-card="work-delta" data-layer="experience" data-section="experience">
+            <div class="project-header">
+                <div class="project-icon" style="background:linear-gradient(135deg,#b4ffde,#46d6a9);">🖥</div>
+                <div>
+                    <div class="project-name">Delta Controls</div>
+                    <div class="project-link">Software Developer · Jan 2026 - Present</div>
+                </div>
+            </div>
+            <div class="project-summary">Hybrid HVAC air balancing application for field-facing industrial workflows.</div>
+            <div class="project-tags"><span class="project-tag">React</span><span class="project-tag">TypeScript</span></div>
+        </div>
+
+        <div class="card card-project card-project-compact" data-card="work-joychime" data-layer="experience" data-section="experience">
+            <div class="project-header">
+                <div class="project-icon" style="background:linear-gradient(135deg,#ffe0cc,#ffb48b);">⚙️</div>
+                <div>
+                    <div class="project-name">Joychime Industrial</div>
+                    <div class="project-link">Junior Electrical Assistant · May-Aug 2024</div>
+                </div>
+            </div>
+            <div class="project-summary">Manufacturing operations support across inspection, wiring, assembly, and documentation workflows.</div>
+            <div class="project-tags"><span class="project-tag">Operations</span><span class="project-tag">Wiring</span></div>
+        </div>
+
         <div class="card card-micro-label" data-card="experience-main-label" data-layer="projects" data-section="projects">
             <div class="micro-label-text">Main Projects</div>
         </div>
@@ -151,18 +179,6 @@
             </div>
             <div class="project-summary">AI runtime abstraction layer for Swift applications.</div>
             <div class="project-tags"><span class="project-tag">Swift</span><span class="project-tag">AI / LLM</span></div>
-        </div>
-
-        <div class="card card-project card-project-compact" data-card="work-delta" data-layer="projects" data-section="projects">
-            <div class="project-header">
-                <div class="project-icon" style="background:linear-gradient(135deg,#b4ffde,#46d6a9);">🖥</div>
-                <div>
-                    <div class="project-name">Delta Controls</div>
-                    <div class="project-link">HVAC monitoring workflow</div>
-                </div>
-            </div>
-            <div class="project-summary">HVAC monitoring and device management dashboard.</div>
-            <div class="project-tags"><span class="project-tag">React</span><span class="project-tag">TypeScript</span></div>
         </div>
 
         <div class="card card-project card-project-compact" data-card="project-crypto" data-layer="projects" data-section="projects">

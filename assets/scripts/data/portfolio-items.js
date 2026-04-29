@@ -1,0 +1,252 @@
+(function () {
+    const app = window.PortfolioApp;
+
+    app.data.portfolioItems = [
+        {
+            id: 'work-delta',
+            title: 'Delta Controls',
+            subtitle: 'HVAC air balancing application',
+            category: 'Work',
+            type: 'Industrial Software',
+            layer: 'experience',
+            dateLabel: 'Jan 2026 - Present',
+            sortDate: '2026-04',
+            icon: '🏢',
+            tone: 'mint',
+            description: 'Hybrid field-facing software for HVAC diagnostics, device monitoring, and technician workflows.',
+            impact: 'Connected React, TypeScript, Kotlin, WebView, BLE, and IP communication in a production-oriented industrial system.',
+            stack: ['React', 'TypeScript', 'Kotlin', 'Android WebView', 'BLE', 'IP']
+        },
+        {
+            id: 'project-family-care',
+            title: 'Family Care Reminder App',
+            subtitle: 'Elder-friendly reminder workflow',
+            category: 'Project',
+            type: 'Product',
+            layer: 'projects',
+            dateLabel: 'Jan 2026 - Present',
+            sortDate: '2026-03',
+            icon: '💗',
+            tone: 'blush',
+            description: 'Family-oriented reminder app focused on simple elder-friendly interactions and caregiver coordination.',
+            impact: 'Built recurring scheduling, notification rebuild logic, missed-occurrence handling, and user-specific reminder flows.',
+            stack: ['Flutter', 'Supabase', 'Dart', 'Notifications']
+        },
+        {
+            id: 'project-ycapikit',
+            title: 'YCAPIKit',
+            subtitle: 'Reusable hosted-LLM runtime',
+            category: 'Project',
+            type: 'AI / LLM',
+            layer: 'projects',
+            dateLabel: '2026',
+            sortDate: '2026-02',
+            icon: '🧩',
+            tone: 'lilac',
+            description: 'Runtime abstraction layer for SwiftUI apps that standardizes provider integration and structured output handling.',
+            impact: 'Unified multi-provider routing, retry, fallback, timeout, JSON recovery, and request-level observability.',
+            stack: ['Swift', 'SwiftUI', 'AI / LLM', 'JSON', 'Observability']
+        },
+        {
+            id: 'project-todo',
+            title: 'YC Todo',
+            subtitle: 'macOS menubar productivity app',
+            category: 'Project',
+            type: 'Desktop App',
+            layer: 'projects',
+            dateLabel: 'Dec 2025 - Feb 2026',
+            sortDate: '2026-02',
+            icon: '✅',
+            tone: 'sky',
+            description: 'Native-feeling task manager centered on fast capture, local persistence, and desktop interaction polish.',
+            impact: 'Solved macOS popover, focus, event behavior, and packaged ARM64/x86_64 Tauri builds.',
+            stack: ['React', 'Tauri', 'TypeScript', 'Rust', 'macOS']
+        },
+        {
+            id: 'project-crypto',
+            title: 'CryptoPulse',
+            subtitle: 'Full-stack crypto analytics platform',
+            category: 'Project',
+            type: 'Dashboard',
+            layer: 'projects',
+            dateLabel: 'Sep 2025 - Dec 2025',
+            sortDate: '2025-12',
+            icon: '📊',
+            tone: 'sky',
+            description: 'Dashboard product for real-time market tracking, trend visibility, and investment-oriented data exploration.',
+            impact: 'Integrated crypto APIs, synchronized frontend/backend data flow, and improved dashboard readability.',
+            stack: ['React', 'TypeScript', 'API', 'Dashboard']
+        },
+        {
+            id: 'project-dao',
+            title: 'Future DAO',
+            subtitle: 'Governance and smart contract system',
+            category: 'Project',
+            type: 'Blockchain',
+            layer: 'projects',
+            dateLabel: 'Jan 2025 - Present',
+            sortDate: '2025-11',
+            icon: '🏛',
+            tone: 'amber',
+            description: 'End-to-end DAO workflow from proposal creation and voting to on-chain execution.',
+            impact: 'Built Solidity governance logic and a React/TypeScript/Ethers.js frontend for wallet-connected interaction.',
+            stack: ['Solidity', 'React', 'TypeScript', 'Ethers.js']
+        },
+        {
+            id: 'project-edu-analysis',
+            title: 'Education Excel Analysis',
+            subtitle: 'Student score analytics dashboard',
+            category: 'Project',
+            type: 'Data Tool',
+            layer: 'projects',
+            dateLabel: '2025',
+            sortDate: '2025-08',
+            icon: '📈',
+            tone: 'mint',
+            description: 'Teacher-facing upload-to-insight workflow for Excel score files, analysis, visualization, and reports.',
+            impact: 'Added field detection, mapping, statistics, charts, anonymization, rankings, and Markdown reporting.',
+            stack: ['Python', 'Streamlit', 'Pandas', 'Excel']
+        },
+        {
+            id: 'project-balance-bot',
+            title: 'Self-Balancing Robot',
+            subtitle: 'PID control and sensor feedback',
+            category: 'Project',
+            type: 'Embedded',
+            layer: 'projects',
+            dateLabel: 'Jan 2025 - Apr 2025',
+            sortDate: '2025-04',
+            icon: '🤖',
+            tone: 'lilac',
+            description: 'Hardware-software control project combining real-time balance behavior, sensors, and remote tuning.',
+            impact: 'Implemented PID logic, Arduino integration, mobile-assisted tuning, and iterative stability testing.',
+            stack: ['Arduino', 'PID', 'Sensors', 'Bluetooth']
+        },
+        {
+            id: 'project-unity',
+            title: 'Unity Game Development',
+            subtitle: '2D / 3D playable interaction systems',
+            category: 'Project',
+            type: 'Interactive',
+            layer: 'projects',
+            dateLabel: 'Jun 2024 - Mar 2025',
+            sortDate: '2025-03',
+            icon: '🎮',
+            tone: 'amber',
+            description: 'Playable game projects focused on controls, physics, animation, UI behavior, and browser publishing.',
+            impact: 'Built custom gameplay systems and published browser-accessible demos for external testing.',
+            stack: ['Unity', 'C#', 'Physics', 'UI']
+        },
+        {
+            id: 'work-joychime',
+            title: 'Joychime Industrial Corporation',
+            subtitle: 'Manufacturing operations support',
+            category: 'Work',
+            type: 'Operations',
+            layer: 'experience',
+            dateLabel: 'May 2024 - Aug 2024',
+            sortDate: '2024-08',
+            icon: '⚙️',
+            tone: 'peach',
+            description: 'Hands-on production environment support across inspection, electrical assembly, wiring, and documentation.',
+            impact: 'Helped maintain process quality above internal standards by 10% and reduced paperwork volume by 30%.',
+            stack: ['Inspection', 'Wiring', 'Assembly', 'Documentation']
+        },
+        {
+            id: 'project-metal-detector',
+            title: 'Metal Detector Robot',
+            subtitle: 'Embedded sensing and calibration',
+            category: 'Project',
+            type: 'Embedded',
+            layer: 'projects',
+            dateLabel: 'Mar 2024 - Apr 2024',
+            sortDate: '2024-04',
+            icon: '🧲',
+            tone: 'peach',
+            description: 'Embedded project involving detection circuitry, low-level programming, lab testing, and calibration.',
+            impact: 'Optimized circuits, programmed microcontrollers in C/assembly, and improved detection reliability through testing.',
+            stack: ['C', 'Assembly', 'Circuits', 'Calibration']
+        },
+        {
+            id: 'project-sailbot',
+            title: 'UBC Sailbot',
+            subtitle: 'Electrical power team',
+            category: 'Engineering',
+            type: 'Team Project',
+            layer: 'experience',
+            dateLabel: 'Sep 2023 - Dec 2023',
+            sortDate: '2023-12',
+            icon: '⛵',
+            tone: 'sky',
+            description: 'Multidisciplinary engineering work on power distribution, circuit testing, and subsystem integration.',
+            impact: 'Contributed to implementation, safety checks, diagnostics, and collaborative integration under team constraints.',
+            stack: ['Power Systems', 'Circuits', 'Testing', 'Integration']
+        },
+        {
+            id: 'education',
+            title: 'University of British Columbia',
+            subtitle: 'BASc in Electrical Engineering',
+            category: 'Education',
+            type: 'Foundation',
+            layer: 'general',
+            dateLabel: '2022 - Dec 2027',
+            sortDate: '2022-09',
+            icon: '🎓',
+            tone: 'lilac',
+            description: 'Electrical Engineering foundation spanning control systems, embedded programming, circuits, and system thinking.',
+            impact: 'Dean\'s Honour List from 2022 to 2025, with a deliberate transition into software/product engineering.',
+            stack: ['UBC', 'Electrical Engineering', 'Controls', 'Embedded']
+        }
+    ];
+
+    app.data.timelineMilestones = [
+        {
+            period: '2022',
+            title: 'EE Foundation',
+            summary: 'Started from systems, circuits, controls, and the engineering discipline behind later software work.',
+            layer: 'general',
+            tone: 'lilac',
+            items: ['education']
+        },
+        {
+            period: '2023',
+            title: 'Team Systems',
+            summary: 'Moved from coursework into collaborative engineering, testing, and hardware integration pressure.',
+            layer: 'experience',
+            tone: 'sky',
+            items: ['project-sailbot']
+        },
+        {
+            period: '2024',
+            title: 'Hardware + Ops',
+            summary: 'Built embedded systems, joined a real manufacturing environment, and practiced interaction-heavy software.',
+            layer: 'experience',
+            tone: 'peach',
+            items: ['project-metal-detector', 'work-joychime', 'project-unity']
+        },
+        {
+            period: '2025',
+            title: 'Product Software',
+            summary: 'Shifted into shipped software surfaces: dashboards, smart contracts, data tooling, and control systems.',
+            layer: 'projects',
+            tone: 'blush',
+            items: ['project-balance-bot', 'project-dao', 'project-edu-analysis', 'project-crypto']
+        },
+        {
+            period: '2026',
+            title: 'Production + AI',
+            summary: 'Combined production-oriented industrial software with product apps, desktop tooling, and reusable AI runtime work.',
+            layer: 'projects',
+            tone: 'mint',
+            items: ['work-delta', 'project-family-care', 'project-ycapikit', 'project-todo']
+        },
+        {
+            period: 'Next',
+            title: 'What I Am Aiming For',
+            summary: 'Software, full-stack, internal tooling, AI tooling, and dashboard roles where product surfaces meet real system logic.',
+            layer: 'contact',
+            tone: 'lilac',
+            items: []
+        }
+    ];
+})();

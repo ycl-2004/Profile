@@ -20,6 +20,9 @@
     app.bindPanZoom();
     app.bindCardDragging();
     app.bindLayers();
+    if (typeof app.bindPortfolioViews === 'function') {
+        app.bindPortfolioViews();
+    }
     // 恢复“双击查看详情”（只读弹窗）
     app.bindModal();
     app.bindWindowEvents();
