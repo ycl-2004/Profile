@@ -160,10 +160,14 @@
     width: 42px;
     height: 42px;
     border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     background: linear-gradient(135deg, #ffb0cb, #c8b5d8);
     color: white;
     border: none;
     box-shadow: 0 10px 24px rgba(184, 169, 201, 0.22);
+    line-height: 1;
 }
 
 .btn-icon {

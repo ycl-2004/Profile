@@ -93,7 +93,11 @@
     border-radius: 14px;
     border: 1px solid rgba(0, 0, 0, 0.06);
     background: rgba(255, 255, 255, 0.88);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     font-size: 15px;
+    line-height: 1;
     color: var(--text-secondary);
     box-shadow: var(--shadow);
 }
@@ -408,5 +412,23 @@
     .zoom-btn {
         width: 44px;
         height: 44px;
+    }
+}
+
+@media (max-width: 360px) {
+    .canvas-view-header {
+        gap: 7px;
+        left: 12px;
+        right: 12px;
+    }
+
+    .view-switch {
+        gap: 3px;
+        padding: 5px;
+    }
+
+    .view-tab {
+        padding: 8px 6px;
+        font-size: 10.5px;
     }
 }
