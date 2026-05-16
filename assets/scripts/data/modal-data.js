@@ -350,6 +350,60 @@
             `,
             tags: ['AI Infra', 'Multi-Provider', 'Swift', 'Observability']
         },
+        'project-yc-cast': {
+            title: 'YC Cast',
+            subtitle: 'Authenticated Mac-to-iPad extended display',
+            avatar: '📱',
+            body: `
+                <h3>Problem</h3>
+                <p>iPad-as-second-screen workflows need to feel local, responsive, and private while still handling sensitive Mac permissions like Screen Recording and Accessibility carefully.</p>
+                <h3>Approach</h3>
+                <p>I built the product path as a macOS sender plus an iPadOS receiver, with explicit pairing and transport choices instead of a trust-any-local-device model.</p>
+                <h3>System</h3>
+                <ul>
+                    <li>Created Mac virtual display streaming to iPad over authenticated TCP</li>
+                    <li>Added Network.framework modes for Auto, Apple P2P/AWDL, Router/WiFi, and USB or Thunderbolt-style wired paths</li>
+                    <li>Implemented pairing-code authentication with Keychain storage, nonce-based HMAC proof, and session-key protected input events</li>
+                    <li>Supported touch, pointer, scroll, keyboard input, device cleanup, disconnected states, and optional Chrome audio routing</li>
+                </ul>
+                <h3>Outcome</h3>
+                <p>Built an almost-complete native product that combines macOS permissions, iPad receiver UX, local networking, authentication, and real-time media behavior.</p>
+                <h3>Stack</h3>
+                <p class="modal-stack-line">Swift · macOS · iPadOS · Network.framework · Keychain · HMAC-SHA256</p>
+                <h3>Link</h3>
+                <div class="modal-link-list">
+                    <p><strong>GitHub:</strong> <a href="https://github.com/ycl-2004/Mac_to_Ipad" target="_blank" rel="noopener">github.com/ycl-2004/Mac_to_Ipad</a> <span>(private)</span></p>
+                </div>
+            `,
+            tags: ['Native App', 'Local Streaming', 'Security', 'Swift']
+        },
+        'project-resume-tailor': {
+            title: 'Resume Tailor',
+            subtitle: 'JD-tailored resume intelligence engine',
+            avatar: '📄',
+            body: `
+                <h3>Problem</h3>
+                <p>Tailoring a resume for each job is slow, repetitive, and easy to make inconsistent, especially when the resume needs to stay factual and fit on one page.</p>
+                <h3>Approach</h3>
+                <p>I designed a local Mac-first workflow that reads a job description and structured candidate evidence, then selects, ranks, rewrites, and lays out a targeted LaTeX resume with an explanation file.</p>
+                <h3>System</h3>
+                <ul>
+                    <li>Built a one-command <code>start.sh</code> onboarding flow for friends using safe source bundles and sample job descriptions</li>
+                    <li>Implemented JD signal extraction, career evidence selection, bullet density control, layout fit logic, and one-page LaTeX generation</li>
+                    <li>Added guarded AI rewrite boundaries, saved AI provider profiles, deterministic fallback, and final feedback loops that recompile before accepting changes</li>
+                    <li>Documented source-bundle schemas, setup, friend-test paths, AI usage, PDF fit behavior, and rewrite rules</li>
+                </ul>
+                <h3>Outcome</h3>
+                <p>Turned a personal resume workflow into a reusable, privacy-aware local tool that can explain why it selected specific evidence and layout choices.</p>
+                <h3>Stack</h3>
+                <p class="modal-stack-line">Python · LaTeX · JSON Schema · AI Runtime · Unit Tests · CLI UX</p>
+                <h3>Link</h3>
+                <div class="modal-link-list">
+                    <p><strong>GitHub:</strong> <a href="https://github.com/ycl-2004/ForYourResume" target="_blank" rel="noopener">github.com/ycl-2004/ForYourResume</a> <span>(private)</span></p>
+                </div>
+            `,
+            tags: ['AI Tooling', 'Resume Engine', 'Python', 'LaTeX']
+        },
         'project-edu-analysis': {
             title: 'Education Excel Analysis',
             subtitle: 'Teacher-facing spreadsheet-to-insight workflow tool',

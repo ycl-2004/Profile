@@ -48,6 +48,36 @@
             stack: ['Swift', 'SwiftUI', 'AI / LLM', 'JSON', 'Observability']
         },
         {
+            id: 'project-yc-cast',
+            title: 'YC Cast',
+            subtitle: 'Mac-to-iPad extended display',
+            category: 'Project',
+            type: 'Native App',
+            layer: 'projects',
+            dateLabel: 'May 2026',
+            sortDate: '2026-05',
+            icon: '📱',
+            tone: 'sky',
+            description: 'Local Mac sender and iPadOS receiver that turns an iPad into an authenticated extended display for a Mac.',
+            impact: 'Built virtual display streaming, pairing-code authentication, input event validation, network mode selection, and iPad disconnection states.',
+            stack: ['Swift', 'macOS', 'iPadOS', 'Network.framework', 'HMAC']
+        },
+        {
+            id: 'project-resume-tailor',
+            title: 'Resume Tailor',
+            subtitle: 'Resume intelligence engine',
+            category: 'Project',
+            type: 'AI Tooling',
+            layer: 'projects',
+            dateLabel: 'Apr 2026 - May 2026',
+            sortDate: '2026-05',
+            icon: '📄',
+            tone: 'mint',
+            description: 'Local JD-to-resume tool that selects relevant evidence, controls bullet density, and generates explainable one-page LaTeX resumes.',
+            impact: 'Built the start.sh onboarding flow, source-bundle format, scoring and layout engine, AI rewrite boundaries, and analysis outputs.',
+            stack: ['Python', 'LaTeX', 'AI Runtime', 'JSON Schema', 'Testing']
+        },
+        {
             id: 'project-todo',
             title: 'YC Todo',
             subtitle: 'macOS menubar productivity app',
@@ -235,10 +265,10 @@
         {
             period: '2026',
             title: 'Production + AI',
-            summary: 'Combined production-oriented industrial software with product apps, desktop tooling, and reusable AI runtime work.',
+            summary: 'Combined production-oriented industrial software with product apps, native streaming, resume intelligence, desktop tooling, and reusable AI runtime work.',
             layer: 'projects',
             tone: 'mint',
-            items: ['work-delta', 'project-family-care', 'project-ycapikit', 'project-todo']
+            items: ['work-delta', 'project-yc-cast', 'project-resume-tailor', 'project-family-care', 'project-ycapikit', 'project-todo']
         },
         {
             period: 'Next',

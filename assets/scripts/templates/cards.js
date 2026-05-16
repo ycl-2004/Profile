@@ -181,6 +181,30 @@
             <div class="project-tags"><span class="project-tag">Swift</span><span class="project-tag">AI / LLM</span></div>
         </div>
 
+        <div class="card card-project card-project-compact" data-card="project-yc-cast" data-layer="projects" data-section="projects">
+            <div class="project-header">
+                <div class="project-icon" style="background:linear-gradient(135deg,#bdf1ff,#8fb6ff);">📱</div>
+                <div>
+                    <div class="project-name">YC Cast</div>
+                    <div class="project-link">Mac-to-iPad extended display</div>
+                </div>
+            </div>
+            <div class="project-summary">Authenticated local streaming app that turns an iPad into a Mac extended display.</div>
+            <div class="project-tags"><span class="project-tag">Swift</span><span class="project-tag">iPadOS</span></div>
+        </div>
+
+        <div class="card card-project card-project-compact" data-card="project-resume-tailor" data-layer="projects" data-section="projects">
+            <div class="project-header">
+                <div class="project-icon" style="background:linear-gradient(135deg,#d5ffe5,#75d7ff);">📄</div>
+                <div>
+                    <div class="project-name">Resume Tailor</div>
+                    <div class="project-link">JD-tailored resume engine</div>
+                </div>
+            </div>
+            <div class="project-summary">Local tool that turns job descriptions and career evidence into one-page LaTeX resumes.</div>
+            <div class="project-tags"><span class="project-tag">Python</span><span class="project-tag">LaTeX</span></div>
+        </div>
+
         <div class="card card-project card-project-compact" data-card="project-crypto" data-layer="projects" data-section="projects">
             <div class="project-header">
                 <div class="project-icon" style="background:linear-gradient(135deg,#ffd7ff,#91d2ff);">📊</div>

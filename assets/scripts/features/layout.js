@@ -119,6 +119,7 @@
         yExp += getH(mainLabel) + rowGap;
         ({ y: yExp } = placeGridRows(
             [
+                ['project-yc-cast', 'project-resume-tailor'],
                 ['project-family-care', 'project-ycapikit'],
                 ['project-crypto', 'project-todo'],
                 ['project-edu-analysis', null]
@@ -228,6 +229,7 @@
         yExp += getH(mainLabel) + rowGap;
         ({ y: yExp } = placeGridRows(
             [
+                ['project-yc-cast', 'project-resume-tailor'],
                 ['project-family-care', 'project-ycapikit'],
                 ['project-crypto', 'project-todo'],
                 ['project-edu-analysis', null]
@@ -326,6 +328,7 @@
         placeOne('experience-work-label', 164);
         placePair('work-delta', 'work-joychime');
         placeOne('experience-main-label', 164);
+        placePair('project-yc-cast', 'project-resume-tailor');
         placePair('project-family-care', 'project-ycapikit');
         placePair('project-crypto', 'project-todo');
         placePair('project-edu-analysis', null);

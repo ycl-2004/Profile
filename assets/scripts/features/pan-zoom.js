@@ -90,6 +90,7 @@
     function getSafeArea() {
         const sidebar = document.querySelector('.sidebar');
         const topBar = document.querySelector('.top-bar');
+        const canvasHeader = document.querySelector('.canvas-view-header');
 
         // 手机/平板：sidebar 可能是抽屉（关闭时不应占用 safe-area）
         const sidebarVisible =
@@ -97,7 +98,9 @@
             (!window.matchMedia(`(max-width:${MOBILE_BP}px)`).matches || document.body.classList.contains('sidebar-open'));
 
         const left = sidebarVisible ? sidebar.offsetWidth : 0;
-        const top = topBar ? topBar.offsetHeight : 0;
+        const topBarBottom = topBar ? topBar.getBoundingClientRect().bottom : 0;
+        const headerBottom = canvasHeader ? canvasHeader.getBoundingClientRect().bottom : 0;
+        const top = Math.max(topBarBottom, headerBottom);
         const right = window.innerWidth;
         const bottom = window.innerHeight;
 

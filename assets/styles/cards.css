@@ -233,8 +233,15 @@
     box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
 
-.project-name { font-weight: 700; color: var(--text); font-size: 15px; }
-.project-name,
+.project-name {
+    font-weight: 700;
+    color: var(--text);
+    font-size: 15px;
+    overflow-wrap: break-word;
+    word-break: normal;
+    hyphens: none;
+}
+
 .project-link {
     overflow-wrap: anywhere;
 }
