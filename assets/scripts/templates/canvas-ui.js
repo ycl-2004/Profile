@@ -22,19 +22,20 @@
             <div class="zoom-level" id="zoom-level">100%</div>
             <button class="zoom-btn" id="zoom-out" type="button" aria-label="Zoom out" title="Zoom out">−</button>
         </div>
-        <div class="bottom-hint">
-            <div class="hint-item is-active" title="Select cards">
+        <div class="bottom-hint" role="toolbar" aria-label="Canvas tools">
+            <button class="hint-item hint-action is-active" type="button" data-canvas-tool="select" aria-label="Clear selection and signals" aria-pressed="true" title="Clear selection and signals">
                 <span class="hint-icon" aria-hidden="true">⌖</span>
-            </div>
-            <div class="hint-item" title="Scroll or drag to move canvas">
+            </button>
+            <button class="hint-item hint-action" type="button" data-canvas-tool="overview" aria-label="Return to canvas overview" aria-pressed="false" title="Return to canvas overview">
                 <span class="hint-icon" aria-hidden="true">✥</span>
-            </div>
-            <div class="hint-item" title="Zoom canvas">
+            </button>
+            <button class="hint-item hint-action" type="button" data-canvas-tool="search" aria-label="Open searchable list" aria-pressed="false" title="Open searchable list">
                 <span class="hint-icon" aria-hidden="true">⌕</span>
-            </div>
-            <div class="hint-item" title="Double-click to open details">
+            </button>
+            <button class="hint-item hint-action" type="button" data-canvas-tool="details" aria-label="Open selected card details" aria-pressed="false" title="Open selected card details">
                 <span class="hint-icon" aria-hidden="true">⧉</span>
-            </div>
+            </button>
+            <div class="tool-status" id="canvas-tool-status" role="status" aria-live="polite"></div>
         </div>
         <div class="theme-toggle">
             <button class="theme-pill is-active" data-theme-option="light" type="button" onclick="window.PortfolioApp.applyThemePreference('light')">☼ Light</button>

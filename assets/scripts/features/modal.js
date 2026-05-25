@@ -165,6 +165,15 @@
     };
 
     app.bindModal = function bindModal() {
+        function closeModal() {
+            if (typeof app.closeModal === 'function') {
+                app.closeModal();
+                return;
+            }
+
+            app.dom.modalOverlay.classList.remove('active');
+        }
+
         document.querySelectorAll('.card').forEach((card) => {
             card.addEventListener('click', () => {
                 if (app.state.justDraggedCardId === card.dataset.card) {
@@ -176,18 +185,18 @@
         });
 
         app.dom.modalCloseButton.addEventListener('click', () => {
-            app.dom.modalOverlay.classList.remove('active');
+            closeModal();
         });
 
         app.dom.modalOverlay.addEventListener('click', (event) => {
             if (event.target === app.dom.modalOverlay) {
-                app.dom.modalOverlay.classList.remove('active');
+                closeModal();
             }
         });
 
         document.addEventListener('keydown', (event) => {
             if (event.key === 'Escape') {
-                app.dom.modalOverlay.classList.remove('active');
+                closeModal();
             }
         });
     };

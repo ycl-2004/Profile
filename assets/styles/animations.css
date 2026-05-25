@@ -1,0 +1,245 @@
+.motion-enhanced .modal-overlay,
+.motion-enhanced .modal {
+    transition: none;
+}
+
+.motion-enhanced #terminal-entry .terminal-shell {
+    position: relative;
+}
+
+.motion-enhanced #terminal-entry .terminal-shell::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background:
+        linear-gradient(110deg, transparent 0%, transparent 42%, rgba(255, 231, 239, 0.075) 50%, transparent 58%, transparent 100%);
+    transform: translateX(-115%);
+    animation: terminalAmbientSweep 6.8s ease-in-out infinite;
+}
+
+.motion-enhanced #terminal-entry .terminal-shell-header,
+.motion-enhanced #terminal-entry .terminal-shell-body {
+    position: relative;
+    z-index: 2;
+}
+
+.motion-enhanced #terminal-entry .terminal-panel-section,
+.motion-enhanced #terminal-entry .terminal-metric,
+.motion-enhanced #terminal-entry .terminal-enter-button {
+    animation: terminalAmbientBorder 4.8s ease-in-out infinite;
+}
+
+.motion-enhanced #terminal-entry .terminal-panel-section:nth-child(2),
+.motion-enhanced #terminal-entry .terminal-metric:nth-child(2) {
+    animation-delay: 0.7s;
+}
+
+.motion-enhanced #terminal-entry .terminal-panel-section:nth-child(3),
+.motion-enhanced #terminal-entry .terminal-metric:nth-child(3) {
+    animation-delay: 1.4s;
+}
+
+.motion-enhanced #terminal-entry .terminal-panel-section:nth-child(4),
+.motion-enhanced #terminal-entry .terminal-metric:nth-child(4) {
+    animation-delay: 2.1s;
+}
+
+.motion-enhanced .card,
+.motion-enhanced .btn,
+.motion-enhanced .zoom-btn,
+.motion-enhanced .view-expand,
+.motion-enhanced .theme-pill,
+.motion-enhanced .view-tab,
+.motion-enhanced .hint-action,
+.motion-enhanced .top-panel-button {
+    backface-visibility: hidden;
+}
+
+.motion-enhanced .card {
+    overflow: hidden;
+}
+
+.motion-enhanced .card::after {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    z-index: 2;
+    border-radius: inherit;
+    pointer-events: none;
+    opacity: 0;
+    background:
+        linear-gradient(115deg, transparent 18%, rgba(255, 255, 255, 0.28) 48%, transparent 72%);
+    transform: translateX(-130%);
+}
+
+.motion-enhanced .card-section-banner::after,
+.motion-enhanced .card-project-compact::after,
+.motion-enhanced .card-timeline-compact::after,
+.motion-enhanced .card-skill-summary::after {
+    animation: cardAmbientSheen 8.5s ease-in-out infinite;
+}
+
+.motion-enhanced .card-project-compact:nth-of-type(3n)::after {
+    animation-delay: 1.3s;
+}
+
+.motion-enhanced .card-project-compact:nth-of-type(3n + 1)::after {
+    animation-delay: 2.6s;
+}
+
+.motion-enhanced .card.is-connection-source::after,
+.motion-enhanced .card.is-connection-neighbor::after,
+.motion-enhanced .card.is-tool-selected::after,
+.motion-enhanced .card:hover::after {
+    animation: cardFocusSheen 1.9s ease-out infinite;
+}
+
+.motion-enhanced .card.is-tool-selected {
+    box-shadow:
+        0 0 0 1px rgba(255, 143, 171, 0.28),
+        0 10px 34px rgba(255, 143, 171, 0.12);
+}
+
+.motion-enhanced svg.connections path.is-connected {
+    filter: drop-shadow(0 0 8px rgba(255, 143, 171, 0.24));
+}
+
+.motion-enhanced svg.connections path[data-from][data-to]:not(.motion-flow-path):not(.is-connected) {
+    opacity: 0;
+    filter: none;
+}
+
+.motion-enhanced svg.connections path[data-from][data-to].is-connected {
+    opacity: 0.88;
+}
+
+.motion-enhanced svg.connections path.motion-flow-path {
+    pointer-events: none;
+    stroke-width: 2.05;
+    opacity: 0;
+    filter: drop-shadow(0 0 5px rgba(255, 143, 171, 0.08));
+    transition: opacity 0.18s ease, stroke-width 0.18s ease, filter 0.18s ease;
+}
+
+.motion-enhanced svg.connections path.motion-flow-path[data-lane="core"],
+.motion-enhanced svg.connections path.motion-flow-path[data-kind="primary"] {
+    stroke: rgba(232, 93, 138, 0.42);
+}
+
+.motion-enhanced svg.connections path.motion-flow-path[data-lane="project"] {
+    stroke: rgba(85, 178, 128, 0.48);
+}
+
+.motion-enhanced svg.connections path.motion-flow-path[data-kind="secondary"],
+.motion-enhanced svg.connections path.motion-flow-path[data-lane="support"] {
+    stroke: rgba(132, 160, 214, 0.44);
+}
+
+.motion-enhanced svg.connections path.motion-flow-path[data-lane="outreach"] {
+    stroke: rgba(190, 132, 74, 0.42);
+}
+
+.motion-enhanced svg.connections path.motion-flow-path.is-muted {
+    opacity: 0 !important;
+    filter: none;
+}
+
+.motion-enhanced svg.connections path.motion-flow-path:not(.is-active-flow) {
+    opacity: 0 !important;
+}
+
+.motion-enhanced svg.connections path.motion-flow-path.is-active-flow {
+    stroke-width: 2.7;
+    opacity: 0.78 !important;
+    filter: drop-shadow(0 0 9px rgba(255, 143, 171, 0.2));
+}
+
+.motion-pointer-signal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 13px;
+    height: 13px;
+    border: 1px solid rgba(232, 93, 138, 0.42);
+    border-radius: 999px;
+    pointer-events: none;
+    z-index: 9000;
+    opacity: 0;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 18px rgba(255, 143, 171, 0.16);
+}
+
+.motion-pointer-signal.is-visible {
+    opacity: 1;
+}
+
+@media (pointer: coarse), (prefers-reduced-motion: reduce) {
+    .motion-pointer-signal {
+        display: none;
+    }
+
+    .motion-enhanced #terminal-entry .terminal-shell::before,
+    .motion-enhanced #terminal-entry .terminal-panel-section,
+    .motion-enhanced #terminal-entry .terminal-metric,
+    .motion-enhanced #terminal-entry .terminal-enter-button,
+    .motion-enhanced .card::after {
+        animation: none;
+    }
+
+    .motion-enhanced .card.is-tool-selected {
+        box-shadow: var(--shadow-card);
+    }
+}
+
+@keyframes terminalAmbientSweep {
+    0%, 18% {
+        opacity: 0;
+        transform: translateX(-115%);
+    }
+    32% {
+        opacity: 1;
+    }
+    48%, 100% {
+        opacity: 0;
+        transform: translateX(115%);
+    }
+}
+
+@keyframes terminalAmbientBorder {
+    0%, 100% {
+        border-color: rgba(255, 244, 239, 0.07);
+    }
+    50% {
+        border-color: rgba(255, 181, 205, 0.2);
+    }
+}
+
+@keyframes cardAmbientSheen {
+    0%, 58% {
+        opacity: 0;
+        transform: translateX(-130%);
+    }
+    68% {
+        opacity: 0.22;
+    }
+    82%, 100% {
+        opacity: 0;
+        transform: translateX(130%);
+    }
+}
+
+@keyframes cardFocusSheen {
+    0% {
+        opacity: 0;
+        transform: translateX(-130%);
+    }
+    38% {
+        opacity: 0.26;
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(130%);
+    }
+}

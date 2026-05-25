@@ -26,6 +26,9 @@
     if (typeof app.bindTopActions === 'function') {
         app.bindTopActions();
     }
+    if (typeof app.bindCanvasTools === 'function') {
+        app.bindCanvasTools();
+    }
     // 恢复“双击查看详情”（只读弹窗）
     app.bindModal();
     app.bindWindowEvents();

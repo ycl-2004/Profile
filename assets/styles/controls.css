@@ -271,9 +271,12 @@
     border-radius: 20px;
     border: 1px solid rgba(0, 0, 0, 0.06);
     box-shadow: var(--shadow);
+    overflow: visible;
 }
 
 .hint-item {
+    appearance: none;
+    font: inherit;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -284,6 +287,7 @@
     border-radius: 14px;
     border: 1px solid transparent;
     background: transparent;
+    cursor: pointer;
     transition: all 0.2s ease;
 }
 
@@ -298,10 +302,42 @@
     color: var(--text);
 }
 
+.hint-action:focus-visible {
+    outline: 3px solid rgba(255, 143, 171, 0.28);
+    outline-offset: 3px;
+}
+
 .hint-icon {
     font-size: 18px;
     line-height: 1;
     font-weight: 700;
+}
+
+.tool-status {
+    position: absolute;
+    left: 50%;
+    bottom: calc(100% + 10px);
+    transform: translateX(-50%) translateY(8px);
+    min-width: max-content;
+    max-width: min(280px, calc(100vw - 40px));
+    padding: 8px 12px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 143, 171, 0.18);
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 12px 32px rgba(255, 143, 171, 0.16);
+    color: var(--text-secondary);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    white-space: nowrap;
+}
+
+.tool-status.is-visible {
+    opacity: 1;
+    visibility: visible;
 }
 
 .theme-toggle {

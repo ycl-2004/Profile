@@ -89,3 +89,12 @@ svg.connections path.is-muted {
     opacity: var(--connection-muted);
     filter: none;
 }
+
+svg.connections path[data-from][data-to]:not(.is-connected) {
+    opacity: 0;
+    filter: none;
+}
+
+svg.connections path[data-from][data-to].is-connected {
+    opacity: 0.88;
+}

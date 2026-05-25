@@ -159,6 +159,13 @@ body[data-theme='dark'] .hint-item:hover {
     background: rgba(255, 255, 255, 0.05);
 }
 
+body[data-theme='dark'] .tool-status {
+    background: rgba(18, 22, 40, 0.94);
+    border-color: rgba(255, 143, 171, 0.2);
+    box-shadow: 0 16px 34px rgba(0, 0, 0, 0.28);
+    color: var(--text-secondary);
+}
+
 body[data-theme='dark'] .layer-item.active,
 body[data-theme='dark'] .hint-item.is-active,
 body[data-theme='dark'] .view-tab.is-active,

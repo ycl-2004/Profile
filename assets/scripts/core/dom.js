@@ -19,6 +19,8 @@
             zoomInButton: document.getElementById('zoom-in'),
             zoomOutButton: document.getElementById('zoom-out'),
             zoomFitButton: document.getElementById('zoom-fit'),
+            canvasToolButtons: document.querySelectorAll('[data-canvas-tool]'),
+            canvasToolStatus: document.getElementById('canvas-tool-status'),
             minimapContent: document.getElementById('minimap-content'),
             minimapTitle: document.querySelector('.minimap-title'),
             modalOverlay: document.getElementById('modal-overlay'),
