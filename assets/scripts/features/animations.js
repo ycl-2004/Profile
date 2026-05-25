@@ -106,10 +106,10 @@
             defaults: { ease: 'power2.inOut' },
             onComplete: () => {
                 overlay.classList.remove('active');
-                gsap.set([overlay, modal], { clearProps: 'opacity,visibility,x,y,scale' });
+                gsap.set([overlay, modal], { clearProps: 'opacity,visibility,transform' });
             }
         })
-            .to(modal, { y: 12, scale: 0.97, autoAlpha: 0, duration: 0.2 }, 0)
+            .to(modal, { y: 12, scaleX: 0.97, scaleY: 0.97, autoAlpha: 0, duration: 0.2 }, 0)
             .to(overlay, { autoAlpha: 0, duration: 0.18 }, 0.03);
     };
 
@@ -189,7 +189,8 @@
         });
 
         gsap.to('.terminal-metric-icon', {
-            scale: 1.08,
+            scaleX: 1.08,
+            scaleY: 1.08,
             duration: 2.8,
             ease: 'sine.inOut',
             repeat: -1,
@@ -232,12 +233,13 @@
             movers.set(card, {
                 x: gsap.quickTo(card, 'x', { duration: 0.38, ease: 'power3.out' }),
                 y: gsap.quickTo(card, 'y', { duration: 0.38, ease: 'power3.out' }),
-                scale: gsap.quickTo(card, 'scale', { duration: 0.38, ease: 'power3.out' })
+                scaleX: gsap.quickTo(card, 'scaleX', { duration: 0.38, ease: 'power3.out' }),
+                scaleY: gsap.quickTo(card, 'scaleY', { duration: 0.38, ease: 'power3.out' })
             });
 
             card.addEventListener('pointerdown', () => {
                 card.dataset.motionLocked = 'true';
-                gsap.to(card, { x: 0, y: 0, scale: 1.018, duration: 0.14, ease: 'power2.out' });
+                gsap.to(card, { x: 0, y: 0, scaleX: 1.018, scaleY: 1.018, duration: 0.14, ease: 'power2.out' });
             });
         });
 
@@ -246,7 +248,7 @@
                 if (!card.dataset.motionLocked) return;
                 delete card.dataset.motionLocked;
                 if (!card.classList.contains('dragging')) {
-                    gsap.to(card, { scale: 1, duration: 0.18, ease: 'power2.out' });
+                    gsap.to(card, { scaleX: 1, scaleY: 1, duration: 0.18, ease: 'power2.out' });
                 }
             });
         });
@@ -258,7 +260,8 @@
                 if (!mover) return;
                 mover.x(0);
                 mover.y(0);
-                mover.scale(1);
+                mover.scaleX(1);
+                mover.scaleY(1);
             });
         }
 
@@ -289,7 +292,8 @@
                 if (!power) {
                     mover.x(0);
                     mover.y(0);
-                    mover.scale(1);
+                    mover.scaleX(1);
+                    mover.scaleY(1);
                     return;
                 }
 
@@ -298,7 +302,8 @@
 
                 mover.x(directionX * power * 7);
                 mover.y(directionY * power * 5);
-                mover.scale(1 + power * 0.018);
+                mover.scaleX(1 + power * 0.018);
+                mover.scaleY(1 + power * 0.018);
             });
         }
 
@@ -408,7 +413,7 @@
         const cards = toArray('.card');
         const chrome = toArray('.top-bar, .canvas-view-header, .sidebar, .zoom-controls, .theme-toggle, .bottom-hint, .minimap');
 
-        gsap.set(cards, { autoAlpha: 0, y: 18, scale: 0.965, transformOrigin: '50% 50%' });
+        gsap.set(cards, { autoAlpha: 0, y: 18, scaleX: 0.965, scaleY: 0.965, transformOrigin: '50% 50%' });
         gsap.set(chrome, { autoAlpha: 0, y: -8 });
 
         gsap.timeline({ defaults: { ease: 'power3.out' } })
@@ -416,10 +421,11 @@
             .to(cards, {
                 autoAlpha: 1,
                 y: 0,
-                scale: 1,
+                scaleX: 1,
+                scaleY: 1,
                 duration: 0.72,
                 stagger: { amount: 0.62, from: 'random' },
-                clearProps: 'opacity,visibility,y,scale'
+                clearProps: 'opacity,visibility,transform'
             }, 0.1)
             .add(() => app.animateConnectionsIntro(), 0.34);
     };
@@ -439,15 +445,17 @@
             .fromTo(modal, {
                 x: (sourceCenter.x - modalCenter.x) * 0.16,
                 y: (sourceCenter.y - modalCenter.y) * 0.16,
-                scale: 0.94,
+                scaleX: 0.94,
+                scaleY: 0.94,
                 autoAlpha: 0
             }, {
                 x: 0,
                 y: 0,
-                scale: 1,
+                scaleX: 1,
+                scaleY: 1,
                 autoAlpha: 1,
                 duration: 0.42,
-                clearProps: 'x,y,scale,opacity,visibility'
+                clearProps: 'transform,opacity,visibility'
             }, 0.03)
             .fromTo(toArray('.modal-section, .modal-tag', modal), {
                 autoAlpha: 0,
@@ -509,13 +517,14 @@
 
         gsap.killTweensOf([button, icon]);
         gsap.timeline({ defaults: { ease: 'power3.out' } })
-            .to(button, { scale: 0.9, duration: 0.08 }, 0)
-            .to(button, { scale: 1, duration: 0.28, ease: 'elastic.out(1, 0.55)', clearProps: 'scale' }, 0.08)
-            .fromTo(icon, { rotation, scale: 0.86 }, {
+            .to(button, { scaleX: 0.9, scaleY: 0.9, duration: 0.08 }, 0)
+            .to(button, { scaleX: 1, scaleY: 1, duration: 0.28, ease: 'elastic.out(1, 0.55)', clearProps: 'transform' }, 0.08)
+            .fromTo(icon, { rotation, scaleX: 0.86, scaleY: 0.86 }, {
                 rotation: 0,
-                scale: 1,
+                scaleX: 1,
+                scaleY: 1,
                 duration: 0.34,
-                clearProps: 'rotation,scale'
+                clearProps: 'transform'
             }, 0.04);
     };
 
@@ -526,11 +535,13 @@
         gsap.fromTo(status, {
             autoAlpha: 0,
             y: 8,
-            scale: 0.97
+            scaleX: 0.97,
+            scaleY: 0.97
         }, {
             autoAlpha: 1,
             y: 0,
-            scale: 1,
+            scaleX: 1,
+            scaleY: 1,
             duration: 0.26,
             ease: 'power3.out'
         });

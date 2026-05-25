@@ -927,7 +927,8 @@
     }
 
     .terminal-shell {
-        max-height: none;
+        height: calc(100dvh - 24px);
+        max-height: calc(100dvh - 24px);
         border-radius: 24px;
     }
 
@@ -942,6 +943,8 @@
     }
 
     .terminal-shell-body {
+        min-height: 0;
+        overflow: auto;
         padding: 26px 18px 28px;
         gap: 24px;
     }
@@ -965,6 +968,15 @@
     .terminal-enter-button {
         min-height: 58px;
         font-size: 16px;
+    }
+
+    .terminal-launch {
+        position: sticky;
+        bottom: 0;
+        z-index: 3;
+        padding: 12px 0 0;
+        background:
+            linear-gradient(180deg, rgba(37, 34, 43, 0), rgba(37, 34, 43, 0.96) 34%, rgba(37, 34, 43, 0.98));
     }
 
     .terminal-chip-cloud {
