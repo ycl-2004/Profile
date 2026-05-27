@@ -58,7 +58,7 @@
             sortDate: '2026-05',
             icon: '📱',
             tone: 'sky',
-            description: 'Local Mac sender and iPadOS receiver that turns an iPad into an authenticated extended display for a Mac.',
+            description: 'Built YC Cast to reduce screen-space limits for developers by turning an iPad into an authenticated, low-friction secondary display with stronger volume controls, settings, and connection stability than regular screen sharing.',
             impact: 'Built virtual display streaming, pairing-code authentication, input event validation, network mode selection, and iPad disconnection states.',
             stack: ['Swift', 'macOS', 'iPadOS', 'Network.framework', 'HMAC']
         },
