@@ -8,12 +8,15 @@
                 <div class="logo-icon">Y</div>
                 <div class="logo-copy">
                     <span class="logo-title">Yi-Chen Canvas</span>
-                    <span class="logo-subtitle">AI-Native Product Engineer</span>
+                    <span class="logo-subtitle">Product Engineer · Systems Builder</span>
                 </div>
             </div>
             <div class="top-actions">
                 <button class="btn btn-primary" id="share-action" type="button" aria-expanded="false" aria-controls="share-panel">Share</button>
                 <button class="btn btn-avatar" id="yc-logic-action" type="button" aria-label="Open YC personal system">YC</button>
+                <button class="btn btn-icon sound-toggle" id="sound-action" type="button" data-sound-toggle aria-pressed="false" aria-label="Turn sound on" title="Sound is off">
+                    <span data-sound-icon aria-hidden="true">🔇</span>
+                </button>
                 <button class="btn btn-icon" id="settings-action" type="button" aria-label="Open settings" aria-expanded="false" aria-controls="settings-panel">⚙</button>
                 <div class="top-action-popovers" id="top-action-popovers">
                     <section class="top-action-panel share-panel" id="share-panel" aria-labelledby="share-panel-title" hidden>
@@ -50,10 +53,20 @@
                                 <button type="button" data-settings-theme="auto">Auto</button>
                             </div>
                         </div>
+                        <div class="settings-group settings-preference-row">
+                            <span>Effects</span>
+                            <div class="settings-segment settings-segment--two" role="group" aria-label="Motion preference">
+                                <button type="button" data-motion-option="full">Full</button>
+                                <button type="button" data-motion-option="reduced">Reduced</button>
+                            </div>
+                        </div>
                         <div class="settings-grid">
                             <button type="button" data-settings-action="fit">Fit canvas</button>
                             <button type="button" data-settings-action="reset-layer">All layers</button>
                             <button type="button" data-settings-action="contact">Contact card</button>
+                            <button type="button" data-settings-action="yc-system">YC system</button>
+                            <button type="button" data-sound-toggle aria-pressed="false"><span data-sound-label>Sound off</span></button>
+                            <button type="button" data-profile-action="print">Print résumé</button>
                         </div>
                     </section>
                 </div>

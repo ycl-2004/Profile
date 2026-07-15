@@ -17,6 +17,11 @@
     }
 
     app.initCanvas = function initCanvas() {
+        const canvasApp = document.getElementById('canvas-app');
+        if (canvasApp) {
+            canvasApp.inert = false;
+            canvasApp.setAttribute('aria-hidden', 'false');
+        }
         if (typeof app.applyDefaultLayout === 'function') {
             app.applyDefaultLayout();
         }

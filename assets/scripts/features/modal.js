@@ -157,11 +157,35 @@
         app.dom.modalBody.dataset.modalVariant = variant;
         if (app.dom.modal) app.dom.modal.dataset.modalVariant = variant;
         app.dom.modalBody.innerHTML = data.body;
+        app.dom.modalBody.querySelectorAll('a[target="_blank"]').forEach((link) => {
+            link.rel = 'noopener noreferrer';
+        });
         app.decorateModalContent();
         app.dom.modalTags.innerHTML = (data.tags || [])
             .map((tag) => `<span class="tag modal-tag ${app.getToneClassName(tag)}">${escapeHtml(tag)}</span>`)
             .join('');
+        app.state.modalReturnFocus = document.activeElement instanceof HTMLElement ? document.activeElement : null;
         app.dom.modalOverlay.classList.add('active');
+        app.dom.modalOverlay.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('modal-open');
+        const canvasApp = document.getElementById('canvas-app');
+        if (canvasApp) canvasApp.inert = true;
+        window.requestAnimationFrame(() => app.dom.modalCloseButton?.focus({ preventScroll: true }));
+        app.playSound('open');
+    };
+
+    app.finalizeModalClose = function finalizeModalClose() {
+        const overlay = app.dom.modalOverlay;
+        if (!overlay) return;
+
+        overlay.classList.remove('active');
+        overlay.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('modal-open');
+        const canvasApp = document.getElementById('canvas-app');
+        if (canvasApp) canvasApp.inert = false;
+        const returnFocus = app.state.modalReturnFocus;
+        app.state.modalReturnFocus = null;
+        if (returnFocus?.isConnected) returnFocus.focus({ preventScroll: true });
     };
 
     app.bindModal = function bindModal() {
@@ -171,11 +195,15 @@
                 return;
             }
 
-            app.dom.modalOverlay.classList.remove('active');
+            app.finalizeModalClose();
         }
 
         document.querySelectorAll('.card').forEach((card) => {
-            card.addEventListener('click', () => {
+            if (!app.data.modalData?.[card.dataset.card]) return;
+            if (card.querySelector('a, button')) return;
+
+            card.addEventListener('click', (event) => {
+                if (event.target.closest('a, button')) return;
                 if (app.state.justDraggedCardId === card.dataset.card) {
                     app.state.justDraggedCardId = null;
                     return;
@@ -195,8 +223,34 @@
         });
 
         document.addEventListener('keydown', (event) => {
+            if (!app.dom.modalOverlay.classList.contains('active')) return;
+
             if (event.key === 'Escape') {
+                event.preventDefault();
                 closeModal();
+                return;
+            }
+
+            if (event.key === 'Tab') {
+                const focusable = Array.from(app.dom.modal.querySelectorAll(
+                    'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
+                )).filter((element) => !element.hidden && element.getClientRects().length);
+
+                if (!focusable.length) {
+                    event.preventDefault();
+                    app.dom.modal.focus();
+                    return;
+                }
+
+                const first = focusable[0];
+                const last = focusable[focusable.length - 1];
+                if (event.shiftKey && document.activeElement === first) {
+                    event.preventDefault();
+                    last.focus();
+                } else if (!event.shiftKey && document.activeElement === last) {
+                    event.preventDefault();
+                    first.focus();
+                }
             }
         });
     };

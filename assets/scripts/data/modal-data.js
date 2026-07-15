@@ -98,11 +98,11 @@
     app.data.modalData = {
         'profile': {
             title: 'Yi-Chen Lin',
-            subtitle: 'AI-Native Product Engineer · Full-Stack Builder',
+            subtitle: 'Product Engineer · Systems Builder',
             avatar: '👨‍💻',
             body: `
                 <h3>🎯 Positioning</h3>
-                <p><strong>AI-native product engineer</strong> building user-facing systems across web, desktop, and workflow-heavy products.</p>
+                <p><strong>Product engineer and systems builder</strong> working across industrial software, native apps, AI infrastructure, and workflow-heavy products.</p>
                 <h3>🧠 What I do best</h3>
                 <p>I turn ambiguous problems into structured, working products by combining systems thinking, product judgment, and fast execution.</p>
                 <h3>🤝 How I work</h3>
@@ -196,12 +196,12 @@
             tags: ['Structure', 'Execution', 'Iteration']
         },
         'skills': {
-            title: 'Personal Tags',
-            subtitle: 'Soft signals that describe how I build and collaborate',
+            title: 'Operating Strengths',
+            subtitle: 'How I build and collaborate',
             avatar: '⚔️',
             body: `
-                <h3>Core vibe</h3>
-                <p class="modal-stack-line">ESFJ · Systems Thinker · User-First · Builder Energy</p>
+                <h3>Core strengths</h3>
+                <p class="modal-stack-line">Systems Thinker · User-First · Evidence-Driven · Clear Communicator</p>
                 <h3>How I work with people</h3>
                 <p class="modal-stack-line">Clear Communicator · Follow-Through · Low-Ego Collaboration · Human-Centered</p>
                 <h3>How I move work forward</h3>
@@ -209,7 +209,7 @@
                 <h3>Why it matters</h3>
                 <p>These are the softer signals behind how I ship: clear communication, dependable follow-through, and a strong instinct to turn messy problems into workable systems.</p>
             `,
-            tags: ['ESFJ', 'Builder Energy', 'User-First', 'Follow-Through', 'Systems Thinker']
+            tags: ['Evidence-Driven', 'User-First', 'Follow-Through', 'Systems Thinker']
         },
         'explore-tech': {
             title: 'Featured Tech',
@@ -372,7 +372,7 @@
                 <p class="modal-stack-line">Swift · macOS · iPadOS · Network.framework · Keychain · HMAC-SHA256</p>
                 <h3>Link</h3>
                 <div class="modal-link-list">
-                    <p><strong>GitHub:</strong> <a href="https://github.com/ycl-2004/Mac_to_Ipad" target="_blank" rel="noopener">github.com/ycl-2004/Mac_to_Ipad</a> <span>(private)</span></p>
+                    <p><strong>GitHub:</strong> <a href="https://github.com/ycl-2004/Mac_to_Ipad" target="_blank" rel="noopener noreferrer">github.com/ycl-2004/Mac_to_Ipad</a></p>
                 </div>
             `,
             tags: ['Native App', 'Local Streaming', 'Security', 'Swift']
@@ -397,10 +397,8 @@
                 <p>Turned a personal resume workflow into a reusable, privacy-aware local tool that can explain why it selected specific evidence and layout choices.</p>
                 <h3>Stack</h3>
                 <p class="modal-stack-line">Python · LaTeX · JSON Schema · AI Runtime · Unit Tests · CLI UX</p>
-                <h3>Link</h3>
-                <div class="modal-link-list">
-                    <p><strong>GitHub:</strong> <a href="https://github.com/ycl-2004/ForYourResume" target="_blank" rel="noopener">github.com/ycl-2004/ForYourResume</a> <span>(private)</span></p>
-                </div>
+                <h3>Availability</h3>
+                <p>The source repository is private. This case study describes only the public-safe product architecture and workflow.</p>
             `,
             tags: ['AI Tooling', 'Resume Engine', 'Python', 'LaTeX']
         },
@@ -523,6 +521,102 @@
             `,
             tags: ['Integration', 'Power Systems', 'Testing', 'Team Engineering']
         },
+        'project-yc-obsidian': {
+            title: 'YC Obsidian',
+            subtitle: 'A public, privacy-sanitized personal operating system',
+            avatar: '🗂',
+            body: `
+                <h3>Problem</h3>
+                <p>Notes only compound when capture, understanding, execution, and review are connected instead of living in separate piles.</p>
+                <h3>System</h3>
+                <ul>
+                    <li>Designed a three-layer interface for capture, daily operation, and long-term knowledge</li>
+                    <li>Packaged templates, custom CSS, selected plugins, and automation into a minimum-runnable vault</li>
+                    <li>Sanitized private content and added zero-dependency validation before publishing</li>
+                </ul>
+                <h3>Why it matters</h3>
+                <p>This is the public knowledge-system layer behind how I turn learning and project work into reusable operating context.</p>
+                <h3>Link</h3>
+                <div class="modal-link-list"><p><strong>GitHub:</strong> <a href="https://github.com/ycl-2004/YC_Obsidian" target="_blank" rel="noopener noreferrer">github.com/ycl-2004/YC_Obsidian</a></p></div>
+            `,
+            tags: ['Knowledge System', 'Obsidian', 'Privacy', 'Automation']
+        },
+        'project-sharememory': {
+            title: 'ShareMemory',
+            subtitle: 'Durable project context shared across coding agents',
+            avatar: '🧠',
+            body: `
+                <h3>Problem</h3>
+                <p>Agent context is easy to lose between tools and sessions, which creates repeated discovery work and inconsistent project decisions.</p>
+                <h3>System</h3>
+                <ul>
+                    <li>Uses one project-scoped <code>AI_MEMORY</code> directory as a transparent source of context</li>
+                    <li>Supports Codex and Claude Code through a single reusable skill contract</li>
+                    <li>Adds linting, safe writes, write locking, optional Git history, and CI checks</li>
+                </ul>
+                <h3>Outcome</h3>
+                <p>Turned cross-agent memory into a reviewable file workflow instead of an opaque service dependency.</p>
+                <h3>Link</h3>
+                <div class="modal-link-list"><p><strong>GitHub:</strong> <a href="https://github.com/ycl-2004/ShareMemory" target="_blank" rel="noopener noreferrer">github.com/ycl-2004/ShareMemory</a></p></div>
+            `,
+            tags: ['Agent Tooling', 'Local-First', 'CI', 'Shared Context']
+        },
+        'project-always': {
+            title: 'Always',
+            subtitle: 'Private-by-default reusable prompts and snippets',
+            avatar: '⌘',
+            body: `
+                <h3>Problem</h3>
+                <p>High-value prompts and snippets become hard to reuse when they are scattered across applications, chat histories, and clipboard managers.</p>
+                <h3>System</h3>
+                <ul>
+                    <li>Shares one local JSON store across Raycast, Codex, Claude, and CLI workflows</li>
+                    <li>Provides a native macOS picker with search, selection, and safe paste behavior</li>
+                    <li>Keeps data local, requires no cloud account or API key, and creates automatic backups</li>
+                </ul>
+                <h3>Link</h3>
+                <div class="modal-link-list"><p><strong>GitHub:</strong> <a href="https://github.com/ycl-2004/Always" target="_blank" rel="noopener noreferrer">github.com/ycl-2004/Always</a></p></div>
+            `,
+            tags: ['macOS', 'Prompt Systems', 'Local-First', 'Raycast']
+        },
+        'project-open-source': {
+            title: 'Open-Source Maintenance',
+            subtitle: 'Upstream contributions, clearly separated from original projects',
+            avatar: '↗',
+            body: `
+                <h3>Verified contribution record</h3>
+                <p><strong>3 upstream pull requests merged</strong> across AI News Radar, Afu LLM Todo, and Partner Skill. One additional AI News Radar pull request is active.</p>
+                <h3>What I changed</h3>
+                <ul>
+                    <li>Improved source quality, dual-view product UX, and maintenance workflows in AI News Radar</li>
+                    <li>Extended LLM task and workflow behavior in Afu LLM Todo</li>
+                    <li>Strengthened the cross-agent Partner workflow and its execution layer</li>
+                </ul>
+                <h3>Ownership note</h3>
+                <p>These repositories are forks of LearnPrompt projects. I present the upstream contribution record here, not the full repositories as original work.</p>
+                <h3>Evidence</h3>
+                <div class="modal-link-list"><p><strong>GitHub PRs:</strong> <a href="https://github.com/ycl-2004?tab=pullrequests" target="_blank" rel="noopener noreferrer">View authored pull requests</a></p></div>
+            `,
+            tags: ['Open Source', 'Upstream PRs', 'Product UX', 'Maintenance']
+        },
+        'project-lawdesk': {
+            title: 'LawDesk Junior',
+            subtitle: 'Evidence-first legal research and case workflow',
+            avatar: '⚖',
+            body: `
+                <h3>Problem</h3>
+                <p>Legal workflows need clear provenance, deterministic calculations, and explicit uncertainty instead of confident but weakly grounded AI output.</p>
+                <h3>System</h3>
+                <ul>
+                    <li>Combined a browser workspace with a FastAPI backend and retrieval pipeline</li>
+                    <li>Added guardrailed extraction, evidence references, and deterministic calculation paths</li>
+                    <li>Built more than 90 frontend and backend tests around the public workflow</li>
+                </ul>
+                <h3>Link</h3>
+                <div class="modal-link-list"><p><strong>GitHub:</strong> <a href="https://github.com/ycl-2004/Lawyer_Sup" target="_blank" rel="noopener noreferrer">github.com/ycl-2004/Lawyer_Sup</a></p></div>
+            `,
+            tags: ['FastAPI', 'RAG', 'Evidence', 'Testing']
+        },
         'work-delta': {
             title: 'Delta Controls',
             subtitle: 'Industrial monitoring tool for real-time HVAC field workflows',
@@ -531,17 +625,19 @@
                 <h3>Problem</h3>
                 <p>Field engineers need clearer real-time visibility into HVAC device states, communication status, and operational flow in industrial environments.</p>
                 <h3>Approach</h3>
-                <p>I designed and implemented a hybrid monitoring interface that bridges device communication with a more usable operator-facing workflow.</p>
+                <p>I contribute to a hybrid air-balancing application that bridges device communication with practical operator-facing workflows.</p>
                 <h3>System</h3>
                 <ul>
-                    <li>Built with React, TypeScript, Kotlin, and Android WebView</li>
-                    <li>Implemented communication between web and native layers, including state synchronization</li>
-                    <li>Integrated BLE and IP communication for discovery, monitoring, connection management, and device interaction</li>
+                    <li>Shipped 10 merged pull requests in the team repository</li>
+                    <li>Improved BLE connectivity, reconnection, and web/native state synchronization</li>
+                    <li>Delivered live data visualization, visualization test tooling, and gray-box controller workflows</li>
                 </ul>
                 <h3>Outcome</h3>
-                <p>Bridged hardware systems with software interfaces and gained stronger experience working under real-world industrial constraints.</p>
+                <p>Built production-oriented experience at the intersection of hardware communication, field usability, testing, and cross-functional delivery.</p>
                 <h3>Stack</h3>
                 <p class="modal-stack-line">React · TypeScript · Kotlin · Android WebView · BLE · IP Communication</p>
+                <h3>Evidence</h3>
+                <div class="modal-link-list"><p><strong>GitHub activity:</strong> <a href="https://github.com/ycl-2004?tab=pullrequests" target="_blank" rel="noopener noreferrer">View pull-request profile</a></p></div>
             `,
             tags: ['Industrial UI', 'Device Sync', 'React', 'BLE/IP']
         },
@@ -574,7 +670,7 @@
             body: `
                 <h3>Foundation</h3>
                 <p><strong>University of British Columbia</strong> · BASc in Electrical Engineering</p>
-                <p>Expected graduation: Dec 2027</p>
+                <p>Expected graduation: May 2027</p>
                 <h3>What it gave me</h3>
                 <p>Training in control systems, circuit design, signal processing, and debugging discipline.</p>
                 <h3>Why it matters now</h3>
@@ -634,11 +730,10 @@
             subtitle: 'Links',
             avatar: '📮',
             body: `
-                <p><strong>Email:</strong> yichen.lin.2004@gmail.com</p>
-                <p><strong>Phone:</strong> +1 236-777-6823</p>
-                <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/yichenlin-lyc/" target="_blank" rel="noopener">yichenlin-lyc</a></p>
-                <p><strong>GitHub:</strong> <a href="https://github.com/ycl-2004" target="_blank" rel="noopener">github.com/ycl-2004</a></p>
-                <p><strong>Portfolio:</strong> <a href="https://ycl-2004.github.io/Profile/" target="_blank" rel="noopener">ycl-2004.github.io/Profile/</a></p>
+                <p><strong>Email:</strong> <a href="mailto:yichen.lin.2004@gmail.com">yichen.lin.2004@gmail.com</a></p>
+                <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/yichenlin-lyc/" target="_blank" rel="noopener noreferrer">yichenlin-lyc</a></p>
+                <p><strong>GitHub:</strong> <a href="https://github.com/ycl-2004" target="_blank" rel="noopener noreferrer">github.com/ycl-2004</a></p>
+                <p><strong>Portfolio:</strong> <a href="https://ycl-2004.github.io/Profile/" target="_blank" rel="noopener noreferrer">ycl-2004.github.io/Profile/</a></p>
             `,
             tags: ['Open to Opportunities', 'Happy to Connect']
         }

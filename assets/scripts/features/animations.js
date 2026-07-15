@@ -3,8 +3,12 @@
     const gsap = window.gsap;
     const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
 
+    function motionIsReduced() {
+        return reducedMotionQuery.matches || document.body.dataset.motion === 'reduced';
+    }
+
     function canAnimate() {
-        return !!gsap && !reducedMotionQuery.matches;
+        return !!gsap && !motionIsReduced();
     }
 
     function toArray(selector, scope) {
@@ -96,8 +100,11 @@
 
         if (!overlay || !overlay.classList.contains('active')) return;
 
+        app.playSound('close');
+
         if (!canAnimate() || !modal) {
-            overlay.classList.remove('active');
+            if (typeof app.finalizeModalClose === 'function') app.finalizeModalClose();
+            else overlay.classList.remove('active');
             return;
         }
 
@@ -105,12 +112,37 @@
         gsap.timeline({
             defaults: { ease: 'power2.inOut' },
             onComplete: () => {
-                overlay.classList.remove('active');
                 gsap.set([overlay, modal], { clearProps: 'opacity,visibility,transform' });
+                if (typeof app.finalizeModalClose === 'function') app.finalizeModalClose();
+                else overlay.classList.remove('active');
             }
         })
             .to(modal, { y: 12, scaleX: 0.97, scaleY: 0.97, autoAlpha: 0, duration: 0.2 }, 0)
             .to(overlay, { autoAlpha: 0, duration: 0.18 }, 0.03);
+    };
+
+    app.refreshMotionPreference = function refreshMotionPreference() {
+        if (!gsap) return;
+
+        const animatedElements = document.querySelectorAll(
+            '.terminal-chip, .terminal-quickfact, .terminal-metric-icon, .terminal-project-dot, .terminal-enter-button, .card, .btn, .zoom-btn, .view-tab, .theme-pill, .motion-flow-path'
+        );
+
+        if (motionIsReduced()) {
+            gsap.killTweensOf(animatedElements);
+            if (typeof app.stopActiveConnectionFlow === 'function') app.stopActiveConnectionFlow();
+            gsap.set(animatedElements, { clearProps: 'transform,opacity,visibility,boxShadow,filter' });
+            document.body.classList.remove('motion-enhanced');
+            document.querySelector('.motion-pointer-signal')?.classList.remove('is-visible');
+            app.state.motionReady = false;
+            app.state.terminalMotionReady = false;
+            return;
+        }
+
+        if (typeof app.initMotion === 'function') app.initMotion();
+        if (typeof app.initTerminalMotion === 'function' && !app.dom.terminalEntry?.classList.contains('hidden')) {
+            app.initTerminalMotion();
+        }
     };
 
     if (!gsap) return;
@@ -129,7 +161,7 @@
         const yTo = gsap.quickTo(signal, 'y', { duration: 0.32, ease: 'power3.out' });
 
         document.addEventListener('pointermove', (event) => {
-            if (reducedMotionQuery.matches) return;
+            if (motionIsReduced()) return;
             xTo(event.clientX);
             yTo(event.clientY);
             if (!signal.classList.contains('is-visible')) {
@@ -156,7 +188,7 @@
             const yTo = gsap.quickTo(control, 'y', { duration: 0.28, ease: 'power3.out' });
 
             control.addEventListener('pointermove', (event) => {
-                if (reducedMotionQuery.matches) return;
+                if (motionIsReduced()) return;
                 const rect = control.getBoundingClientRect();
                 const strength = Math.min(rect.width, rect.height) * 0.12;
                 const x = ((event.clientX - rect.left) / rect.width - 0.5) * strength;

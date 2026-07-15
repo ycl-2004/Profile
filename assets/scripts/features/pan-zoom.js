@@ -203,11 +203,11 @@
         const sideInset = mode === 'phone' ? 18 : mode === 'tablet' ? 24 : 32;
 
         if (mode === 'phone') {
-            state.scale = fitScale;
+            state.scale = clamp(Math.max(fitScale * 1.7, 0.88), 0.78, 1);
         } else if (mode === 'tablet') {
-            state.scale = clamp(Math.max(fitScale * 1.12, 0.52), 0.45, 0.72);
+            state.scale = clamp(Math.max(fitScale * 1.2, 0.64), 0.56, 0.78);
         } else {
-            state.scale = clamp(Math.max(fitScale * 1.28, 0.62), 0.5, 0.82);
+            state.scale = clamp(Math.max(fitScale * 1.34, 0.72), 0.62, 0.86);
         }
 
         const contentWidth = bounds.width * state.scale;

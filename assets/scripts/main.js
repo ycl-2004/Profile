@@ -3,20 +3,22 @@
 
     app.render();
     app.cacheDom();
+    document.documentElement.classList.add('js');
+    const canvasApp = document.getElementById('canvas-app');
+    if (canvasApp) {
+        canvasApp.inert = true;
+        canvasApp.setAttribute('aria-hidden', 'true');
+    }
     if (typeof app.initTheme === 'function') {
         app.initTheme();
+    }
+    if (typeof app.initPreferences === 'function') {
+        app.initPreferences();
     }
     if (typeof app.decorateProjectTags === 'function') {
         app.decorateProjectTags();
     }
     app.bindTerminalEntry();
-    // 禁用访客侧的撤销（避免 Ctrl/Cmd+Z 改动页面状态）
-    document.addEventListener('keydown', (event) => {
-        const key = (event.key || '').toLowerCase();
-        if ((event.ctrlKey || event.metaKey) && key === 'z') {
-            event.preventDefault();
-        }
-    });
     app.bindPanZoom();
     app.bindCardDragging();
     app.bindLayers();
@@ -25,6 +27,9 @@
     }
     if (typeof app.bindTopActions === 'function') {
         app.bindTopActions();
+    }
+    if (typeof app.bindProfileActions === 'function') {
+        app.bindProfileActions();
     }
     if (typeof app.bindCanvasTools === 'function') {
         app.bindCanvasTools();

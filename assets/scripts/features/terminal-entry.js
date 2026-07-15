@@ -1,6 +1,6 @@
 (function () {
     const app = window.PortfolioApp;
-    const LAUNCH_DURATION_MS = 2100;
+    const LAUNCH_DURATION_MS = 720;
     const LAUNCH_MAX_VALUE = 120;
     const NAV_GRAPH = {
         hero: { down: 'role', right: 'about' },
@@ -16,6 +16,10 @@
     };
     let isLaunching = false;
 
+    function motionIsReduced() {
+        return document.body.dataset.motion === 'reduced' || window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    }
+
     app.setTerminalNavTarget = function setTerminalNavTarget(targetId) {
         const terminalEntry = app.dom.terminalEntry;
         if (!terminalEntry) return;
@@ -30,7 +34,7 @@
             activeElement.scrollIntoView({
                 block: 'nearest',
                 inline: 'nearest',
-                behavior: 'smooth'
+                behavior: motionIsReduced() ? 'auto' : 'smooth'
             });
         }
     };
@@ -48,7 +52,7 @@
         app.setTerminalNavTarget(nextTarget);
     };
 
-    app.enterCanvas = function enterCanvas() {
+    app.enterCanvas = function enterCanvas(options = {}) {
         const terminalEntry = app.dom.terminalEntry;
         if (!terminalEntry || isLaunching || terminalEntry.classList.contains('hidden')) return;
 
@@ -56,10 +60,15 @@
         const progressValue = terminalEntry.querySelector('#terminal-progress-value');
         const progressBar = terminalEntry.querySelector('#terminal-progress');
         const launchButton = terminalEntry.querySelector('#terminal-launch-button');
+        const progressLabel = terminalEntry.querySelector('.terminal-progress-label');
+        const targetView = options.targetView || 'canvas';
+        const shouldAnimate = !options.immediate && !motionIsReduced();
+        const duration = shouldAnimate ? LAUNCH_DURATION_MS : 0;
 
         isLaunching = true;
         terminalEntry.classList.add('is-launching');
         terminalEntry.setAttribute('aria-busy', 'true');
+        app.playSound('boot');
 
         function formatChargeValue(value) {
             return `${String(value).padStart(3, '0')} / ${LAUNCH_MAX_VALUE}`;
@@ -72,11 +81,38 @@
         if (progressValue) progressValue.textContent = formatChargeValue(0);
         if (progressBar) progressBar.setAttribute('aria-valuenow', '0');
 
+        function finishLaunch() {
+            if (!shouldAnimate) terminalEntry.classList.add('is-immediate');
+            terminalEntry.classList.add('hidden');
+            terminalEntry.setAttribute('aria-hidden', 'true');
+            terminalEntry.setAttribute('aria-busy', 'false');
+
+            window.setTimeout(() => {
+                app.initCanvas();
+                if (targetView !== 'canvas' && typeof app.setPortfolioView === 'function') {
+                    app.setPortfolioView(targetView);
+                }
+                const focusTarget = targetView === 'list'
+                    ? document.querySelector('#portfolio-list-search')
+                    : document.querySelector('[data-view-target="canvas"]');
+                focusTarget?.focus({ preventScroll: true });
+            }, shouldAnimate ? 160 : 0);
+        }
+
+        if (!duration) {
+            if (progressFill) progressFill.style.width = '100%';
+            if (progressValue) progressValue.textContent = formatChargeValue(LAUNCH_MAX_VALUE);
+            if (progressBar) progressBar.setAttribute('aria-valuenow', String(LAUNCH_MAX_VALUE));
+            if (progressLabel) progressLabel.textContent = 'Ready';
+            finishLaunch();
+            return;
+        }
+
         const startTime = performance.now();
 
         function step(currentTime) {
             const elapsed = currentTime - startTime;
-            const rawProgress = Math.min(elapsed / LAUNCH_DURATION_MS, 1);
+            const rawProgress = Math.min(elapsed / duration, 1);
             const easedProgress = 1 - Math.pow(1 - rawProgress, 3);
             const chargeValue = Math.min(Math.round(easedProgress * LAUNCH_MAX_VALUE), LAUNCH_MAX_VALUE);
             const chargePercentage = (chargeValue / LAUNCH_MAX_VALUE) * 100;
@@ -85,18 +121,16 @@
             if (progressValue) progressValue.textContent = formatChargeValue(chargeValue);
             if (progressBar) progressBar.setAttribute('aria-valuenow', String(chargeValue));
             if (progressBar) progressBar.setAttribute('aria-valuetext', `Boot progress ${chargeValue} of ${LAUNCH_MAX_VALUE}`);
+            if (progressLabel) {
+                progressLabel.textContent = chargeValue < 42 ? 'Verify' : chargeValue < 96 ? 'Map' : 'Ready';
+            }
 
             if (rawProgress < 1) {
                 window.requestAnimationFrame(step);
                 return;
             }
 
-            window.setTimeout(() => {
-                terminalEntry.classList.add('hidden');
-                window.setTimeout(() => {
-                    app.initCanvas();
-                }, 420);
-            }, 260);
+            window.setTimeout(finishLaunch, 110);
         }
 
         window.requestAnimationFrame(step);
@@ -107,6 +141,7 @@
         if (!terminalEntry) return;
 
         const launchButton = terminalEntry.querySelector('#terminal-launch-button');
+        const skipButton = terminalEntry.querySelector('#terminal-skip-button');
 
         app.setTerminalNavTarget('hero');
 
@@ -140,11 +175,23 @@
             if (event.key === 'Enter') {
                 event.preventDefault();
                 app.enterCanvas();
+                return;
+            }
+
+            if (event.key === ' ' && !event.target.closest('button, a, input, select, textarea')) {
+                event.preventDefault();
+                app.enterCanvas();
             }
         });
 
         if (launchButton) {
             launchButton.addEventListener('click', app.enterCanvas);
+        }
+
+        if (skipButton) {
+            skipButton.addEventListener('click', () => {
+                app.enterCanvas({ targetView: 'list', immediate: true });
+            });
         }
 
         terminalEntry.querySelectorAll('.terminal-nav-target').forEach((element) => {

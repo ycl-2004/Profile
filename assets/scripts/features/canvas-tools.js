@@ -120,9 +120,18 @@
         document.querySelectorAll('.card').forEach((card) => {
             const cardId = card.dataset.card;
             if (!cardId || card.dataset.toolMemoryBound === 'true') return;
+            const hasDetails = !!app.data.modalData?.[cardId];
+            const hasNestedAction = !!card.querySelector('a, button');
 
             card.dataset.toolMemoryBound = 'true';
+            if (!hasDetails || hasNestedAction) {
+                card.removeAttribute('tabindex');
+                return;
+            }
+
             if (!card.hasAttribute('tabindex')) card.tabIndex = 0;
+            card.setAttribute('role', 'button');
+            card.setAttribute('aria-label', `Open details for ${card.querySelector('.project-name, .card-heading, .mini-card-title')?.textContent?.trim() || cardId}`);
 
             card.addEventListener('pointerenter', () => {
                 app.state.lastFocusedCardId = cardId;
@@ -139,7 +148,8 @@
                 }
             });
 
-            card.addEventListener('click', () => {
+            card.addEventListener('click', (event) => {
+                if (event.target.closest('a, button')) return;
                 if (app.state.justDraggedCardId === cardId) return;
                 setSelectedCard(cardId);
             });

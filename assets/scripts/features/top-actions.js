@@ -5,7 +5,7 @@
     const SHARE_TEXT = 'Explore Yi-Chen Lin\'s AI-native product engineering canvas.';
 
     function getShareUrl() {
-        if (window.location.protocol === 'http:' || window.location.protocol === 'https:') {
+        if (window.location.hostname === 'ycl-2004.github.io') {
             return window.location.href.split('#')[0];
         }
 
@@ -24,22 +24,30 @@
         button.setAttribute('aria-expanded', String(shouldOpen));
     }
 
-    function closePanels() {
+    function closePanels(restoreFocus = false) {
+        const returnButton = !app.dom.sharePanel?.hidden
+            ? app.dom.shareButton
+            : !app.dom.settingsPanel?.hidden
+                ? app.dom.settingsButton
+                : null;
         setPanelOpen(app.dom.sharePanel, app.dom.shareButton, false);
         setPanelOpen(app.dom.settingsPanel, app.dom.settingsButton, false);
         setStatus('');
+        if (restoreFocus) returnButton?.focus({ preventScroll: true });
     }
 
     function togglePanel(panel, button) {
         const willOpen = !!panel && panel.hidden;
 
-        closePanels();
+        closePanels(false);
         setPanelOpen(panel, button, willOpen);
     }
 
     function openModalCard(cardId) {
-        closePanels();
-        if (typeof app.openModal === 'function') app.openModal(cardId);
+        closePanels(true);
+        if (typeof app.openModal === 'function') {
+            app.openModal(cardId);
+        }
     }
 
     async function copyText(text) {
@@ -133,9 +141,7 @@
         }
 
         requestAnimationFrame(() => {
-            if (typeof app.zoomToOverview === 'function') {
-                app.zoomToOverview();
-            } else if (typeof app.zoomToFit === 'function') {
+            if (typeof app.zoomToFit === 'function') {
                 app.zoomToFit();
             }
         });
@@ -162,17 +168,26 @@
         if (action === 'fit') {
             fitCanvas();
             updateSettingsState();
+            closePanels(true);
+            app.playSound('view');
             return;
         }
 
         if (action === 'reset-layer') {
             resetLayerFilter();
             updateSettingsState();
+            closePanels(true);
+            app.playSound('view');
             return;
         }
 
         if (action === 'contact') {
             openModalCard('contact');
+            return;
+        }
+
+        if (action === 'yc-system') {
+            openModalCard('consumption-logic');
         }
     }
 
@@ -223,20 +238,26 @@
                 const viewButton = event.target.closest('[data-settings-view]');
                 const themeButton = event.target.closest('[data-settings-theme]');
                 const actionButton = event.target.closest('[data-settings-action]');
+                const profileActionButton = event.target.closest('[data-profile-action]');
 
                 if (viewButton && typeof app.setPortfolioView === 'function') {
                     app.setPortfolioView(viewButton.dataset.settingsView);
                     updateSettingsState();
+                    closePanels(true);
                 }
 
                 if (themeButton && typeof app.applyThemePreference === 'function') {
                     app.applyThemePreference(themeButton.dataset.settingsTheme || 'auto');
                     updateSettingsState();
+                    closePanels(true);
+                    app.playSound('tap');
                 }
 
                 if (actionButton) {
                     handleSettingsAction(actionButton.dataset.settingsAction);
                 }
+
+                if (profileActionButton) closePanels(true);
             });
         }
 
@@ -246,7 +267,7 @@
         });
 
         document.addEventListener('keydown', (event) => {
-            if (event.key === 'Escape') closePanels();
+            if (event.key === 'Escape') closePanels(true);
         });
 
         app.state.topActionsBound = true;

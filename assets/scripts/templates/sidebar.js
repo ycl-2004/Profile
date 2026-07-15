@@ -18,12 +18,12 @@
             <div class="sidebar-console-card">
                 <div class="sidebar-console-line">$ whoami</div>
                 <div class="sidebar-console-name">Yi-Chen Lin</div>
-                <div class="sidebar-console-role">AI-Native Product Engineer</div>
-                <div class="sidebar-console-role">Full-Stack Builder</div>
+                <div class="sidebar-console-role">Product Engineer</div>
+                <div class="sidebar-console-role">Systems Builder</div>
                 <div class="sidebar-console-line">$ cat motto.txt</div>
                 <div class="sidebar-console-quote">"Turn ambiguity into systems people can actually use."</div>
-                <div class="sidebar-console-line">$ open YC Profile.app</div>
-                <button class="sidebar-console-link" type="button">Open Profile ↗</button>
+                <div class="sidebar-console-line">$ open evidence-bank</div>
+                <button class="sidebar-console-link" type="button" data-profile-action="evidence">Open Evidence ↗</button>
             </div>
 
             <div class="sidebar-footer">

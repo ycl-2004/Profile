@@ -38,9 +38,9 @@
             <div class="tool-status" id="canvas-tool-status" role="status" aria-live="polite"></div>
         </div>
         <div class="theme-toggle">
-            <button class="theme-pill is-active" data-theme-option="light" type="button" onclick="window.PortfolioApp.applyThemePreference('light')">☼ Light</button>
-            <button class="theme-pill" data-theme-option="dark" type="button" onclick="window.PortfolioApp.applyThemePreference('dark')">☾ Dark</button>
-            <button class="theme-pill" data-theme-option="auto" type="button" onclick="window.PortfolioApp.applyThemePreference('auto')">◐ Auto</button>
+            <button class="theme-pill is-active" data-theme-option="light" type="button">☼ Light</button>
+            <button class="theme-pill" data-theme-option="dark" type="button">☾ Dark</button>
+            <button class="theme-pill" data-theme-option="auto" type="button">◐ Auto</button>
         </div>
     `;
 })();

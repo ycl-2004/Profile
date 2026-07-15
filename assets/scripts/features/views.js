@@ -391,6 +391,8 @@
         app.state.currentView = nextView;
         document.body.dataset.view = nextView;
 
+        if (previousView !== nextView && app.state.canvasReady) app.playSound('view');
+
         if (app.dom.viewTitle) app.dom.viewTitle.textContent = copy.title;
         if (app.dom.viewSubtitle) app.dom.viewSubtitle.textContent = copy.subtitle;
 

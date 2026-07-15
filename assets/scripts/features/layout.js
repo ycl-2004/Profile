@@ -77,11 +77,8 @@
         ({ y: ySelf } = stackCards(
             [
                 'self-philosophy',
-                'self-agent-native',
                 'self-builder-mode',
-                'self-motto',
-                'self-what-i-build',
-                'self-ai-tooling'
+                'self-what-i-build'
             ],
             xSelf,
             ySelf,
@@ -92,7 +89,7 @@
         const generalSection = setCard('section-general', xGeneral, top0, wGeneral);
         let yGeneral = top0 + getH(generalSection) + sectionGap;
         ({ y: yGeneral } = stackCards(
-            ['timeline', 'skills', 'content', 'opinion'],
+            ['timeline', 'skills', 'content'],
             xGeneral,
             yGeneral,
             wGeneral,
@@ -119,10 +116,10 @@
         yExp += getH(mainLabel) + rowGap;
         ({ y: yExp } = placeGridRows(
             [
-                ['project-yc-cast', 'project-resume-tailor'],
-                ['project-family-care', 'project-ycapikit'],
-                ['project-crypto', 'project-todo'],
-                ['project-edu-analysis', null]
+                ['project-yc-cast', 'project-ycapikit'],
+                ['project-yc-obsidian', 'project-sharememory'],
+                ['project-always', 'project-resume-tailor'],
+                ['project-open-source', null]
             ],
             xExpA,
             xExpB,
@@ -135,8 +132,7 @@
         yExp = yExp + 8 + getH(sideLabel) + rowGap;
         ({ y: yExp } = placeGridRows(
             [
-                ['project-balance-bot', 'education'],
-                ['project-unity', 'project-sailbot']
+                ['project-lawdesk', 'education']
             ],
             xExpA,
             xExpB,
@@ -182,11 +178,8 @@
         ({ y: yLeft } = stackCards(
             [
                 'self-philosophy',
-                'self-agent-native',
                 'self-builder-mode',
-                'self-motto',
-                'self-what-i-build',
-                'self-ai-tooling'
+                'self-what-i-build'
             ],
             xLeft,
             yLeft,
@@ -197,7 +190,7 @@
         const generalSection = setCard('section-general', xRight, top0, rightW);
         let yRight = top0 + getH(generalSection) + 20;
         ({ y: yRight } = stackCards(
-            ['timeline', 'skills', 'content', 'opinion'],
+            ['timeline', 'skills', 'content'],
             xRight,
             yRight,
             rightW,
@@ -229,10 +222,10 @@
         yExp += getH(mainLabel) + rowGap;
         ({ y: yExp } = placeGridRows(
             [
-                ['project-yc-cast', 'project-resume-tailor'],
-                ['project-family-care', 'project-ycapikit'],
-                ['project-crypto', 'project-todo'],
-                ['project-edu-analysis', null]
+                ['project-yc-cast', 'project-ycapikit'],
+                ['project-yc-obsidian', 'project-sharememory'],
+                ['project-always', 'project-resume-tailor'],
+                ['project-open-source', null]
             ],
             xGridA,
             xGridB,
@@ -245,8 +238,7 @@
         yExp = yExp + 6 + getH(sideLabel) + rowGap;
         ({ y: yExp } = placeGridRows(
             [
-                ['project-balance-bot', 'education'],
-                ['project-unity', 'project-sailbot']
+                ['project-lawdesk', 'education']
             ],
             xGridA,
             xGridB,
@@ -310,31 +302,26 @@
 
         placeOne('section-self', sectionW);
         placeOne('self-philosophy');
-        placeOne('self-agent-native');
         placeOne('self-builder-mode');
-        placeOne('self-motto');
         placeOne('self-what-i-build');
-        placeOne('self-ai-tooling');
 
         y += 4;
         placeOne('section-general', sectionW);
         placeOne('timeline');
         placeOne('skills');
         placeOne('content');
-        placeOne('opinion');
 
         y += 4;
         placeOne('section-experience', sectionW);
         placeOne('experience-work-label', 164);
         placePair('work-delta', 'work-joychime');
         placeOne('experience-main-label', 164);
-        placePair('project-yc-cast', 'project-resume-tailor');
-        placePair('project-family-care', 'project-ycapikit');
-        placePair('project-crypto', 'project-todo');
-        placePair('project-edu-analysis', null);
+        placePair('project-yc-cast', 'project-ycapikit');
+        placePair('project-yc-obsidian', 'project-sharememory');
+        placePair('project-always', 'project-resume-tailor');
+        placePair('project-open-source', null);
         placeOne('experience-side-label', 196);
-        placePair('project-balance-bot', 'education');
-        placePair('project-unity', 'project-sailbot');
+        placePair('project-lawdesk', 'education');
 
         y += 4;
         placeOne('section-connect', sectionW);
