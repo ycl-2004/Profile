@@ -9,19 +9,17 @@
         preview: { up: 'hero', left: 'hero' }
     };
 
-    // The ring on the entry page, and the records it is drawn from. These five
-    // are the same claims the entry used to spell out as a bullet list of
-    // "verified signals": industrial work, original systems, open-source
-    // maintenance. Resolving them against `portfolioItems` rather than
-    // hardcoding them keeps the preview honest when the canvas changes, and
-    // `label` is only the title trimmed to card width, so the full record
-    // still supplies the accessible name.
+    // The ring on the entry page mirrors the six curated Main Projects. Resolve
+    // them against `portfolioItems` rather than hardcoding display details so
+    // the preview stays honest when the Canvas changes. `label` is only a
+    // compact visual label; the full record supplies the accessible name.
     const ORBIT_NODES = [
-        { id: 'work-delta', angle: -108, label: 'Delta Controls' },
-        { id: 'project-yc-cast', angle: -36, label: 'YC Cast' },
-        { id: 'project-sharememory', angle: 36, label: 'ShareMemory' },
-        { id: 'project-yc-obsidian', angle: 108, label: 'YC Obsidian' },
-        { id: 'project-open-source', angle: 180, label: 'Open Source' }
+        { id: 'project-orbit', angle: -120, label: 'Orbit' },
+        { id: 'project-notype', angle: -60, label: 'NoType' },
+        { id: 'project-todo', angle: 0, label: 'YC Todo' },
+        { id: 'project-browser-organizer', angle: 60, label: 'Browser' },
+        { id: 'project-sharememory', angle: 120, label: 'ShareMemory' },
+        { id: 'project-yc-cast', angle: 180, label: 'YC Cast' }
     ];
 
     // Orbit's app icon, in numbers: a tilted ellipse with the hub at its

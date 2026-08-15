@@ -78,7 +78,8 @@
             [
                 'self-philosophy',
                 'self-builder-mode',
-                'self-what-i-build'
+                'self-what-i-build',
+                'project-yc-brand-systems'
             ],
             xSelf,
             ySelf,
@@ -116,10 +117,9 @@
         yExp += getH(mainLabel) + rowGap;
         ({ y: yExp } = placeGridRows(
             [
-                ['project-yc-cast', 'project-ycapikit'],
-                ['project-yc-obsidian', 'project-sharememory'],
-                ['project-always', 'project-resume-tailor'],
-                ['project-open-source', null]
+                ['project-orbit', 'project-notype'],
+                ['project-todo', 'project-browser-organizer'],
+                ['project-sharememory', 'project-yc-cast']
             ],
             xExpA,
             xExpB,
@@ -132,7 +132,7 @@
         yExp = yExp + 8 + getH(sideLabel) + rowGap;
         ({ y: yExp } = placeGridRows(
             [
-                ['project-lawdesk', 'education']
+                ['project-open-source', 'education']
             ],
             xExpA,
             xExpB,
@@ -179,7 +179,8 @@
             [
                 'self-philosophy',
                 'self-builder-mode',
-                'self-what-i-build'
+                'self-what-i-build',
+                'project-yc-brand-systems'
             ],
             xLeft,
             yLeft,
@@ -222,10 +223,9 @@
         yExp += getH(mainLabel) + rowGap;
         ({ y: yExp } = placeGridRows(
             [
-                ['project-yc-cast', 'project-ycapikit'],
-                ['project-yc-obsidian', 'project-sharememory'],
-                ['project-always', 'project-resume-tailor'],
-                ['project-open-source', null]
+                ['project-orbit', 'project-notype'],
+                ['project-todo', 'project-browser-organizer'],
+                ['project-sharememory', 'project-yc-cast']
             ],
             xGridA,
             xGridB,
@@ -238,7 +238,7 @@
         yExp = yExp + 6 + getH(sideLabel) + rowGap;
         ({ y: yExp } = placeGridRows(
             [
-                ['project-lawdesk', 'education']
+                ['project-open-source', 'education']
             ],
             xGridA,
             xGridB,
@@ -304,6 +304,7 @@
         placeOne('self-philosophy');
         placeOne('self-builder-mode');
         placeOne('self-what-i-build');
+        placeOne('project-yc-brand-systems');
 
         y += 4;
         placeOne('section-general', sectionW);
@@ -316,12 +317,11 @@
         placeOne('experience-work-label', 164);
         placePair('work-delta', 'work-joychime');
         placeOne('experience-main-label', 164);
-        placePair('project-yc-cast', 'project-ycapikit');
-        placePair('project-yc-obsidian', 'project-sharememory');
-        placePair('project-always', 'project-resume-tailor');
-        placePair('project-open-source', null);
+        placePair('project-orbit', 'project-notype');
+        placePair('project-todo', 'project-browser-organizer');
+        placePair('project-sharememory', 'project-yc-cast');
         placeOne('experience-side-label', 196);
-        placePair('project-lawdesk', 'education');
+        placePair('project-open-source', 'education');
 
         y += 4;
         placeOne('section-connect', sectionW);

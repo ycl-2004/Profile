@@ -72,13 +72,15 @@
         avatar: '✦',
         body: `
             <h3>🧩 Product focus</h3>
-            <p>I build user-facing systems that solve real problems — from cross-platform apps to AI-powered tools and workflow products.</p>
+            <p>I build local-first apps, industrial interfaces, AI systems, and reusable design systems that turn messy work into clear action.</p>
             <h3>⚙️ Typical formats</h3>
-            <p>Dashboards, automation workflows, desktop tools, AI runtimes, and operational systems that help people decide and act faster.</p>
+            <p>Dashboards, automation workflows, desktop tools, AI runtimes, and content systems that help people decide, act, and communicate faster.</p>
+            <h3>🎨 Public brand systems</h3>
+            <p><strong>YC Brand Systems</strong> combines YC Design and YC IP into a public personal branding layer for reusable frontend, illustration, and visual communication.</p>
             <h3>🎯 What matters</h3>
             <p>I am most useful where the challenge is turning complexity into clarity, structure, and reliable action.</p>
         `,
-        tags: ['User-Facing Systems', 'Workflow Products', 'AI Tools', 'Cross-Platform']
+        tags: ['User-Facing Systems', 'Workflow Products', 'AI Tools', 'Brand Systems']
     };
     const selfAiTooling = {
         title: 'AI Tooling',
@@ -246,34 +248,82 @@
                 <p>Turned abstract governance logic into a usable system and strengthened my ability to connect protocol rules with product interaction.</p>
                 <h3>Stack</h3>
                 <p class="modal-stack-line">Solidity · React · TypeScript · Ethers.js · Smart Contracts</p>
+                <h3>Link</h3>
+                <div class="modal-link-list"><p><strong>GitHub:</strong> <a href="https://github.com/ycl-2004/Future" target="_blank" rel="noopener noreferrer">github.com/ycl-2004/Future</a></p></div>
             `,
             tags: ['Governance UX', 'Solidity', 'React', 'Smart Contracts']
         },
-        'project-crypto': {
-            title: 'CryptoPulse',
-            subtitle: 'Real-time crypto analytics dashboard',
-            avatar: '📊',
+        'project-orbit': {
+            title: 'Orbit',
+            subtitle: 'Native macOS radial app switcher',
+            avatar: '🪐',
             body: `
                 <h3>Problem</h3>
-                <p>Crypto market data is fragmented and noisy, which makes it difficult to interpret quickly for monitoring or decision-making.</p>
+                <p>App switching is fast only when the next window is easy to reach. Lists and repeated keyboard cycling make the interaction feel slower than it needs to be.</p>
                 <h3>Approach</h3>
-                <p>I designed a dashboard experience that prioritizes trend clarity, quick scanning, and interpretable market views over raw data volume.</p>
+                <p>I built a gesture-first macOS switcher that puts running apps around the cursor and lets the user flick toward the next destination.</p>
                 <h3>System</h3>
                 <ul>
-                    <li>Integrated external APIs for live market data</li>
-                    <li>Built data synchronization and update flows for more stable real-time behavior</li>
-                    <li>Designed dashboard views around trends, portfolio context, and readability</li>
+                    <li>Built a native SwiftUI and AppKit menu-bar app with no third-party runtime dependencies</li>
+                    <li>Added radial navigation, keyboard fallback, recent-app ordering, and exact window targeting</li>
+                    <li>Kept previews, quit, AirDrop, and Trash actions local to the Mac with no network calls</li>
                 </ul>
                 <h3>Outcome</h3>
-                <p>Improved my ability to turn complex data into a clearer product surface and to think more like a data-product builder.</p>
+                <p>Shipped a Universal macOS release that turns a common desktop action into a small, direct physical gesture.</p>
                 <h3>Stack</h3>
-                <p class="modal-stack-line">React · TypeScript · External APIs · Dashboard UI</p>
+                <p class="modal-stack-line">Swift · SwiftUI · AppKit · macOS · Local-First UX</p>
                 <h3>Link</h3>
-                <div class="modal-link-list">
-                    <p><strong>Live:</strong> <a href="https://cryptopulse-production-a190.up.railway.app" target="_blank" rel="noopener">cryptopulse-production-a190.up.railway.app</a></p>
-                </div>
+                <div class="modal-link-list"><p><strong>GitHub:</strong> <a href="https://github.com/ycl-2004/Orbit" target="_blank" rel="noopener noreferrer">github.com/ycl-2004/Orbit</a></p></div>
             `,
-            tags: ['Data Product', 'Dashboard UI', 'React', 'API Sync']
+            tags: ['Native App', 'Swift', 'macOS', 'Gesture UX']
+        },
+        'project-notype': {
+            title: 'NoType',
+            subtitle: 'Private, local dictation for macOS',
+            avatar: '🎙️',
+            body: `
+                <h3>Problem</h3>
+                <p>Voice input is useful only when it can follow the user across apps without sending private audio to a remote transcription service.</p>
+                <h3>Approach</h3>
+                <p>NoType keeps the normal typing flow intact: focus a field, speak naturally, and receive the transcript back in the place where work already is.</p>
+                <h3>System</h3>
+                <ul>
+                    <li>Runs multilingual WhisperKit and Core ML transcription locally on Apple Silicon</li>
+                    <li>Supports Chinese-English mixed speech, global shortcuts, and configurable language bias</li>
+                    <li>Uses Accessibility insertion with a clipboard fallback when a target field cannot accept direct input</li>
+                </ul>
+                <h3>Outcome</h3>
+                <p>Built a privacy-first voice layer for everyday writing and coding without an account, remote API, or cloud transcription dependency.</p>
+                <h3>Stack</h3>
+                <p class="modal-stack-line">Swift · WhisperKit · Core ML · macOS · Accessibility APIs</p>
+                <h3>Link</h3>
+                <div class="modal-link-list"><p><strong>GitHub:</strong> <a href="https://github.com/ycl-2004/NoType" target="_blank" rel="noopener noreferrer">github.com/ycl-2004/NoType</a></p></div>
+            `,
+            tags: ['AI Product', 'On-Device', 'Swift', 'Privacy']
+        },
+        'project-browser-organizer': {
+            title: 'Browser Organizer',
+            subtitle: 'Local-first Chrome new tab workspace',
+            avatar: '🗂️',
+            body: `
+                <h3>Problem</h3>
+                <p>Bookmarks, open tabs, daily tasks, and saved sessions usually live in separate surfaces, so the browser becomes another source of noise.</p>
+                <h3>Approach</h3>
+                <p>I replaced the blank new tab with a local workspace that keeps the next task, long-term links, and current browser state visible together.</p>
+                <h3>System</h3>
+                <ul>
+                    <li>Built a no-build Manifest V3 extension that stores workspace data in the Chrome profile</li>
+                    <li>Added favorites, daily planning, live-tab grouping, duplicate detection, and saved sessions</li>
+                    <li>Kept the product account-free and server-free while still supporting release ZIP installation</li>
+                </ul>
+                <h3>Outcome</h3>
+                <p>Turned a familiar browser entry point into a calmer, local-first dashboard for deciding what to do next.</p>
+                <h3>Stack</h3>
+                <p class="modal-stack-line">JavaScript · Chrome Extensions · Manifest V3 · Local Storage · Responsive UI</p>
+                <h3>Link</h3>
+                <div class="modal-link-list"><p><strong>GitHub:</strong> <a href="https://github.com/ycl-2004/Browser_Organizer" target="_blank" rel="noopener noreferrer">github.com/ycl-2004/Browser_Organizer</a></p></div>
+            `,
+            tags: ['Browser Extension', 'Local-First', 'JavaScript', 'Product UX']
         },
         'project-todo': {
             title: 'YC Todo',
@@ -283,27 +333,27 @@
                 <h3>Problem</h3>
                 <p>Many simple task tools become bloated and slow for the actual use case of quick capture and lightweight completion.</p>
                 <h3>Approach</h3>
-                <p>I designed a menubar-first workflow focused on being fast, local, and always available without unnecessary friction.</p>
+                <p>I designed a menu-bar-first workflow focused on fast capture, quiet focus, and local persistence without unnecessary friction.</p>
                 <h3>System</h3>
                 <ul>
                     <li>Built with Tauri and React for a lightweight desktop architecture</li>
                     <li>Handled macOS-specific interaction details such as popover behavior, focus, and input flow</li>
-                    <li>Implemented local task persistence and immediate UI updates</li>
+                    <li>Implemented tasks, notes, focus modes, import/export, and immediate local UI updates</li>
                 </ul>
                 <h3>Outcome</h3>
-                <p>Explored desktop app architecture and learned how product simplification can be a feature, not a compromise.</p>
+                <p>Shipped a small Universal 2 desktop product where task capture, focus timing, and recovery behavior share one calm surface.</p>
                 <h3>Stack</h3>
                 <p class="modal-stack-line">Tauri · Rust · React · TypeScript · macOS Native API</p>
                 <h3>Link</h3>
                 <div class="modal-link-list">
-                    <p><strong>Demo:</strong> <a href="https://drive.google.com/drive/folders/1l72JWhzAjmenkNoi_lEXS9KNUmsrSz11" target="_blank" rel="noopener">Google Drive Folder</a></p>
+                    <p><strong>GitHub:</strong> <a href="https://github.com/ycl-2004/YC_Todo" target="_blank" rel="noopener noreferrer">github.com/ycl-2004/YC_Todo</a></p>
                 </div>
             `,
             tags: ['Desktop UX', 'Local-First', 'Tauri', 'React']
         },
         'project-family-care': {
             title: 'Family Care Reminder App',
-            subtitle: 'Cross-platform reminder system for family care routines',
+            subtitle: 'Private cross-platform reminder system for family care routines',
             avatar: '💗',
             body: `
                 <h3>Problem</h3>
@@ -320,35 +370,10 @@
                 <p>Turned a real-world family need into a usable product system and deepened my focus on reliability, clarity, and user-first workflow design.</p>
                 <h3>Stack</h3>
                 <p class="modal-stack-line">Flutter · Dart · Supabase · Local Notifications</p>
+                <h3>Availability</h3>
+                <p>The source repository is private. This case study presents only public-safe product and workflow details.</p>
             `,
             tags: ['Reliability', 'Workflow UX', 'Flutter', 'Supabase']
-        },
-        'project-ycapikit': {
-            title: 'YCAPIKit',
-            subtitle: 'Multi-provider AI runtime abstraction for Swift applications',
-            avatar: '🧩',
-            body: `
-                <h3>Problem</h3>
-                <p>AI integration is fragmented across providers, which makes routing, structure, fallbacks, and observability difficult to manage app by app.</p>
-                <h3>Approach</h3>
-                <p>I designed a reusable runtime layer that abstracts provider differences while keeping routing and output handling explicit.</p>
-                <h3>System</h3>
-                <ul>
-                    <li>Supports multiple providers including OpenAI, Gemini, Anthropic, NVIDIA, Mistral, and Zhipu AI</li>
-                    <li>Implements retry, backoff, timeout, and fallback orchestration</li>
-                    <li>Handles structured JSON generation, validation, extraction, and repair</li>
-                    <li>Adds request-level observability for provider, model, retries, fallback path, latency, and outcome</li>
-                </ul>
-                <h3>Outcome</h3>
-                <p>Built reusable infrastructure for AI-powered apps and moved from “using AI” to “building AI systems.”</p>
-                <h3>Stack</h3>
-                <p class="modal-stack-line">Swift · SwiftUI · Multi-Provider LLM APIs · JSON Parsing · Observability</p>
-                <h3>Link</h3>
-                <div class="modal-link-list">
-                    <p><strong>GitHub:</strong> <a href="https://github.com/ycl-2004/YCAPIKit" target="_blank" rel="noopener">github.com/ycl-2004/YCAPIKit</a></p>
-                </div>
-            `,
-            tags: ['AI Infra', 'Multi-Provider', 'Swift', 'Observability']
         },
         'project-yc-cast': {
             title: 'YC Cast',
@@ -379,7 +404,7 @@
         },
         'project-resume-tailor': {
             title: 'Resume Tailor',
-            subtitle: 'JD-tailored resume intelligence engine',
+            subtitle: 'Private JD-tailored resume intelligence engine',
             avatar: '📄',
             body: `
                 <h3>Problem</h3>
@@ -430,7 +455,7 @@
         },
         'project-balance-bot': {
             title: 'Bluetooth Self-Balancing Robot',
-            subtitle: 'Closed-loop control system for real-time balance tuning',
+            subtitle: 'Private coursework control system for real-time balance tuning',
             avatar: '🤖',
             body: `
                 <h3>Problem</h3>
@@ -447,6 +472,8 @@
                 <p>Strengthened my understanding of closed-loop systems, real-time iteration, and how software decisions affect physical behavior.</p>
                 <h3>Stack</h3>
                 <p class="modal-stack-line">Arduino · PID Control · Bluetooth · Sensors</p>
+                <h3>Availability</h3>
+                <p>The coursework source archive is private; this case study summarizes the project without exposing a public repository link.</p>
             `,
             tags: ['Control Systems', 'PID', 'Bluetooth', 'Arduino']
         },
@@ -470,6 +497,7 @@
                 <p class="modal-stack-line">Unity · C# · Physics · Animation · UI</p>
                 <h3>Links</h3>
                 <div class="modal-link-list">
+                    <p><strong>GitHub:</strong> <a href="https://github.com/ycl-2004/Unity-Game-Design" target="_blank" rel="noopener">github.com/ycl-2004/Unity-Game-Design</a></p>
                     <p><strong>Portfolio:</strong> <a href="https://ycl-2004.itch.io" target="_blank" rel="noopener">ycl-2004.itch.io</a></p>
                     <p><strong>2D Demo:</strong> <a href="https://play.unity.com/en/games/cae09d3a-0ee6-48dc-b80a-395419be1f65/collect-coins" target="_blank" rel="noopener">Unity Play</a></p>
                     <p><strong>3D Demo:</strong> <a href="https://ycl-2004.github.io/OverCook/" target="_blank" rel="noopener">OverCook Web Build</a></p>
@@ -479,7 +507,7 @@
         },
         'project-metal-detector': {
             title: 'Metal Detector Robot',
-            subtitle: 'Embedded sensing system optimized for reliable detection',
+            subtitle: 'Private coursework sensing system optimized for reliable detection',
             avatar: '🧲',
             body: `
                 <h3>Problem</h3>
@@ -496,12 +524,14 @@
                 <p>Built stronger embedded-systems instincts around debugging, measurement, and performance under hardware constraints.</p>
                 <h3>Stack</h3>
                 <p class="modal-stack-line">C · Assembly · Microcontroller · Circuit Design</p>
+                <h3>Availability</h3>
+                <p>The coursework source archive is private; this case study summarizes the project without exposing a public repository link.</p>
             `,
             tags: ['Embedded Systems', 'Calibration', 'MCU', 'Circuits']
         },
         'project-sailbot': {
             title: 'UBC Sailbot',
-            subtitle: 'Team-based power integration for an autonomous sailbot',
+            subtitle: 'Private coursework team project for autonomous sailbot power integration',
             avatar: '⛵',
             body: `
                 <h3>Problem</h3>
@@ -518,6 +548,8 @@
                 <p>Gained experience in multidisciplinary engineering collaboration and in keeping complex systems reliable under integration pressure.</p>
                 <h3>Stack</h3>
                 <p class="modal-stack-line">Power Systems · Circuit Integration · Testing · Diagnostics</p>
+                <h3>Availability</h3>
+                <p>The coursework source archive is private; this case study summarizes the project without exposing a public repository link.</p>
             `,
             tags: ['Integration', 'Power Systems', 'Testing', 'Team Engineering']
         },
@@ -540,6 +572,29 @@
                 <div class="modal-link-list"><p><strong>GitHub:</strong> <a href="https://github.com/ycl-2004/YC_Obsidian" target="_blank" rel="noopener noreferrer">github.com/ycl-2004/YC_Obsidian</a></p></div>
             `,
             tags: ['Knowledge System', 'Obsidian', 'Privacy', 'Automation']
+        },
+        'project-yc-brand-systems': {
+            title: 'YC Brand Systems',
+            subtitle: 'Public personal branding system — YC Design + YC IP',
+            avatar: '✦',
+            body: `
+                <h3>Why it exists</h3>
+                <p>Content, frontend surfaces, slides, and illustrations should feel like parts of one system instead of unrelated one-off outputs.</p>
+                <h3>System</h3>
+                <ul>
+                    <li><strong>YC Design</strong> routes content intent into reusable HTML, landing pages, apps, cards, covers, slides, and visual QA.</li>
+                    <li><strong>YC IP</strong> packages a reference-driven YC illustration workflow with character assets, scene modes, examples, and style checks.</li>
+                    <li>Both repositories keep their templates, references, and delivery rules visible so the work can be reviewed and reused.</li>
+                </ul>
+                <h3>Why it belongs here</h3>
+                <p>This is a public brand and content system, not a core product app. It shows how I turn identity and communication requirements into repeatable frontend and visual workflows.</p>
+                <h3>Links</h3>
+                <div class="modal-link-list">
+                    <p><strong>YC Design:</strong> <a href="https://github.com/ycl-2004/YC_Design" target="_blank" rel="noopener noreferrer">github.com/ycl-2004/YC_Design</a></p>
+                    <p><strong>YC IP:</strong> <a href="https://github.com/ycl-2004/YC_IP" target="_blank" rel="noopener noreferrer">github.com/ycl-2004/YC_IP</a></p>
+                </div>
+            `,
+            tags: ['Design Systems', 'Frontend', 'Illustration Systems', 'QA']
         },
         'project-sharememory': {
             title: 'ShareMemory',
@@ -581,9 +636,11 @@
         },
         'project-open-source': {
             title: 'Open-Source Maintenance',
-            subtitle: 'Upstream contributions, clearly separated from original projects',
+            subtitle: 'Contributions to larger upstream projects',
             avatar: '↗',
             body: `
+                <h3>Contribution scope</h3>
+                <p>I participate in larger upstream AI and developer-tool projects, contributing product UX and workflow improvements while keeping original ownership explicit.</p>
                 <h3>Verified contribution record</h3>
                 <p><strong>3 upstream pull requests merged</strong> across AI News Radar, Afu LLM Todo, and Partner Skill. One additional AI News Radar pull request is active.</p>
                 <h3>What I changed</h3>
@@ -599,47 +656,29 @@
             `,
             tags: ['Open Source', 'Upstream PRs', 'Product UX', 'Maintenance']
         },
-        'project-lawdesk': {
-            title: 'LawDesk Junior',
-            subtitle: 'Evidence-first legal research and case workflow',
-            avatar: '⚖',
-            body: `
-                <h3>Problem</h3>
-                <p>Legal workflows need clear provenance, deterministic calculations, and explicit uncertainty instead of confident but weakly grounded AI output.</p>
-                <h3>System</h3>
-                <ul>
-                    <li>Combined a browser workspace with a FastAPI backend and retrieval pipeline</li>
-                    <li>Added guardrailed extraction, evidence references, and deterministic calculation paths</li>
-                    <li>Built more than 90 frontend and backend tests around the public workflow</li>
-                </ul>
-                <h3>Link</h3>
-                <div class="modal-link-list"><p><strong>GitHub:</strong> <a href="https://github.com/ycl-2004/Lawyer_Sup" target="_blank" rel="noopener noreferrer">github.com/ycl-2004/Lawyer_Sup</a></p></div>
-            `,
-            tags: ['FastAPI', 'RAG', 'Evidence', 'Testing']
-        },
         'work-delta': {
             title: 'Delta Controls',
-            subtitle: 'Industrial monitoring tool for real-time HVAC field workflows',
+            subtitle: 'Software Developer · Delta Air Balance field workflow',
             avatar: '🏢',
             body: `
-                <h3>Problem</h3>
-                <p>Field engineers need clearer real-time visibility into HVAC device states, communication status, and operational flow in industrial environments.</p>
-                <h3>Approach</h3>
-                <p>I contribute to a hybrid air-balancing application that bridges device communication with practical operator-facing workflows.</p>
-                <h3>System</h3>
+                <h3>Product context</h3>
+                <p>Delta Air Balance is a field-facing HVAC application designed to help technicians measure, adjust, and diagnose air-balancing work without repeatedly moving between equipment, controllers, and occupied spaces.</p>
+                <h3>My contribution</h3>
                 <ul>
-                    <li>Shipped 10 merged pull requests in the team repository</li>
-                    <li>Improved BLE connectivity, reconnection, and web/native state synchronization</li>
-                    <li>Delivered live data visualization, visualization test tooling, and gray-box controller workflows</li>
+                    <li>Worked on BLE connectivity so wireless sensor data can participate in the field workflow.</li>
+                    <li>Contributed regression-fit work around MFDD / GBTM components.</li>
+                    <li>Contributed to the overall UI design, keeping equipment state, workflow progress, and diagnostic feedback understandable to technicians.</li>
                 </ul>
-                <h3>Outcome</h3>
-                <p>Built production-oriented experience at the intersection of hardware communication, field usability, testing, and cross-functional delivery.</p>
-                <h3>Stack</h3>
-                <p class="modal-stack-line">React · TypeScript · Kotlin · Android WebView · BLE · IP Communication</p>
+                <h3>Workflow direction</h3>
+                <p>The product direction is to combine BLE sensors, controller information, automated diagnostic tests, live charts, and thermal-model insights so technicians can monitor stabilization and review results from one place.</p>
+                <h3>Scope note</h3>
+                <p>This describes my contribution inside a team product. I am not claiming sole ownership of the full Delta Air Balance platform or every diagnostic model.</p>
+                <h3>Contribution areas</h3>
+                <p class="modal-stack-line">BLE Connectivity · Regression Fit · MFDD / GBTM · Industrial UI Design</p>
                 <h3>Evidence</h3>
                 <div class="modal-link-list"><p><strong>GitHub activity:</strong> <a href="https://github.com/ycl-2004?tab=pullrequests" target="_blank" rel="noopener noreferrer">View pull-request profile</a></p></div>
             `,
-            tags: ['Industrial UI', 'Device Sync', 'React', 'BLE/IP']
+            tags: ['BLE Connectivity', 'Regression Fit', 'MFDD / GBTM', 'UI Design']
         },
         'work-joychime': {
             title: 'Joychime Industrial Corporation',
@@ -686,13 +725,20 @@
             avatar: '✍️',
             body: `
                 <h3>Focus</h3>
-                <p>AI, product thinking, and workflow design translated into clear, reusable insights.</p>
+                <p>AI, product thinking, workflow design, and visual communication translated into clear, reusable outputs.</p>
                 <h3>What I create</h3>
                 <ul>
+                    <li>YC Design: a public design and frontend delivery system for pages, apps, cards, covers, and slides</li>
+                    <li>YC IP: a public, reference-driven illustration system built around the YC character and reusable scene rules</li>
                     <li>AI workflow playbooks and agent-ready SOPs</li>
                     <li>Builder notes on shipping, systems, and leverage</li>
                     <li>Beginner-friendly explainers that make technical ideas easier to use</li>
                 </ul>
+                <h3>Public evidence</h3>
+                <div class="modal-link-list">
+                    <p><strong>YC Design:</strong> <a href="https://github.com/ycl-2004/YC_Design" target="_blank" rel="noopener noreferrer">github.com/ycl-2004/YC_Design</a></p>
+                    <p><strong>YC IP:</strong> <a href="https://github.com/ycl-2004/YC_IP" target="_blank" rel="noopener noreferrer">github.com/ycl-2004/YC_IP</a></p>
+                </div>
                 <h3>Goal</h3>
                 <p>Turn knowledge into reusable systems and scalable content.</p>
             `,

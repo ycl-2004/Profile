@@ -22,7 +22,13 @@
         <div class="card card-mini" data-card="self-what-i-build" data-layer="self" data-section="self">
             <div class="card-pill-icon tone-amber">✦</div>
             <div class="mini-card-title">What I Build</div>
-            <div class="mini-card-copy">I build user-facing systems that solve real problems, from cross-platform apps to AI-powered tools and workflow products.</div>
+            <div class="mini-card-copy">I build local-first apps, industrial interfaces, AI systems, and public brand systems that turn messy work into clear action.</div>
+        </div>
+
+        <div class="card card-mini" data-card="project-yc-brand-systems" data-layer="self" data-section="self">
+            <div class="card-pill-icon tone-pink">✦</div>
+            <div class="mini-card-title">YC Brand Systems</div>
+            <div class="mini-card-copy">YC Design + YC IP: my public personal branding systems for reusable frontend, illustration, and visual communication.</div>
         </div>
 
         <div class="card card-section-banner section-tone-lilac" data-card="section-general" data-layer="general" data-section="general">
@@ -90,8 +96,8 @@
         <div class="card card-list" data-card="content" data-layer="general" data-section="general">
             <div class="card-heading">Content & Insights</div>
             <ul class="simple-list">
-                <li>A public, privacy-sanitized Obsidian Personal OS</li>
-                <li>Reusable design, agent-memory, and prompt systems</li>
+                <li>Open-Source Maintenance: contributions to larger upstream AI and developer-tool projects</li>
+                <li>YC Design + YC IP: reusable design and illustration systems</li>
                 <li>Builder notes that turn experiments into repeatable workflows</li>
             </ul>
         </div>
@@ -113,8 +119,8 @@
                     <div class="project-link">Software Developer · Jan 2026 - Present</div>
                 </div>
             </div>
-            <div class="project-summary">10 merged PRs across BLE connectivity, live visualization, test tooling, and field-facing control workflows.</div>
-            <div class="project-tags"><span class="project-tag">React</span><span class="project-tag">Kotlin</span><span class="project-tag">BLE</span></div>
+            <div class="project-summary">BLE connectivity, MFDD / GBTM regression-fit work, and overall UI design for an HVAC air-balancing workflow.</div>
+            <div class="project-tags"><span class="project-tag">BLE</span><span class="project-tag">Regression Fit</span><span class="project-tag">UI Design</span></div>
         </div>
 
         <div class="card card-project card-project-compact" data-card="work-joychime" data-layer="experience" data-section="experience">
@@ -133,55 +139,55 @@
             <div class="micro-label-text">Main Projects</div>
         </div>
 
-        <div class="card card-project card-project-compact" data-card="project-yc-obsidian" data-layer="projects" data-section="projects">
+        <div class="card card-project card-project-compact" data-card="project-orbit" data-curated-group="main-projects" data-layer="projects" data-section="projects">
             <div class="project-header">
-                <div class="project-icon" style="background:linear-gradient(135deg,#ffd3e0,#ff8fab);">🗂</div>
+                <div class="project-icon" style="background:linear-gradient(135deg,#bdf1ff,#8fb6ff);">🪐</div>
                 <div>
-                    <div class="project-name">YC Obsidian</div>
-                    <div class="project-link">Public personal operating system</div>
+                    <div class="project-name">Orbit</div>
+                    <div class="project-link">Native macOS radial app switcher</div>
                 </div>
             </div>
-            <div class="project-summary">Privacy-sanitized knowledge system from capture and understanding to action and review.</div>
-            <div class="project-tags"><span class="project-tag">Obsidian</span><span class="project-tag">Automation</span></div>
+            <div class="project-summary">Gesture-first app switching that puts the next window around the cursor.</div>
+            <div class="project-tags"><span class="project-tag">Swift</span><span class="project-tag">macOS</span></div>
         </div>
 
-        <div class="card card-project card-project-compact" data-card="project-ycapikit" data-layer="projects" data-section="projects">
+        <div class="card card-project card-project-compact" data-card="project-notype" data-curated-group="main-projects" data-layer="projects" data-section="projects">
             <div class="project-header">
-                <div class="project-icon" style="background:linear-gradient(135deg,#b7f0ff,#7ac7ff);">✨</div>
+                <div class="project-icon" style="background:linear-gradient(135deg,#d5ffe5,#75d7ff);">🎙️</div>
                 <div>
-                    <div class="project-name">YCAPIKit</div>
-                    <div class="project-link">Multi-provider AI runtime</div>
+                    <div class="project-name">NoType</div>
+                    <div class="project-link">Private, local macOS dictation</div>
                 </div>
             </div>
-            <div class="project-summary">AI runtime abstraction layer for Swift applications.</div>
-            <div class="project-tags"><span class="project-tag">Swift</span><span class="project-tag">AI / LLM</span></div>
+            <div class="project-summary">Mixed Chinese-English speech becomes text and returns to the focused field.</div>
+            <div class="project-tags"><span class="project-tag">Swift</span><span class="project-tag">WhisperKit</span></div>
         </div>
 
-        <div class="card card-project card-project-compact" data-card="project-yc-cast" data-layer="projects" data-section="projects">
+        <div class="card card-project card-project-compact" data-card="project-todo" data-curated-group="main-projects" data-layer="projects" data-section="projects">
             <div class="project-header">
-                <div class="project-icon" style="background:linear-gradient(135deg,#bdf1ff,#8fb6ff);">📱</div>
+                <div class="project-icon" style="background:linear-gradient(135deg,#bfffd7,#4fe7a1);">✅</div>
                 <div>
-                    <div class="project-name">YC Cast</div>
-                    <div class="project-link">Mac-to-iPad extended display</div>
+                    <div class="project-name">YC Todo</div>
+                    <div class="project-link">Calm macOS menu-bar task app</div>
                 </div>
             </div>
-            <div class="project-summary">Authenticated local streaming app that turns an iPad into a Mac extended display.</div>
-            <div class="project-tags"><span class="project-tag">Swift</span><span class="project-tag">iPadOS</span></div>
+            <div class="project-summary">Tasks, notes, and focus timing stay one click away without leaving the current workflow.</div>
+            <div class="project-tags"><span class="project-tag">Tauri</span><span class="project-tag">Local-First</span></div>
         </div>
 
-        <div class="card card-project card-project-compact" data-card="project-resume-tailor" data-layer="projects" data-section="projects">
+        <div class="card card-project card-project-compact" data-card="project-browser-organizer" data-curated-group="main-projects" data-layer="projects" data-section="projects">
             <div class="project-header">
-                <div class="project-icon" style="background:linear-gradient(135deg,#d5ffe5,#75d7ff);">📄</div>
+                <div class="project-icon" style="background:linear-gradient(135deg,#ffd3e0,#ff8fab);">🗂️</div>
                 <div>
-                    <div class="project-name">Resume Tailor</div>
-                    <div class="project-link">JD-tailored resume engine</div>
+                    <div class="project-name">Browser Organizer</div>
+                    <div class="project-link">Local-first Chrome workspace</div>
                 </div>
             </div>
-            <div class="project-summary">Local tool that turns job descriptions and career evidence into one-page LaTeX resumes.</div>
-            <div class="project-tags"><span class="project-tag">Python</span><span class="project-tag">LaTeX</span></div>
+            <div class="project-summary">Favorites, daily planning, open tabs, and saved sessions in one quiet new tab.</div>
+            <div class="project-tags"><span class="project-tag">Chrome</span><span class="project-tag">JavaScript</span></div>
         </div>
 
-        <div class="card card-project card-project-compact" data-card="project-sharememory" data-layer="projects" data-section="projects">
+        <div class="card card-project card-project-compact" data-card="project-sharememory" data-curated-group="main-projects" data-layer="projects" data-section="projects">
             <div class="project-header">
                 <div class="project-icon" style="background:linear-gradient(135deg,#ffd7ff,#91d2ff);">🧠</div>
                 <div>
@@ -193,47 +199,35 @@
             <div class="project-tags"><span class="project-tag">Agent Tooling</span><span class="project-tag">CI</span></div>
         </div>
 
-        <div class="card card-project card-project-compact" data-card="project-always" data-layer="projects" data-section="projects">
+        <div class="card card-project card-project-compact" data-card="project-yc-cast" data-curated-group="main-projects" data-layer="projects" data-section="projects">
             <div class="project-header">
-                <div class="project-icon" style="background:linear-gradient(135deg,#bfffd7,#4fe7a1);">⌘</div>
+                <div class="project-icon" style="background:linear-gradient(135deg,#b7f0ff,#7ac7ff);">📱</div>
                 <div>
-                    <div class="project-name">Always</div>
-                    <div class="project-link">Local reusable prompt system</div>
+                    <div class="project-name">YC Cast</div>
+                    <div class="project-link">Mac-to-iPad extended display</div>
                 </div>
             </div>
-            <div class="project-summary">Private-by-default prompt and snippet workflows across macOS, Codex, Claude, and CLI.</div>
-            <div class="project-tags"><span class="project-tag">macOS</span><span class="project-tag">Local-First</span></div>
-        </div>
-
-        <div class="card card-project card-project-compact" data-card="project-open-source" data-layer="projects" data-section="projects">
-            <div class="project-header">
-                <div class="project-icon" style="background:linear-gradient(135deg,#c5fff0,#7bd8ff);">↗</div>
-                <div>
-                    <div class="project-name">Open-Source Work</div>
-                    <div class="project-link">Upstream maintenance & product UX</div>
-                </div>
-            </div>
-            <div class="project-summary">3 upstream PRs merged; one active PR improving dual-view UX and source quality.</div>
-            <div class="project-tags"><span class="project-tag">Open Source</span><span class="project-tag">Full-Stack</span></div>
+            <div class="project-summary">Authenticated local streaming that turns an iPad into a Mac extended display.</div>
+            <div class="project-tags"><span class="project-tag">Swift</span><span class="project-tag">iPadOS</span></div>
         </div>
 
         <div class="card card-micro-label" data-card="experience-side-label" data-layer="projects" data-section="projects">
-            <div class="micro-label-text">Systems & Foundations</div>
+            <div class="micro-label-text">Systems &amp; Foundations</div>
         </div>
 
-        <div class="card card-project card-project-compact" data-card="project-lawdesk" data-layer="projects" data-section="projects">
+        <div class="card card-project card-project-compact" data-card="project-open-source" data-curated-group="systems-foundations" data-layer="projects" data-section="projects">
             <div class="project-header">
-                <div class="project-icon" style="background:linear-gradient(135deg,#d8c2ff,#fbc2eb);">⚖</div>
+                <div class="project-icon" style="background:linear-gradient(135deg,#c9f4ff,#7ac7ff);">↗</div>
                 <div>
-                    <div class="project-name">LawDesk Junior</div>
-                    <div class="project-link">Evidence-first legal workflow</div>
+                    <div class="project-name">Open-Source Maintenance</div>
+                    <div class="project-link">Contributions to larger upstream projects</div>
                 </div>
             </div>
-            <div class="project-summary">Guardrailed extraction, deterministic calculations, RAG, and tested browser workflows.</div>
-            <div class="project-tags"><span class="project-tag">FastAPI</span><span class="project-tag">RAG</span></div>
+            <div class="project-summary">Contributed to larger upstream AI and developer-tool projects while keeping original ownership explicit.</div>
+            <div class="project-tags"><span class="project-tag">Open Source</span><span class="project-tag">Upstream PRs</span></div>
         </div>
 
-        <div class="card card-project card-project-compact" data-card="education" data-layer="projects" data-section="projects">
+        <div class="card card-project card-project-compact" data-card="education" data-curated-group="systems-foundations" data-layer="projects" data-section="projects">
             <div class="project-header">
                 <div class="project-icon" style="background:linear-gradient(135deg,#ffd7cc,#ffb48b);">🎓</div>
                 <div>
@@ -271,7 +265,7 @@
             <div class="stats-grid">
                 <div class="stat-block"><strong>10</strong><span>Merged Work PRs</span></div>
                 <div class="stat-block"><strong>3</strong><span>Upstream PRs</span></div>
-                <div class="stat-block"><strong>31</strong><span>Public Repos</span></div>
+                <div class="stat-block"><strong>28</strong><span>Public Repos</span></div>
                 <div class="stat-block"><strong>May 2027</strong><span>Expected Graduation</span></div>
             </div>
         </div>
@@ -312,8 +306,8 @@
         <div class="card card-terminal-note" data-card="explore-current" data-layer="contact" data-section="explore">
             <div class="terminal-note-title">Currently Building</div>
             <div class="terminal-note-line">> Industrial software that works in the field</div>
-            <div class="terminal-note-line">> Native apps and reusable AI infrastructure</div>
-            <div class="terminal-note-line">> Public systems that compound knowledge</div>
+            <div class="terminal-note-line">> Native apps, local-first tools, and AI infrastructure</div>
+            <div class="terminal-note-line">> Systems that turn complexity into usable workflows</div>
         </div>
     `;
 })();

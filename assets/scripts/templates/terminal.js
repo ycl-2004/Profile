@@ -31,7 +31,7 @@
                         </div>
                         <div class="entry-proof-item">
                             <dt>Public repositories</dt>
-                            <dd>31</dd>
+                            <dd>28</dd>
                         </div>
                     </dl>
 
@@ -52,7 +52,7 @@
 
                 <aside class="terminal-line entry-preview terminal-nav-target" data-nav-target="preview" style="animation-delay:0.40s;">
                     <div class="entry-orbit" id="entry-orbit"></div>
-                    <p class="entry-preview-caption">20 projects and roles, mapped by how they connect.</p>
+                <p class="entry-preview-caption">21 projects and roles, mapped by how they connect.</p>
                 </aside>
             </div>
 
