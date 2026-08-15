@@ -497,10 +497,11 @@
                 <p class="modal-stack-line">Unity · C# · Physics · Animation · UI</p>
                 <h3>Links</h3>
                 <div class="modal-link-list">
-                    <p><strong>GitHub:</strong> <a href="https://github.com/ycl-2004/Unity-Game-Design" target="_blank" rel="noopener">github.com/ycl-2004/Unity-Game-Design</a></p>
+                    <p><strong>Game Repository:</strong> <a href="https://github.com/ycl-2004/Unity-Game-Design" target="_blank" rel="noopener">Unity Game Design</a></p>
                     <p><strong>Portfolio:</strong> <a href="https://ycl-2004.itch.io" target="_blank" rel="noopener">ycl-2004.itch.io</a></p>
-                    <p><strong>2D Demo:</strong> <a href="https://play.unity.com/en/games/cae09d3a-0ee6-48dc-b80a-395419be1f65/collect-coins" target="_blank" rel="noopener">Unity Play</a></p>
-                    <p><strong>3D Demo:</strong> <a href="https://ycl-2004.github.io/OverCook/" target="_blank" rel="noopener">OverCook Web Build</a></p>
+                    <p><strong>Collect Coins:</strong> <a href="https://ycl-2004.github.io/Unity-Game-Design/Collect-Coins/" target="_blank" rel="noopener">Play Web Build</a></p>
+                    <p><strong>OverCook:</strong> <a href="https://ycl-2004.github.io/Unity-Game-Design/OverCook/" target="_blank" rel="noopener">Play Web Build</a></p>
+                    <p><strong>Rocket Boost:</strong> <a href="https://ycl-2004.github.io/Unity-Game-Design/UnityGame_RocketBoost/Rocket_Web/" target="_blank" rel="noopener">Play Web Build</a></p>
                 </div>
             `,
             tags: ['Interaction Design', 'Unity', 'C#', 'Gameplay']
