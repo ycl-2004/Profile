@@ -3,49 +3,6 @@
     transition: none;
 }
 
-.motion-enhanced #terminal-entry .terminal-shell {
-    position: relative;
-}
-
-.motion-enhanced #terminal-entry .terminal-shell::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    pointer-events: none;
-    background:
-        linear-gradient(110deg, transparent 0%, transparent 42%, rgba(255, 231, 239, 0.075) 50%, transparent 58%, transparent 100%);
-    transform: translateX(-115%);
-    animation: terminalAmbientSweep 6.8s ease-in-out infinite;
-}
-
-.motion-enhanced #terminal-entry .terminal-shell-header,
-.motion-enhanced #terminal-entry .terminal-shell-body {
-    position: relative;
-    z-index: 2;
-}
-
-.motion-enhanced #terminal-entry .terminal-panel-section,
-.motion-enhanced #terminal-entry .terminal-metric,
-.motion-enhanced #terminal-entry .terminal-enter-button {
-    animation: terminalAmbientBorder 4.8s ease-in-out infinite;
-}
-
-.motion-enhanced #terminal-entry .terminal-panel-section:nth-child(2),
-.motion-enhanced #terminal-entry .terminal-metric:nth-child(2) {
-    animation-delay: 0.7s;
-}
-
-.motion-enhanced #terminal-entry .terminal-panel-section:nth-child(3),
-.motion-enhanced #terminal-entry .terminal-metric:nth-child(3) {
-    animation-delay: 1.4s;
-}
-
-.motion-enhanced #terminal-entry .terminal-panel-section:nth-child(4),
-.motion-enhanced #terminal-entry .terminal-metric:nth-child(4) {
-    animation-delay: 2.1s;
-}
-
 .motion-enhanced .card,
 .motion-enhanced .btn,
 .motion-enhanced .zoom-btn,
@@ -180,39 +137,12 @@
         display: none;
     }
 
-    .motion-enhanced #terminal-entry .terminal-shell::before,
-    .motion-enhanced #terminal-entry .terminal-panel-section,
-    .motion-enhanced #terminal-entry .terminal-metric,
-    .motion-enhanced #terminal-entry .terminal-enter-button,
     .motion-enhanced .card::after {
         animation: none;
     }
 
     .motion-enhanced .card.is-tool-selected {
         box-shadow: var(--shadow-card);
-    }
-}
-
-@keyframes terminalAmbientSweep {
-    0%, 18% {
-        opacity: 0;
-        transform: translateX(-115%);
-    }
-    32% {
-        opacity: 1;
-    }
-    48%, 100% {
-        opacity: 0;
-        transform: translateX(115%);
-    }
-}
-
-@keyframes terminalAmbientBorder {
-    0%, 100% {
-        border-color: rgba(255, 244, 239, 0.07);
-    }
-    50% {
-        border-color: rgba(255, 181, 205, 0.2);
     }
 }
 

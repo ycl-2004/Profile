@@ -81,10 +81,10 @@
 
         document.querySelectorAll('.card').forEach((card) => {
             card.addEventListener('mouseenter', () => {
-                app.setConnectionFocus(card.dataset.card);
+                app.setConnectionFocus(app.state.selectedCardId || card.dataset.card);
             });
             card.addEventListener('mouseleave', () => {
-                app.setConnectionFocus(null);
+                app.setConnectionFocus(app.state.selectedCardId || null);
             });
         });
 

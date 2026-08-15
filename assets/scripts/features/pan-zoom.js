@@ -235,6 +235,35 @@
         app.updateTransform();
     };
 
+    app.centerCanvasCard = function centerCanvasCard(cardId) {
+        const card = document.querySelector(`[data-card="${cardId}"]`);
+        if (!card) return null;
+
+        const state = app.state;
+        const safe = getSafeArea();
+        const box = typeof app.getCardBox === 'function'
+            ? app.getCardBox(card)
+            : {
+                width: card.offsetWidth,
+                height: card.offsetHeight,
+                centerX: card.offsetLeft + card.offsetWidth / 2,
+                centerY: card.offsetTop + card.offsetHeight / 2
+            };
+        const padding = safe.width < 480 ? 24 : 48;
+        const fitScale = Math.min(
+            1,
+            (safe.width - padding * 2) / Math.max(box.width, 1),
+            (safe.height - padding * 2) / Math.max(box.height, 1)
+        );
+
+        state.scale = clamp(fitScale, 0.3, 1);
+        state.panX = safe.left + safe.width / 2 - box.centerX * state.scale;
+        state.panY = safe.top + safe.height / 2 - box.centerY * state.scale;
+        app.updateTransform();
+
+        return card;
+    };
+
     app.updateTransform = function updateTransform() {
         const state = app.state;
 

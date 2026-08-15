@@ -34,7 +34,7 @@ node scripts/qa-static.mjs
 
 Before publishing, also verify these browser paths at desktop, tablet, and mobile widths:
 
-1. Enter and Space boot the Canvas; “Skip to searchable résumé” opens List View.
+1. Enter and Space boot the Canvas; each Orbit node centers and highlights its matching evidence card; “Skip to searchable résumé” opens List View.
 2. Every focusable Canvas card opens real details; decorative cards are not focusable.
 3. Canvas, Timeline, and List views work, including search and filters.
 4. Share, YC, sound, settings, layer, zoom, toolbar, quick-link, and modal controls all respond.

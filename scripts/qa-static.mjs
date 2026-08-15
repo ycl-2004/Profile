@@ -22,6 +22,8 @@ const cards = readFileSync(join(root, 'assets/scripts/templates/cards.js'), 'utf
 const modals = readFileSync(join(root, 'assets/scripts/data/modal-data.js'), 'utf8');
 const portfolioItems = readFileSync(join(root, 'assets/scripts/data/portfolio-items.js'), 'utf8');
 const terminal = readFileSync(join(root, 'assets/scripts/templates/terminal.js'), 'utf8');
+const terminalEntry = readFileSync(join(root, 'assets/scripts/features/terminal-entry.js'), 'utf8');
+const canvasTools = readFileSync(join(root, 'assets/scripts/features/canvas-tools.js'), 'utf8');
 const legacy = readFileSync(join(root, 'yichen-canvas-v2.html'), 'utf8');
 
 check(index.includes('<link rel="canonical" href="https://ycl-2004.github.io/Profile/">'), 'index.html must declare the production canonical URL.');
@@ -38,6 +40,16 @@ for (const id of ['project-yc-obsidian', 'project-sharememory', 'project-always'
     check(cards.includes(`data-card="${id}"`), `Curated Canvas is missing ${id}.`);
     check(modals.includes(`'${id}':`), `Modal data is missing ${id}.`);
 }
+
+for (const id of ['work-delta', 'project-yc-cast', 'project-sharememory', 'project-yc-obsidian', 'project-open-source']) {
+    check(terminalEntry.includes(`id: '${id}'`), `Terminal orbit is missing ${id}.`);
+    check(portfolioItems.includes(`id: '${id}'`), `Terminal orbit target is missing from portfolio items: ${id}.`);
+    check(cards.includes(`data-card="${id}"`), `Terminal orbit target is missing from the Canvas: ${id}.`);
+}
+
+check(terminalEntry.includes('app.enterCanvas({ targetCardId: node.id })'), 'Terminal orbit nodes must preserve their target card id.');
+check(terminalEntry.includes('app.focusCanvasCard(targetCardId)'), 'Terminal launch must focus the requested Canvas card.');
+check(canvasTools.includes('app.focusCanvasCard = focusCanvasCard'), 'Canvas must expose the shared card-focus behavior.');
 
 for (const match of index.matchAll(/(?:src|href)="(\.\/[^"?#]+)(?:[?#][^"]*)?"/g)) {
     const localPath = resolve(root, match[1]);

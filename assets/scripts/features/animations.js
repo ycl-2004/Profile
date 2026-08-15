@@ -125,13 +125,13 @@
         if (!gsap) return;
 
         const animatedElements = document.querySelectorAll(
-            '.terminal-chip, .terminal-quickfact, .terminal-metric-icon, .terminal-project-dot, .terminal-enter-button, .card, .btn, .zoom-btn, .view-tab, .theme-pill, .motion-flow-path'
+            '.entry-orbit-link, .entry-orbit-ring, .card, .btn, .zoom-btn, .view-tab, .theme-pill, .motion-flow-path'
         );
 
         if (motionIsReduced()) {
             gsap.killTweensOf(animatedElements);
             if (typeof app.stopActiveConnectionFlow === 'function') app.stopActiveConnectionFlow();
-            gsap.set(animatedElements, { clearProps: 'transform,opacity,visibility,boxShadow,filter' });
+            gsap.set(animatedElements, { clearProps: 'transform,opacity,visibility,boxShadow,filter,strokeDashoffset' });
             document.body.classList.remove('motion-enhanced');
             document.querySelector('.motion-pointer-signal')?.classList.remove('is-visible');
             app.state.motionReady = false;
@@ -211,40 +211,24 @@
 
         document.body.classList.add('motion-enhanced');
 
-        gsap.to('.terminal-chip, .terminal-quickfact', {
-            y: -2,
-            duration: 2.6,
-            ease: 'sine.inOut',
-            repeat: -1,
-            yoyo: true,
-            stagger: { each: 0.08, from: 'random' }
+        // The entry page carries exactly one ambient animation, and it has to
+        // earn the frames: drift along the ring and its spokes so the preview
+        // reads as a live system you can walk into, not a diagram of one. The
+        // page used to breathe glow on chips, metric icons, dots, and the CTA
+        // at once, none of which said anything.
+        gsap.to('.entry-orbit-ring', {
+            strokeDashoffset: -12,
+            duration: 3.6,
+            ease: 'none',
+            repeat: -1
         });
 
-        gsap.to('.terminal-metric-icon', {
-            scaleX: 1.08,
-            scaleY: 1.08,
+        gsap.to('.entry-orbit-link', {
+            strokeDashoffset: -8,
             duration: 2.8,
-            ease: 'sine.inOut',
+            ease: 'none',
             repeat: -1,
-            yoyo: true,
-            stagger: 0.18
-        });
-
-        gsap.to('.terminal-project-dot', {
-            boxShadow: '0 0 0 7px rgba(255, 181, 205, 0.08), 0 0 18px rgba(255, 181, 205, 0.22)',
-            duration: 2.4,
-            ease: 'sine.inOut',
-            repeat: -1,
-            yoyo: true,
-            stagger: 0.22
-        });
-
-        gsap.to('.terminal-enter-button', {
-            boxShadow: '0 0 0 1px rgba(255, 181, 205, 0.16), 0 0 34px rgba(255, 143, 171, 0.16)',
-            duration: 2.2,
-            ease: 'sine.inOut',
-            repeat: -1,
-            yoyo: true
+            stagger: 0.24
         });
 
         app.state.terminalMotionReady = true;

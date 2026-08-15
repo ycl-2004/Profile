@@ -3,18 +3,134 @@
     const LAUNCH_DURATION_MS = 720;
     const LAUNCH_MAX_VALUE = 120;
     const NAV_GRAPH = {
-        hero: { down: 'role', right: 'about' },
-        role: { up: 'hero', down: 'summary', right: 'what' },
-        summary: { up: 'role', down: 'quickfacts', right: 'tools' },
-        quickfacts: { up: 'summary', down: 'building', right: 'note' },
-        building: { up: 'quickfacts', down: 'command', right: 'note' },
-        command: { up: 'building', right: 'note' },
-        about: { left: 'hero', down: 'what' },
-        what: { up: 'about', down: 'tools', left: 'role' },
-        tools: { up: 'what', down: 'note', left: 'summary' },
-        note: { up: 'tools', down: 'command', left: 'building' }
+        hero: { down: 'lede', right: 'preview' },
+        lede: { up: 'hero', down: 'proof', right: 'preview' },
+        proof: { up: 'lede', right: 'preview' },
+        preview: { up: 'hero', left: 'hero' }
     };
+
+    // The ring on the entry page, and the records it is drawn from. These five
+    // are the same claims the entry used to spell out as a bullet list of
+    // "verified signals": industrial work, original systems, open-source
+    // maintenance. Resolving them against `portfolioItems` rather than
+    // hardcoding them keeps the preview honest when the canvas changes, and
+    // `label` is only the title trimmed to card width, so the full record
+    // still supplies the accessible name.
+    const ORBIT_NODES = [
+        { id: 'work-delta', angle: -108, label: 'Delta Controls' },
+        { id: 'project-yc-cast', angle: -36, label: 'YC Cast' },
+        { id: 'project-sharememory', angle: 36, label: 'ShareMemory' },
+        { id: 'project-yc-obsidian', angle: 108, label: 'YC Obsidian' },
+        { id: 'project-open-source', angle: 180, label: 'Open Source' }
+    ];
+
+    // Orbit's app icon, in numbers: a tilted ellipse with the hub at its
+    // centre. The viewBox is mirrored by `aspect-ratio` on `.entry-orbit`, so
+    // percentage-positioned nodes land exactly on the SVG geometry.
+    const ORBIT_VIEW = { w: 420, h: 340 };
+    const ORBIT_RING = { cx: 210, cy: 168, rx: 140, ry: 84, tilt: -16 };
+
     let isLaunching = false;
+
+    function orbitPoint(angleDeg) {
+        const t = (angleDeg * Math.PI) / 180;
+        const tilt = (ORBIT_RING.tilt * Math.PI) / 180;
+        const x = ORBIT_RING.rx * Math.cos(t);
+        const y = ORBIT_RING.ry * Math.sin(t);
+
+        return {
+            x: ORBIT_RING.cx + x * Math.cos(tilt) - y * Math.sin(tilt),
+            y: ORBIT_RING.cy + x * Math.sin(tilt) + y * Math.cos(tilt)
+        };
+    }
+
+    function renderOrbitPreview() {
+        const mount = document.getElementById('entry-orbit');
+        if (!mount) return;
+
+        const items = app.data?.portfolioItems || [];
+        const nodes = ORBIT_NODES
+            .map((node) => ({ ...node, item: items.find((entry) => entry.id === node.id) }))
+            .filter((node) => node.item);
+
+        if (!nodes.length) {
+            mount.remove();
+            return;
+        }
+
+        const points = nodes.map((node) => orbitPoint(node.angle));
+        const svgNS = 'http://www.w3.org/2000/svg';
+        const svg = document.createElementNS(svgNS, 'svg');
+        svg.setAttribute('class', 'entry-orbit-svg');
+        svg.setAttribute('viewBox', `0 0 ${ORBIT_VIEW.w} ${ORBIT_VIEW.h}`);
+        svg.setAttribute('aria-hidden', 'true');
+
+        const ring = document.createElementNS(svgNS, 'ellipse');
+        ring.setAttribute('class', 'entry-orbit-ring');
+        ring.setAttribute('cx', String(ORBIT_RING.cx));
+        ring.setAttribute('cy', String(ORBIT_RING.cy));
+        ring.setAttribute('rx', String(ORBIT_RING.rx));
+        ring.setAttribute('ry', String(ORBIT_RING.ry));
+        ring.setAttribute('transform', `rotate(${ORBIT_RING.tilt} ${ORBIT_RING.cx} ${ORBIT_RING.cy})`);
+        svg.appendChild(ring);
+
+        const links = points.map((point) => {
+            const line = document.createElementNS(svgNS, 'line');
+            line.setAttribute('class', 'entry-orbit-link');
+            line.setAttribute('x1', String(ORBIT_RING.cx));
+            line.setAttribute('y1', String(ORBIT_RING.cy));
+            line.setAttribute('x2', point.x.toFixed(1));
+            line.setAttribute('y2', point.y.toFixed(1));
+            svg.appendChild(line);
+            return line;
+        });
+
+        mount.textContent = '';
+        mount.setAttribute('role', 'group');
+        mount.setAttribute('aria-label', 'Preview of the evidence canvas');
+        mount.appendChild(svg);
+
+        const hub = document.createElement('span');
+        hub.className = 'entry-orbit-hub';
+        hub.setAttribute('aria-hidden', 'true');
+        hub.textContent = 'YC';
+        mount.appendChild(hub);
+
+        nodes.forEach((node, index) => {
+            const point = points[index];
+            const button = document.createElement('button');
+            button.type = 'button';
+            button.className = 'entry-orbit-node';
+            button.dataset.targetCard = node.id;
+            button.style.setProperty('--node-tone', `var(--e-node-${index + 1})`);
+            button.style.left = `${((point.x / ORBIT_VIEW.w) * 100).toFixed(2)}%`;
+            button.style.top = `${((point.y / ORBIT_VIEW.h) * 100).toFixed(2)}%`;
+            button.setAttribute('aria-label', `${node.item.title}. Open the evidence canvas.`);
+
+            const dot = document.createElement('span');
+            dot.className = 'entry-orbit-dot';
+            dot.setAttribute('aria-hidden', 'true');
+
+            const text = document.createElement('span');
+            text.className = 'entry-orbit-title';
+            text.textContent = node.label;
+
+            button.append(dot, text);
+
+            const lightUp = () => links[index].classList.add('is-lit');
+            const dimDown = () => links[index].classList.remove('is-lit');
+
+            button.addEventListener('pointerenter', lightUp);
+            button.addEventListener('focus', lightUp);
+            button.addEventListener('pointerleave', dimDown);
+            button.addEventListener('blur', dimDown);
+            button.addEventListener('click', () => app.enterCanvas({ targetCardId: node.id }));
+
+            mount.appendChild(button);
+        });
+    }
+
+    app.renderOrbitPreview = renderOrbitPreview;
 
     function motionIsReduced() {
         return document.body.dataset.motion === 'reduced' || window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -62,6 +178,7 @@
         const launchButton = terminalEntry.querySelector('#terminal-launch-button');
         const progressLabel = terminalEntry.querySelector('.terminal-progress-label');
         const targetView = options.targetView || 'canvas';
+        const targetCardId = options.targetCardId || null;
         const shouldAnimate = !options.immediate && !motionIsReduced();
         const duration = shouldAnimate ? LAUNCH_DURATION_MS : 0;
 
@@ -92,6 +209,12 @@
                 if (targetView !== 'canvas' && typeof app.setPortfolioView === 'function') {
                     app.setPortfolioView(targetView);
                 }
+
+                if (targetView === 'canvas' && targetCardId && typeof app.focusCanvasCard === 'function') {
+                    const focusedCard = app.focusCanvasCard(targetCardId);
+                    if (focusedCard) return;
+                }
+
                 const focusTarget = targetView === 'list'
                     ? document.querySelector('#portfolio-list-search')
                     : document.querySelector('[data-view-target="canvas"]');
@@ -143,6 +266,7 @@
         const launchButton = terminalEntry.querySelector('#terminal-launch-button');
         const skipButton = terminalEntry.querySelector('#terminal-skip-button');
 
+        renderOrbitPreview();
         app.setTerminalNavTarget('hero');
 
         document.addEventListener('keydown', (event) => {
@@ -172,7 +296,7 @@
                 return;
             }
 
-            if (event.key === 'Enter') {
+            if (event.key === 'Enter' && !event.target.closest('button, a, input, select, textarea')) {
                 event.preventDefault();
                 app.enterCanvas();
                 return;

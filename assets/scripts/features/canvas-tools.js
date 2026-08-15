@@ -44,7 +44,44 @@
             const id = card.dataset.card || card.dataset.cardRef;
             card.classList.toggle('is-tool-selected', !!cardId && id === cardId);
         });
+
+        if (typeof app.setConnectionFocus === 'function') app.setConnectionFocus(cardId || null);
     }
+
+    function focusCanvasCard(cardId) {
+        if (!cardId) return null;
+        if (app.state.currentView !== 'canvas' && typeof app.setPortfolioView === 'function') {
+            app.setPortfolioView('canvas');
+        }
+
+        const card = getCard(cardId);
+        if (!card) return null;
+
+        setSelectedCard(cardId);
+        if (typeof app.centerCanvasCard === 'function') app.centerCanvasCard(cardId);
+
+        const title = card.querySelector('.project-name, .card-heading, .mini-card-title')?.textContent?.trim() || cardId;
+        announce(`Focused: ${title}`, 'select');
+        focusCardWhenVisible(card);
+
+        return card;
+    }
+
+    function focusCardWhenVisible(card, attempt = 0) {
+        const style = window.getComputedStyle(card);
+        const isVisible = style.visibility !== 'hidden' && Number(style.opacity) > 0;
+
+        if (isVisible) {
+            card.focus({ preventScroll: true });
+            return;
+        }
+
+        if (attempt < 120) {
+            window.requestAnimationFrame(() => focusCardWhenVisible(card, attempt + 1));
+        }
+    }
+
+    app.focusCanvasCard = focusCanvasCard;
 
     function announce(message, tool) {
         const status = app.dom?.canvasToolStatus;

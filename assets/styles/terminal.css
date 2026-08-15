@@ -1,45 +1,82 @@
+/* =========================================================================
+   Entry page  ·  Orbit paper
+   -------------------------------------------------------------------------
+   The entry used to be a dark terminal window with gradient type, sitting in
+   front of a warm-white canvas. Two problems: the palette belonged to nobody,
+   and stepping into the canvas felt like landing on a different site.
+
+   This surface now speaks YC brand (wine #B23A48, denim #3B6EA5, ink #1A1A2E)
+   through Orbit's material (ivory #F7F2E8 paper, dusk #2B1C1A at night). The
+   ground is the same family as the canvas behind it, so entering reads as
+   walking further into one room rather than switching buildings.
+
+   Two radii on this page, no third: 8px for controls, 20px for panels.
+   One accent, wine, on every action. Denim carries system meaning only, and
+   the orbit node palette is borrowed straight from the canvas tones it is
+   previewing.
+   ========================================================================= */
+
 #terminal-entry {
-    --terminal-surface: rgba(37, 34, 43, 0.94);
-    --terminal-surface-strong: rgba(44, 40, 50, 0.95);
-    --terminal-border: rgba(170, 151, 166, 0.24);
+    /* Surfaces: Orbit ivory ground, a slightly brighter face for the panel. */
+    --e-paper: #F7F2E8;
+    --e-surface: #FCFAF4;
+
+    /* Ink: YC neutrals, warm-tinted. */
+    --e-ink: #1A1A2E;
+    --e-ink-muted: #4A4A5A;
+    --e-ink-faint: #6E6E7C;
+
+    /* The one accent. Every action on this page is wine. */
+    --e-wine: #B23A48;
+    --e-wine-deep: #8E2C3A;
+    --e-wine-fill: #B23A48;
+    --e-wine-hover: #8E2C3A;
+    --e-wine-wash: rgba(178, 58, 72, 0.09);
+    --e-on-wine: #FFF9F6;
+
+    /* System colour. Structure and connection only, never an action. */
+    --e-denim: #3B6EA5;
+
+    --e-line: rgba(26, 26, 46, 0.10);
+    --e-shadow-panel: 0 18px 44px rgba(93, 62, 52, 0.10);
+    --e-shadow-lift: 0 10px 24px rgba(142, 44, 58, 0.20);
+
+    /* Orbit's icon palette, reused for the canvas nodes. */
+    --e-node-1: #E89987;
+    --e-node-2: #DFB877;
+    --e-node-3: #8FB4C9;
+    --e-node-4: #B4A4C4;
+    --e-node-5: #8FAE97;
+
+    --e-radius-control: 8px;
+    --e-radius-panel: 20px;
+
     position: fixed;
     inset: 0;
     z-index: 10000;
     display: flex;
-    justify-content: center;
     align-items: center;
-    padding: clamp(12px, 2.6vw, 24px);
+    justify-content: center;
+    padding: clamp(20px, 4vw, 56px);
     overflow: auto;
-    font-family: 'JetBrains Mono', monospace;
-    color: #ffe1ec;
-    background:
-        radial-gradient(circle at 13% 4%, rgba(203, 145, 164, 0.11), transparent 30%),
-        radial-gradient(circle at 86% 18%, rgba(118, 153, 188, 0.12), transparent 32%),
-        radial-gradient(circle at 74% 88%, rgba(176, 142, 194, 0.09), transparent 26%),
-        linear-gradient(180deg, #24242e 0%, #191a22 100%);
-    transition: opacity 0.8s ease, visibility 0.8s ease;
+    color: var(--e-ink);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans SC', sans-serif;
+    background: var(--e-paper);
+    transition: opacity 0.55s ease, visibility 0.55s ease;
     -webkit-overflow-scrolling: touch;
 }
 
-#terminal-entry::before,
-#terminal-entry::after {
+/* Paper tooth. Warm, almost invisible, and fixed so it never repaints on
+   scroll (a full-bleed noise layer over a scrolling container is a reliable
+   way to lose frames on mobile). */
+#terminal-entry::before {
     content: '';
-    position: absolute;
+    position: fixed;
     inset: 0;
     pointer-events: none;
-}
-
-#terminal-entry::before {
     background:
-        radial-gradient(circle at top, rgba(255, 231, 223, 0.09), transparent 36%),
-        linear-gradient(180deg, rgba(255, 255, 255, 0.025), transparent 46%);
-}
-
-#terminal-entry::after {
-    opacity: 0.18;
-    background:
-        radial-gradient(circle, rgba(195, 167, 178, 0.18) 1px, transparent 1.2px) center / 18px 18px,
-        radial-gradient(circle, rgba(118, 153, 188, 0.16) 0.8px, transparent 1px) center / 36px 36px;
+        radial-gradient(ellipse 70% 55% at 22% 8%, rgba(255, 255, 255, 0.72), transparent 70%),
+        radial-gradient(ellipse 60% 50% at 88% 92%, rgba(178, 58, 72, 0.05), transparent 72%);
 }
 
 #terminal-entry.hidden {
@@ -48,169 +85,398 @@
     pointer-events: none;
 }
 
-.terminal-stage {
+.entry-stage {
     position: relative;
     z-index: 1;
-    width: min(1560px, calc(100vw - 24px));
-}
-
-.terminal-shell {
-    display: flex;
-    flex-direction: column;
-    max-height: calc(100vh - 24px);
-    border-radius: 28px;
-    border: 1px solid var(--terminal-border);
-    background:
-        linear-gradient(180deg, var(--terminal-surface-strong) 0%, var(--terminal-surface) 100%);
-    box-shadow:
-        0 0 0 1px rgba(255, 246, 242, 0.035),
-        0 32px 82px rgba(10, 9, 16, 0.5),
-        0 22px 68px rgba(109, 75, 93, 0.12);
-    overflow: hidden;
-    backdrop-filter: blur(18px);
-    transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
-}
-
-#terminal-entry.is-launching .terminal-shell {
-    transform: translateY(-4px) scale(1.006);
-    border-color: rgba(154, 191, 174, 0.42);
-    box-shadow:
-        0 0 0 1px rgba(154, 191, 174, 0.1),
-        0 34px 88px rgba(10, 9, 16, 0.56),
-        0 20px 54px rgba(109, 75, 93, 0.14);
-}
-
-.terminal-shell-header {
+    width: 100%;
+    max-width: 1180px;
     display: grid;
-    grid-template-columns: auto 1fr auto;
+    /* Asymmetric on purpose. The reading column leads, the map answers. */
+    grid-template-columns: minmax(0, 1.04fr) minmax(320px, 0.96fr);
+    gap: clamp(32px, 5vw, 76px);
     align-items: center;
-    gap: 16px;
-    min-height: 64px;
-    padding: 0 24px;
-    border-bottom: 1px solid rgba(255, 244, 239, 0.07);
-    color: rgba(255, 223, 232, 0.7);
 }
 
-.terminal-shell-controls {
-    display: flex;
-    gap: 10px;
-}
+/* -------------------------------------------------------------------------
+   Reading column
+   ------------------------------------------------------------------------- */
 
-.terminal-shell-dot {
-    width: 14px;
-    height: 14px;
-    border-radius: 50%;
-    display: inline-block;
-    box-shadow: 0 0 12px rgba(255, 255, 255, 0.08);
-}
-
-.terminal-shell-dot--close { background: #ff6b73; }
-.terminal-shell-dot--minimize { background: #f7c948; }
-.terminal-shell-dot--zoom { background: #49d56f; }
-
-.terminal-shell-title {
-    justify-self: center;
-    font-size: 14px;
-    letter-spacing: 0.04em;
-    color: rgba(255, 216, 229, 0.58);
-}
-
-.terminal-shell-badge {
-    font-size: 12px;
-    color: rgba(196, 226, 255, 0.86);
-    padding: 8px 12px;
-    border-radius: 999px;
-    border: 1px solid rgba(166, 188, 211, 0.2);
-    background: rgba(166, 188, 211, 0.075);
-}
-
-.terminal-shell-body {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    padding: clamp(18px, 2vw, 28px);
-    overflow: auto;
-}
-
-.terminal-hero-layout {
-    display: grid;
-    grid-template-columns: minmax(0, 1.42fr) minmax(360px, 0.58fr);
-    gap: clamp(16px, 1.8vw, 24px);
-    align-items: start;
-}
-
-.terminal-hero-main {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
+.entry-lede {
     min-width: 0;
 }
 
 .terminal-line {
     opacity: 0;
-    transform: translateY(10px);
-    animation: terminalFadeIn 0.68s cubic-bezier(0.2, 0.9, 0.2, 1) forwards;
+    transform: translateY(12px);
+    animation: entryRise 0.66s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
 }
 
-.terminal-eyebrow {
-    font-size: 20px;
-    color: #ff9fbe;
-    font-weight: 700;
-    letter-spacing: 0.02em;
+.entry-name {
+    margin: 0;
+    font-size: clamp(2.9rem, 5.6vw, 4.5rem);
+    line-height: 1.02;
+    font-weight: 680;
+    letter-spacing: -0.028em;
+    color: var(--e-ink);
 }
 
-.terminal-name {
-    margin: 8px 0 10px;
-    font-size: 72px;
+/* The one thing worth keeping from the terminal: a caret. It marks which
+   block the arrow keys are on, so it earns its place as a nav affordance
+   rather than decoration. */
+.entry-caret {
+    display: inline-block;
+    width: 0.055em;
+    height: 0.78em;
+    margin-left: 0.1em;
+    vertical-align: -0.03em;
+    border-radius: 2px;
+    background: var(--e-wine);
+    opacity: 0;
+}
+
+.entry-role {
+    margin: 14px 0 0;
+    font-size: clamp(1rem, 1.5vw, 1.16rem);
+    font-weight: 560;
+    letter-spacing: 0.005em;
+    color: var(--e-wine-deep);
+}
+
+.entry-text {
+    margin: 20px 0 0;
+    max-width: 46ch;
+    font-size: clamp(0.98rem, 1.25vw, 1.08rem);
+    line-height: 1.68;
+    color: var(--e-ink-muted);
+}
+
+/* Proof strip. Numbers are data, so they are the only monospace on the page.
+   No cards: a hairline between columns is enough separation. */
+.entry-proof {
+    margin: 30px 0 0;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, auto));
+    justify-content: start;
+    gap: clamp(20px, 3vw, 38px);
+}
+
+.entry-proof-item {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 5px;
+    padding-left: clamp(16px, 2.4vw, 28px);
+    border-left: 1px solid var(--e-line);
+}
+
+.entry-proof-item:first-child {
+    padding-left: 0;
+    border-left: 0;
+}
+
+.entry-proof dd {
+    margin: 0;
+    font-family: ui-monospace, SFMono-Regular, 'JetBrains Mono', Menlo, monospace;
+    font-size: clamp(1.7rem, 2.6vw, 2.15rem);
+    font-weight: 550;
     line-height: 1;
-    letter-spacing: 0;
-    font-weight: 700;
-    color: transparent;
-    background: linear-gradient(90deg, #ff93b7 0%, #d984ff 44%, #75d6ff 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
+    letter-spacing: -0.02em;
+    font-variant-numeric: tabular-nums;
+    color: var(--e-ink);
 }
+
+.entry-proof dt {
+    font-size: 0.76rem;
+    line-height: 1.35;
+    letter-spacing: 0.012em;
+    color: var(--e-ink-faint);
+}
+
+/* -------------------------------------------------------------------------
+   Actions
+   ------------------------------------------------------------------------- */
+
+.entry-actions {
+    margin: 34px 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 14px 22px;
+}
+
+.entry-cta {
+    flex: 0 0 auto;
+    min-height: 50px;
+    padding: 0 26px;
+    border: 0;
+    border-radius: var(--e-radius-control);
+    background: var(--e-wine-fill);
+    color: var(--e-on-wine);
+    font: inherit;
+    font-size: 0.98rem;
+    font-weight: 560;
+    letter-spacing: 0.004em;
+    white-space: nowrap;
+    cursor: pointer;
+    box-shadow: 0 6px 18px rgba(178, 58, 72, 0.22);
+    transition: transform 0.18s cubic-bezier(0.22, 0.61, 0.36, 1),
+                background-color 0.18s ease,
+                box-shadow 0.18s ease;
+}
+
+.entry-cta:hover {
+    transform: translateY(-2px);
+    background: var(--e-wine-hover);
+    box-shadow: var(--e-shadow-lift);
+}
+
+.entry-cta:active {
+    transform: translateY(0) scale(0.985);
+    box-shadow: 0 4px 12px rgba(178, 58, 72, 0.2);
+}
+
+.entry-cta:disabled {
+    cursor: default;
+    transform: none;
+    opacity: 0.72;
+    box-shadow: none;
+}
+
+.entry-actions-minor {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 18px;
+}
+
+.entry-link {
+    padding: 4px 0;
+    border: 0;
+    background: none;
+    color: var(--e-ink-muted);
+    font: inherit;
+    font-size: 0.88rem;
+    cursor: pointer;
+    position: relative;
+    transition: color 0.18s ease;
+}
+
+.entry-link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 1px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.22s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.entry-link:hover {
+    color: var(--e-wine);
+}
+
+.entry-link:hover::after {
+    transform: scaleX(1);
+}
+
+.entry-link--quiet {
+    color: var(--e-ink-faint);
+    font-size: 0.82rem;
+}
+
+#terminal-entry :is(button, [tabindex]):focus-visible {
+    outline: 2px solid var(--e-wine);
+    outline-offset: 3px;
+    border-radius: var(--e-radius-control);
+}
+
+/* Location and status. Separated by space, not by punctuation. */
+.entry-meta {
+    margin: 30px 0 0;
+    padding-top: 20px;
+    border-top: 1px solid var(--e-line);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px clamp(20px, 3vw, 34px);
+    font-size: 0.78rem;
+    color: var(--e-ink-faint);
+}
+
+/* -------------------------------------------------------------------------
+   Canvas preview
+   -------------------------------------------------------------------------
+   Not a screenshot and not an illustration: real portfolio records, laid out
+   on the same ring Orbit's app icon uses, in the tones the canvas actually
+   paints those cards with. Hovering a node is a rehearsal of the canvas.
+   ------------------------------------------------------------------------- */
+
+.entry-preview {
+    min-width: 0;
+}
+
+.entry-orbit {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 420 / 340;
+    border-radius: var(--e-radius-panel);
+    border: 1px solid var(--e-line);
+    background:
+        radial-gradient(ellipse 62% 58% at 50% 46%, rgba(255, 255, 255, 0.9), transparent 74%),
+        var(--e-surface);
+    box-shadow: var(--e-shadow-panel);
+    overflow: hidden;
+}
+
+.entry-orbit-svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.entry-orbit-ring {
+    fill: none;
+    stroke: var(--e-wine);
+    stroke-width: 1.6;
+    stroke-dasharray: 5 7;
+    opacity: 0.6;
+}
+
+.entry-orbit-link {
+    stroke: var(--e-denim);
+    stroke-width: 1.2;
+    stroke-dasharray: 3 5;
+    opacity: 0.42;
+    transition: opacity 0.22s ease, stroke-width 0.22s ease;
+}
+
+.entry-orbit-link.is-lit {
+    stroke: var(--e-wine);
+    stroke-width: 1.8;
+    opacity: 0.85;
+}
+
+/* Hub. Orbit paints its centre warmer and brighter than the accent, because a
+   hub painted in the accent reads as one more node instead of the light the
+   scene is lit by. */
+.entry-orbit-hub {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 17%;
+    aspect-ratio: 1;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: radial-gradient(circle at 34% 30%, #FFF6EA, #FCE3C4 58%, #F2D0AC);
+    box-shadow:
+        0 0 0 1.5px rgba(178, 58, 72, 0.3),
+        0 0 0 7px rgba(178, 58, 72, 0.05),
+        0 5px 20px rgba(178, 58, 72, 0.2);
+    font-family: ui-monospace, SFMono-Regular, 'JetBrains Mono', Menlo, monospace;
+    font-size: clamp(0.62rem, 1.1vw, 0.78rem);
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    color: var(--e-wine-deep);
+}
+
+/* A node is a card, not a swatch. The canvas is made of titled cards joined by
+   lines, so a preview built from coloured squares previews nothing: it reads
+   as decoration and tells a visitor nothing about what is behind the door.
+   The tone square survives as the card's marker, which is also what carries
+   Orbit's icon palette onto the page. */
+.entry-orbit-node {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    max-width: 34%;
+    padding: 6px 10px;
+    border: 1px solid var(--e-line);
+    border-radius: var(--e-radius-control);
+    background: var(--e-surface);
+    box-shadow: 0 3px 10px rgba(93, 62, 52, 0.13);
+    font: inherit;
+    cursor: pointer;
+    transition: transform 0.22s cubic-bezier(0.22, 0.61, 0.36, 1),
+                box-shadow 0.22s ease,
+                border-color 0.22s ease;
+}
+
+.entry-orbit-node:hover,
+.entry-orbit-node:focus-visible {
+    transform: translate(-50%, -50%) translateY(-3px);
+    border-color: rgba(178, 58, 72, 0.34);
+    box-shadow: 0 10px 22px rgba(93, 62, 52, 0.2);
+}
+
+.entry-orbit-dot {
+    flex: 0 0 auto;
+    width: 13px;
+    height: 13px;
+    border-radius: 4px;
+    background: var(--node-tone);
+    box-shadow: inset 0 0 0 1px rgba(26, 26, 46, 0.08);
+}
+
+.entry-orbit-title {
+    font-size: 0.72rem;
+    font-weight: 530;
+    line-height: 1.2;
+    letter-spacing: -0.002em;
+    white-space: nowrap;
+    color: var(--e-ink);
+}
+
+.entry-preview-caption {
+    margin: 16px 0 0;
+    font-size: 0.8rem;
+    line-height: 1.5;
+    color: var(--e-ink-faint);
+}
+
+/* -------------------------------------------------------------------------
+   Keyboard navigation
+   -------------------------------------------------------------------------
+   Arrow keys walk the entry blocks. The marker has to be legible without
+   being another card, so it is a wine rule in the left margin.
+   ------------------------------------------------------------------------- */
 
 .terminal-nav-target {
     position: relative;
-    transition: transform 0.22s ease, opacity 0.22s ease, filter 0.22s ease, box-shadow 0.22s ease, background-color 0.22s ease, border-color 0.22s ease;
+    transition: transform 0.22s cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 
-.terminal-nav-inline,
-.terminal-nav-section,
-.terminal-nav-panel {
-    border: 1px solid transparent;
-    border-radius: 18px;
+/* The name already shows its nav state through the caret, so it does not also
+   take a rule: two wine verticals around one heading read as decoration. */
+.entry-lede .terminal-nav-target:not(.entry-name)::before {
+    content: '';
+    position: absolute;
+    left: -18px;
+    top: 0.16em;
+    bottom: 0.16em;
+    width: 2px;
+    border-radius: 2px;
+    background: var(--e-wine);
+    opacity: 0;
+    transform: scaleY(0.4);
+    transform-origin: center;
+    transition: opacity 0.22s ease, transform 0.22s ease;
 }
 
-.terminal-nav-inline {
-    width: fit-content;
-    max-width: 100%;
-    padding: 8px 10px;
-    margin-left: -10px;
+.entry-lede .terminal-nav-target:not(.entry-name).is-active::before {
+    opacity: 1;
+    transform: scaleY(1);
 }
 
-.terminal-nav-section {
-    padding: 10px 12px;
-    margin-left: -12px;
-    margin-right: -4px;
-}
-
-.terminal-nav-panel {
-    padding: 10px 12px;
-    margin-left: -12px;
-    margin-right: -12px;
-}
-
-.terminal-nav-marker.is-active {
-    transform: translateX(3px);
-    border-color: rgba(255, 181, 205, 0.2);
-    background:
-        linear-gradient(180deg, rgba(255, 248, 244, 0.06), rgba(255, 248, 244, 0.018)),
-        rgba(226, 166, 183, 0.055);
-    box-shadow:
-        0 14px 30px rgba(10, 9, 16, 0.14),
-        0 0 0 1px rgba(255, 181, 205, 0.08);
+.entry-preview.terminal-nav-target.is-active .entry-orbit {
+    border-color: rgba(178, 58, 72, 0.4);
+    box-shadow: var(--e-shadow-panel), 0 0 0 3px var(--e-wine-wash);
 }
 
 .terminal-nav-target:not(.is-active) .terminal-nav-cursor {
@@ -219,877 +485,283 @@
 }
 
 .terminal-nav-target.is-active .terminal-nav-cursor {
-    opacity: 0.74;
-    animation: blink 1s step-end infinite;
-}
-
-.terminal-name.terminal-nav-target {
-    width: fit-content;
-}
-
-.terminal-name.terminal-nav-target.is-active {
-    filter: drop-shadow(0 0 18px rgba(217, 132, 255, 0.12));
-}
-
-.terminal-name-cursor {
-    display: inline-block;
-    width: 0.075em;
-    height: 0.9em;
-    margin-left: 0.08em;
-    background: linear-gradient(180deg, rgba(255, 196, 216, 0.82), rgba(138, 213, 255, 0.82));
-    vertical-align: -0.08em;
-    border-radius: 999px;
-    opacity: 0;
-}
-
-.terminal-role {
-    margin: 0 0 10px;
-    font-size: 22px;
-    line-height: 1.28;
-    color: rgba(255, 232, 240, 0.92);
-}
-
-.terminal-role.terminal-nav-inline,
-.terminal-summary.terminal-nav-inline {
-    display: block;
-}
-
-.terminal-summary {
-    max-width: 780px;
-    margin: 0;
-    font-size: 16px;
-    line-height: 1.62;
-    color: rgba(255, 220, 233, 0.72);
-}
-
-.terminal-summary-accent {
-    color: #ff9fbe;
-    font-weight: 600;
-}
-
-.terminal-quickfacts {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 12px;
-}
-
-.terminal-quickfacts.terminal-nav-section {
-    width: fit-content;
-    max-width: 100%;
-    padding-bottom: 8px;
-}
-
-.terminal-quickfact,
-.terminal-chip {
-    --terminal-tone-bg: rgba(255, 239, 233, 0.055);
-    --terminal-tone-border: rgba(226, 166, 183, 0.2);
-    --terminal-tone-text: #ffd5e2;
-    display: inline-flex;
-    align-items: center;
-    padding: 8px 12px;
-    border-radius: 999px;
-    border: 1px solid var(--terminal-tone-border);
-    background:
-        linear-gradient(180deg, rgba(255, 248, 244, 0.06), rgba(255, 248, 244, 0.018)),
-        var(--terminal-tone-bg);
-    color: var(--terminal-tone-text);
-    box-shadow: 0 10px 24px rgba(10, 9, 16, 0.14);
-}
-
-.terminal-quickfact {
-    font-size: 11px;
-    letter-spacing: 0.03em;
-}
-
-.terminal-chip {
-    justify-content: center;
-    min-width: 0;
-    font-size: 12px;
-    white-space: nowrap;
-}
-
-.terminal-tone-pink {
-    --terminal-tone-bg: rgba(205, 121, 142, 0.12);
-    --terminal-tone-border: rgba(226, 166, 183, 0.22);
-    --terminal-tone-text: #ffd0dd;
-}
-
-.terminal-tone-violet {
-    --terminal-tone-bg: rgba(170, 151, 191, 0.11);
-    --terminal-tone-border: rgba(184, 169, 201, 0.2);
-    --terminal-tone-text: #e9dfff;
-}
-
-.terminal-tone-blue {
-    --terminal-tone-bg: rgba(127, 158, 190, 0.12);
-    --terminal-tone-border: rgba(145, 174, 203, 0.2);
-    --terminal-tone-text: #d9eeff;
-}
-
-.terminal-building {
-    margin-top: 14px;
-    padding-top: 12px;
-    border-top: 1px solid rgba(255, 244, 239, 0.07);
-}
-
-.terminal-building.terminal-nav-section {
-    padding-top: 10px;
-    border-top-color: transparent;
-}
-
-.terminal-section-kicker {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 10px;
-    color: #ffb7cf;
-    font-size: 14px;
-    font-weight: 600;
-}
-
-.terminal-section-icon {
-    font-size: 16px;
-    color: #ff8fab;
-}
-
-.terminal-project-list {
-    list-style: none;
-    display: grid;
-    gap: 8px;
-    padding: 0;
-    margin: 0;
-}
-
-.terminal-project-item {
-    display: grid;
-    grid-template-columns: 8px minmax(0, 1fr);
-    gap: 12px;
-    align-items: start;
-}
-
-.terminal-project-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    margin-top: 0.75em;
-    background: currentColor;
-    box-shadow: 0 0 0 5px rgba(255, 244, 239, 0.035);
-}
-
-.terminal-project-item strong {
-    display: block;
-    color: #ffe6ef;
-    font-size: 14px;
-    font-weight: 700;
-    margin-bottom: 3px;
-}
-
-.terminal-project-item span {
-    display: block;
-    color: rgba(255, 220, 233, 0.6);
-    font-size: 13px;
-    line-height: 1.45;
-}
-
-.terminal-command-preview {
-    margin-top: 12px;
-    padding-top: 12px;
-    border-top: 1px solid rgba(255, 244, 239, 0.07);
-    font-size: 17px;
-    line-height: 1.5;
-    color: #ffd7e4;
-}
-
-.terminal-command-preview.terminal-nav-target {
-    border-radius: 14px;
-    border-top-color: transparent;
-    border-color: transparent;
-}
-
-.terminal-command-preview.terminal-nav-target.is-active {
-    background: rgba(255, 248, 244, 0.04);
-    border-color: rgba(226, 166, 183, 0.16);
-    box-shadow: 0 10px 24px rgba(10, 9, 16, 0.12);
-}
-
-.terminal-command-preview.terminal-nav-target.is-active .terminal-command {
-    color: #fff0f5;
-}
-
-.terminal-prompt {
-    color: rgba(255, 143, 171, 0.72);
-    font-weight: 600;
-}
-
-.terminal-command {
-    color: #ffe2ec;
-    font-weight: 600;
-}
-
-.terminal-cursor {
-    display: inline-block;
-    width: 8px;
-    height: 1.05em;
-    background: rgba(255, 190, 213, 0.82);
-    vertical-align: -0.12em;
-    margin-left: 4px;
-    border-radius: 2px;
-    opacity: 0;
-}
-
-.terminal-detail-panel {
-    padding: 18px;
-    border-radius: 24px;
-    border: 1px solid rgba(170, 151, 166, 0.22);
-    background:
-        linear-gradient(180deg, rgba(48, 43, 54, 0.72), rgba(33, 32, 41, 0.78));
-    box-shadow: 0 18px 36px rgba(10, 9, 16, 0.22);
-}
-
-.terminal-panel-section + .terminal-panel-section {
-    margin-top: 12px;
-    padding-top: 12px;
-    border-top: 1px solid rgba(255, 244, 239, 0.08);
-}
-
-.terminal-panel-section.terminal-nav-panel {
-    transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease, background-color 0.22s ease;
-}
-
-.terminal-panel-section.terminal-nav-panel + .terminal-panel-section.terminal-nav-panel {
-    margin-top: 8px;
-}
-
-.terminal-panel-title {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 8px;
-    color: #ff9fbe;
-    font-size: 14px;
-    font-weight: 700;
-}
-
-.terminal-panel-icon {
-    color: #bb8fff;
-    font-size: 16px;
-}
-
-.terminal-detail-panel p {
-    margin: 0;
-    color: rgba(255, 222, 235, 0.72);
-    font-size: 14px;
-    line-height: 1.56;
-}
-
-.terminal-panel-list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: grid;
-    gap: 7px;
-}
-
-.terminal-panel-list li {
-    position: relative;
-    padding-left: 16px;
-    color: rgba(255, 230, 239, 0.78);
-    font-size: 13.5px;
-    line-height: 1.38;
-}
-
-.terminal-panel-list li::before {
-    content: '•';
-    position: absolute;
-    left: 0;
-    top: 0;
-    color: #b98cff;
-}
-
-.terminal-chip-cloud {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 8px;
-}
-
-.terminal-panel-section--closing {
-    padding-bottom: 2px;
-}
-
-.terminal-panel-note {
-    color: #ffb8cf;
-}
-
-.terminal-metric-grid {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 10px;
-}
-
-.terminal-metric {
-    --terminal-metric-glow: rgba(255, 143, 171, 0.2);
-    display: grid;
-    grid-template-columns: 42px minmax(0, 1fr);
-    gap: 10px;
-    align-items: center;
-    padding: 14px 12px;
-    border-radius: 16px;
-    border: 1px solid var(--terminal-tone-border);
-    background:
-        linear-gradient(180deg, rgba(44, 40, 50, 0.78), rgba(32, 31, 40, 0.9)),
-        var(--terminal-tone-bg);
-    box-shadow: 0 16px 30px rgba(10, 9, 16, 0.16);
-}
-
-.terminal-metric-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    border-radius: 12px;
-    background: rgba(255, 248, 244, 0.045);
-    color: var(--terminal-tone-text);
-    font-size: 18px;
-    box-shadow: inset 0 0 0 1px rgba(255, 244, 239, 0.06);
-}
-
-.terminal-metric-value {
-    color: var(--terminal-tone-text);
-    font-size: 16px;
-    font-weight: 700;
-    line-height: 1.3;
-}
-
-.terminal-metric-label {
-    color: rgba(255, 220, 233, 0.58);
-    font-size: 12px;
-    line-height: 1.45;
-}
-
-.terminal-launch {
-    margin-top: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    align-self: center;
-    gap: 0;
-    padding-top: 2px;
-    width: min(500px, 100%);
-    margin-inline: auto;
-}
-
-.terminal-hint {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    font-size: 12px;
-    letter-spacing: 0.08em;
-    color: rgba(255, 187, 210, 0.76);
-}
-
-.terminal-keycap {
-    min-width: 58px;
-    height: 32px;
-    padding: 0 12px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 10px;
-    border: 1px solid rgba(255, 181, 205, 0.35);
-    background: rgba(170, 151, 166, 0.09);
-    color: #ffd5e2;
-    font-family: inherit;
-    font-size: 12px;
-}
-
-.terminal-hint-divider {
-    width: 1px;
-    height: 14px;
-    background: rgba(170, 151, 166, 0.24);
-}
-
-.terminal-enter-button {
-    width: 100%;
-    min-height: 52px;
-    padding: 0 18px;
-    border-radius: 14px;
-    border: 1px solid rgba(255, 181, 205, 0.44);
-    background:
-        linear-gradient(180deg, rgba(51, 45, 57, 0.92), rgba(35, 33, 43, 0.92));
-    color: #ffd7e4;
-    font-family: inherit;
-    font-size: 16px;
-    letter-spacing: 0.03em;
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 18px;
-    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, color 0.2s ease;
-}
-
-#terminal-entry.is-launching .terminal-enter-button {
-    display: none;
-}
-
-.terminal-enter-button:hover {
-    transform: translateY(-1px);
-    border-color: rgba(255, 181, 205, 0.82);
-    box-shadow: 0 16px 30px rgba(10, 9, 16, 0.26);
-    background:
-        linear-gradient(180deg, rgba(58, 51, 63, 0.96), rgba(40, 37, 49, 0.96));
-}
-
-.terminal-enter-button:focus-visible {
-    outline: 2px solid rgba(255, 181, 205, 0.7);
-    outline-offset: 4px;
-}
-
-.terminal-enter-button:disabled {
-    cursor: default;
-    transform: none;
-    color: #9ae1a9;
-    border-color: rgba(121, 224, 141, 0.48);
-    background:
-        linear-gradient(180deg, rgba(33, 48, 42, 0.94), rgba(28, 40, 36, 0.94));
-    box-shadow: none;
-}
-
-.terminal-enter-button-icon {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 32px;
-    height: 32px;
-    border-radius: 10px;
-    border: 1px solid rgba(255, 181, 205, 0.18);
-    background: rgba(255, 248, 244, 0.045);
-    font-size: 16px;
-}
-
-.terminal-progress-wrap {
-    width: 100%;
-    min-height: 0;
-}
-
-.terminal-progress {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    color: #79e08d;
-    font-size: 14px;
-    width: 100%;
-    padding: 10px 12px;
-    border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    background:
-        linear-gradient(180deg, rgba(255, 248, 244, 0.08), rgba(255, 255, 255, 0.02)),
-        linear-gradient(180deg, rgba(45, 43, 54, 0.96), rgba(31, 31, 40, 0.96));
-    box-shadow:
-        inset 0 1px 0 rgba(255, 244, 239, 0.08),
-        0 18px 42px rgba(10, 9, 16, 0.22);
-    opacity: 0;
-    max-height: 0;
-    overflow: hidden;
-    transform: translateY(0);
-    padding-top: 0;
-    padding-bottom: 0;
-    border-color: transparent;
-    transition: opacity 0.22s ease, max-height 0.22s ease, padding 0.22s ease, border-color 0.22s ease;
-}
-
-#terminal-entry.is-launching .terminal-progress {
     opacity: 1;
-    max-height: 84px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    border-color: rgba(255, 255, 255, 0.08);
+    animation: entryBlink 1.1s step-end infinite;
 }
 
-.terminal-progress-label {
-    font-size: 11px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: rgba(188, 245, 198, 0.88);
-}
+/* -------------------------------------------------------------------------
+   Launch state
+   -------------------------------------------------------------------------
+   The old entry charged a fake battery for 720ms before letting anyone in.
+   What is left is a thin honest progress rule, shown only while loading.
+   ------------------------------------------------------------------------- */
 
-.terminal-battery {
+.entry-launch-status {
+    position: absolute;
+    left: 50%;
+    bottom: clamp(22px, 4vh, 44px);
+    transform: translateX(-50%);
+    z-index: 2;
     display: flex;
     align-items: center;
-    gap: 6px;
-    flex: 1;
+    gap: 12px;
+    width: min(340px, calc(100% - 48px));
+    font-family: ui-monospace, SFMono-Regular, 'JetBrains Mono', Menlo, monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.06em;
+    color: var(--e-ink-faint);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
 }
 
-.terminal-battery-shell {
-    flex: 1;
-    padding: 4px;
-    border-radius: 18px;
-    border: 1px solid rgba(214, 225, 255, 0.18);
-    background:
-        linear-gradient(180deg, rgba(122, 105, 118, 0.28), rgba(55, 51, 63, 0.56)),
-        linear-gradient(180deg, rgba(255, 248, 244, 0.08), rgba(255, 255, 255, 0.02));
-    box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.16),
-        0 10px 24px rgba(0, 0, 0, 0.22);
+#terminal-entry.is-launching .entry-launch-status {
+    opacity: 1;
 }
 
-.terminal-progress-track {
+.entry-launch-track {
     flex: 1;
-    height: 22px;
-    border-radius: 14px;
+    height: 2px;
+    border-radius: 2px;
+    background: var(--e-line);
     overflow: hidden;
-    background:
-        repeating-linear-gradient(
-            90deg,
-            rgba(255, 248, 244, 0.052) 0 18px,
-            rgba(38, 36, 47, 0.86) 18px 20px
-        ),
-        linear-gradient(180deg, rgba(34, 33, 43, 0.96), rgba(18, 18, 25, 0.98));
-    box-shadow:
-        inset 0 0 0 1px rgba(190, 222, 255, 0.08),
-        inset 0 10px 18px rgba(0, 0, 0, 0.28);
 }
 
-.terminal-progress-fill {
+.entry-launch-fill {
+    display: block;
     width: 0;
     height: 100%;
-    background:
-        linear-gradient(90deg, rgba(139, 190, 177, 0.92), rgba(154, 210, 171, 0.95) 48%, rgba(226, 210, 155, 0.96));
-    box-shadow:
-        0 0 22px rgba(139, 190, 177, 0.16),
-        0 0 22px rgba(226, 210, 155, 0.18),
-        inset 0 0 18px rgba(255, 255, 255, 0.16);
-    border-radius: 12px;
-    position: relative;
+    border-radius: 2px;
+    background: var(--e-wine);
     transition: width 0.12s linear;
 }
 
-.terminal-progress-fill::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background:
-        repeating-linear-gradient(
-            90deg,
-            rgba(255, 255, 255, 0.12) 0 14px,
-            rgba(255, 255, 255, 0.02) 14px 18px
-        );
-    opacity: 0.42;
-}
-
-.terminal-progress-fill::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background:
-        linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.28) 46%, transparent 100%);
-    mix-blend-mode: screen;
-    animation: terminalBatterySweep 0.85s linear infinite;
-}
-
-.terminal-battery-cap {
-    width: 11px;
-    height: 18px;
-    border-radius: 0 6px 6px 0;
-    background:
-        linear-gradient(180deg, rgba(245, 235, 226, 0.88), rgba(178, 163, 174, 0.76));
-    box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.28),
-        0 0 10px rgba(188, 210, 255, 0.14);
-}
-
-.terminal-progress-value {
-    min-width: 78px;
-    text-align: right;
-    color: rgba(225, 255, 231, 0.96);
+.entry-launch-value {
     font-variant-numeric: tabular-nums;
-    letter-spacing: 0.06em;
 }
 
-@keyframes terminalFadeIn {
+#terminal-entry.is-launching .entry-stage {
+    transform: scale(0.988);
+    opacity: 0.55;
+    transition: transform 0.42s cubic-bezier(0.22, 0.61, 0.36, 1), opacity 0.42s ease;
+}
+
+@keyframes entryRise {
     to {
         opacity: 1;
         transform: translateY(0);
     }
 }
 
-@keyframes blink {
+@keyframes entryBlink {
     50% { opacity: 0; }
 }
 
-@keyframes terminalBatterySweep {
-    from { transform: translateX(-120%); }
-    to { transform: translateX(120%); }
+/* -------------------------------------------------------------------------
+   Night. Orbit's dusk, not a neutral black: dimming a warm ground with grey
+   drains its hue before its luminance and the page just looks faded.
+   ------------------------------------------------------------------------- */
+
+body[data-theme='dark'] #terminal-entry {
+    --e-paper: #2B1C1A;
+    --e-surface: #382724;
+    --e-ink: #F7F2E8;
+    --e-ink-muted: #DCCCC4;
+    --e-ink-faint: #AC978F;
+    --e-wine: #D28D95;
+    --e-wine-deep: #E4A6AC;
+    --e-wine-wash: rgba(210, 141, 149, 0.16);
+    --e-wine-fill: #B23A48;
+    --e-wine-hover: #C4485A;
+    --e-on-wine: #FFF9F6;
+    --e-denim: #9DBDE0;
+    --e-line: rgba(247, 242, 232, 0.13);
+    --e-shadow-panel: 0 20px 48px rgba(0, 0, 0, 0.34);
+    --e-shadow-lift: 0 12px 28px rgba(0, 0, 0, 0.42);
 }
 
-@media (min-width: 1181px) and (max-height: 1120px) {
-    .terminal-shell-body {
-        gap: 14px;
-        padding: 18px 24px 18px;
-    }
-
-    .terminal-hero-layout {
-        grid-template-columns: minmax(0, 1.48fr) minmax(340px, 0.52fr);
-        gap: 18px;
-    }
-
-    .terminal-name {
-        font-size: 60px;
-        margin: 6px 0 8px;
-    }
-
-    .terminal-role {
-        margin-bottom: 8px;
-        font-size: 19px;
-    }
-
-    .terminal-summary {
-        font-size: 14px;
-        line-height: 1.54;
-    }
-
-    .terminal-quickfacts {
-        margin-top: 10px;
-    }
-
-    .terminal-building {
-        margin-top: 12px;
-        padding-top: 10px;
-    }
-
-    .terminal-command-preview {
-        margin-top: 10px;
-        padding-top: 10px;
-    }
-
-    .terminal-project-list {
-        gap: 7px;
-    }
-
-    .terminal-detail-panel {
-        padding: 16px;
-    }
-
-    .terminal-panel-section + .terminal-panel-section {
-        margin-top: 10px;
-        padding-top: 10px;
-    }
-
-    .terminal-detail-panel p,
-    .terminal-panel-list li {
-        font-size: 12.5px;
-        line-height: 1.34;
-    }
-
-    .terminal-chip-cloud,
-    .terminal-metric-grid {
-        gap: 8px;
-    }
-
-    .terminal-metric {
-        padding: 12px 10px;
-    }
-
-    .terminal-enter-button {
-        min-height: 50px;
-    }
+body[data-theme='dark'] #terminal-entry::before {
+    background:
+        radial-gradient(ellipse 70% 55% at 22% 8%, rgba(255, 237, 212, 0.06), transparent 70%),
+        radial-gradient(ellipse 60% 50% at 88% 92%, rgba(210, 141, 149, 0.07), transparent 72%);
 }
 
-@media (max-width: 1180px) {
-    .terminal-hero-layout {
-        grid-template-columns: 1fr;
-    }
-
-    .terminal-detail-panel {
-        max-width: 760px;
-    }
-
-    .terminal-chip-cloud {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-    }
-
-    .terminal-metric-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
+body[data-theme='dark'] .entry-cta {
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.34);
 }
 
-@media (max-width: 900px) {
+body[data-theme='dark'] .entry-orbit {
+    background:
+        radial-gradient(ellipse 62% 58% at 50% 46%, rgba(255, 237, 212, 0.07), transparent 74%),
+        var(--e-surface);
+}
+
+body[data-theme='dark'] .entry-orbit-node {
+    border-color: rgba(0, 0, 0, 0.22);
+}
+
+/* The hub keeps its warm, near-white face in both themes because it is the
+   light in the scene, so its glyph has to darken rather than lift with the
+   rest of the ink. */
+body[data-theme='dark'] .entry-orbit-hub {
+    color: #8E2C3A;
+}
+
+/* -------------------------------------------------------------------------
+   Responsive. The map is the second thing to go, not the first: below the
+   reading column it still previews the canvas, and only under 620px does the
+   page become a single narrow read.
+   ------------------------------------------------------------------------- */
+
+@media (max-width: 1024px) {
     #terminal-entry {
         align-items: flex-start;
+        padding: clamp(28px, 6vw, 48px) clamp(20px, 5vw, 40px) 96px;
     }
 
-    .terminal-stage {
-        width: 100%;
+    .entry-stage {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 40px;
+        max-width: 640px;
+        margin-inline: auto;
     }
 
-    .terminal-shell {
-        height: calc(100dvh - 24px);
-        max-height: calc(100dvh - 24px);
-        border-radius: 24px;
+    .entry-preview {
+        max-width: 460px;
     }
 
-    .terminal-shell-header {
-        grid-template-columns: auto 1fr;
-        min-height: auto;
-        padding: 18px 18px 14px;
-    }
-
-    .terminal-shell-badge {
-        display: none;
-    }
-
-    .terminal-shell-body {
-        min-height: 0;
-        overflow: auto;
-        padding: 26px 18px 28px;
-        gap: 24px;
-    }
-
-    .terminal-name {
-        font-size: 64px;
-    }
-
-    .terminal-role {
-        font-size: 21px;
-    }
-
-    .terminal-summary {
-        font-size: 16px;
-    }
-
-    .terminal-command-preview {
-        font-size: 17px;
-    }
-
-    .terminal-enter-button {
-        min-height: 58px;
-        font-size: 16px;
-    }
-
-    .terminal-launch {
-        position: sticky;
-        bottom: 0;
-        z-index: 3;
-        padding: 12px 0 0;
-        background:
-            linear-gradient(180deg, rgba(37, 34, 43, 0), rgba(37, 34, 43, 0.96) 34%, rgba(37, 34, 43, 0.98));
-    }
-
-    .terminal-chip-cloud {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
+    .entry-lede .terminal-nav-target:not(.entry-name)::before {
+        left: -14px;
     }
 }
 
 @media (max-width: 620px) {
     #terminal-entry {
-        padding: 12px;
+        padding: 26px 20px 88px;
     }
 
-    .terminal-shell {
-        border-radius: 22px;
+    .entry-name {
+        font-size: clamp(2.4rem, 12vw, 3rem);
     }
 
-    .terminal-detail-panel {
-        padding: 20px;
-        border-radius: 20px;
+    .entry-text {
+        margin-top: 16px;
     }
 
-    .terminal-name {
-        font-size: 42px;
-        line-height: 1.08;
+    .entry-proof {
+        margin-top: 26px;
+        gap: 16px;
     }
 
-    .terminal-role {
-        font-size: 19px;
+    .entry-proof-item {
+        padding-left: 14px;
     }
 
-    .terminal-summary {
-        font-size: 15px;
+    .entry-proof dt {
+        font-size: 0.7rem;
     }
 
-    .terminal-metric-grid {
-        grid-template-columns: 1fr;
+    .entry-actions {
+        margin-top: 28px;
+        gap: 16px;
     }
 
-    .terminal-metric {
-        grid-template-columns: 42px minmax(0, 1fr);
-        padding: 16px;
+    .entry-cta {
+        width: 100%;
+        padding: 0 18px;
     }
 
-    .terminal-project-item {
-        grid-template-columns: 8px minmax(0, 1fr);
+    .entry-actions-minor {
+        width: 100%;
+        justify-content: space-between;
         gap: 12px;
     }
 
-    .terminal-project-item strong,
-    .terminal-detail-panel p,
-    .terminal-panel-list li {
-        font-size: 14px;
+    .entry-meta {
+        gap: 6px 18px;
+        font-size: 0.74rem;
     }
 
-    .terminal-project-item span,
-    .terminal-metric-label {
-        font-size: 13px;
+    .entry-lede .terminal-nav-target:not(.entry-name)::before {
+        left: -12px;
     }
 
-    .terminal-chip-cloud {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+    .entry-orbit-node {
+        gap: 5px;
+        padding: 5px 8px;
     }
 
-    .terminal-hint {
-        gap: 8px;
-        font-size: 12px;
-        line-height: 1.7;
+    .entry-orbit-dot {
+        width: 11px;
+        height: 11px;
+        border-radius: 3px;
     }
 
-    .terminal-hint-divider {
+    .entry-orbit-title {
+        font-size: 0.66rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .entry-orbit-node {
+        padding: 4px 7px;
+    }
+
+    .entry-orbit-title {
+        font-size: 0.6rem;
+    }
+
+    .entry-proof {
+        gap: 12px;
+    }
+
+    .entry-proof-item {
+        padding-left: 11px;
+    }
+}
+
+/* Very short viewports: the map is decoration once the reading column cannot
+   fit, so it goes rather than pushing the CTA below the fold. */
+@media (max-height: 560px) and (min-width: 1025px) {
+    .entry-preview {
         display: none;
     }
 
-    .terminal-enter-button {
-        width: 100%;
-        padding: 0 18px;
-        font-size: 15px;
+    .entry-stage {
+        grid-template-columns: minmax(0, 1fr);
+        max-width: 760px;
     }
-
-    .terminal-enter-button-icon {
-        width: 32px;
-        height: 32px;
-        border-radius: 10px;
-        font-size: 16px;
-    }
-
-    .terminal-progress {
-        gap: 8px;
-        font-size: 14px;
-    }
-
-    .terminal-progress-label {
-        display: none;
-    }
-
-    .terminal-progress-track {
-        height: 18px;
-    }
-
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .terminal-line,
-    .terminal-name-cursor,
-    .terminal-cursor {
+    .terminal-line {
         animation: none;
         opacity: 1;
         transform: none;
     }
 
-    .terminal-progress,
-    .terminal-enter-button,
-    .terminal-shell {
+    .terminal-nav-target.is-active .terminal-nav-cursor {
+        animation: none;
+        opacity: 1;
+    }
+
+    .entry-cta,
+    .entry-link::after,
+    .entry-orbit-node,
+    .entry-orbit-link,
+    .entry-orbit-label,
+    #terminal-entry.is-launching .entry-stage {
         transition: none;
+    }
+
+    .entry-cta:hover,
+    .entry-orbit-node:hover,
+    .entry-orbit-node:focus-visible {
+        transform: translateY(0);
+    }
+
+    .entry-orbit-node:hover,
+    .entry-orbit-node:focus-visible {
+        transform: translate(-50%, -50%);
     }
 }

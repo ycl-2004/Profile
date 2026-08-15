@@ -28,6 +28,12 @@
         0 10px 28px rgba(82, 102, 145, 0.1);
 }
 
+.card.is-tool-selected {
+    outline: 3px solid rgba(232, 93, 138, 0.5);
+    outline-offset: 4px;
+    z-index: 25;
+}
+
 .card-heading {
     font-size: 14px;
     font-weight: 700;
