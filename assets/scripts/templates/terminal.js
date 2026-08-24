@@ -13,17 +13,17 @@
                         Yi-Chen Lin<span class="entry-caret terminal-nav-cursor" aria-hidden="true"></span>
                     </h1>
 
-                    <p class="terminal-line entry-role" style="animation-delay:0.24s;">Product Engineer · Systems Builder</p>
+                    <p class="terminal-line entry-role" style="animation-delay:0.24s;">AI-Focused Software Engineer · Systems Builder</p>
 
                     <p class="terminal-line entry-text terminal-nav-target" data-nav-target="lede" style="animation-delay:0.34s;">
-                        I build software where product surfaces meet real system logic: industrial field
-                        tools, native apps, and AI infrastructure.
+                        I build software where product surfaces meet real system logic: RAG pipelines and
+                        agent orchestration, industrial field tools, and native apps I ship publicly.
                     </p>
 
                     <dl class="terminal-line entry-proof terminal-nav-target" data-nav-target="proof" style="animation-delay:0.46s;">
                         <div class="entry-proof-item">
-                            <dt>Merged work PRs</dt>
-                            <dd>10</dd>
+                            <dt>Public GitHub stars</dt>
+                            <dd>120+</dd>
                         </div>
                         <div class="entry-proof-item">
                             <dt>Upstream PRs merged</dt>
@@ -31,28 +31,28 @@
                         </div>
                         <div class="entry-proof-item">
                             <dt>Public repositories</dt>
-                            <dd>28</dd>
+                            <dd>29</dd>
                         </div>
                     </dl>
 
                     <div class="terminal-line entry-actions" style="animation-delay:0.58s;">
                         <button class="entry-cta" id="terminal-launch-button" type="button">Enter the evidence canvas</button>
                         <div class="entry-actions-minor">
-                            <button class="entry-link" id="terminal-skip-button" type="button">Searchable résumé</button>
+                            <a class="entry-link" id="terminal-resume-link" href="https://ycl-2004.github.io/Resume/YC-Resume.pdf" target="_blank" rel="noopener noreferrer">Résumé (PDF) ↗</a>
                             <button class="entry-link entry-link--quiet" type="button" data-sound-toggle aria-pressed="false"><span data-sound-label>Sound off</span></button>
                         </div>
                     </div>
 
                     <p class="terminal-line entry-meta" style="animation-delay:0.68s;">
                         <span>Vancouver</span>
-                        <span>Delta Controls</span>
+                        <span>Delta Controls · AI Warts</span>
                         <span>UBC Electrical Engineering, May 2027</span>
                     </p>
                 </section>
 
                 <aside class="terminal-line entry-preview terminal-nav-target" data-nav-target="preview" style="animation-delay:0.40s;">
                     <div class="entry-orbit" id="entry-orbit"></div>
-                <p class="entry-preview-caption">21 projects and roles, mapped by how they connect.</p>
+                <p class="entry-preview-caption" id="entry-preview-caption">Projects and roles, mapped by how they connect.</p>
                 </aside>
             </div>
 

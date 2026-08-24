@@ -5,17 +5,92 @@
         {
             id: 'work-delta',
             title: 'Delta Controls',
-            subtitle: 'HVAC air balancing application',
+            subtitle: 'Software Developer · UBC ECE Industry Capstone',
             category: 'Work',
             type: 'Industrial Software',
             layer: 'experience',
-            dateLabel: 'Jan 2026 - Present',
+            dateLabel: 'Jan 2026 - Aug 2026',
             sortDate: '2026-01',
             icon: '🏢',
             tone: 'mint',
-            description: 'Contributed to Delta Air Balance, a field-facing HVAC application that brings sensor data, controller context, and guided diagnostics into one technician workflow.',
-            impact: 'Worked on BLE connectivity, regression-fit validation around MFDD / GBTM components, and the overall UI design for a workflow that reduces repeated manual measurement and adjustment.',
-            stack: ['BLE Connectivity', 'Regression Fit', 'MFDD / GBTM', 'UI Design']
+            description: 'Shipped an Android field app for Delta Air Balance over an eight-month industry capstone, bringing sensor data, controller context, and guided diagnostics into one technician workflow.',
+            impact: 'Cut on-site HVAC balancing time by 35% with a Kotlin/Jetpack Compose field app; fit a physics-derived indoor-temperature model via L2-regularized regression at 0.3 °C MAE; built the BLE telemetry pipeline and the OpenAI API voice assistant\'s system prompts and tool-call routing.',
+            stack: ['Kotlin', 'Jetpack Compose', 'BLE', 'L2 Regression', 'OpenAI API']
+        },
+        {
+            id: 'work-ai-warts',
+            title: 'AI Warts',
+            subtitle: 'AI Technical Content Engineer · Remote',
+            category: 'Work',
+            type: 'AI Media & Education',
+            layer: 'experience',
+            dateLabel: 'Jun 2026 - Present',
+            sortDate: '2026-06',
+            icon: '📡',
+            tone: 'lilac',
+            description: 'Technical content and tooling work at an AI media and education startup, sitting between open-source engineering and written technical evaluation.',
+            impact: 'Contributed the Chinese social-media crawlers (Xiaohongshu, Douyin) to AI News Radar, a 1.7K-star open-source project; ranked crawled items by keyword extraction, recency decay, and engagement signals; benchmarked AI models, products, and developer tools from 20+ partner companies.',
+            stack: ['Python', 'Crawlers', 'Ranking', 'Benchmarking', 'Technical Writing']
+        },
+        {
+            id: 'project-rag-system',
+            title: 'Production RAG System',
+            subtitle: 'Private hybrid-retrieval pipeline at production latency',
+            category: 'Project',
+            type: 'AI Infrastructure',
+            layer: 'projects',
+            dateLabel: 'Jan 2026 - Mar 2026',
+            sortDate: '2026-03',
+            icon: '🔍',
+            tone: 'sky',
+            description: 'Self-managed retrieval-augmented generation system built for ingestion throughput, hybrid retrieval quality, and end-to-end latency under real query load.',
+            impact: 'Indexed 20K vectors in 15.5 s and cut vector-search P95 from 27.5 ms to 1.76 ms; hybrid bge-base/BM25 retrieval with RRF lifted recall 6.0% and NDCG 9.5% at 323.6 ms end-to-end P95; TTL query-rewrite caching dropped repeated rewrites from 3.3 s and 465 tokens to zero.',
+            stack: ['Python', 'FastAPI', 'bge-base', 'BM25', 'pgvector', 'RRF']
+        },
+        {
+            id: 'project-media-ops',
+            title: 'Media Content Operations Platform',
+            subtitle: 'Private client project · multi-branch agent orchestration',
+            category: 'Project',
+            type: 'AI Infrastructure',
+            layer: 'projects',
+            dateLabel: 'Apr 2026 - Jun 2026',
+            sortDate: '2026-06',
+            icon: '🕸',
+            tone: 'lilac',
+            description: 'Client-facing content operations platform where a branching LangGraph workflow drives topic research, copy generation, and publishing through a single orchestration service.',
+            impact: 'Designed multi-branch LangGraph workflows with MySQL checkpointing that resume across 3 paths without state loss; engineered a 5-stage FastAPI orchestration service with row-level locking to prevent conflicting agent runs; integrated 3 Coze agents and publishing APIs.',
+            stack: ['LangGraph', 'FastAPI', 'MySQL', 'Coze', 'Checkpointing']
+        },
+        {
+            id: 'project-ai-agents',
+            title: 'AI Agent Systems',
+            subtitle: 'Public LangGraph / LangChain agent project library',
+            category: 'Project',
+            type: 'AI Infrastructure',
+            layer: 'projects',
+            dateLabel: '2026',
+            sortDate: '2026-08',
+            icon: '🧩',
+            tone: 'mint',
+            description: 'Public repository of production-shaped agent architectures built on LangGraph, LangChain, MCP, and FastAPI — state-machine orchestration rather than single-shot prompting.',
+            impact: 'Shipped a Deep Research & Report System with reflective self-healing loops and human-in-the-loop outline review, and an omni-channel service agent using LCEL pipelines, Pydantic v2 structured checks, and tool-calling closure — all against real external APIs, no mocks.',
+            stack: ['LangGraph', 'LangChain', 'MCP', 'FastAPI', 'Pydantic']
+        },
+        {
+            id: 'writing-technical',
+            title: 'Technical Writing',
+            subtitle: 'AI explainers and hands-on tooling walkthroughs',
+            category: 'Content',
+            type: 'Writing',
+            layer: 'general',
+            dateLabel: '2026',
+            sortDate: '2026-07',
+            icon: '✍️',
+            tone: 'blush',
+            description: 'Co-authored AI explainers and hands-on walkthroughs that translate agent workflows and developer tooling into something a working engineer can act on.',
+            impact: '311K cumulative reads across co-authored AI explainers, with a 45K-read top post.',
+            stack: ['Technical Writing', 'AI Explainers', 'Developer Tooling']
         },
         {
             id: 'project-orbit',
@@ -29,7 +104,7 @@
             icon: '🪐',
             tone: 'sky',
             description: 'Gesture-first macOS app switcher that puts the next window around the cursor instead of behind a list.',
-            impact: 'Shipped a Universal macOS release with radial navigation, window targeting, previews, local-only behavior, and no network dependency.',
+            impact: 'Shipped a Universal macOS release through v1.7.0 with radial navigation, window targeting, previews, and local-only behavior; it carries the large majority of my 120+ cumulative public GitHub stars.',
             stack: ['Swift', 'SwiftUI', 'AppKit', 'macOS', 'Local-First']
         },
         {
@@ -89,23 +164,38 @@
             icon: '↗',
             tone: 'mint',
             description: 'Contributed to larger upstream AI and developer-tool projects while keeping original ownership and fork provenance explicit.',
-            impact: '3 upstream PRs merged across AI News Radar, Afu LLM Todo, and Partner Skill; 1 active PR improves dual-view UX and source quality.',
+            impact: '3 upstream pull requests merged across AI News Radar, Afu LLM Todo, and Partner Skill, covering source quality, dual-view product UX, and the cross-agent Partner workflow.',
             stack: ['Open Source', 'React', 'TypeScript', 'Python', 'Product UX']
         },
         {
-            id: 'project-yc-obsidian',
-            title: 'YC Obsidian',
-            subtitle: 'Public personal operating system',
+            id: 'project-goodcase',
+            title: 'GoodCase.ai',
+            subtitle: 'Creator-first AI case platform',
             category: 'Project',
-            type: 'Knowledge System',
+            type: 'AI Platform',
             layer: 'projects',
             dateLabel: '2026',
+            sortDate: '2026-08',
+            icon: '🔎',
+            tone: 'amber',
+            description: 'A public platform that keeps an AI case together with its full prompt, its creator, its source, and its retest evidence, instead of letting a viral result disappear into a feed.',
+            impact: 'Shipped discovery search, skill grouping, creator tracking, a cross-model stability lab, and publishing governance across four merged pull requests; the product runs publicly at goodcase.ai with prompts open and no account required.',
+            stack: ['JavaScript', 'Product UX', 'Search', 'AI Evaluation']
+        },
+        {
+            id: 'project-yc-site',
+            title: 'YC Personal Website',
+            subtitle: 'Public personal brand homepage',
+            category: 'Project',
+            type: 'Web',
+            layer: 'general',
+            dateLabel: '2026',
             sortDate: '2026-07',
-            icon: '🗂',
+            icon: '🌱',
             tone: 'blush',
-            description: 'Privacy-sanitized Obsidian system that connects capture, understanding, execution, and review.',
-            impact: 'Published a minimum-runnable vault with custom UI, templates, plugins, automation, and zero-dependency validation.',
-            stack: ['Obsidian', 'Markdown', 'Automation', 'Knowledge Management']
+            description: 'The front door of the YC identity: a warm, hand-made single-page site that deliberately does not read as AI-generated.',
+            impact: 'Built a React/TypeScript/Vite/Tailwind site split into extensible sections — Hero, About, Now, Work, and Values — and deployed it on GitHub Pages.',
+            stack: ['React', 'TypeScript', 'Vite', 'Tailwind', 'GitHub Pages']
         },
         {
             id: 'project-sharememory',
@@ -138,23 +228,8 @@
             stack: ['macOS', 'Raycast', 'Local-First', 'CLI', 'Prompt Systems']
         },
         {
-            id: 'project-family-care',
-            title: 'Family Care Reminder App',
-            subtitle: 'Private elder-friendly reminder workflow',
-            category: 'Project',
-            type: 'Product',
-            layer: 'projects',
-            dateLabel: 'Jan 2026 - Present',
-            sortDate: '2026-03',
-            icon: '💗',
-            tone: 'blush',
-            description: 'Family-oriented reminder app focused on simple elder-friendly interactions and caregiver coordination.',
-            impact: 'Built recurring scheduling, notification rebuild logic, missed-occurrence handling, and user-specific reminder flows.',
-            stack: ['Flutter', 'Supabase', 'Dart', 'Notifications']
-        },
-        {
-            id: 'project-yc-cast',
-            title: 'YC Cast',
+            id: 'project-screen-bridge',
+            title: 'Screen Bridge',
             subtitle: 'Mac-to-iPad extended display',
             category: 'Project',
             type: 'Native App',
@@ -163,8 +238,8 @@
             sortDate: '2026-08',
             icon: '📱',
             tone: 'sky',
-            description: 'Built YC Cast to reduce screen-space limits for developers by turning an iPad into an authenticated, low-friction secondary display with stronger volume controls, settings, and connection stability than regular screen sharing.',
-            impact: 'Built virtual display streaming, pairing-code authentication, input event validation, network mode selection, and iPad disconnection states.',
+            description: 'Built Screen Bridge to reduce screen-space limits for developers by turning an iPad into an authenticated, low-friction secondary display with stronger volume controls, settings, and connection stability than regular screen sharing.',
+            impact: 'Shipped a public v1.1.1 Universal Mac build with virtual display streaming, pairing-code authentication, input event validation, network mode selection, and iPad disconnection states.',
             stack: ['Swift', 'macOS', 'iPadOS', 'Network.framework', 'HMAC']
         },
         {
@@ -269,7 +344,7 @@
             icon: '⚙️',
             tone: 'peach',
             description: 'Hands-on production environment support across inspection, electrical assembly, wiring, and documentation.',
-            impact: 'Helped maintain process quality above internal standards by 10% and reduced paperwork volume by 30%.',
+            impact: 'Supported electrical assembly, wiring, and plant inspection, and cut paperwork volume by 30% with cleaner templates.',
             stack: ['Inspection', 'Wiring', 'Assembly', 'Documentation']
         },
         {
@@ -353,12 +428,20 @@
             items: ['project-balance-bot', 'project-dao', 'project-edu-analysis']
         },
         {
-            period: '2026',
-            title: 'Production + Native Tools',
-            summary: 'Combined production-oriented industrial software with native macOS apps, local-first workflows, and reusable AI infrastructure.',
+            period: '2026 H1',
+            title: 'Industrial + AI Systems',
+            summary: 'Went into a real industry capstone and, alongside it, built the retrieval and agent-orchestration systems that now define how I work: RAG at production latency, branching LangGraph workflows, and the tooling around them.',
+            layer: 'projects',
+            tone: 'sky',
+            items: ['work-delta', 'project-rag-system', 'project-media-ops', 'work-ai-warts', 'project-resume-tailor']
+        },
+        {
+            period: '2026 H2',
+            title: 'Shipping in Public',
+            summary: 'Turned the same engineering into things other people can download and read: native macOS releases, browser tools, agent infrastructure, public brand systems, and an upstream open-source contribution record.',
             layer: 'projects',
             tone: 'mint',
-            items: ['work-delta', 'project-orbit', 'project-notype', 'project-todo', 'project-browser-organizer', 'project-sharememory', 'project-yc-cast', 'project-yc-obsidian', 'project-open-source']
+            items: ['project-ai-agents', 'project-orbit', 'project-notype', 'project-todo', 'project-browser-organizer', 'project-sharememory', 'project-screen-bridge', 'project-goodcase', 'project-yc-site', 'project-open-source', 'project-yc-brand-systems', 'project-always', 'writing-technical']
         },
         {
             period: 'Next',

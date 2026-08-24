@@ -27,7 +27,7 @@ Three problems, in order of cost:
 - **Two radii, no third.** 8px for controls, 20px for panels.
 - **Split the type registers.** System sans carries the name and prose; monospace is reserved for numbers, so the evidence reads as data rather than as more styling.
 - **Cut the entry to name, role, one sentence, three numbers, and one primary action.** Stack, philosophy, and project lists live on the canvas, where they already existed.
-- **Replace the fake terminal window with a real preview.** The right column renders five actual `portfolioItems` records on Orbit's tilted ring, in the tones the canvas paints those cards with. Hovering a node lights its link; clicking a node carries its stable record id into the Canvas, centers the matching card, and reuses the Canvas selection and connection-focus states.
+- **Replace the fake terminal window with a real preview.** The right column renders six actual `portfolioItems` records on Orbit's tilted ring, in the tones the canvas paints those cards with. Hovering a node lights its link; clicking a node carries its stable record id into the Canvas, centers the matching card, and reuses the Canvas selection and connection-focus states.
 - **Keep every existing contract.** Element ids, `data-sound-toggle`, the `.terminal-nav-target` arrow-key graph, `.hidden` / `.is-launching` / `.is-immediate`, and the progress hooks are unchanged, so `preferences.js`, `theme.js`, `dom.js`, and the print styles keep working untouched.
 - **Do not redesign the canvas.** The entry only calls the Canvas's existing selection and connection-focus behavior, plus a reusable centering helper; its layout and visual language remain unchanged.
 
@@ -49,7 +49,7 @@ Rejected. A hand-drawn ring would be decoration, and decoration cannot go stale 
 
 - The entry and the canvas are one continuous surface in both themes.
 - Entry content is now a strict subset of canvas content, so a claim only has to be updated in `portfolio-items.js` and `modal-data.js`.
-- `ORBIT_NODES` in `terminal-entry.js` names five record ids. If one is renamed, that node disappears from the preview rather than throwing; if all five go, the panel removes itself.
+- `ORBIT_NODES` in `terminal-entry.js` names six record ids. If one is renamed, that node disappears from the preview rather than throwing; if all six go, the panel removes itself.
 - Those ids must also resolve to curated Canvas cards. Static QA now checks the full `ORBIT_NODES` → `portfolioItems` → `data-card` chain so a future rename cannot silently turn a specific entry back into the generic overview.
 - Four always-on ambient animations were removed. The entry keeps one: drift along the ring, which is what makes the preview read as a live system.
 - Dead rules for the old shell were removed from `enhancements.css` and `animations.css`, including the `terminalAmbientSweep` and `terminalAmbientBorder` keyframes.

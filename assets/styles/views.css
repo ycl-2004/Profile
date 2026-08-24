@@ -116,9 +116,14 @@ body[data-view='list'] .portfolio-view-shell {
 .journey-timeline {
     position: relative;
     display: grid;
-    grid-template-columns: repeat(6, minmax(218px, 244px));
+    /* Column-flow rather than a hardcoded count, so adding a milestone cannot
+       wrap the timeline onto a second row. `align-items: start` stops a heavy
+       year from stretching every other column to its height. */
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(218px, 244px);
+    align-items: start;
     gap: 26px;
-    min-width: 1440px;
+    min-width: max-content;
     padding: 58px 8px 18px;
 }
 

@@ -18,7 +18,7 @@
             <div class="sidebar-console-card">
                 <div class="sidebar-console-line">$ whoami</div>
                 <div class="sidebar-console-name">Yi-Chen Lin</div>
-                <div class="sidebar-console-role">Product Engineer</div>
+                <div class="sidebar-console-role">AI-Focused Engineer</div>
                 <div class="sidebar-console-role">Systems Builder</div>
                 <div class="sidebar-console-line">$ cat motto.txt</div>
                 <div class="sidebar-console-quote">"Turn ambiguity into systems people can actually use."</div>

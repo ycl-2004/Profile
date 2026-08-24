@@ -8,7 +8,7 @@
                 <div class="logo-icon">Y</div>
                 <div class="logo-copy">
                     <span class="logo-title">Yi-Chen Canvas</span>
-                    <span class="logo-subtitle">Product Engineer · Systems Builder</span>
+                    <span class="logo-subtitle">AI-Focused Software Engineer · Systems Builder</span>
                 </div>
             </div>
             <div class="top-actions">

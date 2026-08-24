@@ -19,7 +19,7 @@
         { id: 'project-todo', angle: 0, label: 'YC Todo' },
         { id: 'project-browser-organizer', angle: 60, label: 'Browser' },
         { id: 'project-sharememory', angle: 120, label: 'ShareMemory' },
-        { id: 'project-yc-cast', angle: 180, label: 'YC Cast' }
+        { id: 'project-screen-bridge', angle: 180, label: 'Screen Bridge' }
     ];
 
     // Orbit's app icon, in numbers: a tilted ellipse with the hub at its
@@ -47,6 +47,12 @@
         if (!mount) return;
 
         const items = app.data?.portfolioItems || [];
+
+        // Derived, not hand-written: the caption cannot drift from the Evidence Bank.
+        const caption = document.getElementById('entry-preview-caption');
+        if (caption && items.length) {
+            caption.textContent = `${items.length} projects and roles, mapped by how they connect.`;
+        }
         const nodes = ORBIT_NODES
             .map((node) => ({ ...node, item: items.find((entry) => entry.id === node.id) }))
             .filter((node) => node.item);
@@ -262,7 +268,6 @@
         if (!terminalEntry) return;
 
         const launchButton = terminalEntry.querySelector('#terminal-launch-button');
-        const skipButton = terminalEntry.querySelector('#terminal-skip-button');
 
         renderOrbitPreview();
         app.setTerminalNavTarget('hero');
@@ -308,12 +313,6 @@
 
         if (launchButton) {
             launchButton.addEventListener('click', app.enterCanvas);
-        }
-
-        if (skipButton) {
-            skipButton.addEventListener('click', () => {
-                app.enterCanvas({ targetView: 'list', immediate: true });
-            });
         }
 
         terminalEntry.querySelectorAll('.terminal-nav-target').forEach((element) => {

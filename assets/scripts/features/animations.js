@@ -139,7 +139,10 @@
             return;
         }
 
-        if (typeof app.initMotion === 'function') app.initMotion();
+        // Card proximity tweens belong to the entered Canvas. Creating them on
+        // the terminal screen lets the later Canvas intro overwrite their
+        // internal quickTo tweens, which produces reset warnings on first use.
+        if (app.state.canvasReady && typeof app.initMotion === 'function') app.initMotion();
         if (typeof app.initTerminalMotion === 'function' && !app.dom.terminalEntry?.classList.contains('hidden')) {
             app.initTerminalMotion();
         }
@@ -209,6 +212,13 @@
     app.initTerminalMotion = function initTerminalMotion() {
         if (app.state.terminalMotionReady || !canAnimate()) return;
 
+        const orbitRing = document.querySelector('.entry-orbit-ring');
+        const orbitLinks = document.querySelectorAll('.entry-orbit-link');
+        // Preferences initialize before the terminal preview is rendered. Wait
+        // for real targets so a premature call neither warns nor marks motion
+        // ready before bindTerminalEntry gets its second, valid attempt.
+        if (!orbitRing || !orbitLinks.length) return;
+
         document.body.classList.add('motion-enhanced');
 
         // The entry page carries exactly one ambient animation, and it has to
@@ -216,14 +226,14 @@
         // reads as a live system you can walk into, not a diagram of one. The
         // page used to breathe glow on chips, metric icons, dots, and the CTA
         // at once, none of which said anything.
-        gsap.to('.entry-orbit-ring', {
+        gsap.to(orbitRing, {
             strokeDashoffset: -12,
             duration: 3.6,
             ease: 'none',
             repeat: -1
         });
 
-        gsap.to('.entry-orbit-link', {
+        gsap.to(orbitLinks, {
             strokeDashoffset: -8,
             duration: 2.8,
             ease: 'none',
@@ -432,7 +442,7 @@
         gsap.set(cards, { autoAlpha: 0, y: 18, scaleX: 0.965, scaleY: 0.965, transformOrigin: '50% 50%' });
         gsap.set(chrome, { autoAlpha: 0, y: -8 });
 
-        gsap.timeline({ defaults: { ease: 'power3.out' } })
+        return gsap.timeline({ defaults: { ease: 'power3.out' } })
             .to(chrome, { autoAlpha: 1, y: 0, duration: 0.48, stagger: 0.035, clearProps: 'opacity,visibility,y' }, 0)
             .to(cards, {
                 autoAlpha: 1,
@@ -586,8 +596,9 @@
     if (typeof baseInitCanvas === 'function') {
         app.initCanvas = function initCanvasWithMotion() {
             baseInitCanvas.apply(app, arguments);
-            app.initMotion();
-            app.animateCanvasIntro();
+            const intro = app.animateCanvasIntro();
+            if (intro) intro.eventCallback('onComplete', () => app.initMotion());
+            else app.initMotion();
         };
     }
 

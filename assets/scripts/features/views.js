@@ -138,6 +138,31 @@
         return Array.from(new Set(getItems().map((item) => item[key]).filter(Boolean))).sort();
     }
 
+    function matchesSearchQuery(item, query) {
+        if (!query) return true;
+
+        const haystack = [
+            item.title,
+            item.subtitle,
+            item.category,
+            item.type,
+            item.description,
+            item.impact,
+            ...(item.stack || [])
+        ].join(' ').toLowerCase();
+
+        // Short acronym searches should match tokens such as RAG, AI, or MCP,
+        // not incidental substrings such as the "rag" inside "storage".
+        if (/^[a-z0-9]{1,3}$/.test(query)) {
+            return haystack
+                .split(/[^a-z0-9]+/)
+                .filter(Boolean)
+                .some((token) => token.startsWith(query));
+        }
+
+        return haystack.includes(query);
+    }
+
     function renderOptions(values, selectedValue, allLabel) {
         return [
             `<option value="__all__">${escapeHtml(allLabel)}</option>`,
@@ -156,19 +181,7 @@
             .filter((item) => activeLayer === '__all__' || item.layer === activeLayer)
             .filter((item) => state.listCategory === '__all__' || item.category === state.listCategory)
             .filter((item) => state.listType === '__all__' || item.type === state.listType)
-            .filter((item) => {
-                if (!query) return true;
-
-                return [
-                    item.title,
-                    item.subtitle,
-                    item.category,
-                    item.type,
-                    item.description,
-                    item.impact,
-                    ...(item.stack || [])
-                ].join(' ').toLowerCase().includes(query);
-            })
+            .filter((item) => matchesSearchQuery(item, query))
             .sort((a, b) => {
                 if (state.listSort === 'oldest') return a.sortDate.localeCompare(b.sortDate);
                 if (state.listSort === 'title') return a.title.localeCompare(b.title);

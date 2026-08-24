@@ -103,7 +103,23 @@
         yExp += getH(workLabel) + rowGap;
         ({ y: yExp } = placeGridRows(
             [
-                ['work-delta', 'work-joychime']
+                ['work-delta', 'work-ai-warts'],
+                ['work-joychime', null]
+            ],
+            xExpA,
+            xExpB,
+            yExp,
+            wExp,
+            rowGap
+        ));
+
+        yExp += 8;
+        const aiLabel = setCard('experience-ai-label', xExpA + 16, yExp, 196);
+        yExp += getH(aiLabel) + rowGap;
+        ({ y: yExp } = placeGridRows(
+            [
+                ['project-rag-system', 'project-media-ops'],
+                ['project-ai-agents', null]
             ],
             xExpA,
             xExpB,
@@ -119,7 +135,7 @@
             [
                 ['project-orbit', 'project-notype'],
                 ['project-todo', 'project-browser-organizer'],
-                ['project-sharememory', 'project-yc-cast']
+                ['project-sharememory', 'project-screen-bridge']
             ],
             xExpA,
             xExpB,
@@ -209,7 +225,23 @@
         yExp += getH(workLabel) + rowGap;
         ({ y: yExp } = placeGridRows(
             [
-                ['work-delta', 'work-joychime']
+                ['work-delta', 'work-ai-warts'],
+                ['work-joychime', null]
+            ],
+            xGridA,
+            xGridB,
+            yExp,
+            gridW,
+            rowGap
+        ));
+
+        yExp += 6;
+        const aiLabel = setCard('experience-ai-label', xGridA + 10, yExp, 184);
+        yExp += getH(aiLabel) + rowGap;
+        ({ y: yExp } = placeGridRows(
+            [
+                ['project-rag-system', 'project-media-ops'],
+                ['project-ai-agents', null]
             ],
             xGridA,
             xGridB,
@@ -225,7 +257,7 @@
             [
                 ['project-orbit', 'project-notype'],
                 ['project-todo', 'project-browser-organizer'],
-                ['project-sharememory', 'project-yc-cast']
+                ['project-sharememory', 'project-screen-bridge']
             ],
             xGridA,
             xGridB,
@@ -315,11 +347,15 @@
         y += 4;
         placeOne('section-experience', sectionW);
         placeOne('experience-work-label', 164);
-        placePair('work-delta', 'work-joychime');
+        placePair('work-delta', 'work-ai-warts');
+        placeOne('work-joychime');
+        placeOne('experience-ai-label', 196);
+        placePair('project-rag-system', 'project-media-ops');
+        placeOne('project-ai-agents');
         placeOne('experience-main-label', 164);
         placePair('project-orbit', 'project-notype');
         placePair('project-todo', 'project-browser-organizer');
-        placePair('project-sharememory', 'project-yc-cast');
+        placePair('project-sharememory', 'project-screen-bridge');
         placeOne('experience-side-label', 196);
         placePair('project-open-source', 'education');
 

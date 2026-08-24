@@ -38,6 +38,10 @@ Rejected for now. The site does not need server rendering, routing, or package-m
 ## Consequences
 
 - Future edits belong in `index.html` and `assets/` only.
-- Both known URLs reach the canonical portfolio without maintaining duplicate code.
+- During the compatibility window, both known URLs reached the canonical portfolio without maintaining duplicate code; after the 2026-08-24 removal, the legacy URL intentionally returns 404.
 - Core content remains usable if motion is reduced or GSAP fails.
 - Publishing remains a simple GitHub Pages commit, but browser QA is still required because the experience is interaction-heavy.
+
+## Update — 2026-08-24
+
+The temporary compatibility redirect `yichen-canvas-v2.html` was deleted. It declared `noindex`, so search engines were asked not to index it, but bookmarks and inbound links can still reach a 404. The temporary window from this decision has passed, and `index.html` is now the only HTML file in the repository root. Restore from `git show b60315e:yichen-canvas-v2.html` if compatibility is needed again.

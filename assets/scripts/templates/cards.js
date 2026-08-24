@@ -96,6 +96,7 @@
         <div class="card card-list" data-card="content" data-layer="general" data-section="general">
             <div class="card-heading">Content & Insights</div>
             <ul class="simple-list">
+                <li>Technical writing: 311K cumulative reads across co-authored AI explainers</li>
                 <li>Open-Source Maintenance: contributions to larger upstream AI and developer-tool projects</li>
                 <li>YC Design + YC IP: reusable design and illustration systems</li>
                 <li>Builder notes that turn experiments into repeatable workflows</li>
@@ -116,11 +117,23 @@
                 <div class="project-icon" style="background:linear-gradient(135deg,#b4ffde,#46d6a9);">🖥</div>
                 <div>
                     <div class="project-name">Delta Controls</div>
-                    <div class="project-link">Software Developer · Jan 2026 - Present</div>
+                    <div class="project-link">Software Developer · Jan 2026 - Aug 2026</div>
                 </div>
             </div>
-            <div class="project-summary">BLE connectivity, MFDD / GBTM regression-fit work, and overall UI design for an HVAC air-balancing workflow.</div>
-            <div class="project-tags"><span class="project-tag">BLE</span><span class="project-tag">Regression Fit</span><span class="project-tag">UI Design</span></div>
+            <div class="project-summary">Kotlin/Jetpack Compose Android field app that cut on-site HVAC balancing time by 35%, over an eight-month UBC ECE industry capstone.</div>
+            <div class="project-tags"><span class="project-tag">Kotlin</span><span class="project-tag">BLE</span><span class="project-tag">OpenAI API</span></div>
+        </div>
+
+        <div class="card card-project card-project-compact" data-card="work-ai-warts" data-layer="experience" data-section="experience">
+            <div class="project-header">
+                <div class="project-icon" style="background:linear-gradient(135deg,#e4d7ff,#a98fff);">📡</div>
+                <div>
+                    <div class="project-name">AI Warts</div>
+                    <div class="project-link">AI Technical Content Engineer · Jun 2026 - Present</div>
+                </div>
+            </div>
+            <div class="project-summary">Crawlers and ranking signals shipped into AI News Radar, a 1.7K-star open-source project, plus benchmarking across 20+ partner companies.</div>
+            <div class="project-tags"><span class="project-tag">Python</span><span class="project-tag">Open Source</span></div>
         </div>
 
         <div class="card card-project card-project-compact" data-card="work-joychime" data-layer="experience" data-section="experience">
@@ -133,6 +146,46 @@
             </div>
             <div class="project-summary">Manufacturing operations support across inspection, wiring, assembly, and documentation workflows.</div>
             <div class="project-tags"><span class="project-tag">Operations</span><span class="project-tag">Wiring</span></div>
+        </div>
+
+        <div class="card card-micro-label" data-card="experience-ai-label" data-layer="projects" data-section="projects">
+            <div class="micro-label-text">AI &amp; LLM Systems</div>
+        </div>
+
+        <div class="card card-project card-project-compact" data-card="project-rag-system" data-curated-group="ai-systems" data-layer="projects" data-section="projects">
+            <div class="project-header">
+                <div class="project-icon" style="background:linear-gradient(135deg,#c9e4ff,#7aa7ff);">🔍</div>
+                <div>
+                    <div class="project-name">Production RAG System</div>
+                    <div class="project-link">Hybrid retrieval at production latency</div>
+                </div>
+            </div>
+            <div class="project-summary">20K vectors indexed in 15.5 s; vector-search P95 cut 27.5 ms → 1.76 ms; bge-base/BM25 hybrid with RRF lifted recall 6.0% and NDCG 9.5%.</div>
+            <div class="project-tags"><span class="project-tag">FastAPI</span><span class="project-tag">pgvector</span></div>
+        </div>
+
+        <div class="card card-project card-project-compact" data-card="project-media-ops" data-curated-group="ai-systems" data-layer="projects" data-section="projects">
+            <div class="project-header">
+                <div class="project-icon" style="background:linear-gradient(135deg,#e6d8ff,#ab8fff);">🕸</div>
+                <div>
+                    <div class="project-name">Media Content Ops</div>
+                    <div class="project-link">Client project · agent orchestration</div>
+                </div>
+            </div>
+            <div class="project-summary">Multi-branch LangGraph workflows with MySQL checkpointing resume across 3 paths; 5-stage FastAPI service with row-level locking.</div>
+            <div class="project-tags"><span class="project-tag">LangGraph</span><span class="project-tag">MySQL</span></div>
+        </div>
+
+        <div class="card card-project card-project-compact" data-card="project-ai-agents" data-curated-group="ai-systems" data-layer="projects" data-section="projects">
+            <div class="project-header">
+                <div class="project-icon" style="background:linear-gradient(135deg,#ccffe4,#57dfa6);">🧩</div>
+                <div>
+                    <div class="project-name">AI Agent Systems</div>
+                    <div class="project-link">Public LangGraph project library</div>
+                </div>
+            </div>
+            <div class="project-summary">State-machine agent architectures with human-in-the-loop gates, reflective self-healing loops, and 100% real external APIs.</div>
+            <div class="project-tags"><span class="project-tag">LangGraph</span><span class="project-tag">MCP</span></div>
         </div>
 
         <div class="card card-micro-label" data-card="experience-main-label" data-layer="projects" data-section="projects">
@@ -199,15 +252,15 @@
             <div class="project-tags"><span class="project-tag">Agent Tooling</span><span class="project-tag">CI</span></div>
         </div>
 
-        <div class="card card-project card-project-compact" data-card="project-yc-cast" data-curated-group="main-projects" data-layer="projects" data-section="projects">
+        <div class="card card-project card-project-compact" data-card="project-screen-bridge" data-curated-group="main-projects" data-layer="projects" data-section="projects">
             <div class="project-header">
                 <div class="project-icon" style="background:linear-gradient(135deg,#b7f0ff,#7ac7ff);">📱</div>
                 <div>
-                    <div class="project-name">YC Cast</div>
+                    <div class="project-name">Screen Bridge</div>
                     <div class="project-link">Mac-to-iPad extended display</div>
                 </div>
             </div>
-            <div class="project-summary">Authenticated local streaming that turns an iPad into a Mac extended display.</div>
+            <div class="project-summary">Authenticated local streaming that turns an iPad into a Mac extended display. Public v1.1.1 Universal Mac build.</div>
             <div class="project-tags"><span class="project-tag">Swift</span><span class="project-tag">iPadOS</span></div>
         </div>
 
@@ -263,9 +316,9 @@
         <div class="card card-stats-card" data-card="connect-stats" data-layer="contact" data-section="contact">
             <div class="card-heading">Stats Snapshot</div>
             <div class="stats-grid">
-                <div class="stat-block"><strong>10</strong><span>Merged Work PRs</span></div>
-                <div class="stat-block"><strong>3</strong><span>Upstream PRs</span></div>
-                <div class="stat-block"><strong>28</strong><span>Public Repos</span></div>
+                <div class="stat-block"><strong>120+</strong><span>GitHub Stars</span></div>
+                <div class="stat-block"><strong>3</strong><span>Upstream PRs Merged</span></div>
+                <div class="stat-block"><strong>29</strong><span>Public Repos</span></div>
                 <div class="stat-block"><strong>May 2027</strong><span>Expected Graduation</span></div>
             </div>
         </div>
@@ -291,23 +344,23 @@
         <div class="card card-tech-card" data-card="explore-tech" data-layer="contact" data-section="explore">
             <div class="card-heading">Featured Tech</div>
             <div class="skill-pill-row">
-                <span class="tag blue">React</span>
-                <span class="tag purple">TypeScript</span>
-                <span class="tag purple">SwiftUI</span>
-                <span class="tag cyan">Supabase</span>
-                <span class="tag blue">Flutter</span>
                 <span class="tag green">Python</span>
-                <span class="tag pink">LLM Systems</span>
-                <span class="tag orange">Tauri</span>
-                <span class="tag red">API Design</span>
+                <span class="tag pink">RAG</span>
+                <span class="tag purple">LangGraph</span>
+                <span class="tag red">FastAPI</span>
+                <span class="tag cyan">pgvector</span>
+                <span class="tag orange">Kotlin</span>
+                <span class="tag purple">SwiftUI</span>
+                <span class="tag blue">TypeScript</span>
+                <span class="tag blue">PyTorch</span>
             </div>
         </div>
 
         <div class="card card-terminal-note" data-card="explore-current" data-layer="contact" data-section="explore">
             <div class="terminal-note-title">Currently Building</div>
-            <div class="terminal-note-line">> Industrial software that works in the field</div>
-            <div class="terminal-note-line">> Native apps, local-first tools, and AI infrastructure</div>
-            <div class="terminal-note-line">> Systems that turn complexity into usable workflows</div>
+            <div class="terminal-note-line">> RAG pipelines and LangGraph agent orchestration</div>
+            <div class="terminal-note-line">> Industrial field software that technicians actually use</div>
+            <div class="terminal-note-line">> Native macOS and local-first tools, shipped publicly</div>
         </div>
     `;
 })();

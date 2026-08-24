@@ -100,11 +100,11 @@
     app.data.modalData = {
         'profile': {
             title: 'Yi-Chen Lin',
-            subtitle: 'Product Engineer · Systems Builder',
+            subtitle: 'AI-Focused Software Engineer · Systems Builder',
             avatar: '👨‍💻',
             body: `
                 <h3>🎯 Positioning</h3>
-                <p><strong>Product engineer and systems builder</strong> working across industrial software, native apps, AI infrastructure, and workflow-heavy products.</p>
+                <p><strong>AI-focused software engineer</strong> graduating May 2027 (BASc Electrical Engineering, UBC). I build end-to-end LLM applications — RAG pipelines, LangChain/LangGraph agent orchestration, and FastAPI services — alongside industrial field software and native macOS apps.</p>
                 <h3>🧠 What I do best</h3>
                 <p>I turn ambiguous problems into structured, working products by combining systems thinking, product judgment, and fast execution.</p>
                 <h3>🤝 How I work</h3>
@@ -112,7 +112,7 @@
                 <h3>📍 Location</h3>
                 <p>Based in Vancouver, Canada. Open to remote work and on-site opportunities in Vancouver, Taiwan, or China.</p>
             `,
-            tags: ['AI-Native', 'Workflow Design', 'Product Sense', 'Execution']
+            tags: ['RAG', 'LangGraph', 'FastAPI', 'Product Sense', 'Execution']
         },
         'consumption-logic': {
             title: 'YC — Personal System',
@@ -351,32 +351,8 @@
             `,
             tags: ['Desktop UX', 'Local-First', 'Tauri', 'React']
         },
-        'project-family-care': {
-            title: 'Family Care Reminder App',
-            subtitle: 'Private cross-platform reminder system for family care routines',
-            avatar: '💗',
-            body: `
-                <h3>Problem</h3>
-                <p>Elderly users often miss reminders not because they do not care, but because reminder flows are noisy, fragile, or too complicated.</p>
-                <h3>Approach</h3>
-                <p>I designed a low-friction reminder product around clear daily flows, caregiver coordination, and reliability over feature bloat.</p>
-                <h3>System</h3>
-                <ul>
-                    <li>Built with Flutter and Supabase for cross-platform delivery and synced state</li>
-                    <li>Implemented recurring scheduling, notification rebuilds, and missed-occurrence handling</li>
-                    <li>Designed lifecycle logic for enable, pause, delete, and reminder state transitions</li>
-                </ul>
-                <h3>Outcome</h3>
-                <p>Turned a real-world family need into a usable product system and deepened my focus on reliability, clarity, and user-first workflow design.</p>
-                <h3>Stack</h3>
-                <p class="modal-stack-line">Flutter · Dart · Supabase · Local Notifications</p>
-                <h3>Availability</h3>
-                <p>The source repository is private. This case study presents only public-safe product and workflow details.</p>
-            `,
-            tags: ['Reliability', 'Workflow UX', 'Flutter', 'Supabase']
-        },
-        'project-yc-cast': {
-            title: 'YC Cast',
+        'project-screen-bridge': {
+            title: 'Screen Bridge',
             subtitle: 'Authenticated Mac-to-iPad extended display',
             avatar: '📱',
             body: `
@@ -392,12 +368,15 @@
                     <li>Supported touch, pointer, scroll, keyboard input, device cleanup, disconnected states, and optional Chrome audio routing</li>
                 </ul>
                 <h3>Outcome</h3>
-                <p>Built an almost-complete native product that combines macOS permissions, iPad receiver UX, local networking, authentication, and real-time media behavior.</p>
+                <p>Shipped a public <strong>v1.1.1</strong> Universal Mac build (Apple silicon and Intel) that combines macOS permissions, iPad receiver UX, local networking, authentication, and real-time media behavior.</p>
+                <h3>Distribution note</h3>
+                <p>The Mac build is ad-hoc signed and not notarized, so it is published as a self-use preview rather than a general installer. The iPad receiver must be built with your own Xcode signing; no public IPA is shipped.</p>
                 <h3>Stack</h3>
                 <p class="modal-stack-line">Swift · macOS · iPadOS · Network.framework · Keychain · HMAC-SHA256</p>
                 <h3>Link</h3>
                 <div class="modal-link-list">
-                    <p><strong>GitHub:</strong> <a href="https://github.com/ycl-2004/Mac_to_Ipad" target="_blank" rel="noopener noreferrer">github.com/ycl-2004/Mac_to_Ipad</a></p>
+                    <p><strong>GitHub:</strong> <a href="https://github.com/ycl-2004/Screen-Bridge" target="_blank" rel="noopener noreferrer">github.com/ycl-2004/Screen-Bridge</a></p>
+                    <p><strong>Releases:</strong> <a href="https://github.com/ycl-2004/Screen-Bridge/releases" target="_blank" rel="noopener noreferrer">Download the v1.1.1 Universal Mac build</a></p>
                 </div>
             `,
             tags: ['Native App', 'Local Streaming', 'Security', 'Swift']
@@ -554,25 +533,60 @@
             `,
             tags: ['Integration', 'Power Systems', 'Testing', 'Team Engineering']
         },
-        'project-yc-obsidian': {
-            title: 'YC Obsidian',
-            subtitle: 'A public, privacy-sanitized personal operating system',
-            avatar: '🗂',
+        'project-goodcase': {
+            title: 'GoodCase.ai',
+            subtitle: 'Creator-first AI case platform',
+            avatar: '🔎',
             body: `
                 <h3>Problem</h3>
-                <p>Notes only compound when capture, understanding, execution, and review are connected instead of living in separate piles.</p>
-                <h3>System</h3>
+                <p>A striking AI result scrolls past and is gone. Three days later you want to reproduce it and the prompt is missing, the model is unknown, and there is no way to find what else that creator has made.</p>
+                <h3>Approach</h3>
+                <p>Put the work, the creator, the method, the original source, and the retest evidence back onto a single Case. Full prompts stay public and no account is required to read them.</p>
+                <h3>What I built</h3>
                 <ul>
-                    <li>Designed a three-layer interface for capture, daily operation, and long-term knowledge</li>
-                    <li>Packaged templates, custom CSS, selected plugins, and automation into a minimum-runnable vault</li>
-                    <li>Sanitized private content and added zero-dependency validation before publishing</li>
+                    <li>Discovery search and skill grouping so cases are findable by technique, not just by author</li>
+                    <li>Creator tracking, to follow people who ship consistently rather than one-off viral posts</li>
+                    <li>A cross-model stability lab for re-running a case against different models</li>
+                    <li>Discovery governance and a publishing retest loop, delivered across four merged pull requests</li>
                 </ul>
-                <h3>Why it matters</h3>
-                <p>This is the public knowledge-system layer behind how I turn learning and project work into reusable operating context.</p>
-                <h3>Link</h3>
-                <div class="modal-link-list"><p><strong>GitHub:</strong> <a href="https://github.com/ycl-2004/YC_Obsidian" target="_blank" rel="noopener noreferrer">github.com/ycl-2004/YC_Obsidian</a></p></div>
+                <h3>Stack</h3>
+                <p class="modal-stack-line">JavaScript · Product UX · Search · AI Evaluation</p>
+                <h3>Scope note</h3>
+                <p>GoodCase.ai is a product I work on rather than a solo project. This record describes my contribution and links the public repository and the live product.</p>
+                <h3>Links</h3>
+                <div class="modal-link-list">
+                    <p><strong>Live product:</strong> <a href="https://goodcase.ai" target="_blank" rel="noopener noreferrer">goodcase.ai</a></p>
+                    <p><strong>GitHub:</strong> <a href="https://github.com/ycl-2004/goodcaseai" target="_blank" rel="noopener noreferrer">github.com/ycl-2004/goodcaseai</a></p>
+                </div>
             `,
-            tags: ['Knowledge System', 'Obsidian', 'Privacy', 'Automation']
+            tags: ['AI Platform', 'Search', 'Product UX', 'Evaluation']
+        },
+        'project-yc-site': {
+            title: 'YC Personal Website',
+            subtitle: 'Public personal brand homepage',
+            avatar: '🌱',
+            body: `
+                <h3>Why it exists</h3>
+                <p>This portfolio proves what I build. The YC site is the other half: who I am, what I care about, and the world around the YC identity — warm and hand-made, deliberately not reading as AI-generated.</p>
+                <h3>What is on it</h3>
+                <ul>
+                    <li><strong>Hero</strong> — introduction with rotating identity words</li>
+                    <li><strong>About</strong> — the YC world and its character variants</li>
+                    <li><strong>Now</strong> — what I am building, learning, and thinking about</li>
+                    <li><strong>Work</strong> — five creative directions: AI, design, music, reading, and daily life</li>
+                    <li><strong>Values</strong> — what I actually optimize for</li>
+                </ul>
+                <h3>Build</h3>
+                <p>React, TypeScript, Vite, and Tailwind, split into per-section components so routing, a CMS, or new sections can be added later. Deployed on GitHub Pages.</p>
+                <h3>Stack</h3>
+                <p class="modal-stack-line">React · TypeScript · Vite · Tailwind · GitHub Pages</p>
+                <h3>Links</h3>
+                <div class="modal-link-list">
+                    <p><strong>Live site:</strong> <a href="https://ycl-2004.github.io/YC/" target="_blank" rel="noopener noreferrer">ycl-2004.github.io/YC/</a></p>
+                    <p><strong>GitHub:</strong> <a href="https://github.com/ycl-2004/YC" target="_blank" rel="noopener noreferrer">github.com/ycl-2004/YC</a></p>
+                </div>
+            `,
+            tags: ['React', 'TypeScript', 'Personal Brand', 'Frontend']
         },
         'project-yc-brand-systems': {
             title: 'YC Brand Systems',
@@ -643,7 +657,7 @@
                 <h3>Contribution scope</h3>
                 <p>I participate in larger upstream AI and developer-tool projects, contributing product UX and workflow improvements while keeping original ownership explicit.</p>
                 <h3>Verified contribution record</h3>
-                <p><strong>3 upstream pull requests merged</strong> across AI News Radar, Afu LLM Todo, and Partner Skill. One additional AI News Radar pull request is active.</p>
+                <p><strong>3 upstream pull requests merged</strong> into LearnPrompt repositories — AI News Radar, Afu LLM Todo, and Partner Skill. AI News Radar itself carries roughly 1.7K stars. A fourth AI News Radar pull request was opened and closed without merging; it is not counted here.</p>
                 <h3>What I changed</h3>
                 <ul>
                     <li>Improved source quality, dual-view product UX, and maintenance workflows in AI News Radar</li>
@@ -653,33 +667,143 @@
                 <h3>Ownership note</h3>
                 <p>These repositories are forks of LearnPrompt projects. I present the upstream contribution record here, not the full repositories as original work.</p>
                 <h3>Evidence</h3>
-                <div class="modal-link-list"><p><strong>GitHub PRs:</strong> <a href="https://github.com/ycl-2004?tab=pullrequests" target="_blank" rel="noopener noreferrer">View authored pull requests</a></p></div>
+                <div class="modal-link-list">
+                    <p><strong>AI News Radar:</strong> <a href="https://github.com/LearnPrompt/ai-news-radar/pull/15" target="_blank" rel="noopener noreferrer">Merged PR #15</a></p>
+                    <p><strong>Afu LLM Todo:</strong> <a href="https://github.com/LearnPrompt/afu-llm-todo/pull/1" target="_blank" rel="noopener noreferrer">Merged PR #1</a></p>
+                    <p><strong>Partner Skill:</strong> <a href="https://github.com/LearnPrompt/partner-skill/pull/1" target="_blank" rel="noopener noreferrer">Merged PR #1</a></p>
+                </div>
             `,
             tags: ['Open Source', 'Upstream PRs', 'Product UX', 'Maintenance']
         },
         'work-delta': {
             title: 'Delta Controls',
-            subtitle: 'Software Developer · Delta Air Balance field workflow',
+            subtitle: 'Software Developer · UBC ECE Industry Capstone · Jan 2026 - Aug 2026',
             avatar: '🏢',
             body: `
                 <h3>Product context</h3>
-                <p>Delta Air Balance is a field-facing HVAC application designed to help technicians measure, adjust, and diagnose air-balancing work without repeatedly moving between equipment, controllers, and occupied spaces.</p>
+                <p>Delta Air Balance is a field-facing HVAC application designed to help technicians measure, adjust, and diagnose air-balancing work without repeatedly moving between equipment, controllers, and occupied spaces. I worked on it for eight months as a UBC ECE industry capstone.</p>
                 <h3>My contribution</h3>
                 <ul>
-                    <li>Worked on BLE connectivity so wireless sensor data can participate in the field workflow.</li>
-                    <li>Contributed regression-fit work around MFDD / GBTM components.</li>
-                    <li>Contributed to the overall UI design, keeping equipment state, workflow progress, and diagnostic feedback understandable to technicians.</li>
+                    <li>Shipped a <strong>Kotlin / Jetpack Compose</strong> Android field app that cut on-site HVAC balancing time by <strong>35%</strong>.</li>
+                    <li>Fit a physics-derived indoor-temperature model via <strong>L2-regularized regression</strong> on cleaned telemetry, reaching <strong>0.3 °C MAE</strong>.</li>
+                    <li>Built the <strong>BLE pipeline</strong> streaming temperature, humidity, and pressure from field probes into live charts.</li>
+                    <li>Designed the system prompts and <strong>tool-call routing</strong> for the app's OpenAI API voice assistant, with a rule-based fallback.</li>
                 </ul>
                 <h3>Workflow direction</h3>
                 <p>The product direction is to combine BLE sensors, controller information, automated diagnostic tests, live charts, and thermal-model insights so technicians can monitor stabilization and review results from one place.</p>
                 <h3>Scope note</h3>
-                <p>This describes my contribution inside a team product. I am not claiming sole ownership of the full Delta Air Balance platform or every diagnostic model.</p>
-                <h3>Contribution areas</h3>
-                <p class="modal-stack-line">BLE Connectivity · Regression Fit · MFDD / GBTM · Industrial UI Design</p>
-                <h3>Evidence</h3>
-                <div class="modal-link-list"><p><strong>GitHub activity:</strong> <a href="https://github.com/ycl-2004?tab=pullrequests" target="_blank" rel="noopener noreferrer">View pull-request profile</a></p></div>
+                <p>This describes my contribution inside a team product. I am not claiming sole ownership of the full Delta Air Balance platform or every diagnostic model. The repository is private, so this case study presents only public-safe product and workflow detail.</p>
+                <h3>Stack</h3>
+                <p class="modal-stack-line">Kotlin · Jetpack Compose · BLE · L2-Regularized Regression · OpenAI API</p>
             `,
-            tags: ['BLE Connectivity', 'Regression Fit', 'MFDD / GBTM', 'UI Design']
+            tags: ['Kotlin', 'Jetpack Compose', 'BLE', 'Regression', 'OpenAI API']
+        },
+        'work-ai-warts': {
+            title: 'AI Warts',
+            subtitle: 'AI Technical Content Engineer · Remote · Jun 2026 - Present',
+            avatar: '📡',
+            body: `
+                <h3>Company context</h3>
+                <p>AI Warts is an AI media and education startup. The role sits between open-source engineering and written technical evaluation: I ship code into a public project and turn what I learn from it into evaluations other engineers can use.</p>
+                <h3>What I do</h3>
+                <ul>
+                    <li>Contribute the Chinese social-media crawlers (Xiaohongshu, Douyin) to <strong>AI News Radar</strong>, a <strong>1.7K-star</strong> open-source project.</li>
+                    <li>Rank crawled items by keyword extraction, recency decay, and engagement signals to surface trending AI news.</li>
+                    <li>Benchmark AI models, products, and developer tools released by <strong>20+ partner companies</strong>.</li>
+                    <li>Deliver written technical evaluations and hands-on walkthroughs of AI tooling and agent workflows.</li>
+                </ul>
+                <h3>Verified public evidence</h3>
+                <p>My upstream contribution record is visible on GitHub: <strong>3 merged pull requests</strong> into LearnPrompt repositories, including AI News Radar itself.</p>
+                <h3>Stack</h3>
+                <p class="modal-stack-line">Python · Web Crawlers · Ranking Signals · Benchmarking · Technical Writing</p>
+                <h3>Evidence</h3>
+                <div class="modal-link-list">
+                    <p><strong>Upstream project:</strong> <a href="https://github.com/LearnPrompt/ai-news-radar" target="_blank" rel="noopener noreferrer">github.com/LearnPrompt/ai-news-radar</a></p>
+                    <p><strong>My merged contribution:</strong> <a href="https://github.com/LearnPrompt/ai-news-radar/pull/15" target="_blank" rel="noopener noreferrer">AI News Radar PR #15</a></p>
+                </div>
+            `,
+            tags: ['Open Source', 'Crawlers', 'Ranking', 'Benchmarking', 'Technical Writing']
+        },
+        'project-rag-system': {
+            title: 'Production RAG System',
+            subtitle: 'Private hybrid-retrieval pipeline tuned for production latency',
+            avatar: '🔍',
+            body: `
+                <h3>Problem</h3>
+                <p>A retrieval system is only useful if it is fast enough to sit inside a real request path. Getting good recall is one problem; getting good recall at a latency a product can actually spend is a different one.</p>
+                <h3>Approach</h3>
+                <p>I built ingestion, retrieval, and caching as separately measurable stages, then optimized each against recorded numbers rather than impressions.</p>
+                <h3>Measured results</h3>
+                <ul>
+                    <li>Built scalable RAG ingestion: indexed <strong>20K vectors in 15.5 s</strong>, cutting vector-search P95 from <strong>27.5 ms to 1.76 ms</strong>.</li>
+                    <li>Implemented hybrid <strong>bge-base / BM25</strong> retrieval with RRF: lifted recall <strong>6.0%</strong> and NDCG <strong>9.5%</strong> at <strong>323.6 ms</strong> end-to-end P95.</li>
+                    <li>Added TTL query-rewrite caching, dropping repeated rewrites from <strong>3.3 s and 465 tokens</strong> to zero.</li>
+                </ul>
+                <h3>Stack</h3>
+                <p class="modal-stack-line">Python · FastAPI · bge-base · BM25 · pgvector · RRF</p>
+                <h3>Availability</h3>
+                <p>The source repository is private. This case study presents only public-safe architecture and measurement detail.</p>
+            `,
+            tags: ['RAG', 'FastAPI', 'pgvector', 'Latency', 'Retrieval Quality']
+        },
+        'project-media-ops': {
+            title: 'Media Content Operations Platform',
+            subtitle: 'Private client project · multi-branch agent orchestration',
+            avatar: '🕸',
+            body: `
+                <h3>Problem</h3>
+                <p>Content operations break down when a long agent workflow loses state halfway through, or when two runs touch the same record and quietly overwrite each other.</p>
+                <h3>Approach</h3>
+                <p>I treated the workflow as a durable state machine rather than a chain of calls, so a run can be interrupted, resumed, and safely serialized against other runs.</p>
+                <h3>System</h3>
+                <ul>
+                    <li>Designed multi-branch <strong>LangGraph</strong> workflows with MySQL checkpointing, resuming across <strong>3 paths</strong> without state loss.</li>
+                    <li>Engineered a <strong>5-stage FastAPI</strong> orchestration service with row-level locking to prevent conflicting agent runs.</li>
+                    <li>Integrated <strong>3 Coze agents</strong> and publishing APIs, routing topic, copy, and delivery tasks to specialized agent calls.</li>
+                </ul>
+                <h3>Stack</h3>
+                <p class="modal-stack-line">LangGraph · FastAPI · MySQL · Coze · Checkpointing · Row-Level Locking</p>
+                <h3>Availability</h3>
+                <p>This was delivered as a client project. The source repository is private and this case study presents only public-safe architecture detail.</p>
+            `,
+            tags: ['LangGraph', 'FastAPI', 'MySQL', 'Orchestration', 'Client Project']
+        },
+        'project-ai-agents': {
+            title: 'AI Agent Systems',
+            subtitle: 'Public LangGraph / LangChain agent project library',
+            avatar: '🧩',
+            body: `
+                <h3>Why it exists</h3>
+                <p>Most public agent examples are single-shot prompt demos. This repository is where I keep agent architectures built to industrial software standards instead: state-machine orchestration, human gates, and real external APIs.</p>
+                <h3>What is in it</h3>
+                <ul>
+                    <li><strong>Deep Research &amp; Report System</strong> — LangGraph over arXiv, Wikipedia, and web search, with a fact-check reflection loop, human-in-the-loop outline review via <code>interrupt()</code> / <code>Command(resume=...)</code>, and long-form report generation.</li>
+                    <li><strong>Omni-channel Ticket &amp; Service Agent</strong> — LangChain LCEL preprocessing, Pydantic v2 structured validation with self-healing retries, tool-calling closure for refund and logistics lookups, and invoke/batch/stream execution modes.</li>
+                </ul>
+                <h3>Engineering rules</h3>
+                <p>Machine-readable boolean state drives routing while natural-language fields carry human intent, so the two never contaminate each other. Every project runs against real external APIs — no mocked data sources.</p>
+                <h3>Stack</h3>
+                <p class="modal-stack-line">Python · LangGraph · LangChain · MCP · FastAPI · Pydantic v2</p>
+                <h3>Link</h3>
+                <div class="modal-link-list"><p><strong>GitHub:</strong> <a href="https://github.com/ycl-2004/AI-Agent-Projects" target="_blank" rel="noopener noreferrer">github.com/ycl-2004/AI-Agent-Projects</a></p></div>
+            `,
+            tags: ['LangGraph', 'LangChain', 'MCP', 'Human-in-the-Loop', 'Open Source']
+        },
+        'writing-technical': {
+            title: 'Technical Writing',
+            subtitle: 'AI explainers and hands-on tooling walkthroughs',
+            avatar: '✍️',
+            body: `
+                <h3>Focus</h3>
+                <p>I co-author AI explainers and hands-on walkthroughs that translate agent workflows, model behavior, and developer tooling into something a working engineer can actually act on.</p>
+                <h3>Reach</h3>
+                <p><strong>311K cumulative reads</strong> across co-authored AI explainers, with a <strong>45K-read</strong> top post.</p>
+                <h3>Why I do it</h3>
+                <p>Writing an evaluation forces me to actually run the tool. The benchmark work behind these pieces is the same work that keeps my own engineering choices grounded in measurements rather than hype.</p>
+                <h3>Availability</h3>
+                <p>These pieces are published on partner and third-party platforms rather than a repository I own, so no public link is claimed here. Reach counts are self-reported from platform analytics.</p>
+            `,
+            tags: ['Technical Writing', 'AI Explainers', 'Benchmarking', 'Developer Tooling']
         },
         'work-joychime': {
             title: 'Joychime Industrial Corporation',
@@ -697,7 +821,7 @@
                     <li>Improved documentation and reporting clarity for daily operations</li>
                 </ul>
                 <h3>Outcome</h3>
-                <p>Built practical experience with operational reliability, process clarity, and the discipline required to keep production environments running.</p>
+                <p>Cut paperwork volume by <strong>30%</strong> with cleaner templates, and built practical experience with operational reliability, process clarity, and the discipline required to keep production environments running.</p>
                 <h3>Stack</h3>
                 <p class="modal-stack-line">Plant Inspection · Electrical Assembly · Wiring · Documentation Workflows · Troubleshooting</p>
             `,
@@ -781,6 +905,7 @@
                 <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/yichenlin-lyc/" target="_blank" rel="noopener noreferrer">yichenlin-lyc</a></p>
                 <p><strong>GitHub:</strong> <a href="https://github.com/ycl-2004" target="_blank" rel="noopener noreferrer">github.com/ycl-2004</a></p>
                 <p><strong>Portfolio:</strong> <a href="https://ycl-2004.github.io/Profile/" target="_blank" rel="noopener noreferrer">ycl-2004.github.io/Profile/</a></p>
+                <p><strong>Résumé (PDF):</strong> <a href="https://ycl-2004.github.io/Resume/YC-Resume.pdf" target="_blank" rel="noopener noreferrer">ycl-2004.github.io/Resume/YC-Resume.pdf</a></p>
             `,
             tags: ['Open to Opportunities', 'Happy to Connect']
         }
