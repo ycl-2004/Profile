@@ -31,7 +31,7 @@
             const label = button.querySelector('[data-sound-label]');
             const icon = button.querySelector('[data-sound-icon]');
             if (label) label.textContent = enabled ? 'Sound on' : 'Sound off';
-            if (icon) icon.textContent = enabled ? '🔊' : '🔇';
+            if (icon) icon.dataset.state = enabled ? 'on' : 'off';
         });
     }
 

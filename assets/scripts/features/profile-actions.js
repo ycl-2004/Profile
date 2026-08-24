@@ -1,5 +1,6 @@
 (function () {
     const app = window.PortfolioApp;
+    const RESUME_PDF_URL = 'https://ycl-2004.github.io/Resume/YC-Resume.pdf';
 
     function closeMobileSidebar() {
         document.getElementById('sidebar')?.classList.remove('is-open');
@@ -18,10 +19,10 @@
         });
     }
 
-    function printResume() {
-        showEvidence(false);
-        document.body.classList.add('is-printing-resume');
-        window.setTimeout(() => window.print(), 80);
+    function openResumePdf() {
+        closeMobileSidebar();
+        const resumeWindow = window.open(RESUME_PDF_URL, '_blank', 'noopener,noreferrer');
+        if (!resumeWindow) window.location.assign(RESUME_PDF_URL);
     }
 
     app.bindProfileActions = function bindProfileActions() {
@@ -33,11 +34,7 @@
             if (action === 'about') app.openModal('profile');
             if (action === 'evidence') showEvidence(false);
             if (action === 'search') showEvidence(true);
-            if (action === 'print') printResume();
-        });
-
-        window.addEventListener('afterprint', () => {
-            document.body.classList.remove('is-printing-resume');
+            if (action === 'print') openResumePdf();
         });
     };
 })();

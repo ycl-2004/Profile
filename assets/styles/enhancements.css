@@ -27,9 +27,9 @@
 }
 
 .sound-toggle[aria-pressed='true'] {
-    color: var(--pink-dark);
-    border-color: rgba(255, 143, 171, 0.34);
-    background: linear-gradient(135deg, rgba(255, 143, 171, 0.13), rgba(117, 214, 255, 0.1));
+    color: var(--orbit-blue);
+    border-color: rgba(143, 182, 255, 0.34);
+    background: linear-gradient(135deg, rgba(189, 241, 255, 0.12), rgba(143, 182, 255, 0.13));
 }
 
 .quick-link-row:focus-visible,
@@ -157,6 +157,13 @@ body[data-motion='reduced'] .motion-flow-path {
 @media (max-width: 620px) {
     .top-actions .btn-primary {
         padding-inline: 10px;
+    }
+}
+
+@media (max-width: 430px) {
+    .settings-grid button {
+        min-height: 30px;
+        padding-inline: 7px;
     }
 }
 

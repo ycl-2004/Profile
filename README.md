@@ -43,7 +43,7 @@ Before publishing, also verify these browser paths at desktop, tablet, and mobil
 4. Share, YC, sound, settings, layer, zoom, toolbar, quick-link, and modal controls all respond.
 5. Reduced Effects enters immediately and leaves all content visible.
 6. Blocking `assets/vendor/gsap/gsap.min.js` still leaves boot, views, and modal actions usable.
-7. Print Résumé produces a clean List View document.
+7. Open Résumé PDF opens the canonical YC Resume PDF directly.
 
 ## Interaction and privacy contract
 

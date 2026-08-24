@@ -194,6 +194,10 @@
     app.bindTopActions = function bindTopActions() {
         if (app.state.topActionsBound) return;
 
+        document.querySelectorAll('[data-panel-close]').forEach((button) => {
+            button.addEventListener('click', () => closePanels(true));
+        });
+
         if (app.dom.shareButton) {
             app.dom.shareButton.addEventListener('click', (event) => {
                 event.stopPropagation();

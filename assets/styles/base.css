@@ -20,6 +20,9 @@
     --peach-dark: #f0b27a;
     --rose: #fadbd8;
     --rose-dark: #e74c3c;
+    --orbit-ice: #bdf1ff;
+    --orbit-blue: #8fb6ff;
+    --orbit-ink: #172033;
     --connection-path: rgba(88, 102, 132, 0.34);
     --connection-primary: rgba(224, 91, 136, 0.62);
     --connection-secondary: rgba(92, 132, 184, 0.5);
@@ -122,16 +125,44 @@ body[data-theme='dark'] .sidebar {
 }
 
 body[data-theme='dark'] .top-action-panel {
-    background: linear-gradient(180deg, rgba(21, 26, 45, 0.98), rgba(15, 19, 34, 0.94));
+    border-color: rgba(189, 241, 255, 0.12);
+    background:
+        linear-gradient(180deg, rgba(24, 30, 51, 0.99), rgba(15, 19, 34, 0.97));
+    box-shadow: 0 28px 70px rgba(0, 0, 0, 0.42), inset 0 1px rgba(255, 255, 255, 0.04);
 }
 
 body[data-theme='dark'] .top-panel-button,
 body[data-theme='dark'] .share-link-row button,
-body[data-theme='dark'] .settings-segment,
 body[data-theme='dark'] .settings-segment button,
 body[data-theme='dark'] .settings-grid button {
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.045);
+    border-color: rgba(255, 255, 255, 0.09);
+}
+
+body[data-theme='dark'] .settings-segment {
+    background: rgba(5, 9, 21, 0.34);
     border-color: rgba(255, 255, 255, 0.08);
+}
+
+body[data-theme='dark'] .settings-segment button {
+    background: transparent;
+    border-color: transparent;
+}
+
+body[data-theme='dark'] .settings-segment button:hover,
+body[data-theme='dark'] .settings-segment button.is-active {
+    border-color: rgba(143, 182, 255, 0.24);
+    background: linear-gradient(135deg, rgba(189, 241, 255, 0.12), rgba(143, 182, 255, 0.13));
+    color: var(--text);
+}
+
+body[data-theme='dark'] .top-panel-close {
+    border-color: rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.045);
+}
+
+body[data-theme='dark'] .top-panel-divider::before {
+    background: rgba(255, 255, 255, 0.08);
 }
 
 body[data-theme='dark'] .btn-primary {
@@ -142,9 +173,9 @@ body[data-theme='dark'] .btn-primary {
 }
 
 body[data-theme='dark'] .btn-avatar {
-    background: linear-gradient(135deg, #ffb0cb, #c8b5d8);
-    border: none;
-    color: white;
+    background: linear-gradient(135deg, var(--orbit-ice), var(--orbit-blue));
+    border-color: rgba(189, 241, 255, 0.18);
+    color: var(--orbit-ink);
 }
 
 body[data-theme='dark'] .minimap {

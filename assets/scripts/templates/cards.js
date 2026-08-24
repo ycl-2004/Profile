@@ -338,7 +338,7 @@
             <button class="quick-link-row" type="button" data-profile-action="about"><span><strong>About Me</strong><small>How I work and what I value</small></span><em>→</em></button>
             <button class="quick-link-row" type="button" data-profile-action="evidence"><span><strong>Evidence Bank</strong><small>Search all work and projects</small></span><em>→</em></button>
             <a class="quick-link-row" href="https://github.com/ycl-2004" target="_blank" rel="noopener noreferrer"><span><strong>GitHub</strong><small>Original work and open-source activity</small></span><em>↗</em></a>
-            <button class="quick-link-row" type="button" data-profile-action="print"><span><strong>Print Résumé</strong><small>Save a clean PDF from the browser</small></span><em>→</em></button>
+            <button class="quick-link-row" type="button" data-profile-action="print"><span><strong>Open Résumé PDF</strong><small>Official YC Resume PDF</small></span><em>→</em></button>
         </div>
 
         <div class="card card-tech-card" data-card="explore-tech" data-layer="contact" data-section="explore">
