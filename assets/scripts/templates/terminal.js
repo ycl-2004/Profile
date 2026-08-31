@@ -45,7 +45,7 @@
 
                     <p class="terminal-line entry-meta" style="animation-delay:0.68s;">
                         <span>Vancouver</span>
-                        <span>Delta Controls · AI Warts</span>
+                        <span>Delta Controls · Aiwoici (Zhuhai) Technology Co., Ltd.</span>
                         <span>UBC Electrical Engineering, May 2027</span>
                     </p>
                 </section>

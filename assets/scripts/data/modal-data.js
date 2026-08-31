@@ -699,12 +699,12 @@
             tags: ['Kotlin', 'Jetpack Compose', 'BLE', 'Regression', 'OpenAI API']
         },
         'work-ai-warts': {
-            title: 'AI Warts',
+            title: 'Aiwoici (Zhuhai) Technology Co., Ltd.',
             subtitle: 'AI Technical Content Engineer · Remote · Jun 2026 - Present',
             avatar: '📡',
             body: `
                 <h3>Company context</h3>
-                <p>AI Warts is an AI media and education startup. The role sits between open-source engineering and written technical evaluation: I ship code into a public project and turn what I learn from it into evaluations other engineers can use.</p>
+                <p>Aiwoici (Zhuhai) Technology Co., Ltd. is an AI media and education startup. The role sits between open-source engineering and written technical evaluation: I ship code into a public project and turn what I learn from it into evaluations other engineers can use.</p>
                 <h3>What I do</h3>
                 <ul>
                     <li>Contribute the Chinese social-media crawlers (Xiaohongshu, Douyin) to <strong>AI News Radar</strong>, a <strong>1.7K-star</strong> open-source project.</li>

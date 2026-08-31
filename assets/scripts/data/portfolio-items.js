@@ -19,7 +19,7 @@
         },
         {
             id: 'work-ai-warts',
-            title: 'AI Warts',
+            title: 'Aiwoici (Zhuhai) Technology Co., Ltd.',
             subtitle: 'AI Technical Content Engineer · Remote',
             category: 'Work',
             type: 'AI Media & Education',

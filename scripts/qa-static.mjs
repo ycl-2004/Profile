@@ -58,13 +58,13 @@ check(!modals.includes('github.com/ycl-2004/ForYourResume'), 'Private Resume Tai
 check(!modals.includes('Mac_to_Ipad') && !cards.includes('YC Cast'), 'Screen Bridge must use its current public repository name, not the renamed Mac_to_Ipad path.');
 check(modals.includes('https://github.com/ycl-2004/Screen-Bridge'), 'Screen Bridge evidence must link to the current public repository.');
 check(modals.includes('https://github.com/ycl-2004/AI-Agent-Projects'), 'AI Agent Systems must link to its public repository.');
-check(modals.includes('https://github.com/LearnPrompt/ai-news-radar'), 'The AI Warts role must link to the verifiable upstream project.');
-check(modals.includes('https://github.com/LearnPrompt/ai-news-radar/pull/15'), 'AI Warts evidence must link to the concrete merged pull request.');
+check(modals.includes('https://github.com/LearnPrompt/ai-news-radar'), 'The Aiwoici role must link to the verifiable upstream project.');
+check(modals.includes('https://github.com/LearnPrompt/ai-news-radar/pull/15'), 'Aiwoici evidence must link to the concrete merged pull request.');
 check(modals.includes('https://github.com/LearnPrompt/afu-llm-todo/pull/1') && modals.includes('https://github.com/LearnPrompt/partner-skill/pull/1'), 'Open-source maintenance must link to all three concrete merged pull requests.');
 check(!modals.includes('?tab=pullrequests'), 'Profile pull-request tabs are not evidence links and must not be used.');
 check(!modals.includes('pull request is active') && !portfolioItems.includes('1 active PR'), 'Open-Source Maintenance must not claim an open upstream pull request that was closed unmerged.');
 check(!portfolioItems.includes('above internal standards by 10%'), 'Joychime copy must match the resume and drop the unverifiable quality claim.');
-check(portfolioItems.includes("id: 'work-ai-warts'") && cards.includes('data-card="work-ai-warts"'), 'The AI Warts role must appear in both the Evidence Bank and the Canvas Work Experience group.');
+check(portfolioItems.includes("id: 'work-ai-warts'") && cards.includes('data-card="work-ai-warts"'), 'The Aiwoici role must appear in both the Evidence Bank and the Canvas Work Experience group.');
 check(portfolioItems.includes("id: 'writing-technical'") && modals.includes("'writing-technical':"), 'The technical-writing record must appear in the Evidence Bank.');
 
 // Evidence Bank is a selected portfolio narrative, not a mirror of every public

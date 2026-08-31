@@ -128,7 +128,7 @@
             <div class="project-header">
                 <div class="project-icon" style="background:linear-gradient(135deg,#e4d7ff,#a98fff);">📡</div>
                 <div>
-                    <div class="project-name">AI Warts</div>
+                    <div class="project-name">Aiwoici (Zhuhai) Technology Co., Ltd.</div>
                     <div class="project-link">AI Technical Content Engineer · Jun 2026 - Present</div>
                 </div>
             </div>
