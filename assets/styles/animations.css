@@ -24,9 +24,12 @@
     border-radius: inherit;
     pointer-events: none;
     opacity: 0;
-    background:
-        linear-gradient(115deg, transparent 18%, rgba(255, 255, 255, 0.28) 48%, transparent 72%);
+    background: linear-gradient(115deg, transparent 18%, rgba(255, 185, 205, 0.22) 44%, rgba(255, 255, 255, 0.75) 50%, rgba(180, 215, 255, 0.22) 56%, transparent 74%);
     transform: translateX(-130%);
+}
+
+body[data-theme='dark'] .motion-enhanced .card::after {
+    background: linear-gradient(115deg, transparent 18%, rgba(255, 156, 188, 0.16) 44%, rgba(255, 255, 255, 0.32) 50%, rgba(143, 182, 255, 0.16) 56%, transparent 74%);
 }
 
 .motion-enhanced .card-section-banner::after,
@@ -58,16 +61,22 @@
 }
 
 .motion-enhanced svg.connections path.is-connected {
-    filter: drop-shadow(0 0 8px rgba(255, 143, 171, 0.24));
+    filter: drop-shadow(0 0 9px rgba(232, 93, 138, 0.38));
 }
 
 .motion-enhanced svg.connections path[data-from][data-to]:not(.motion-flow-path):not(.is-connected) {
-    opacity: 0;
+    opacity: 0.12;
     filter: none;
+    transition: opacity 0.25s ease, stroke-width 0.25s ease;
+}
+
+body[data-theme='dark'] .motion-enhanced svg.connections path[data-from][data-to]:not(.motion-flow-path):not(.is-connected) {
+    opacity: 0.18;
 }
 
 .motion-enhanced svg.connections path[data-from][data-to].is-connected {
-    opacity: 0.88;
+    opacity: 0.95;
+    stroke-width: 2.3;
 }
 
 .motion-enhanced svg.connections path.motion-flow-path {

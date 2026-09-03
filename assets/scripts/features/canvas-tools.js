@@ -200,8 +200,45 @@
         });
     }
 
+    function bindGlobalKeyboardShortcuts() {
+        if (app.state.keyboardShortcutsBound) return;
+        app.state.keyboardShortcutsBound = true;
+
+        window.addEventListener('keydown', (event) => {
+            const tag = event.target?.tagName?.toLowerCase();
+            if (tag === 'input' || tag === 'textarea' || event.target?.isContentEditable) return;
+            if (event.metaKey || event.ctrlKey || event.altKey) return;
+
+            if (event.key === '1') {
+                event.preventDefault();
+                if (typeof app.setPortfolioView === 'function') app.setPortfolioView('canvas');
+            } else if (event.key === '2') {
+                event.preventDefault();
+                if (typeof app.setPortfolioView === 'function') app.setPortfolioView('timeline');
+            } else if (event.key === '3') {
+                event.preventDefault();
+                if (typeof app.setPortfolioView === 'function') app.setPortfolioView('list');
+            } else if (event.key === '/' || event.key === '?') {
+                event.preventDefault();
+                openSearchView();
+            } else if (event.key === 'f' || event.key === 'F') {
+                if (app.state.currentView === 'canvas') {
+                    event.preventDefault();
+                    app.dom?.zoomFitButton?.click();
+                    announce('Fit canvas to view', 'overview');
+                }
+            } else if (event.key === 't' || event.key === 'T') {
+                event.preventDefault();
+                document.getElementById('theme-cycle')?.click();
+            } else if (event.key === 'Escape') {
+                clearCanvasSignals({ silent: true });
+            }
+        });
+    }
+
     app.bindCanvasTools = function bindCanvasTools() {
         bindCardMemory();
+        bindGlobalKeyboardShortcuts();
         setActiveTool(app.state.activeCanvasTool || 'select');
 
         getToolButtons().forEach((button) => {

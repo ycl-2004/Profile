@@ -200,9 +200,19 @@ body[data-view='list'] .portfolio-view-shell {
     position: relative;
     margin-left: 28px;
     border: 1px solid var(--card-border);
-    background: var(--card-bg);
-    box-shadow: var(--shadow-card);
+    background: linear-gradient(178deg, rgba(255, 255, 255, 0.98) 0%, rgba(253, 251, 248, 0.94) 100%);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.92),
+        0 2px 8px rgba(37, 40, 55, 0.03),
+        0 8px 24px rgba(37, 40, 55, 0.05);
     backdrop-filter: blur(14px);
+    transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
+}
+
+body[data-theme='dark'] .journey-column-card,
+body[data-theme='dark'] .timeline-item-card {
+    background: linear-gradient(178deg, rgba(26, 31, 48, 0.96) 0%, rgba(20, 24, 38, 0.94) 100%);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
 .journey-column-card {
@@ -233,16 +243,18 @@ body[data-view='list'] .portfolio-view-shell {
     padding: 14px;
     border-radius: 16px;
     cursor: pointer;
-    transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
 }
 
 .timeline-item-card:hover,
 .timeline-item-card:focus-visible,
 .portfolio-row:hover,
 .portfolio-row:focus-visible {
-    border-color: rgba(232, 93, 138, 0.22);
-    box-shadow: var(--shadow-hover);
-    transform: translateY(-1px);
+    border-color: rgba(232, 93, 138, 0.28);
+    box-shadow:
+        inset 0 1px 0 #ffffff,
+        0 4px 14px rgba(37, 40, 55, 0.05),
+        0 16px 36px rgba(37, 40, 55, 0.09);
+    transform: translateY(-2px);
     outline: none;
 }
 

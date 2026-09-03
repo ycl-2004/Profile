@@ -134,8 +134,10 @@
     border-radius: var(--r-md);
     border: 1px solid var(--hairline);
     background: var(--surface);
-    box-shadow: var(--elev-2);
-    backdrop-filter: blur(14px);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.9),
+        var(--elev-2);
+    backdrop-filter: blur(18px) saturate(180%);
 }
 
 .chrome-island .icon-btn {
@@ -227,8 +229,19 @@
 .minimap-viewport {
     position: absolute;
     border: 1.5px solid var(--pink-dark);
-    background: rgba(255, 143, 171, 0.08);
+    background: rgba(255, 143, 171, 0.1);
     border-radius: 5px;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.6), 0 0 8px rgba(232, 93, 138, 0.22);
+    animation: minimapViewportPulse 3.5s ease-in-out infinite;
+}
+
+@keyframes minimapViewportPulse {
+    0%, 100% {
+        box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.6), 0 0 6px rgba(232, 93, 138, 0.18);
+    }
+    50% {
+        box-shadow: 0 0 0 1.5px rgba(255, 255, 255, 0.8), 0 0 12px rgba(232, 93, 138, 0.38);
+    }
 }
 
 .minimap-content[data-map-view='timeline'] .minimap-viewport,

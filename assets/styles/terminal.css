@@ -383,6 +383,47 @@
     font-weight: 600;
     letter-spacing: 0.03em;
     color: var(--e-wine-deep);
+    z-index: 2;
+    animation: hubBreathe 4s ease-in-out infinite;
+}
+
+.entry-orbit-hub::before {
+    content: '';
+    position: absolute;
+    inset: -6px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(178, 58, 72, 0.28);
+    opacity: 0;
+    pointer-events: none;
+    animation: hubPulseRipple 3.6s cubic-bezier(0.16, 0.8, 0.2, 1) infinite;
+}
+
+@keyframes hubBreathe {
+    0%, 100% {
+        transform: translate(-50%, -50%) scale(1);
+        box-shadow:
+            0 0 0 1.5px rgba(178, 58, 72, 0.3),
+            0 0 0 7px rgba(178, 58, 72, 0.05),
+            0 5px 20px rgba(178, 58, 72, 0.2);
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.04);
+        box-shadow:
+            0 0 0 2px rgba(178, 58, 72, 0.42),
+            0 0 0 10px rgba(178, 58, 72, 0.08),
+            0 8px 24px rgba(178, 58, 72, 0.26);
+    }
+}
+
+@keyframes hubPulseRipple {
+    0% {
+        transform: scale(0.9);
+        opacity: 0.75;
+    }
+    100% {
+        transform: scale(2.3);
+        opacity: 0;
+    }
 }
 
 /* A node is a card, not a swatch. The canvas is made of titled cards joined by
@@ -404,16 +445,34 @@
     box-shadow: 0 3px 10px rgba(93, 62, 52, 0.13);
     font: inherit;
     cursor: pointer;
-    transition: transform 0.22s cubic-bezier(0.22, 0.61, 0.36, 1),
-                box-shadow 0.22s ease,
-                border-color 0.22s ease;
+    z-index: 3;
+    animation: orbitNodeFloat 5.6s ease-in-out infinite;
+    transition: transform 0.24s cubic-bezier(0.22, 0.61, 0.36, 1),
+                box-shadow 0.24s ease,
+                border-color 0.24s ease;
+}
+
+.entry-orbit-node:nth-of-type(2) { animation-delay: -0.9s; animation-duration: 6.2s; }
+.entry-orbit-node:nth-of-type(3) { animation-delay: -1.8s; animation-duration: 5.4s; }
+.entry-orbit-node:nth-of-type(4) { animation-delay: -2.7s; animation-duration: 6.6s; }
+.entry-orbit-node:nth-of-type(5) { animation-delay: -3.6s; animation-duration: 5.8s; }
+.entry-orbit-node:nth-of-type(6) { animation-delay: -4.5s; animation-duration: 6.4s; }
+
+@keyframes orbitNodeFloat {
+    0%, 100% {
+        transform: translate(-50%, -50%) translateY(0);
+    }
+    50% {
+        transform: translate(-50%, -50%) translateY(-4px);
+    }
 }
 
 .entry-orbit-node:hover,
 .entry-orbit-node:focus-visible {
-    transform: translate(-50%, -50%) translateY(-3px);
-    border-color: rgba(178, 58, 72, 0.34);
-    box-shadow: 0 10px 22px rgba(93, 62, 52, 0.2);
+    animation-play-state: paused;
+    transform: translate(-50%, -50%) translateY(-5px) scale(1.04);
+    border-color: rgba(178, 58, 72, 0.38);
+    box-shadow: 0 12px 26px rgba(93, 62, 52, 0.2), 0 0 0 3px rgba(178, 58, 72, 0.08);
 }
 
 .entry-orbit-dot {
@@ -423,6 +482,11 @@
     border-radius: 4px;
     background: var(--node-tone);
     box-shadow: inset 0 0 0 1px rgba(26, 26, 46, 0.08);
+    transition: transform 0.2s ease;
+}
+
+.entry-orbit-node:hover .entry-orbit-dot {
+    transform: scale(1.15);
 }
 
 .entry-orbit-title {
