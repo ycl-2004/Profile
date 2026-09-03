@@ -5,16 +5,38 @@
     const SHARE_TEXT = 'Explore Yi-Chen Lin\'s AI-native product engineering canvas.';
 
     function getShareUrl() {
-        if (window.location.hostname === 'ycl-2004.github.io') {
-            return window.location.href.split('#')[0];
-        }
+        const base = window.location.hostname === 'ycl-2004.github.io'
+            ? window.location.href.split('#')[0]
+            : PUBLIC_PROFILE_URL;
+        const openCardId = app.state.openModalCardId;
 
-        return PUBLIC_PROFILE_URL;
+        return openCardId ? `${base}#${encodeURIComponent(openCardId)}` : base;
     }
 
     function setStatus(message) {
         if (!app.dom.shareStatus) return;
         app.dom.shareStatus.textContent = message || '';
+    }
+
+    function syncShareUrlDisplay() {
+        const field = document.getElementById('share-url-text');
+        if (!field) return;
+
+        field.textContent = getShareUrl().replace(/^https?:\/\//, '');
+    }
+
+    function flashCopyButton(button) {
+        if (!button) return;
+
+        const label = button.querySelector('span');
+        if (!label || button.dataset.flashing === 'true') return;
+
+        button.dataset.flashing = 'true';
+        label.textContent = 'Copied';
+        setTimeout(() => {
+            label.textContent = 'Copy';
+            button.dataset.flashing = 'false';
+        }, 1400);
     }
 
     function setPanelOpen(panel, button, shouldOpen) {
@@ -149,7 +171,7 @@
 
     function updateSettingsState() {
         const currentView = app.state.currentView || 'canvas';
-        const themePreference = app.state.themePreference || 'auto';
+        const themePreference = app.state.themePreference || 'light';
 
         document.querySelectorAll('[data-settings-view]').forEach((button) => {
             const isActive = button.dataset.settingsView === currentView;
@@ -201,6 +223,7 @@
         if (app.dom.shareButton) {
             app.dom.shareButton.addEventListener('click', (event) => {
                 event.stopPropagation();
+                syncShareUrlDisplay();
                 togglePanel(app.dom.sharePanel, app.dom.shareButton);
             });
         }
@@ -225,7 +248,10 @@
                 if (actionButton) {
                     try {
                         if (actionButton.dataset.shareAction === 'native') await shareNative();
-                        if (actionButton.dataset.shareAction === 'copy') await copyShareLink();
+                        if (actionButton.dataset.shareAction === 'copy') {
+                            await copyShareLink();
+                            flashCopyButton(actionButton.closest('.share-url-copy') || actionButton);
+                        }
                     } catch {
                         setStatus('Could not complete sharing from this browser.');
                     }
@@ -251,9 +277,8 @@
                 }
 
                 if (themeButton && typeof app.applyThemePreference === 'function') {
-                    app.applyThemePreference(themeButton.dataset.settingsTheme || 'auto');
+                    app.applyThemePreference(themeButton.dataset.settingsTheme || 'light');
                     updateSettingsState();
-                    closePanels(true);
                     app.playSound('tap');
                 }
 

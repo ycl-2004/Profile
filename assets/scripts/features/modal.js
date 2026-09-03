@@ -143,7 +143,7 @@
         });
     };
 
-    app.openModal = function openModal(cardId) {
+    app.openModal = function openModal(cardId, options = {}) {
         const data = app.data.modalData[cardId];
 
         if (!data) return;
@@ -172,11 +172,26 @@
         if (canvasApp) canvasApp.inert = true;
         window.requestAnimationFrame(() => app.dom.modalCloseButton?.focus({ preventScroll: true }));
         app.playSound('open');
+
+        app.state.openModalCardId = cardId;
+        app.setModalPermalinkState('idle');
+        // A modal reached through the history stack already has the matching URL.
+        if (!options.fromHistory && typeof app.writeDeepLink === 'function') {
+            app.writeDeepLink(cardId);
+        }
     };
 
     app.finalizeModalClose = function finalizeModalClose() {
         const overlay = app.dom.modalOverlay;
         if (!overlay) return;
+
+        const closedCardId = app.state.openModalCardId;
+        const viaHistory = app.state.modalHistorySync;
+        app.state.openModalCardId = null;
+        app.state.modalHistorySync = false;
+        if (closedCardId && !viaHistory && typeof app.writeDeepLink === 'function') {
+            app.writeDeepLink(null);
+        }
 
         overlay.classList.remove('active');
         overlay.setAttribute('aria-hidden', 'true');
@@ -187,6 +202,49 @@
         app.state.modalReturnFocus = null;
         if (returnFocus?.isConnected) returnFocus.focus({ preventScroll: true });
     };
+
+    app.setModalPermalinkState = function setModalPermalinkState(state) {
+        const button = app.dom.modalPermalinkButton;
+        if (!button) return;
+
+        window.clearTimeout(app.state.modalPermalinkTimer);
+        button.dataset.copyState = state;
+        button.setAttribute('aria-label', state === 'copied' ? 'Link copied' : 'Copy link to this card');
+        button.title = state === 'copied' ? 'Link copied' : 'Copy link to this card';
+
+        if (state !== 'copied') return;
+        app.state.modalPermalinkTimer = window.setTimeout(() => {
+            app.setModalPermalinkState('idle');
+        }, 1600);
+    };
+
+    async function copyPermalink() {
+        const cardId = app.state.openModalCardId;
+        if (!cardId || typeof app.getCardPermalink !== 'function') return;
+
+        const link = app.getCardPermalink(cardId);
+
+        try {
+            if (navigator.clipboard && window.isSecureContext) {
+                await navigator.clipboard.writeText(link);
+            } else {
+                const textarea = document.createElement('textarea');
+                textarea.value = link;
+                textarea.setAttribute('readonly', '');
+                textarea.style.position = 'fixed';
+                textarea.style.top = '-1000px';
+                textarea.style.opacity = '0';
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                textarea.remove();
+            }
+            app.setModalPermalinkState('copied');
+            app.playSound('tap');
+        } catch {
+            app.setModalPermalinkState('idle');
+        }
+    }
 
     app.bindModal = function bindModal() {
         function closeModal() {
@@ -215,6 +273,8 @@
         app.dom.modalCloseButton.addEventListener('click', () => {
             closeModal();
         });
+
+        app.dom.modalPermalinkButton?.addEventListener('click', copyPermalink);
 
         app.dom.modalOverlay.addEventListener('click', (event) => {
             if (event.target === app.dom.modalOverlay) {

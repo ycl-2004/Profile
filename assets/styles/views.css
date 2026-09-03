@@ -1,13 +1,25 @@
 body[data-view='timeline'] #canvas-viewport,
 body[data-view='list'] #canvas-viewport,
-body[data-view='timeline'] .zoom-controls,
-body[data-view='list'] .zoom-controls,
-body[data-view='timeline'] .bottom-hint,
-body[data-view='list'] .bottom-hint,
-body[data-view='timeline'] .theme-toggle,
-body[data-view='list'] .theme-toggle,
-body[data-view='timeline'] .view-expand,
-body[data-view='list'] .view-expand {
+body[data-view='timeline'] .canvas-view-actions > .chrome-island,
+body[data-view='list'] .canvas-view-actions > .chrome-island {
+    display: none;
+}
+
+/*
+ * The toolbar stays outside the canvas so "overview" can bring you back — the search
+ * tool switches to List view, and hiding the toolbar there stranded you with no return.
+ * Only the canvas-only tools drop away.
+ */
+body[data-view='timeline'] .bottom-hint [data-canvas-tool='select'],
+body[data-view='list'] .bottom-hint [data-canvas-tool='select'],
+body[data-view='timeline'] .bottom-hint [data-canvas-tool='details'],
+body[data-view='list'] .bottom-hint [data-canvas-tool='details'] {
+    display: none;
+}
+
+/* Outside the canvas the dock collapses to the theme control; zoom has nothing to act on. */
+body[data-view='timeline'] .canvas-dock > :not(.theme-cycle),
+body[data-view='list'] .canvas-dock > :not(.theme-cycle) {
     display: none;
 }
 

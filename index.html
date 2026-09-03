@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Yi-Chen Lin is a Vancouver-based AI-focused software engineer building RAG pipelines, LangGraph agent orchestration, FastAPI services, industrial field software, and native macOS apps.">
-    <meta name="theme-color" content="#2a2230">
+    <meta name="theme-color" content="#faf8f5" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#0d101b" media="(prefers-color-scheme: dark)">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; font-src 'self' data:; object-src 'none'; base-uri 'self'; form-action 'self'">
     <meta property="og:type" content="website">
@@ -15,18 +16,18 @@
     <link rel="canonical" href="https://ycl-2004.github.io/Profile/">
     <link rel="icon" href="./assets/favicon.svg?v=orbit-blue" type="image/svg+xml">
     <title>Yi-Chen Lin | AI-Focused Software Engineer</title>
-    <link rel="stylesheet" href="./assets/styles/base.css?v=orbit-popovers">
-    <link rel="stylesheet" href="./assets/styles/terminal.css?v=resume-link">
-    <link rel="stylesheet" href="./assets/styles/layout.css?v=orbit-popovers">
-    <link rel="stylesheet" href="./assets/styles/cards.css">
-    <link rel="stylesheet" href="./assets/styles/connections.css">
-    <link rel="stylesheet" href="./assets/styles/modal.css">
-    <link rel="stylesheet" href="./assets/styles/controls.css">
-    <link rel="stylesheet" href="./assets/styles/views.css?v=timeline-fix">
-    <link rel="stylesheet" href="./assets/styles/animations.css">
-    <link rel="stylesheet" href="./assets/styles/enhancements.css?v=orbit-popovers">
+    <link rel="stylesheet" href="./assets/styles/base.css?v=deep-link">
+    <link rel="stylesheet" href="./assets/styles/terminal.css?v=deep-link">
+    <link rel="stylesheet" href="./assets/styles/layout.css?v=deep-link">
+    <link rel="stylesheet" href="./assets/styles/cards.css?v=deep-link">
+    <link rel="stylesheet" href="./assets/styles/connections.css?v=deep-link">
+    <link rel="stylesheet" href="./assets/styles/modal.css?v=deep-link">
+    <link rel="stylesheet" href="./assets/styles/controls.css?v=deep-link">
+    <link rel="stylesheet" href="./assets/styles/views.css?v=deep-link">
+    <link rel="stylesheet" href="./assets/styles/animations.css?v=deep-link">
+    <link rel="stylesheet" href="./assets/styles/enhancements.css?v=deep-link">
 </head>
-<body>
+<body data-theme="light" data-theme-preference="light">
     <div id="app-root"></div>
     <noscript>
         <main class="noscript-profile">
@@ -37,37 +38,38 @@
         </main>
     </noscript>
 
-    <script src="./assets/scripts/core/namespace.js"></script>
-    <script src="./assets/scripts/data/connections.js?v=resume-link"></script>
-    <script src="./assets/scripts/data/modal-data.js?v=resume-link"></script>
-    <script src="./assets/scripts/data/portfolio-items.js?v=resume-link"></script>
-    <script src="./assets/scripts/templates/terminal.js?v=resume-link"></script>
-    <script src="./assets/scripts/templates/top-bar.js?v=orbit-popovers"></script>
-    <script src="./assets/scripts/templates/sidebar.js?v=resume-link"></script>
-    <script src="./assets/scripts/templates/connections-svg.js"></script>
-    <script src="./assets/scripts/templates/cards.js?v=resume-link"></script>
-    <script src="./assets/scripts/templates/canvas-ui.js"></script>
-    <script src="./assets/scripts/templates/modal.js"></script>
-    <script src="./assets/scripts/core/render.js"></script>
-    <script src="./assets/scripts/core/state.js"></script>
-    <script src="./assets/scripts/core/dom.js"></script>
+    <script src="./assets/scripts/core/namespace.js?v=deep-link"></script>
+    <script src="./assets/scripts/data/connections.js?v=deep-link"></script>
+    <script src="./assets/scripts/data/modal-data.js?v=deep-link"></script>
+    <script src="./assets/scripts/data/portfolio-items.js?v=deep-link"></script>
+    <script src="./assets/scripts/templates/terminal.js?v=deep-link"></script>
+    <script src="./assets/scripts/templates/top-bar.js?v=deep-link"></script>
+    <script src="./assets/scripts/templates/sidebar.js?v=deep-link"></script>
+    <script src="./assets/scripts/templates/connections-svg.js?v=deep-link"></script>
+    <script src="./assets/scripts/templates/cards.js?v=deep-link"></script>
+    <script src="./assets/scripts/templates/canvas-ui.js?v=deep-link"></script>
+    <script src="./assets/scripts/templates/modal.js?v=deep-link"></script>
+    <script src="./assets/scripts/core/render.js?v=deep-link"></script>
+    <script src="./assets/scripts/core/state.js?v=deep-link"></script>
+    <script src="./assets/scripts/core/dom.js?v=deep-link"></script>
     <script src="./assets/scripts/features/connections.js"></script>
     <script src="./assets/scripts/features/minimap.js"></script>
-    <script src="./assets/scripts/features/terminal-entry.js?v=resume-link"></script>
+    <script src="./assets/scripts/features/terminal-entry.js?v=deep-link"></script>
     <script src="./assets/scripts/features/pan-zoom.js"></script>
     <script src="./assets/scripts/features/card-dragging.js"></script>
     <script src="./assets/scripts/features/layers.js"></script>
-    <script src="./assets/scripts/features/modal.js"></script>
-    <script src="./assets/scripts/features/theme.js"></script>
-    <script src="./assets/scripts/features/preferences.js?v=orbit-popovers"></script>
-    <script src="./assets/scripts/features/layout.js?v=resume-link"></script>
-    <script src="./assets/scripts/features/views.js?v=github-watch-fixes"></script>
-    <script src="./assets/scripts/features/top-actions.js?v=orbit-popovers"></script>
-    <script src="./assets/scripts/features/profile-actions.js?v=resume-pdf"></script>
-    <script src="./assets/scripts/features/init.js"></script>
+    <script src="./assets/scripts/features/modal.js?v=deep-link"></script>
+    <script src="./assets/scripts/features/deep-link.js?v=deep-link"></script>
+    <script src="./assets/scripts/features/theme.js?v=deep-link"></script>
+    <script src="./assets/scripts/features/preferences.js?v=deep-link"></script>
+    <script src="./assets/scripts/features/layout.js?v=deep-link"></script>
+    <script src="./assets/scripts/features/views.js?v=deep-link"></script>
+    <script src="./assets/scripts/features/top-actions.js?v=deep-link"></script>
+    <script src="./assets/scripts/features/profile-actions.js?v=deep-link"></script>
+    <script src="./assets/scripts/features/init.js?v=deep-link"></script>
     <script src="./assets/vendor/gsap/gsap.min.js"></script>
-    <script src="./assets/scripts/features/animations.js?v=github-watch-fixes"></script>
-    <script src="./assets/scripts/features/canvas-tools.js"></script>
-    <script src="./assets/scripts/main.js"></script>
+    <script src="./assets/scripts/features/animations.js?v=deep-link"></script>
+    <script src="./assets/scripts/features/canvas-tools.js?v=deep-link"></script>
+    <script src="./assets/scripts/main.js?v=deep-link"></script>
 </body>
 </html>

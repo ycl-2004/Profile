@@ -37,4 +37,14 @@
     // 恢复“双击查看详情”（只读弹窗）
     app.bindModal();
     app.bindWindowEvents();
+
+    if (typeof app.bindDeepLinks === 'function') {
+        app.bindDeepLinks();
+    }
+
+    // Landing on #card-id is a request for that card, not for the boot sequence.
+    const deepLinkTarget = typeof app.getDeepLinkTarget === 'function' ? app.getDeepLinkTarget() : null;
+    if (deepLinkTarget) {
+        app.enterCanvas({ targetCardId: deepLinkTarget, openDetails: true, immediate: true });
+    }
 })();

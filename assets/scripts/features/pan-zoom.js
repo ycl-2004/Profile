@@ -73,9 +73,9 @@
                 '.top-bar',
                 '.canvas-view-header',
                 '.portfolio-view-shell',
-                '.zoom-controls',
+                '.canvas-dock',
                 '.bottom-hint',
-                '.theme-toggle',
+                
                 '.modal-overlay',
                 'button',
                 'a',

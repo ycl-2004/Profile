@@ -216,6 +216,12 @@
 
                 if (targetView === 'canvas' && targetCardId && typeof app.focusCanvasCard === 'function') {
                     const focusedCard = app.focusCanvasCard(targetCardId);
+
+                    if (options.openDetails && app.data.modalData?.[targetCardId]) {
+                        // The URL already names this card, so opening must not add history.
+                        app.openModal(targetCardId, { fromHistory: true });
+                    }
+
                     if (focusedCard) return;
                 }
 

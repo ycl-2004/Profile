@@ -125,7 +125,7 @@
         if (!gsap) return;
 
         const animatedElements = document.querySelectorAll(
-            '.entry-orbit-link, .entry-orbit-ring, .card, .btn, .zoom-btn, .view-tab, .theme-pill, .motion-flow-path'
+            '.entry-orbit-link, .entry-orbit-ring, .card, .btn, .icon-btn, .view-tab, .hint-item, .motion-flow-path'
         );
 
         if (motionIsReduced()) {
@@ -183,7 +183,7 @@
         if (app.state.magneticControlsReady) return;
 
         const controls = toArray(
-            '.btn, .zoom-btn, .view-expand, .theme-pill, .view-tab, .hint-action, .top-panel-button, .settings-grid button, .settings-segment button'
+            '.btn, .icon-btn, .view-tab, .hint-item, .panel-row, .share-url-copy, .seg > button'
         );
 
         controls.forEach((control) => {
@@ -437,7 +437,7 @@
         app.state.motionIntroPlayed = true;
 
         const cards = toArray('.card');
-        const chrome = toArray('.top-bar, .canvas-view-header, .sidebar, .zoom-controls, .theme-toggle, .bottom-hint, .minimap');
+        const chrome = toArray('.top-bar, .canvas-view-header, .sidebar, .canvas-dock, .bottom-hint, .minimap');
 
         gsap.set(cards, { autoAlpha: 0, y: 18, scaleX: 0.965, scaleY: 0.965, transformOrigin: '50% 50%' });
         gsap.set(chrome, { autoAlpha: 0, y: -8 });
@@ -538,7 +538,7 @@
     app.animateCanvasToolPress = function animateCanvasToolPress(button, tool) {
         if (!button || !canAnimate()) return;
 
-        const icon = button.querySelector('.hint-icon') || button;
+        const icon = button.querySelector('svg') || button;
         const rotation = tool === 'overview' ? 22 : tool === 'search' ? -12 : tool === 'details' ? 10 : 0;
 
         gsap.killTweensOf([button, icon]);

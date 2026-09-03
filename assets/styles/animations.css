@@ -5,12 +5,10 @@
 
 .motion-enhanced .card,
 .motion-enhanced .btn,
-.motion-enhanced .zoom-btn,
-.motion-enhanced .view-expand,
-.motion-enhanced .theme-pill,
+.motion-enhanced .icon-btn,
 .motion-enhanced .view-tab,
-.motion-enhanced .hint-action,
-.motion-enhanced .top-panel-button {
+.motion-enhanced .hint-item,
+.motion-enhanced .panel-row {
     backface-visibility: hidden;
 }
 

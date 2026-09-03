@@ -4,12 +4,17 @@
     const THEME_OPTIONS = new Set(['light', 'dark', 'auto']);
     const systemTheme = window.matchMedia('(prefers-color-scheme: dark)');
 
+    // Light is the default identity of this canvas; system dark only applies if asked for.
+    const DEFAULT_PREFERENCE = 'light';
+    const CYCLE_ORDER = ['light', 'dark', 'auto'];
+    const CYCLE_LABEL = { light: 'Light', dark: 'Dark', auto: 'Auto' };
+
     function getStoredThemePreference() {
         try {
             const saved = window.localStorage.getItem(STORAGE_KEY);
-            return THEME_OPTIONS.has(saved) ? saved : 'auto';
+            return THEME_OPTIONS.has(saved) ? saved : DEFAULT_PREFERENCE;
         } catch {
-            return 'auto';
+            return DEFAULT_PREFERENCE;
         }
     }
 
@@ -22,9 +27,17 @@
     }
 
     function updateThemeButtons(preference) {
-        document.querySelectorAll('.theme-pill').forEach((button) => {
-            const option = button.dataset.themeOption;
-            const isActive = option === preference;
+        const next = CYCLE_ORDER[(CYCLE_ORDER.indexOf(preference) + 1) % CYCLE_ORDER.length];
+
+        document.querySelectorAll('[data-theme-cycle]').forEach((button) => {
+            button.dataset.themeState = preference;
+            button.title = `Theme: ${CYCLE_LABEL[preference]}`;
+            button.setAttribute('aria-label', `Theme: ${CYCLE_LABEL[preference]}. Switch to ${CYCLE_LABEL[next]}`);
+        });
+
+        // The settings panel shows the same preference as an explicit three-way choice.
+        document.querySelectorAll('[data-settings-theme]').forEach((button) => {
+            const isActive = button.dataset.settingsTheme === preference;
 
             button.classList.toggle('is-active', isActive);
             button.setAttribute('aria-pressed', isActive ? 'true' : 'false');
@@ -32,7 +45,7 @@
     }
 
     app.applyThemePreference = function applyThemePreference(preference, shouldPersist = true) {
-        const normalizedPreference = THEME_OPTIONS.has(preference) ? preference : 'auto';
+        const normalizedPreference = THEME_OPTIONS.has(preference) ? preference : DEFAULT_PREFERENCE;
         const resolvedTheme = resolveTheme(normalizedPreference);
 
         app.state.themePreference = normalizedPreference;
@@ -73,11 +86,15 @@
     };
 
     app.bindThemeToggle = function bindThemeToggle() {
-        document.querySelectorAll('.theme-pill').forEach((button) => {
+        document.querySelectorAll('[data-theme-cycle]').forEach((button) => {
             if (button.dataset.themeBound === 'true') return;
 
             button.addEventListener('click', () => {
-                app.applyThemePreference(button.dataset.themeOption || 'auto');
+                const current = app.state.themePreference || DEFAULT_PREFERENCE;
+                const next = CYCLE_ORDER[(CYCLE_ORDER.indexOf(current) + 1) % CYCLE_ORDER.length];
+
+                app.applyThemePreference(next);
+                app.playSound('tap');
             });
 
             button.dataset.themeBound = 'true';

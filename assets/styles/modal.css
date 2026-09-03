@@ -332,26 +332,35 @@
     line-height: 1.35;
 }
 
+/* In-flow, not absolute — absolute let the title run underneath on narrow screens. */
+.modal-header-actions {
+    display: flex;
+    align-items: center;
+    flex: 0 0 auto;
+    align-self: flex-start;
+    gap: 2px;
+    margin-left: auto;
+}
+
+.modal-heading {
+    min-width: 0;
+}
+
+.modal-permalink,
 .modal-close {
-    position: absolute;
-    top: 20px;
-    right: 24px;
+    position: relative;
     width: 32px;
     height: 32px;
-    border-radius: 50%;
+    border-radius: var(--r-sm);
     border: none;
-    background: rgba(255,255,255,0.76);
-    box-shadow: 0 6px 16px rgba(88,93,122,0.08);
+    background: transparent;
     cursor: pointer;
-    font-size: 18px;
-    color: var(--text-muted);
+    color: var(--text-secondary);
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all 0.2s;
+    transition: background 0.16s ease, color 0.16s ease;
 }
-
-.modal-close:hover { background: rgba(255,143,171,0.15); color: var(--pink-dark); }
 
 .modal-tags {
     display: flex;
@@ -433,9 +442,40 @@
     .logic-snapshot strong {
         font-size: 16px;
     }
+}
 
-    .modal-close {
-        top: 16px;
-        right: 18px;
-    }
+.modal-permalink .ui-icon,
+.modal-close .ui-icon {
+    width: 16px;
+    height: 16px;
+}
+
+/* The link icon swaps to a check for a beat after copying. */
+.modal-permalink-done {
+    position: absolute;
+    opacity: 0;
+}
+
+.modal-permalink[data-copy-state='copied'] {
+    color: var(--accent-strong);
+}
+
+.modal-permalink[data-copy-state='copied'] .ui-icon:first-child {
+    opacity: 0;
+}
+
+.modal-permalink[data-copy-state='copied'] .modal-permalink-done {
+    opacity: 1;
+}
+
+.modal-permalink:hover,
+.modal-close:hover {
+    background: var(--surface-hover);
+    color: var(--text);
+}
+
+.modal-permalink:focus-visible,
+.modal-close:focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
 }

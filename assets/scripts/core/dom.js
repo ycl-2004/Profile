@@ -30,7 +30,8 @@
             modalBody: document.getElementById('modal-body'),
             modalTags: document.getElementById('modal-tags'),
             modalAvatar: document.getElementById('modal-avatar'),
-            modalCloseButton: document.getElementById('modal-close')
+            modalCloseButton: document.getElementById('modal-close'),
+            modalPermalinkButton: document.getElementById('modal-permalink')
         };
     };
 })();
