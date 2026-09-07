@@ -239,8 +239,9 @@
                     <div class="project-link">Private, local macOS dictation</div>
                 </div>
             </div>
-            <div class="project-summary">Mixed Chinese-English speech becomes text and returns to the focused field.</div>
+            <div class="project-summary">Audio &rarr; the engine that can detect the language &rarr; the field you were typing in.</div>
             <div class="project-tags"><span class="project-tag">Swift</span><span class="project-tag">WhisperKit</span></div>
+            <div class="project-breakdown-hint"><span class="project-breakdown-arrow" aria-hidden="true">&#8627;</span>System Breakdown</div>
         </div>
 
         <div class="card card-project card-project-compact" data-card="project-sharememory" data-curated-group="main-projects" data-layer="projects" data-section="projects">
@@ -251,8 +252,9 @@
                     <div class="project-link">Shared context for coding agents</div>
                 </div>
             </div>
-            <div class="project-summary">Project-scoped, file-based memory shared across Codex and Claude Code workflows.</div>
+            <div class="project-summary">Two agents &rarr; a self-healing write lock &rarr; lint before anything becomes durable.</div>
             <div class="project-tags"><span class="project-tag">Agent Tooling</span><span class="project-tag">CI</span></div>
+            <div class="project-breakdown-hint"><span class="project-breakdown-arrow" aria-hidden="true">&#8627;</span>System Breakdown</div>
         </div>
 
         <div class="card card-project card-project-compact" data-card="project-screen-bridge" data-curated-group="main-projects" data-layer="projects" data-section="projects">
@@ -263,8 +265,9 @@
                     <div class="project-link">Mac-to-iPad extended display</div>
                 </div>
             </div>
-            <div class="project-summary">Authenticated local streaming that turns an iPad into a Mac extended display. Public v1.1.1 Universal Mac build.</div>
+            <div class="project-summary">Authenticated pairing &rarr; a route that can prove itself &rarr; a real extended display.</div>
             <div class="project-tags"><span class="project-tag">Swift</span><span class="project-tag">iPadOS</span></div>
+            <div class="project-breakdown-hint"><span class="project-breakdown-arrow" aria-hidden="true">&#8627;</span>System Breakdown</div>
         </div>
 
         <div class="card card-project card-project-compact" data-card="project-todo" data-curated-group="main-projects" data-layer="projects" data-section="projects">
@@ -275,8 +278,9 @@
                     <div class="project-link">Calm macOS menu-bar task app</div>
                 </div>
             </div>
-            <div class="project-summary">Tasks, notes, and focus timing stay one click away without leaving the current workflow.</div>
+            <div class="project-summary">Global shortcut &rarr; native popover over a web UI &rarr; local state you can undo.</div>
             <div class="project-tags"><span class="project-tag">Tauri</span><span class="project-tag">Local-First</span></div>
+            <div class="project-breakdown-hint"><span class="project-breakdown-arrow" aria-hidden="true">&#8627;</span>System Breakdown</div>
         </div>
 
         <div class="card card-project card-project-compact" data-card="project-browser-organizer" data-curated-group="main-projects" data-layer="projects" data-section="projects">
@@ -287,8 +291,9 @@
                     <div class="project-link">Local-first Chrome workspace</div>
                 </div>
             </div>
-            <div class="project-summary">Favorites, daily planning, open tabs, and saved sessions in one quiet new tab.</div>
+            <div class="project-summary">New tab override &rarr; three local columns &rarr; four named hosts, and nothing else.</div>
             <div class="project-tags"><span class="project-tag">Chrome</span><span class="project-tag">JavaScript</span></div>
+            <div class="project-breakdown-hint"><span class="project-breakdown-arrow" aria-hidden="true">&#8627;</span>System Breakdown</div>
         </div>
 
         <div class="card card-micro-label" data-card="experience-side-label" data-layer="projects" data-section="projects">

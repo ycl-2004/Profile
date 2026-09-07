@@ -340,6 +340,9 @@
             title: 'NoType',
             subtitle: 'Private, local dictation for macOS',
             avatar: '🎙️',
+            // Renders as an interactive system map; the body below is the fallback
+            // if the breakdown data ever goes missing.
+            variant: 'system',
             body: `
                 <h3>Problem</h3>
                 <p>Voice input is useful only when it can follow the user across apps without sending private audio to a remote transcription service.</p>
@@ -364,6 +367,9 @@
             title: 'Browser Organizer',
             subtitle: 'Local-first Chrome new tab workspace',
             avatar: '🗂️',
+            // Renders as an interactive system map; the body below is the fallback
+            // if the breakdown data ever goes missing.
+            variant: 'system',
             body: `
                 <h3>Problem</h3>
                 <p>Bookmarks, open tabs, daily tasks, and saved sessions usually live in separate surfaces, so the browser becomes another source of noise.</p>
@@ -388,6 +394,9 @@
             title: 'YC Todo',
             subtitle: 'Minimal task manager with local-first design',
             avatar: '✅',
+            // Renders as an interactive system map; the body below is the fallback
+            // if the breakdown data ever goes missing.
+            variant: 'system',
             body: `
                 <h3>Problem</h3>
                 <p>Many simple task tools become bloated and slow for the actual use case of quick capture and lightweight completion.</p>
@@ -414,9 +423,12 @@
             title: 'Screen Bridge',
             subtitle: 'Authenticated Mac-to-iPad extended display',
             avatar: '📱',
+            // Renders as an interactive system map; the body below is the fallback
+            // if the breakdown data ever goes missing.
+            variant: 'system',
             body: `
                 <h3>Problem</h3>
-                <p>iPad-as-second-screen workflows need to feel local, responsive, and private while still handling sensitive Mac permissions like Screen Recording and Accessibility carefully.</p>
+                <p>iPad-as-second-screen workflows need to feel local, responsive, and private — while asking for as few of macOS&rsquo;s heaviest permissions as the product can survive on.</p>
                 <h3>Approach</h3>
                 <p>I built the product path as a macOS sender plus an iPadOS receiver, with explicit pairing and transport choices instead of a trust-any-local-device model.</p>
                 <h3>System</h3>
@@ -424,7 +436,8 @@
                     <li>Created Mac virtual display streaming to iPad over authenticated TCP</li>
                     <li>Added Network.framework modes for Auto, Apple P2P/AWDL, Router/WiFi, and USB or Thunderbolt-style wired paths</li>
                     <li>Implemented pairing-code authentication with Keychain storage, nonce-based HMAC proof, and session-key protected input events</li>
-                    <li>Supported touch, pointer, scroll, keyboard input, device cleanup, disconnected states, and optional Chrome audio routing</li>
+                    <li>Removed iPad-originated input injection entirely, dropping Accessibility from the required permissions and keeping Mac control on the Mac</li>
+                    <li>Tracked heartbeat, frame arrival, decode, and render as separate health signals, and routed per-app audio to a chosen receiver</li>
                 </ul>
                 <h3>Outcome</h3>
                 <p>Shipped a public <strong>v1.1.1</strong> Universal Mac build (Apple silicon and Intel) that combines macOS permissions, iPad receiver UX, local networking, authentication, and real-time media behavior.</p>
@@ -674,6 +687,9 @@
             title: 'ShareMemory',
             subtitle: 'Durable project context shared across coding agents',
             avatar: '🧠',
+            // Renders as an interactive system map; the body below is the fallback
+            // if the breakdown data ever goes missing.
+            variant: 'system',
             body: `
                 <h3>Problem</h3>
                 <p>Agent context is easy to lose between tools and sessions, which creates repeated discovery work and inconsistent project decisions.</p>

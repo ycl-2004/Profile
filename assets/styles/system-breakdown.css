@@ -736,3 +736,311 @@ body[data-motion='reduced'] .sysnode:hover,
 body[data-motion='reduced'] .syslink:hover {
     transform: none;
 }
+
+/* --- Build panel: how it was made, not how it runs ------------------------- */
+
+.sysbuild-heading {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 26px 0 14px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: var(--text);
+}
+
+.sysbuild-heading:first-of-type { margin-top: 0; }
+
+.sysbuild-heading::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--sys-hairline);
+}
+
+.sysbuild-heading span {
+    padding: 3px 8px;
+    border-radius: 999px;
+    background: var(--tone-mint-bg);
+    font-family: var(--sys-mono);
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--tone-mint);
+}
+
+/* Code map */
+.sysbuild-rule {
+    margin: 0 0 14px;
+    padding: 15px 17px;
+    border-radius: 14px;
+    border: 1px dashed var(--sys-wire);
+    background: var(--sys-sunken);
+    font-size: 13px;
+    line-height: 1.75;
+    color: var(--text-secondary);
+}
+
+.sysbuild-rule strong { color: var(--text); }
+
+.syslayers {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+    gap: 11px;
+}
+
+.syslayer {
+    padding: 14px 16px 15px;
+    border-radius: 14px;
+    border: 1px solid var(--sys-hairline);
+    background: var(--sys-panel-solid);
+    box-shadow: var(--sys-shadow);
+}
+
+.syslayer-head {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+.syslayer-head code {
+    font-family: var(--sys-mono);
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--tone-sky);
+}
+
+.syslayer-size {
+    margin-left: auto;
+    font-family: var(--sys-mono);
+    font-size: 9.5px;
+    color: var(--text-muted);
+    white-space: nowrap;
+}
+
+.syslayer p {
+    margin: 0;
+    font-size: 12.5px;
+    line-height: 1.7;
+    color: var(--text-secondary);
+}
+
+/* Practice */
+.syspractice {
+    padding: 15px 17px 16px;
+    border-radius: 14px;
+    border: 1px solid var(--sys-hairline);
+    background: var(--sys-panel-solid);
+    box-shadow: var(--sys-shadow);
+}
+
+.syspractice h5 {
+    margin: 0 0 7px;
+    font-size: 13.5px;
+    font-weight: 750;
+    line-height: 1.4;
+    color: var(--text);
+}
+
+.syspractice p {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.72;
+    color: var(--text-secondary);
+}
+
+.syspractice em { color: var(--text); }
+
+@media (max-width: 767px) {
+    .syslayers { grid-template-columns: 1fr; }
+    .sysphase { gap: 12px; }
+    .sysphase-when { margin-left: 0; }
+}
+
+/* --- Build graph: code-derived wiring, with drill-down -------------------- */
+
+.sysgraph-shell {
+    margin-bottom: 26px;
+    padding: 18px 20px 28px;
+    border-radius: 18px;
+    border: 1px solid var(--sys-hairline);
+    background: var(--sys-sunken);
+}
+
+.sysgraph-bar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+}
+
+.sysgraph-crumbs {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-family: var(--sys-mono);
+    font-size: 10.5px;
+}
+
+.gcrumb {
+    padding: 4px 9px;
+    border-radius: 999px;
+    border: 1px solid var(--sys-hairline);
+    background: var(--sys-panel-solid);
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: 700;
+    color: var(--tone-sky);
+    cursor: pointer;
+    transition: border-color 0.16s ease, color 0.16s ease;
+}
+
+.gcrumb:hover { border-color: var(--tone-sky); }
+.gcrumb:focus-visible { outline: 2px solid var(--ring); outline-offset: 2px; }
+.gcrumb-sep { color: var(--text-muted); }
+
+.gcrumb-current {
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: var(--text);
+}
+
+.sysgraph-hint {
+    margin-left: auto;
+    font-family: var(--sys-mono);
+    font-size: 9.5px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+}
+
+.sysgraph-summary {
+    margin: 0 0 26px;
+    font-size: 12.5px;
+    line-height: 1.72;
+    color: var(--text-secondary);
+}
+
+.sysgraph {
+    position: relative;
+    width: 100%;
+}
+
+.sysgraph-wires {
+    position: absolute;
+    inset: 0;
+    overflow: visible;
+    color: var(--sys-wire);
+    pointer-events: none;
+}
+
+.gwire {
+    fill: none;
+    stroke: var(--sys-wire);
+    stroke-width: 1.4;
+    stroke-linecap: round;
+}
+
+/* A heavier reference count draws a heavier wire. */
+.sysgraph-wires path[data-weight]:not([data-weight='1']) { stroke-width: 1.7; }
+.sysgraph-wires path[data-skips] { opacity: 0.5; }
+
+.sysgraph-nodes,
+.sysgraph-labels { position: relative; }
+
+.gnode {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 13px 14px 14px;
+    border-radius: 12px;
+    border: 1px solid var(--sys-hairline);
+    background: var(--sys-panel-solid);
+    box-shadow: var(--sys-shadow);
+    font-family: inherit;
+    text-align: left;
+    cursor: default;
+    overflow: hidden;
+    transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+}
+
+.gnode[data-drillable] { cursor: pointer; }
+
+.gnode::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: var(--kind-accent);
+    opacity: 0.6;
+}
+
+.gnode[data-kind='input'] { --kind-accent: var(--tone-amber); }
+.gnode[data-kind='core'] { --kind-accent: var(--tone-sky); }
+.gnode[data-kind='branch'] { --kind-accent: var(--tone-lilac); }
+.gnode[data-kind='edge'] { --kind-accent: var(--tone-mint); }
+
+.gnode-label {
+    font-family: var(--sys-mono);
+    font-size: 11.5px;
+    font-weight: 700;
+    line-height: 1.35;
+    color: var(--text);
+    overflow-wrap: anywhere;
+}
+
+.gnode-meta {
+    font-family: var(--sys-mono);
+    font-size: 9px;
+    letter-spacing: 0.02em;
+    color: var(--kind-accent);
+}
+
+.gnode-note {
+    font-size: 10.5px;
+    line-height: 1.55;
+    color: var(--text-muted);
+}
+
+.gnode[data-drillable]:hover {
+    transform: translateY(-1px);
+    border-color: var(--kind-accent);
+    box-shadow: var(--sys-shadow-lift);
+}
+
+.gnode[data-drillable]::after {
+    content: '↳';
+    position: absolute;
+    right: 9px;
+    top: 9px;
+    font-size: 11px;
+    color: var(--kind-accent);
+    opacity: 0.5;
+}
+
+.gnode:focus-visible { outline: 2px solid var(--ring); outline-offset: 2px; }
+
+.gedge-label {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    padding: 2px 6px;
+    border-radius: 6px;
+    background: var(--sys-sunken);
+    border: 1px solid var(--sys-hairline);
+    font-family: var(--sys-mono);
+    font-size: 9px;
+    font-weight: 700;
+    color: var(--text-muted);
+    white-space: nowrap;
+    pointer-events: none;
+}
+
+body[data-theme='dark'] .gedge-label { background: var(--sys-panel-solid); }
+
+body[data-motion='reduced'] .gnode[data-drillable]:hover { transform: none; }
