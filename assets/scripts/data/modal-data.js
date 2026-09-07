@@ -257,6 +257,9 @@
             title: 'Orbit',
             subtitle: 'Native macOS radial app switcher',
             avatar: '🪐',
+            // Renders as an interactive system map; the body below is the fallback
+            // if the breakdown data ever goes missing.
+            variant: 'system',
             body: `
                 <h3>Problem</h3>
                 <p>App switching is fast only when the next window is easy to reach. Lists and repeated keyboard cycling make the interaction feel slower than it needs to be.</p>
@@ -276,6 +279,62 @@
                 <div class="modal-link-list"><p><strong>GitHub:</strong> <a href="https://github.com/ycl-2004/Orbit" target="_blank" rel="noopener noreferrer">github.com/ycl-2004/Orbit</a></p></div>
             `,
             tags: ['Native App', 'Swift', 'macOS', 'Gesture UX']
+        },
+        'project-wisp': {
+            title: 'Wisp',
+            subtitle: 'Screen-aware macOS assistant with a provider you own',
+            avatar: '💬',
+            // Renders as an interactive system map; the body below is the fallback
+            // if the breakdown data ever goes missing.
+            variant: 'system',
+            body: `
+                <h3>Problem</h3>
+                <p>Asking a model about what is on your screen usually means copying context between apps, and trusting whoever wrote the assistant with both the page and the key.</p>
+                <h3>Approach</h3>
+                <p>I built a menu-bar shell that records the frontmost app before its own panel appears, assembles a bounded context packet, and sends it to an endpoint the user configures.</p>
+                <h3>System</h3>
+                <ul>
+                    <li>Captures the current window and, for supported browsers, reads URL, title, selection, and page body through Apple Events and injected JavaScript</li>
+                    <li>Reports what it could not read — partial virtual-list collection and cross-origin iframes are separate fields from character truncation</li>
+                    <li>Supports OpenAI-compatible HTTP, Ollama, and the Codex, Antigravity, and Claude Code logins already on the Mac, each in its own sandboxed temporary workspace</li>
+                    <li>Keeps conversations as readable local JSON and API keys in the Keychain, refusing to overwrite a file written by a newer version</li>
+                </ul>
+                <h3>Outcome</h3>
+                <p>Shipped a Universal 2 macOS release with CI that gates tool isolation, prompt truncation, and temporary-directory cleanup on every push.</p>
+                <h3>Stack</h3>
+                <p class="modal-stack-line">Swift · SwiftUI · AppKit · Apple Events · Keychain · Local-First UX</p>
+                <h3>Link</h3>
+                <div class="modal-link-list"><p><strong>GitHub:</strong> <a href="https://github.com/ycl-2004/Wisp" target="_blank" rel="noopener noreferrer">github.com/ycl-2004/Wisp</a></p></div>
+            `,
+            tags: ['Native App', 'AI Product', 'Swift', 'Local-First']
+        },
+        'project-foldpeek': {
+            title: 'FoldPeek',
+            subtitle: 'Read-only folder browser inside Finder Quick Look',
+            avatar: '📁',
+            // Renders as an interactive system map; the body below is the fallback
+            // if the breakdown data ever goes missing.
+            variant: 'system',
+            body: `
+                <h3>Problem</h3>
+                <p>Pressing Space on a folder in Finder shows almost nothing, and every richer preview means parsing files that somebody else wrote.</p>
+                <h3>Approach</h3>
+                <p>I built a Quick Look extension that indexes a folder read-only and bounded, treating every byte it renders as untrusted input.</p>
+                <h3>System</h3>
+                <ul>
+                    <li>Enumerates one directory level at a time under hard caps of 2,000 entries per directory, 20,000 per panel, and eight levels of depth</li>
+                    <li>Filters only nodes already in memory, so a keystroke can never walk the tree and defeat those budgets</li>
+                    <li>Renders text, code, Markdown, PDF, images, and spreadsheets through forward-only scanners that emit no links and no attachments</li>
+                    <li>States the document type for Word and RTF instead of letting the bytes select a WebKit-backed reader, and hands unknown formats to Apple’s out-of-process thumbnail service</li>
+                </ul>
+                <h3>Outcome</h3>
+                <p>Shipped a Universal 2 v1.0.0 with a written security audit covering trust boundaries, twenty enforced bounds, a rejected approach, and the residual risks that remain.</p>
+                <h3>Stack</h3>
+                <p class="modal-stack-line">Swift · SwiftUI · AppKit · Quick Look · App Sandbox · PDFKit</p>
+                <h3>Link</h3>
+                <div class="modal-link-list"><p><strong>GitHub:</strong> <a href="https://github.com/ycl-2004/FoldPeek" target="_blank" rel="noopener noreferrer">github.com/ycl-2004/FoldPeek</a></p></div>
+            `,
+            tags: ['Native App', 'Security', 'Swift', 'macOS']
         },
         'project-notype': {
             title: 'NoType',

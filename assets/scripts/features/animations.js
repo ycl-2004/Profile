@@ -483,7 +483,7 @@
                 duration: 0.42,
                 clearProps: 'transform,opacity,visibility'
             }, 0.03)
-            .fromTo(toArray('.modal-section, .modal-tag', modal), {
+            .fromTo(toArray('.modal-section, .modal-tag, .sysview-stagger', modal), {
                 autoAlpha: 0,
                 y: 10
             }, {

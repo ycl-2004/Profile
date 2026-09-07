@@ -9,17 +9,19 @@
         preview: { up: 'hero', left: 'hero' }
     };
 
-    // The ring on the entry page mirrors the six curated Main Projects. Resolve
+    // The ring on the entry page mirrors the eight curated Main Projects. Resolve
     // them against `portfolioItems` rather than hardcoding display details so
     // the preview stays honest when the Canvas changes. `label` is only a
     // compact visual label; the full record supplies the accessible name.
     const ORBIT_NODES = [
-        { id: 'project-orbit', angle: -120, label: 'Orbit' },
-        { id: 'project-notype', angle: -60, label: 'NoType' },
-        { id: 'project-todo', angle: 0, label: 'YC Todo' },
-        { id: 'project-browser-organizer', angle: 60, label: 'Browser' },
-        { id: 'project-sharememory', angle: 120, label: 'ShareMemory' },
-        { id: 'project-screen-bridge', angle: 180, label: 'Screen Bridge' }
+        { id: 'project-orbit', angle: -135, label: 'Orbit' },
+        { id: 'project-wisp', angle: -90, label: 'Wisp' },
+        { id: 'project-foldpeek', angle: -45, label: 'FoldPeek' },
+        { id: 'project-notype', angle: 0, label: 'NoType' },
+        { id: 'project-sharememory', angle: 45, label: 'ShareMemory' },
+        { id: 'project-screen-bridge', angle: 90, label: 'Screen Bridge' },
+        { id: 'project-todo', angle: 135, label: 'YC Todo' },
+        { id: 'project-browser-organizer', angle: 180, label: 'Browser' }
     ];
 
     // Orbit's app icon, in numbers: a tilted ellipse with the hub at its

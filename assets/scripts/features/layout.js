@@ -31,13 +31,17 @@
         return { y };
     }
 
-    function placeGridRows(rows, leftA, leftB, top, width, gap) {
+    // `columns` is a list of left offsets, so the same helper lays out a two-column
+    // tablet grid and a three-column desktop grid. A null cell leaves a hole.
+    function placeGridRows(rows, columns, top, width, gap) {
         let y = top;
 
-        rows.forEach(([cardA, cardB]) => {
-            const elA = cardA ? setCard(cardA, leftA, y, width) : null;
-            const elB = cardB ? setCard(cardB, leftB, y, width) : null;
-            y += Math.max(getH(elA), getH(elB)) + gap;
+        rows.forEach((row) => {
+            const heights = row.map((cardId, index) => {
+                if (!cardId || index >= columns.length) return 0;
+                return getH(setCard(cardId, columns[index], y, width));
+            });
+            y += Math.max(0, ...heights) + gap;
         });
 
         return { y };
@@ -61,13 +65,15 @@
         const xGeneral = 378;
         const xExpA = 752;
         const xExpB = 1070;
-        const xConnect = 1418;
-        const xExplore = 1698;
+        const xExpC = 1388;
+        const xConnect = 1736;
+        const xExplore = 2016;
 
         const wSelf = 286;
         const wGeneral = 334;
         const wExp = 290;
-        const wExpSection = (xExpB + wExp) - xExpA;
+        const wExpSection = (xExpC + wExp) - xExpA;
+        const expColumns = [xExpA, xExpB, xExpC];
         const wConnect = 244;
         const wExplore = 236;
         const wLabel = 162;
@@ -103,11 +109,9 @@
         yExp += getH(workLabel) + rowGap;
         ({ y: yExp } = placeGridRows(
             [
-                ['work-delta', 'work-ai-warts'],
-                ['work-joychime', null]
+                ['work-delta', 'work-ai-warts', 'work-joychime']
             ],
-            xExpA,
-            xExpB,
+            expColumns,
             yExp,
             wExp,
             rowGap
@@ -118,11 +122,9 @@
         yExp += getH(aiLabel) + rowGap;
         ({ y: yExp } = placeGridRows(
             [
-                ['project-rag-system', 'project-media-ops'],
-                ['project-ai-agents', null]
+                ['project-rag-system', 'project-media-ops', 'project-ai-agents']
             ],
-            xExpA,
-            xExpB,
+            expColumns,
             yExp,
             wExp,
             rowGap
@@ -133,12 +135,11 @@
         yExp += getH(mainLabel) + rowGap;
         ({ y: yExp } = placeGridRows(
             [
-                ['project-orbit', 'project-notype'],
-                ['project-todo', 'project-browser-organizer'],
-                ['project-sharememory', 'project-screen-bridge']
+                ['project-orbit', 'project-wisp', 'project-foldpeek'],
+                ['project-notype', 'project-sharememory', 'project-screen-bridge'],
+                ['project-todo', 'project-browser-organizer', null]
             ],
-            xExpA,
-            xExpB,
+            expColumns,
             yExp,
             wExp,
             rowGap
@@ -148,10 +149,9 @@
         yExp = yExp + 8 + getH(sideLabel) + rowGap;
         ({ y: yExp } = placeGridRows(
             [
-                ['project-open-source', 'education']
+                ['project-open-source', 'education', null]
             ],
-            xExpA,
-            xExpB,
+            expColumns,
             yExp,
             wExp,
             rowGap
@@ -223,13 +223,13 @@
         let yExp = gridTop + getH(expSection) + 18;
         const workLabel = setCard('experience-work-label', xGridA + 10, yExp, 150);
         yExp += getH(workLabel) + rowGap;
+        const tabletColumns = [xGridA, xGridB];
         ({ y: yExp } = placeGridRows(
             [
                 ['work-delta', 'work-ai-warts'],
                 ['work-joychime', null]
             ],
-            xGridA,
-            xGridB,
+            tabletColumns,
             yExp,
             gridW,
             rowGap
@@ -243,8 +243,7 @@
                 ['project-rag-system', 'project-media-ops'],
                 ['project-ai-agents', null]
             ],
-            xGridA,
-            xGridB,
+            tabletColumns,
             yExp,
             gridW,
             rowGap
@@ -255,12 +254,12 @@
         yExp += getH(mainLabel) + rowGap;
         ({ y: yExp } = placeGridRows(
             [
-                ['project-orbit', 'project-notype'],
-                ['project-todo', 'project-browser-organizer'],
-                ['project-sharememory', 'project-screen-bridge']
+                ['project-orbit', 'project-wisp'],
+                ['project-foldpeek', 'project-notype'],
+                ['project-sharememory', 'project-screen-bridge'],
+                ['project-todo', 'project-browser-organizer']
             ],
-            xGridA,
-            xGridB,
+            tabletColumns,
             yExp,
             gridW,
             rowGap
@@ -272,8 +271,7 @@
             [
                 ['project-open-source', 'education']
             ],
-            xGridA,
-            xGridB,
+            tabletColumns,
             yExp,
             gridW,
             rowGap
@@ -353,9 +351,10 @@
         placePair('project-rag-system', 'project-media-ops');
         placeOne('project-ai-agents');
         placeOne('experience-main-label', 164);
-        placePair('project-orbit', 'project-notype');
-        placePair('project-todo', 'project-browser-organizer');
+        placePair('project-orbit', 'project-wisp');
+        placePair('project-foldpeek', 'project-notype');
         placePair('project-sharememory', 'project-screen-bridge');
+        placePair('project-todo', 'project-browser-organizer');
         placeOne('experience-side-label', 196);
         placePair('project-open-source', 'education');
 

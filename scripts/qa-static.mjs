@@ -115,6 +115,8 @@ check((cards.match(/<(?:button|a) class="quick-link-row"/g) || []).length === 4,
 
 const expectedMainProjects = [
     'project-orbit',
+    'project-wisp',
+    'project-foldpeek',
     'project-notype',
     'project-todo',
     'project-browser-organizer',
@@ -220,7 +222,7 @@ check(!portfolioItems.includes("id: 'project-ycapikit'") && !modals.includes("'p
 check(!portfolioItems.includes("id: 'project-lawdesk'") && !modals.includes("'project-lawdesk':"), 'Removed LawDesk project must not remain in visible portfolio data.');
 check(!portfolioItems.includes("id: 'project-crypto'") && !modals.includes("'project-crypto':"), 'Removed CryptoPulse project must not remain in visible portfolio data.');
 
-check(portfolioIds.length === 26, `Evidence Bank must contain the user-curated 26 records, found ${portfolioIds.length}.`);
+check(portfolioIds.length === 28, `Evidence Bank must contain the user-curated 28 records, found ${portfolioIds.length}.`);
 
 if (failures.length) {
     console.error(`Static QA failed (${failures.length}):`);

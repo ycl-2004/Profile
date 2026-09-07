@@ -108,6 +108,36 @@
             stack: ['Swift', 'SwiftUI', 'AppKit', 'macOS', 'Local-First']
         },
         {
+            id: 'project-wisp',
+            title: 'Wisp',
+            subtitle: 'Screen-aware macOS assistant with a provider you own',
+            category: 'Project',
+            type: 'AI / Native App',
+            layer: 'projects',
+            dateLabel: '2026',
+            sortDate: '2026-09',
+            icon: '\ud83d\udcac',
+            tone: 'lilac',
+            description: 'Menu-bar assistant that captures the frontmost window and browser page before its own panel appears, then sends that context to a model endpoint the user configures.',
+            impact: 'Shipped a Universal 2 v0.3.0 with five provider paths — OpenAI-compatible HTTP, Ollama, and the local Codex, Antigravity, and Claude Code logins — each isolated in its own temporary workspace; CI gates tool isolation, prompt truncation, and temp-directory cleanup on every push.',
+            stack: ['Swift', 'SwiftUI', 'AppKit', 'Apple Events', 'Keychain']
+        },
+        {
+            id: 'project-foldpeek',
+            title: 'FoldPeek',
+            subtitle: 'Read-only folder browser inside Finder Quick Look',
+            category: 'Project',
+            type: 'Native App',
+            layer: 'projects',
+            dateLabel: '2026',
+            sortDate: '2026-08',
+            icon: '\ud83d\udcc1',
+            tone: 'peach',
+            description: 'Quick Look extension that turns a folder preview into a bounded, read-only index with an inspector for text, code, Markdown, PDF, documents, images, and spreadsheets.',
+            impact: 'Shipped a Universal 2 v1.0.0 whose extension holds two entitlements plus one named exception; twenty limits are enforced as constants in source and documented in a written security audit covering trust boundaries, a rejected approach, and residual risks.',
+            stack: ['Swift', 'SwiftUI', 'AppKit', 'Quick Look', 'App Sandbox']
+        },
+        {
             id: 'project-notype',
             title: 'NoType',
             subtitle: 'Private, local dictation for macOS',
@@ -441,7 +471,7 @@
             summary: 'Turned the same engineering into things other people can download and read: native macOS releases, browser tools, agent infrastructure, public brand systems, and an upstream open-source contribution record.',
             layer: 'projects',
             tone: 'mint',
-            items: ['project-ai-agents', 'project-orbit', 'project-notype', 'project-todo', 'project-browser-organizer', 'project-sharememory', 'project-screen-bridge', 'project-goodcase', 'project-yc-site', 'project-open-source', 'project-yc-brand-systems', 'project-always', 'writing-technical']
+            items: ['project-ai-agents', 'project-orbit', 'project-wisp', 'project-foldpeek', 'project-notype', 'project-todo', 'project-browser-organizer', 'project-sharememory', 'project-screen-bridge', 'project-goodcase', 'project-yc-site', 'project-open-source', 'project-yc-brand-systems', 'project-always', 'writing-technical']
         },
         {
             period: 'Next',

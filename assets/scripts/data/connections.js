@@ -30,6 +30,8 @@
         { from: 'work-ai-warts', to: 'project-open-source', kind: 'secondary' },
         { from: 'section-experience', to: 'experience-main-label', kind: 'primary' },
         { from: 'experience-main-label', to: 'project-orbit', kind: 'primary' },
+        { from: 'experience-main-label', to: 'project-wisp', kind: 'primary' },
+        { from: 'experience-main-label', to: 'project-foldpeek', kind: 'primary' },
         { from: 'experience-main-label', to: 'project-notype', kind: 'primary' },
         { from: 'experience-main-label', to: 'project-todo', kind: 'primary' },
         { from: 'experience-main-label', to: 'project-browser-organizer', kind: 'primary' },

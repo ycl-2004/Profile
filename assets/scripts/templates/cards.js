@@ -200,8 +200,35 @@
                     <div class="project-link">Native macOS radial app switcher</div>
                 </div>
             </div>
-            <div class="project-summary">Gesture-first app switching that puts the next window around the cursor.</div>
+            <div class="project-summary">Global input &rarr; radial selection &rarr; exact-window activation.</div>
             <div class="project-tags"><span class="project-tag">Swift</span><span class="project-tag">macOS</span></div>
+            <div class="project-breakdown-hint"><span class="project-breakdown-arrow" aria-hidden="true">&#8627;</span>System Breakdown</div>
+        </div>
+
+        <div class="card card-project card-project-compact" data-card="project-wisp" data-curated-group="main-projects" data-layer="projects" data-section="projects">
+            <div class="project-header">
+                <div class="project-icon" style="background:linear-gradient(135deg,#ded1ff,#9f8bff);">💬</div>
+                <div>
+                    <div class="project-name">Wisp</div>
+                    <div class="project-link">Screen-aware macOS assistant</div>
+                </div>
+            </div>
+            <div class="project-summary">Capture before the panel &rarr; bounded context &rarr; the provider you own.</div>
+            <div class="project-tags"><span class="project-tag">Swift</span><span class="project-tag">Local-First</span></div>
+            <div class="project-breakdown-hint"><span class="project-breakdown-arrow" aria-hidden="true">&#8627;</span>System Breakdown</div>
+        </div>
+
+        <div class="card card-project card-project-compact" data-card="project-foldpeek" data-curated-group="main-projects" data-layer="projects" data-section="projects">
+            <div class="project-header">
+                <div class="project-icon" style="background:linear-gradient(135deg,#ffe6c7,#ffc48f);">📁</div>
+                <div>
+                    <div class="project-name">FoldPeek</div>
+                    <div class="project-link">Quick Look folder browser</div>
+                </div>
+            </div>
+            <div class="project-summary">Finder selection &rarr; bounded read-only index &rarr; inert preview.</div>
+            <div class="project-tags"><span class="project-tag">Swift</span><span class="project-tag">Sandbox</span></div>
+            <div class="project-breakdown-hint"><span class="project-breakdown-arrow" aria-hidden="true">&#8627;</span>System Breakdown</div>
         </div>
 
         <div class="card card-project card-project-compact" data-card="project-notype" data-curated-group="main-projects" data-layer="projects" data-section="projects">
@@ -214,30 +241,6 @@
             </div>
             <div class="project-summary">Mixed Chinese-English speech becomes text and returns to the focused field.</div>
             <div class="project-tags"><span class="project-tag">Swift</span><span class="project-tag">WhisperKit</span></div>
-        </div>
-
-        <div class="card card-project card-project-compact" data-card="project-todo" data-curated-group="main-projects" data-layer="projects" data-section="projects">
-            <div class="project-header">
-                <div class="project-icon" style="background:linear-gradient(135deg,#bfffd7,#4fe7a1);">✅</div>
-                <div>
-                    <div class="project-name">YC Todo</div>
-                    <div class="project-link">Calm macOS menu-bar task app</div>
-                </div>
-            </div>
-            <div class="project-summary">Tasks, notes, and focus timing stay one click away without leaving the current workflow.</div>
-            <div class="project-tags"><span class="project-tag">Tauri</span><span class="project-tag">Local-First</span></div>
-        </div>
-
-        <div class="card card-project card-project-compact" data-card="project-browser-organizer" data-curated-group="main-projects" data-layer="projects" data-section="projects">
-            <div class="project-header">
-                <div class="project-icon" style="background:linear-gradient(135deg,#ffd3e0,#ff8fab);">🗂️</div>
-                <div>
-                    <div class="project-name">Browser Organizer</div>
-                    <div class="project-link">Local-first Chrome workspace</div>
-                </div>
-            </div>
-            <div class="project-summary">Favorites, daily planning, open tabs, and saved sessions in one quiet new tab.</div>
-            <div class="project-tags"><span class="project-tag">Chrome</span><span class="project-tag">JavaScript</span></div>
         </div>
 
         <div class="card card-project card-project-compact" data-card="project-sharememory" data-curated-group="main-projects" data-layer="projects" data-section="projects">
@@ -262,6 +265,30 @@
             </div>
             <div class="project-summary">Authenticated local streaming that turns an iPad into a Mac extended display. Public v1.1.1 Universal Mac build.</div>
             <div class="project-tags"><span class="project-tag">Swift</span><span class="project-tag">iPadOS</span></div>
+        </div>
+
+        <div class="card card-project card-project-compact" data-card="project-todo" data-curated-group="main-projects" data-layer="projects" data-section="projects">
+            <div class="project-header">
+                <div class="project-icon" style="background:linear-gradient(135deg,#bfffd7,#4fe7a1);">✅</div>
+                <div>
+                    <div class="project-name">YC Todo</div>
+                    <div class="project-link">Calm macOS menu-bar task app</div>
+                </div>
+            </div>
+            <div class="project-summary">Tasks, notes, and focus timing stay one click away without leaving the current workflow.</div>
+            <div class="project-tags"><span class="project-tag">Tauri</span><span class="project-tag">Local-First</span></div>
+        </div>
+
+        <div class="card card-project card-project-compact" data-card="project-browser-organizer" data-curated-group="main-projects" data-layer="projects" data-section="projects">
+            <div class="project-header">
+                <div class="project-icon" style="background:linear-gradient(135deg,#ffd3e0,#ff8fab);">🗂️</div>
+                <div>
+                    <div class="project-name">Browser Organizer</div>
+                    <div class="project-link">Local-first Chrome workspace</div>
+                </div>
+            </div>
+            <div class="project-summary">Favorites, daily planning, open tabs, and saved sessions in one quiet new tab.</div>
+            <div class="project-tags"><span class="project-tag">Chrome</span><span class="project-tag">JavaScript</span></div>
         </div>
 
         <div class="card card-micro-label" data-card="experience-side-label" data-layer="projects" data-section="projects">

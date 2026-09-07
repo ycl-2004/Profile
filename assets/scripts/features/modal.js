@@ -156,11 +156,20 @@
         app.dom.modalOverlay.dataset.modalVariant = variant;
         app.dom.modalBody.dataset.modalVariant = variant;
         if (app.dom.modal) app.dom.modal.dataset.modalVariant = variant;
-        app.dom.modalBody.innerHTML = data.body;
+        // A system breakdown owns its own markup, so it skips the h3-to-section pass.
+        const hasBreakdown = variant === 'system'
+            && app.data.systemBreakdowns?.[cardId]
+            && typeof app.renderSystemBreakdown === 'function';
+
+        app.dom.modalBody.innerHTML = hasBreakdown ? app.renderSystemBreakdown(cardId) : data.body;
         app.dom.modalBody.querySelectorAll('a[target="_blank"]').forEach((link) => {
             link.rel = 'noopener noreferrer';
         });
-        app.decorateModalContent();
+        if (hasBreakdown) {
+            app.bindSystemBreakdown(cardId);
+        } else {
+            app.decorateModalContent();
+        }
         app.dom.modalTags.innerHTML = (data.tags || [])
             .map((tag) => `<span class="tag modal-tag ${app.getToneClassName(tag)}">${escapeHtml(tag)}</span>`)
             .join('');
